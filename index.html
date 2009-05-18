@@ -15,26 +15,36 @@
     ul        { list-style: none; }
     a         { text-decoration: none; }
     a:active  { color: #eee;}
-    #kardia   { font-family: Apple Symbols; color: #007F3F; }
     html {
       display: table;
       width: 100%;
       height: 100%;
       background: #008C45;
-      font: bold 2em/1 Helvetica, Arial;
+      font: bold 2.5em/1 Helvetica, Arial;
     }
     body {
       display: table-cell;
       vertical-align: middle;
       text-align: center;
     }
+    span {
+      font-weight: normal;
+    }
   </style>
 </head>
 <body>
   <ul>
-    <li id="kardia">&hearts;</li>
     <li><a href="http://github.com/mudge">Software</a>,</li>
-    <li><a href="http://gist.github.com/mudge">Bits &amp; Pieces</a>.</li>
+    <li><a href="http://gist.github.com/mudge">Bits <span>&amp;</span> Pieces</a>.</li>
   </ul>
+  <script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+  <script type="text/javascript">
+    var colors = [[54, 155, 33], [188, 75, 67], [94, 152, 170]];
+    var color = colors[Math.floor(colors.length * Math.random())];
+    $(function() {
+      $("html").css("background", "rgb(" + color[0] + ", " + color[1] + ", " + color[2] + ")");
+      $("span").css("color", "rgb(" + (color[0] - 20) + ", " + (color[1] - 20) + ", " + (color[2] - 20) + ")");
+    });
+  </script>
 </body>
 </html>
