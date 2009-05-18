@@ -43,7 +43,7 @@
     var color = colors[Math.floor(colors.length * Math.random())];
     $(function() {
       $("html").css("background", "rgb(" + color[0] + ", " + color[1] + ", " + color[2] + ")");
-      $("span").css("color", "rgb(" + (color[0] - 20) + ", " + (color[1] - 20) + ", " + (color[2] - 20) + ")");
+      $("span").css("color", "rgb(" + Math.max(0, color[0] - 20) + ", " + Math.max(0, color[1] - 20) + ", " + Math.max(0, color[2] - 20) + ")");
     });
   </script>
 </body>
