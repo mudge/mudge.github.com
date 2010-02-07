@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Fertigo Pro";
+  src: url("../fonts/fertigo_pro.otf");
+}
+*         { margin: 0; padding: 0; }
+html, a   { color: #fff; text-shadow: 2px 2px 2px #712521; }
+ul        { list-style: none; }
+a         { text-decoration: none; }
+a:active  { color: #eee; }
+span      { font-weight: normal; color: #4a1a17; text-shadow: none; }
+html {
+  display: table;
+  width: 100%;
+  height: 100%;
+  background-color: #BC4B43;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BC4B43), to(#8d2d28));
+  font: bold 2.5em/1 "Fertigo Pro", Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+}
+body {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
