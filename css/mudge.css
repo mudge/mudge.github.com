@@ -5,8 +5,8 @@
 *         { margin: 0; padding: 0; }
 html, a   { color: #fff; text-shadow: 2px 2px 2px #712521; }
 ul        { list-style: none; }
-a         { text-decoration: none; }
-a:active  { color: #eee; }
+a         { text-decoration: none; outline: none; }
+a:focus   { -moz-outline-style: none; }
 span      { font-weight: normal; color: #4a1a17; text-shadow: none; }
 html {
   display: table;
