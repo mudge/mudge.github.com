@@ -1,21 +1,24 @@
 @font-face {
   /* A font by Jos Buivenga (exljbris) -> www.exljbris.com */
-  font-family: "Fertigo Pro";
-  src: url("../fonts/fertigo_pro.otf");
+  font-family: "Museo Sans";
+  src: url("../fonts/museo_sans.otf");
 }
-*         { margin: 0; padding: 0; }
-html, a   { color: #fff; text-shadow: 2px 2px 2px #712521; }
+html, body, ul, h1, ul, li, p { margin: 0; padding: 0; }
+img       { border: 2px solid #7DC3A0; margin-bottom: -2px; }
+html, a   { color: #fff; text-shadow: 2px 2px 2px #49879B; }
 ul        { list-style: none; }
 a         { text-decoration: none; outline: none; }
 a:focus   { -moz-outline-style: none; }
-span      { font-weight: normal; color: #4a1a17; text-shadow: none; }
+span      { font-weight: normal; color: #162630; text-shadow: none; }
+h1 > span { font-size: 0.5em; }
+h1        { font-size: 1.5em; border-bottom: 5px dashed #162630; padding-bottom: 0.5em; margin-bottom: 0.5em; }
 html {
   display: table;
   width: 100%;
   height: 100%;
-  background-color: #BC4B43;
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BC4B43), to(#8d2d28));
-  font: bold 2.5em/1 "Fertigo Pro", Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+  background-color: #7DC3A0;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b1ff91), to(#4987af));
+  font: bold 2em/1 "Museo Sans", sans-serif;
 }
 body {
   display: table-cell;
