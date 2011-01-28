@@ -6,7 +6,7 @@ layout: nil
 <title>Paul Mucur</title>
 <link href="http://mudge.github.com/"/>
 <link href="http://mudge.github.com/index.atom" rel="self"/>
-<updated>{{ site.time | date_to_xmlschema }}</update>
+<updated>{{ site.time | date_to_xmlschema }}</updated>
 <id>http://mudge.github.com/</id>
 <author>
   <name>Paul Mucur</name>
