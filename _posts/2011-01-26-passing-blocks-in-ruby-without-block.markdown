@@ -4,7 +4,7 @@ title: Passing Blocks in Ruby Without <code>&amp;block</code>
 ---
 
 There are two main ways to pass [blocks][Containers, Blocks, and Iterators] into a method in Ruby:
-using [`yield`][yield] like so:
+the first is to use the [`yield`][yield] keyword like so:
 
 {% highlight ruby %}
 def speak
@@ -17,8 +17,8 @@ speak { "Hello" }
 {% endhighlight %}
 
 The other is to prefix the last argument in a method signature with an ampersand
-which will then create a [`Proc`][Proc] object from the block which can then be executed
-with [`call`][call] like so:
+which will then create a [`Proc`][Proc] object from the block. This object can then
+be executed with the [`call`][call] method like so:
 
 {% highlight ruby %}
 def speak(&block)
@@ -40,22 +40,18 @@ This can easily be verified with the following benchmark, `block_benchmark.rb`:
 {% highlight ruby %}
 require "benchmark"
 
-class ProcMonkey
-  def self.speak(&block)
-    block.call
-  end
+def speak_with_block(&block)
+  block.call
 end
 
-class BlockMonkey
-  def self.speak
-    yield
-  end
+def speak_with_yield
+  yield
 end
 
 n = 1_000_000
 Benchmark.bmbm do |x|
-  x.report("&block") { n.times { ProcMonkey.speak  { "ook" } } }
-  x.report("yield")  { n.times { BlockMonkey.speak { "ook" } } }
+  x.report("&block") { n.times { speak_with_block { "ook" } } }
+  x.report("yield")  { n.times { speak_with_yield { "ook" } } }
 end
 {% endhighlight %}
 
