@@ -87,7 +87,7 @@ class Monkey
   #  => nil
   def self.method_missing(name, *args, &block)
     subject = name.to_s[/^tell_(.+)$/, 1]
-    if subject
+    if subject && block
       tell(subject, &block)
     else
       super
@@ -109,7 +109,7 @@ class Monkey
   # ArgumentError: wrong number of arguments (2 for 1)
   def self.method_missing(name, *args)
     subject = name.to_s[/^tell_(.+)$/, 1]
-    if subject
+    if subject && block_given?
       tell(subject, yield)
     else
       super
@@ -150,7 +150,7 @@ class Monkey
   #  => nil
   def self.method_missing(name, *args)
     subject = name.to_s[/^tell_(.+)$/, 1]
-    if subject
+    if subject && block_given?
       tell(subject, &Proc.new)
     else
       super
@@ -160,7 +160,51 @@ end
 {% endhighlight %}
 
 Of course, if you do use `Proc.new` then you lose the performance benefit of using
-only `yield` but it is an interesting feature of the language nonetheless.
+only `yield` (as `Proc` objects are being created as with `&block`) but it does
+avoid unnecessary creation of Proc objects when you don't need them. This can be
+demonstrated with the following benchmark, `proc_new_benchmark.rb`:
+
+{% highlight ruby %}
+require "benchmark"
+
+def sometimes_block(flag, &block)
+  if flag && block
+    block.call
+  end
+end
+
+def sometimes_proc_new(flag)
+  if flag && block_given?
+    Proc.new.call
+  end
+end
+
+n = 1_000_000
+Benchmark.bmbm do |x|
+  x.report("&block") do
+    n.times do
+      sometimes_block(false) { "won't get used" }
+    end
+  end
+  x.report("Proc.new") do
+    n.times do
+      sometimes_proc_new(false) { "won't get used" }
+    end
+  end
+end
+{% endhighlight %}
+
+Which makes the following rather significant difference:
+
+    $ ruby code/proc_new_benchmark.rb 
+    Rehearsal --------------------------------------------
+    &block     1.080000   0.160000   1.240000 (  1.237644)
+    Proc.new   0.160000   0.000000   0.160000 (  0.156077)
+    ----------------------------------- total: 1.400000sec
+
+                   user     system      total        real
+    &block     1.090000   0.080000   1.170000 (  1.178771)
+    Proc.new   0.160000   0.000000   0.160000 (  0.155053)
 
   [Aaron Patterson]: http://tenderlovemaking.com
   [Containers, Blocks, and Iterators]: http://ruby-doc.org/docs/ProgrammingRuby/html/tut_containers.html
