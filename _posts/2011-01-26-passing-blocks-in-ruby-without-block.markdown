@@ -31,7 +31,7 @@ speak { "Hello" }
 
 The problem with the second approach is that instantiating a new `Proc` object incurs
 a surprisingly heavy performance penalty as detailed by [Aaron Patterson][] in his
-excellent RubyConf X presentation, ["ZOMG WHY IS THIS CODE SO SLOW?"][ZOMG]
+excellent RubyConf X presentation, "[ZOMG WHY IS THIS CODE SO SLOW?][ZOMG]"
 (beginning around the 30 minute mark or from [slide 181][ZOMG Slides]).
 
 This can easily be verified with the following benchmark, `block_benchmark.rb`:
