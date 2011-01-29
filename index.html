@@ -15,6 +15,7 @@ title: Paul Mucur
 <p class="date"><time datetime="{{ first_post.date | date_to_xmlschema }}">{{ first_post.date | date: "%A, %d %B %Y" }}</time></p>
 </header>
 {{ first_post.content }}
+<p><a href="{{ first_post.url }}#disqus_thread" data-disqus-identifier="{{ first_post.id }}">Comments</a></p>
 </article>
 
 {% if site.posts.length > 1 %}
@@ -25,3 +26,5 @@ title: Paul Mucur
 </ol>
 </section>
 {% endif %}
+<script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-1804081-1"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();var disqus_shortname="mudge";
+(function(){var a=document.createElement("script");a.async=true;a.type="text/javascript";a.src="http://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("HEAD")[0]||document.getElementsByTagName("BODY")[0]).appendChild(a)})();</script>

@@ -8,7 +8,7 @@ layout: default
 <p class="date"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%A, %d %B %Y" }}</time></p>
 </header>
 {{ content }}
-
+<div id="disqus_thread"></div>
 {% unless site.related_posts == empty %}
 <h2>Related Posts</h2>
 <ol>
@@ -18,3 +18,4 @@ layout: default
 </ol>
 {% endunless %}
 </article>
+<script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-1804081-1"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();var disqus_shortname="mudge",disqus_identifier="{{ page.id }}",disqus_url="http://mudge.github.com{{ page.url }}";(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src="http://"+disqus_shortname+".disqus.com/embed.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)})();</script>
