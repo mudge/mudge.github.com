@@ -2,7 +2,6 @@
 layout: post
 title: Passing Blocks in Ruby Without <code>&amp;block</code>
 ---
-
 There are two main ways to pass [blocks][Containers, Blocks, and Iterators] into a method in Ruby:
 the first is to use the [`yield`][yield] keyword like so:
 
@@ -50,8 +49,12 @@ end
 
 n = 1_000_000
 Benchmark.bmbm do |x|
-  x.report("&block") { n.times { speak_with_block { "ook" } } }
-  x.report("yield")  { n.times { speak_with_yield { "ook" } } }
+  x.report("&block") do
+    n.times { speak_with_block { "ook" } }
+  end
+  x.report("yield") do
+    n.times { speak_with_yield { "ook" } }
+  end
 end
 {% endhighlight %}
 
@@ -205,6 +208,18 @@ Which makes the following rather significant difference:
                    user     system      total        real
     &block     1.090000   0.080000   1.170000 (  1.178771)
     Proc.new   0.160000   0.000000   0.160000 (  0.155053)
+
+The key here is that using `&block` will *always* create a new `Proc` object,
+even if we don't make use of it. By using `Proc.new` only when we actually
+need it, we can avoid the cost of this object instantiation entirely.
+
+That said, there is a potential trade-off here between performance and
+readability: it is clear from the `sometimes_block` method signature that it
+takes a block and therefore will presumably do something with it; the same cannot
+be said for the more efficient `sometimes_proc_new`.
+
+In the end, it comes down to your specific requirements but it is still a useful
+language feature to know.
 
   [Aaron Patterson]: http://tenderlovemaking.com
   [Containers, Blocks, and Iterators]: http://ruby-doc.org/docs/ProgrammingRuby/html/tut_containers.html
