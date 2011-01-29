@@ -256,10 +256,10 @@ with something like the following:
 </script>
 {% endhighlight %}
 
-At this point you can now turn to more brutal compressors such as [YUI Compressor][]
-or the aforementioned [Closure Compiler][] which (after heeding [JSLint][]'s advice)
-will result in a final single snippet like so (line breaks added for some
-semblance of readability):
+At this point you can now turn to more brutal compressors such as [YUI
+Compressor][] or the aforementioned [Closure Compiler][] which (after some
+tweaks to keep [JSLint][] happy) will result in a final single snippet like
+so (line breaks added for some semblance of readability):
 
 {% highlight html %}
 <script>
