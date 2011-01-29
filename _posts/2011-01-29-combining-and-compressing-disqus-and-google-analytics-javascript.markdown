@@ -157,7 +157,7 @@ With those low-hanging fruit out of the way, we need to consider what both snipp
 are actually *doing*. They are, in fact, very similar: they are both creating
 `script` tags set to load some external JavaScript on your page in the following way:
 
-1. Create a new `script` element;
+1. Create a new `script` element with [`document.createElement`][createElement];
 2. Inform the script that it is to load asynchronously by setting the
    [`async`][async] attribute;
 3. Set the [`src`][src] of the element thereby identifying the location of the external
@@ -193,7 +193,8 @@ simultaneously (and moving them into the same closure while we're at it):
 We've stated that both snippets insert their newly-created `script` elements into
 the [DOM][] but they are currently doing it in different ways. Let's change this
 and, in the spirit of following [Google's Performance Best Practices][], let's
-append the `script` elements to the `body` tag:
+append the `script` elements to the `body` tag by using [`document.body`][body]
+and [`appendChild`][appendChild]:
 
 {% highlight html %}
 <script>
@@ -271,7 +272,6 @@ b.src="http://example.disqus.com/embed.js";c.appendChild(a);c.appendChild(b);}()
 </script>
 {% endhighlight %}
 
-  [JSLint]: http://www.jslint.com
   [Closure Compiler]: http://closure-compiler.appspot.com/
   [DOM Monster]: http://mir.aculo.us/dom-monster/
   [DOM]: https://developer.mozilla.org/en/DOM
@@ -280,10 +280,14 @@ b.src="http://example.disqus.com/embed.js";c.appendChild(a);c.appendChild(b);}()
   [Google Analytics]: http://www.google.com/analytics/
   [Google's Performance Best Practices]: http://code.google.com/speed/page-speed/docs/payload.html#DeferLoadingJS
   [HTML5 Optional tags]: http://dev.w3.org/html5/spec/syntax.html#optional-tags
+  [JSLint]: http://www.jslint.com
   [Jekyll]: http://jekyllrb.com
-  [dive into mark]: http://diveintomark.org
   [YUI Compressor]: http://developer.yahoo.com/yui/compressor/
+  [appendChild]: https://developer.mozilla.org/En/DOM/Node.appendChild
   [async]: http://dev.w3.org/html5/spec/scripting-1.html#attr-script-async
+  [body]: https://developer.mozilla.org/en/DOM/document.body
+  [createElement]: https://developer.mozilla.org/en/DOM/document.createElement
+  [dive into mark]: http://diveintomark.org
   [script type specification]: http://dev.w3.org/html5/spec/scripting-1.html#attr-script-type
   [src]: http://dev.w3.org/html5/spec/scripting-1.html#attr-script-src
   [var]: https://developer.mozilla.org/en/JavaScript/Reference/Statements/var
