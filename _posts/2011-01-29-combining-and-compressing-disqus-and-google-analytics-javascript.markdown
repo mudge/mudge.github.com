@@ -230,7 +230,7 @@ might consider making:
 3. Instead of calling `document.body` twice, you can cache it once in a variable
    which you can then reuse.
 4. A quick check with [JSLint][] reveals that invoking a function defined inside
-   parentheses (e.g. `(function() { ... })()` should be done *inside* the
+   parentheses (e.g. `(function() { ... })()`) should be done *inside* the
    parentheses instead of outside (e.g. `(function() { ... }())`).
 
 If you decide to take these (admittedly more drastic) steps then you might end up
