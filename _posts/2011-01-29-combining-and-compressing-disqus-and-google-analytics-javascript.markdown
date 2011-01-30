@@ -50,7 +50,8 @@ of your web page</del> (*Update:* [enomar on Hacker News pointed out that
 Google's asynchronous tracking code is ideally meant to be included at the end
 of the `head` element][enomar] while Disqus' JavaScript is meant for inclusion
 wherever you want your comments to appear but both can be placed at the bottom
-of your page, c.f. "[Getting Started with the Asynchronous Snippet][]").
+of your page, see "[Getting Started with the Asynchronous Snippet][]" and the end
+of this post for more information).
 
 A quick check with [Amy Hoy and Thomas Fuchs' "DOM Monster"][DOM Monster] shows that
 the number of `script` tags should ideally be kept to a minimum so let's combine
@@ -305,6 +306,56 @@ There are only two rules:
    that `disqus_url` is not required if `disqus_identifier` is set so feel free
    to leave that one out).
 
+*Update:* Based on feedback from [Steve Klabnik][], [Anton Kovalyov][] and
+[Andrew Walker][], here is a solution that consists of only 345 characters:
+
+{% highlight html %}
+<script>
+var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]],
+disqus_shortname="example",disqus_identifier="unique_dynamic_id_1234";
+(function(a,b){
+var c=a.createElement("script"),d=a.body,e;
+c.async=b;e=c.cloneNode(b);c.src="//www.google-analytics.com/ga.js";
+e.src="//example.disqus.com/embed.js";d.appendChild(c);d.appendChild(e);
+}(document,true));
+</script>
+{% endhighlight %}
+
+If you want to follow [Google's recommendation of inserting their
+snippet at the bottom of the `head` element][Getting Started with the
+Asynchronous Snippet] (and continue inserting Disqus' snippet at the bottom of
+the `body`) then you will have to sacrifice the single, unified `script` for two
+separate ones:
+
+{% highlight html %}
+<head>
+  <!-- Usual HTML head elements here... -->
+  <script>
+    var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]],
+    disqus_shortname="example",disqus_identifier="unique_dynamic_id_1234";
+    function a(b){var c=document,d=c.createElement("script");
+    d.async=true;d.src=b;
+    c.documentElement.firstChild.appendChild(d);}
+    a("//www.google-analytics.com/ga.js");
+  </script>
+</head>
+<body>
+  <!-- Page content here... -->
+  <script>a("//example.disqus.com/embed.js");</script>
+</body>
+{% endhighlight %}
+
+This version consists of a total of 325 characters but introduces a new global
+function named `a` which will create a new `script` element and append it to
+the `head` element of the page. The benefit of this approach is that it will
+immediately start loading the Google Analytics tracking code which might
+otherwise be delayed (particularly on large web pages) but the extra `script`
+and population of the `head` element won't win you any favours with the [DOM
+Monster][].
+
+  [Steve Klabnik]: http://www.steveklabnik.com
+  [Andrew Walker]: http://www.moddular.org
+  [Hacker News]: http://news.ycombinator.com/item?id=2156911
   [Anton Kovalyov]: http://anton.kovalyov.net/
   [_gaq.push]: http://code.google.com/apis/analytics/docs/gaJS/gaJSApi_gaq.html#_gaq.push
   [enomar HTML5]: http://news.ycombinator.com/item?id=2157118
