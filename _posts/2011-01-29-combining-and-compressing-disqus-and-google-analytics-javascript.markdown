@@ -258,7 +258,7 @@ with something like the following:
 
 At this point you can now turn to more brutal compressors such as [YUI
 Compressor][] or the aforementioned [Closure Compiler][] which (after some
-tweaks to keep [JSLint][] happy) will result in a final single snippet like
+tweaks to keep [JSLint][] happy) will result in a single snippet like
 so (line breaks added for some semblance of readability):
 
 {% highlight html %}
@@ -269,6 +269,21 @@ disqus_url="http://example.com/permalink-to-page.html";(function(){
 var a=document.createElement("script"),b=document.createElement("script"),
 c=document.body;a.async=b.async=true;a.src="http://www.google-analytics.com/ga.js";
 b.src="http://example.disqus.com/embed.js";c.appendChild(a);c.appendChild(b);}());
+</script>
+{% endhighlight %}
+
+Of course, there's no reason for it to end there. I've got it down to 412
+characters while still passing [JSLint][], feel free to post your own attempts in
+the comments:
+
+{% highlight html %}
+<script>
+var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]],
+disqus_shortname="example",disqus_identifier="unique_dynamic_id_1234",
+disqus_url="http://example.com/permalink-to-page.html";(function(){
+var a=document,b=a.createElement("script"),c=a.body,d;
+b.async=true;d=b.cloneNode(false);b.src="http://www.google-analytics.com/ga.js";
+d.src="http://example.disqus.com/embed.js";c.appendChild(b);c.appendChild(d);}());
 </script>
 {% endhighlight %}
 
