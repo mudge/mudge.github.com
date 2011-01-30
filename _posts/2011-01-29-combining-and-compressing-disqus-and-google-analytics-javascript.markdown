@@ -45,8 +45,12 @@ removed):
 </script>
 {% endhighlight %}
 
-Both seem terse enough and are meant for inclusion in at the bottom of your web
-page.
+Both seem terse enough <del>and are meant for inclusion at the bottom
+of your web page</del> (*Update:* [enomar on Hacker News pointed out that
+Google's asynchronous tracking code is ideally meant to be included at the end
+of the `head` element][enomar] while Disqus' JavaScript is meant for inclusion
+wherever you want your comments to appear but both can be placed at the bottom
+of your page, c.f. "[Getting Started with the Asynchronous Snippet][]").
 
 A quick check with [Amy Hoy and Thomas Fuchs' "DOM Monster"][DOM Monster] shows that
 the number of `script` tags should ideally be kept to a minimum so let's combine
@@ -93,7 +97,8 @@ We might decide to put the whole thing into something like
 Google's [Closure Compiler][] to optimise the code for us but let's take it more
 slowly and start by looking at the `script` tag itself: it turns out that the `type`
 attribute is optional and is [specified as having a default value of
-`text/javascript`][script type specification] so we can immediately lose that. It
+`text/javascript`][script type specification] so we can immediately lose that
+(*Update:* [this is only true if you're using HTML5][enomar HTML5]). It
 turns out that the actual JavaScript itself is also creating `script` tags
 and specifying the `type` attribute so let's remove those as well:
 
@@ -128,7 +133,10 @@ and specifying the `type` attribute so let's remove those as well:
 
 Another thing that has caught my eye is the odd set up of the `_gaq` variable:
 it checks to see if it has already been defined (which it has not in my case),
-assigns an empty array and then pushes two arrays onto it. Taking a cue from
+assigns an empty array and then pushes two arrays onto it. This is due to the fact
+that `_gaq` can be modified after Google's tracking code has loaded to use more
+advanced tracking features (see the [documentation for `_gaq.push`][_gaq.push] for
+more information) but seeing as I am only doing basic analytics and taking a cue from
 Mark Pilgrim's code from "[dive into mark][]", we can simplify
 this quite drastically:
 
@@ -291,9 +299,17 @@ There are only two rules:
 
 1. Your solution must not produce any errors from [JSLint][] with "Assume a browser"
    ticked;
-2. The only global variables that should be declared are `_gaq`, `disqus_identifier`,
-   `disqus_shortname` and `disqus_url`.
+2. The only global variables that should be declared are `_gaq`,
+   `disqus_identifier`, `disqus_shortname` <del>and `disqus_url`</del>
+   (*Update:* Disqus software engineer [Anton Kovalyov][] says in the comments
+   that `disqus_url` is not required if `disqus_identifier` is set so feel free
+   to leave that one out).
 
+  [Anton Kovalyov]: http://anton.kovalyov.net/
+  [_gaq.push]: http://code.google.com/apis/analytics/docs/gaJS/gaJSApi_gaq.html#_gaq.push
+  [enomar HTML5]: http://news.ycombinator.com/item?id=2157118
+  [Getting Started with the Asynchronous Snippet]: http://code.google.com/apis/analytics/docs/tracking/asyncTracking.html#Installation
+  [enomar]: http://news.ycombinator.com/item?id=2157082
   [Closure Compiler]: http://closure-compiler.appspot.com/
   [DOM Monster]: http://mir.aculo.us/dom-monster/
   [DOM]: https://developer.mozilla.org/en/DOM
