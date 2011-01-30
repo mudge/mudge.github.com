@@ -287,6 +287,13 @@ d.src="http://example.disqus.com/embed.js";c.appendChild(b);c.appendChild(d);}()
 </script>
 {% endhighlight %}
 
+There are only two rules:
+
+1. Your solution must not produce any errors from [JSLint][] with "Assume a browser"
+   ticked;
+2. The only global variables that should be declared are `_gaq`, `disqus_identifier`,
+   `disqus_shortname` and `disqus_url`.
+
   [Closure Compiler]: http://closure-compiler.appspot.com/
   [DOM Monster]: http://mir.aculo.us/dom-monster/
   [DOM]: https://developer.mozilla.org/en/DOM
