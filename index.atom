@@ -11,7 +11,6 @@ layout: nil
 <author>
   <name>Paul Mucur</name>
 </author>
-
 {% for post in site.posts %}
 <entry>
   <title>{{ post.title | strip_html | escape_once }}</title>
