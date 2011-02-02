@@ -9,7 +9,7 @@ layout: default
       </h1>
       <h2 class="byline author vcard">By <a href=/ class=fn>Paul Mucur</a></h2>
     </hgroup>
-    <time class=updated datetime={{ page.date | date_to_xmlschema }}>{{ page.date | date: "%A, %d %B %Y" }}</time>
+    <time class=updated datetime={{ page.date | date_to_xmlschema }} pubdate>{{ page.date | date: "%A, %d %B %Y" }}</time>
   </header>
   <div class=entry-content>
     {{ content }}
