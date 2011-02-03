@@ -1,3 +1,35 @@
+/* Fonts. */
+@font-face {
+  font-family: 'Droid Serif';
+  font-weight: normal;
+  font-style: normal;
+  src: url('fonts/DroidSerif.ttf');
+}
+@font-face {
+  font-family: 'Droid Serif';
+  font-weight: bold;
+  font-style: normal;
+  src: url('fonts/DroidSerif-Bold.ttf')
+}
+@font-face {
+  font-family: 'Droid Serif';
+  font-weight: normal;
+  font-style: italic;
+  src: url('fonts/DroidSerif.ttf');
+}
+@font-face {
+  font-family: 'Droid Serif';
+  font-weight: bold;
+  font-style: italic;
+  src: url('fonts/DroidSerif.ttf');
+}
+@font-face {
+  font-family: Inconsolata;
+  font-style: normal;
+  font-weight: normal;
+  src: url('fonts/Inconsolata.ttf');
+}
+
 /* HTML5 elements. */
 article, aside, footer, header, hgroup, nav, section {
   display: block;
