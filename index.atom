@@ -17,6 +17,7 @@ layout: nil
   <link href="{{ post.url }}"/>
   <id>http://mudge.github.com{{ post.url }}</id>
   <updated>{{ post.date | date_to_xmlschema }}</updated>
+  <summary>{{ post.summary | xml_escape }}</summary>
   <content type="html">{{ post.content | xml_escape }}</content>
 </entry>
 {% endfor %}

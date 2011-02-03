@@ -1,33 +1,37 @@
-/* Fonts. */
+/*
+ * Embedded Fonts.
+ * Droid Serif: see css/fonts/DroidSerif/LICENSE.txt
+ * Inconsolata: see css/fonts/Inconsolata/OFL.txt
+ */
 @font-face {
   font-family: 'Droid Serif';
   font-weight: normal;
   font-style: normal;
-  src: url('fonts/DroidSerif.ttf');
+  src: local('Droid Serif'), local('DroidSerif'), url('fonts/DroidSerif/DroidSerif.ttf');
 }
 @font-face {
   font-family: 'Droid Serif';
   font-weight: bold;
   font-style: normal;
-  src: url('fonts/DroidSerif-Bold.ttf')
+  src: local('Droid Serif Bold'), local('DroidSerif-Bold'), url('fonts/DroidSerif/DroidSerif-Bold.ttf')
 }
 @font-face {
   font-family: 'Droid Serif';
   font-weight: normal;
   font-style: italic;
-  src: url('fonts/DroidSerif.ttf');
+  src: local('Droid Serif Italic'), local('DroidSerif-Italic'), url('fonts/DroidSerif/DroidSerif-Italic.ttf');
 }
 @font-face {
   font-family: 'Droid Serif';
   font-weight: bold;
   font-style: italic;
-  src: url('fonts/DroidSerif.ttf');
+  src: local('Droid Serif Bold Italic'), local('DroidSerif-BoldItalic'), url('fonts/DroidSerif/DroidSerif-BoldItalic.ttf');
 }
 @font-face {
   font-family: Inconsolata;
   font-style: normal;
   font-weight: normal;
-  src: url('fonts/Inconsolata.ttf');
+  src: local('Inconsolata'), url('fonts/Inconsolata/Inconsolata.ttf');
 }
 
 /* HTML5 elements. */
@@ -35,6 +39,7 @@ article, aside, footer, header, hgroup, nav, section {
   display: block;
 }
 
+/* Rudimentary reset. */
 html, body, h1, h2, p, pre, code {
   border: 0;
   font-size: 100%;
@@ -46,35 +51,32 @@ html {
   color: #333;
   font: 1em/1.4 'Droid Serif', Palatino, Georgia, serif;
 }
-article, section, header {
-  margin: 3em auto;
-  width: 70%;
-}
 footer {
-  background: #333;
-  color: #fff;
-  padding: 1em 1.6em;
+  color: #666;
+  font-style: italic;
 }
 footer a {
-  color: #ffe;
+  color: #669;
 }
-ol {
-  list-style: lower-roman;
-}
-p, pre {
+p, pre, dd {
   margin-bottom: 1em;
 }
-header {
+header, dl, footer {
   text-align: center;
 }
-header h1 {
+h1 {
   font-size: 200%;
 }
-article h1 {
+h1.entry-title {
   font-size: 160%;
 }
-h2, time {
+h2 {
   font-weight: normal;
+}
+dt, aside h2 {
+  font-size: 140%;
+}
+h2.byline, time {
   color: #666;
 }
 header a {
@@ -95,12 +97,18 @@ del {
   text-decoration: line-through;
 }
 
+/* Normal display. */
+article, section, header, footer, #disqus_thread {
+  margin: 3em auto;
+  width: 70%;
+}
+
 /* iPhone styling. */
 @media only screen and (max-device-width:480px) {
   html {
     font-size: 200%;
   }
-  article, section, header {
+  article, section, header, footer, #disqus_thread {
     margin: 1em;
     width: 100%;
   }

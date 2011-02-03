@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Combining and Compressing Disqus' and Google Analytics' JavaScript
+summary: A step-by-step refactoring of Disqus' and Google Analytics' JavaScript.
 ---
 In setting up this [Jekyll][]-powered blog, I had cause to dust off my [Google
 Analytics][] account and finally take [Disqus][] for a spin. Both services
@@ -352,6 +353,27 @@ immediately start loading the Google Analytics tracking code which might
 otherwise be delayed (particularly on large web pages) but the extra `script`
 and population of the `head` element won't win you any favours with the [DOM
 Monster][].
+
+*Update #2:* I have since taken to another approach that reduces the number of `script`
+elements created by synchronously requiring the Disqus JavaScript yourself at
+the bottom of the `body`:
+
+{% highlight html %}
+<head>
+  <!-- Usual HTML head elements here... -->
+  <script>
+    var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]],
+    disqus_shortname="example",disqus_identifier="unique_dynamic_id_1234";
+    (function(a){var b=a.createElement("script");b.async=true;
+    b.src="//www.google-analytics.com/ga.js";
+    a.documentElement.firstChild.appendChild(b);}(document));
+  </script>
+</head>
+<body>
+  <!-- Page content here... -->
+  <script src=//example.disqus.com/embed.js async></script>
+</body>
+{% endhighlight %}
 
   [Steve Klabnik]: http://www.steveklabnik.com
   [Andrew Walker]: http://www.moddular.org

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Passing Blocks in Ruby Without <code>&amp;block</code>
+summary: Using yield and Proc.new to avoid unnecessary Proc object creation in Ruby.
 ---
 There are two main ways to pass [blocks][Containers, Blocks, and Iterators] into a method in Ruby:
 the first is to use the [`yield`][yield] keyword like so:
