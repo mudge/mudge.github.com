@@ -75,28 +75,23 @@ as important as their difference):
 So it is clearly preferable to choose `yield` over `&block` but what if you need to
 pass a block to another method?
 
-For example, if you are implementing some dynamic functionality via
-[`method_missing`][method_missing], you might want to pass the given block to some
-other method. Here's an example class which uses `method_missing` to turn calls
-like `Monkey.tell_someone { "hey" }` into `Monkey.tell("someone") { "hey" }`:
+For example, here is a class that implements a method `tell_ape` which delegates to
+another, more generic method named `tell`. This sort of pattern is commonly done
+using [`method_missing`][method_missing] but I'll keep the methods explicit for
+simplicity:
 
 {% highlight ruby %}
 class Monkey
 
-  def self.tell(name, &block)
-    puts "#{name}: #{block.call}"
-  end
-
   # Monkey.tell_ape { "ook!" }
   # ape: ook!
   #  => nil
-  def self.method_missing(name, *args, &block)
-    subject = name.to_s[/^tell_(.+)$/, 1]
-    if subject && block
-      tell(subject, &block)
-    else
-      super
-    end
+  def self.tell_ape(&block)
+    tell("ape", &block)
+  end
+
+  def self.tell(name, &block)
+    puts "#{name}: #{block.call}"
   end
 end
 {% endhighlight %}
@@ -106,19 +101,31 @@ Such a thing is not possible with the `yield` keyword:
 {% highlight ruby %}
 class Monkey
 
+  # Monkey.tell_ape { "ook!" }
+  # ArgumentError: wrong number of arguments (2 for 1)
+  def self.tell_ape
+    tell("ape", yield)
+  end
+
   def self.tell(name)
     puts "#{name}: #{yield}"
   end
+end
+{% endhighlight %}
+
+Neither does it work by using an ampersand:
+
+{% highlight ruby %}
+class Monkey
 
   # Monkey.tell_ape { "ook!" }
-  # ArgumentError: wrong number of arguments (2 for 1)
-  def self.method_missing(name, *args)
-    subject = name.to_s[/^tell_(.+)$/, 1]
-    if subject && block_given?
-      tell(subject, yield)
-    else
-      super
-    end
+  # TypeError: wrong argument type String (expected Proc)
+  def self.tell_ape
+    tell("ape", &yield)
+  end
+
+  def self.tell(name)
+    puts "#{name}: #{yield}"
   end
 end
 {% endhighlight %}
@@ -146,20 +153,15 @@ This means that it is now possible to pass a block between methods without using
 {% highlight ruby %}
 class Monkey
 
-  def self.tell(name)
-    puts "#{name}: #{yield}"
-  end
-
   # Monkey.tell_ape { "ook!" }
   # ape: ook!
   #  => nil
-  def self.method_missing(name, *args)
-    subject = name.to_s[/^tell_(.+)$/, 1]
-    if subject && block_given?
-      tell(subject, &Proc.new)
-    else
-      super
-    end
+  def self.tell_ape
+    tell("ape", &Proc.new)
+  end
+
+  def self.tell(name)
+    puts "#{name}: #{yield}"
   end
 end
 {% endhighlight %}
