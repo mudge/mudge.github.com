@@ -3,7 +3,7 @@ layout: post
 title: Passing Blocks in Ruby Without <code>&amp;block</code>
 summary: Using yield and Proc.new to avoid unnecessary Proc object creation in Ruby.
 ---
-There are two main ways to pass [blocks][Containers, Blocks, and Iterators] into a method in Ruby:
+There are two main ways to receive [blocks][Containers, Blocks, and Iterators] in a method in Ruby:
 the first is to use the [`yield`][yield] keyword like so:
 
 {% highlight ruby %}
@@ -16,9 +16,9 @@ speak { "Hello" }
 #  => nil
 {% endhighlight %}
 
-The other is to prefix the last argument in a method signature with an ampersand
-which will then create a [`Proc`][Proc] object from the block. This object can then
-be executed with the [`call`][call] method like so:
+The other is to prefix the last argument in a method signature with an
+ampersand which will then create a [`Proc`][Proc] object from any block passed
+in. This object can then be executed with the [`call`][call] method like so:
 
 {% highlight ruby %}
 def speak(&block)
@@ -77,7 +77,8 @@ pass a block to another method?
 
 For example, if you are implementing some dynamic functionality via
 [`method_missing`][method_missing], you might want to pass the given block to some
-other method like so:
+other method. Here's an example class which uses `method_missing` to turn calls
+like `Monkey.tell_someone { "hey" }` into `Monkey.tell("someone") { "hey" }`:
 
 {% highlight ruby %}
 class Monkey
