@@ -323,8 +323,7 @@ e.src="//example.disqus.com/embed.js";d.appendChild(c);d.appendChild(e);
 {% endhighlight %}
 
 If you want to follow [Google's recommendation of inserting their
-snippet at the bottom of the `head` element][Getting Started with the
-Asynchronous Snippet] (and continue inserting Disqus' snippet at the bottom of
+snippet at the bottom of the `head` element][Getting Started with the Asynchronous Snippet] (and continue inserting Disqus' snippet at the bottom of
 the `body`) then you will have to sacrifice the single, unified `script` for two
 separate ones:
 
