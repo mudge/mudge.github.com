@@ -26,7 +26,7 @@ Analytics' looks much like this (with line breaks added for readability):
 </script>
 {% endhighlight %}
 
-Disqus' is as follows (with line breaks added and extraenous comments
+Disqus' is as follows (with line breaks added and extraneous comments
 removed):
 
 {% highlight html %}
