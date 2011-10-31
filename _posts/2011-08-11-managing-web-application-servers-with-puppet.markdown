@@ -7,6 +7,17 @@ summary: A transcript of my August 2011 LRUG presentation regarding configuratio
 
 <p class="centre"><a href=//skillsmatter.com/podcast/home/lrug-puppet/><img src=/i/screengrab.png alt="View the full presentation on the Skillsmatter web site"></a></p>
 
+## Table of Contents
+
+1. [Introduction](#introduction) (who I am, what I am going to talk about);
+2. [The Old Way](#the-old-way) (manualling setting up a sample Rails application and some problems);
+3. [Enter Configuration Management](#enter-configuration-management) (introduction to configuration management and Puppet);
+4. [The Better Way](#the-better-way) (setting up the Rails application from earlier but entirely with Puppet);
+5. [Testing](#testing) (a few words on testing configuration);
+6. [Wrap-Up](#wrap-up) (closing remarks).
+
+<h2 id="introduction">Introduction</h2>
+
 My name's Paul Mucur and I'm going to be talking about managing web application servers with [Puppet][].
 
 First of all, who am I? I've been a Ruby developer since late 2006 and I currently work for the [Nature Publishing Group][NPG]: they publish [Nature][] which is a scientific journal that has been going for [around 140 years][Nature Wikipedia]. However, I don't work on the journal side; I work for their Web Applications team building mainly [Rails][] apps (with a couple of [Sinatra][] bits and pieces) for the scientific community. It's quite a large organisation and the actual system administrators are not only not in the office but they're actually in a totally different *time zone* and I want to talk a bit about how we try to mitigate problems with regards to having that amount of separation.
@@ -28,6 +39,8 @@ What I'm *not* going to talk about is:
 
 * The nitty-gritty of how to set up Puppet (you can install it from a package manager but we're just going to take it as read that you have it set up);
 * Using Puppet as a replacement for your normal deployment workflow (we're still going to be using [Capistrano][] to get our application code on the servers).
+
+<h2 id="the-old-way">The Old Way</h2>
 
 Let's introduce our Rails application. Because I'm a geek and because it will fit neatly on slides, it's just going to be called "[mcp][]" and it's a normal, no-frills Rails application.
 
@@ -326,6 +339,8 @@ That brings me to the most important weakness of all: **people make mistakes**. 
 
 Perhaps there is a better way to do this. I would argue that there is and it's called configuration management.
 
+<h2 id="enter-configuration-management">Enter Configuration Management</h2>
+
 Firstly, what does the term mean? It's quite a dry title and obviously refers to the management of configuration but what is important to grasp is the oft-cited idea of "infrastructure as code". Some people describe [Cucumber](http://cukes.info/) as "executable documentation" in that it is both human-readable and executable by machine to verify your business requirements; I would argue that "infrastructure as code" is a similar idea. Imagine if you could describe your infrastructure not in an ambiguous language like English but a formal grammar with something like Chef or Puppet: it would both describe the state of your servers in an unambiguous way but could also be executed to ensure consistency.
 
 How many times have you had to debug a problem with a system administrator by asking them to check the permissions or content of certain files? What if you could just state all these assumptions up front and in code?
@@ -423,6 +438,8 @@ service { 'sshd':
 The `service` resource describes long running processes like those you would manage with an `init.d` script; in this example, it just makes sure the process labelled `sshd` is running.
 
 I've shown examples using `puppet apply` but, in real life, you would probably use a different approach altogether: by having a separate Puppet Master server and having your nodes all run the Puppet Agent, you would actually store your configuration on the Master and watch it be applied every 30 minutes by default on all nodes. This is how you can be reasonably confident of your systems' consistency but to keep things simple, we're going to leave that out for now.
+
+<h2 id="the-better-way">The Better Way</h2>
 
 So let's go back to our Rails application and go through its set up again but this time using Puppet.
 
@@ -607,7 +624,7 @@ production:
 
 This means that I can be free to change the `adapter` in one place without worrying about the other versions of this file.
 
-There seems to be a lot of different recommendations for how to approach this management of sensitive configuration ([`extlookup`](http://www.devco.net/archives/2009/08/31/complex_data_and_puppet.php), [External Node Classifiers](http://docs.puppetlabs.com/guides/external_nodes.html), etc.) and Chef has a built-in concept called [Encrypted Data Bags](http://wiki.opscode.com/display/chef/Encrypted+Data+Bags) for this purpose but I would be keen to see how other people are doing this so please feel free to comment below.
+There seems to be a lot of different recommendations for how to approach this management of sensitive configuration ([`extlookup`](http://www.devco.net/archives/2009/08/31/complex_data_and_puppet.php), [External Node Classifiers](http://docs.puppetlabs.com/guides/external_nodes.html), etc.) and Chef has a built-in concept called [Encrypted Data Bags](http://wiki.opscode.com/display/chef/Encrypted+Data+Bags) for this purpose but I would be keen to see how other people are doing this so please feel free to comment below. *[NB: It seems the consensus is to use [Hiera](http://projects.puppetlabs.com/projects/hiera) along with an encrypted backend such as [hiera-gpg](https://github.com/crayfishx/hiera-gpg). Hiera is actually being made part of Puppet itself but for now you can use it by installing the [Hiera](http://rubygems.org/gems/hiera) and [Hiera-Puppet](http://rubygems.org/gems/hiera-puppet) gems.]*
 
 Let's install RVM and Ruby. First, we need all the dependencies and we can just use `package` to do so:
 
@@ -755,6 +772,8 @@ This is quite powerful as it describes the functionality of the service (whether
 
 Now that is complete, you might be thinking that it is a lot of work and maybe you only have one server, so what's the point? I would simply ask if there was no part of that you have ever done twice; have you never had to create users or use the same directory structure more than once? If you have any sort of "best practices" for your server setup, would they not benefit from being documented in some way? What if that documentation took the form of a Puppet manifest or a Chef cookbook? If you have that then you have your one canonical source of information about your infrastructure, you can correct any mistakes in one place and watch it roll out across all your nodes and you can subject your infrastructure to normal code workflows: versioning, code review, etc. *[NB: versioning is something I neglected to mention during my presentation but it is important to mention now.]*
 
+<h2 id="testing">Testing</h2>
+
 Puppet is obviously very powerful and, as with anything that runs as `root`, the possibility for damage is great. Therefore, it is important to be able to test your Puppet manifests before they are applied to live servers.
 
 Puppet ships with a `--noop` flag you can use with `puppet apply` that will effectively do a dry-run of your changes. If you are using the `file` resource, for example, it will show you a diff of the changes it would have made without actually modifying the original files. While this can be useful as a sanity check, it falls down when doing anything slightly more involved as it is not really possible for Puppet to predict what state your system will be in after installing new software or running an arbitrary `exec` resource.
@@ -822,6 +841,8 @@ Feature: General catalog policy
 {% endhighlight %}
 
 This is just a sample feature from their web site and I admit that I haven't used this yet but it is definitely something I want to look into more closely. There are some exciting tools emerging for Chef regarding testing with minitest and my hope is that Puppet will also benefit from the enthusiasm in this area. *[NB: shortly after my talk, there was [an extensive post on testing Puppet on the Puppet Labs blog](http://puppetlabs.com/blog/testing-modules-in-the-puppet-forge/).]*
+
+<h2 id="wrap-up">Wrap-Up</h2>
 
 You might be thinking that, as a developer, it is not really your job to worry about the maintenance of web servers but I would argue that being a developer doesn't stop once the specs pass on your machine: your job is to deliver your software all the way to the customer and therefore successfully onto live servers. There is this gathering movement of "devops" trying to bridge the gap between operations and development and I think it is an obvious idea to collaborate more: no one ever really benefited from operating entirely in a silo. It's a movement that has been picking up speed within our organisation and has definitely improved things from the dark days of throwing code and instructions over the wall and waiting for a ticket to come back with a minor misunderstanding or a simple missed step.
 
