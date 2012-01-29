@@ -30,7 +30,7 @@ The key thing I'm interested in here is the [`name` attribute][name]. Our partic
 If you have an `iframe` like the following in your web page:
 
 {% highlight html %}
-<iframe frameborder=0 name=bob src=/some-page></iframe>
+<iframe frameborder="0" name="bob" src="/some-page"></iframe>
 {% endhighlight %}
 
 And `/some-page` contains the following HTML:
