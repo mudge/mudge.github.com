@@ -1,1 +1,1 @@
-web: bundle exec jekyll --server
+web: bin/jekyll --server
