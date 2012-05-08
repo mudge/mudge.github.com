@@ -42,8 +42,7 @@ This was almost exactly what I was looking for except that I prefer to use
 cucumber-vimscript][cucumber-vimscript core] is very simple, so I decided to
 explore using only Vimrunner and RSpec to test-drive my plugin.
 
-To begin with, I had the following directory layout with the usual standard
-files:
+To begin with, I had the following directory layout with the standard files:
 
     .
     ├── plugin
@@ -58,7 +57,7 @@ In order to get up and running with these Ruby testing frameworks, I added a
 
 {% highlight ruby %}
 source 'https://rubygems.org'
-gem 'vimrunner', '0.0.4'
+gem 'vimrunner', '0.1.0'
 gem 'rspec',     '~> 2.9.0'
 {% endhighlight %}
 
@@ -78,7 +77,7 @@ and 4 are straightforward thanks to Vimrunner:
 {% highlight ruby %}
 require 'vimrunner'
 
-vim = Vimrunner.start_gui_vim
+vim = Vimrunner.start
 vim.add_plugin(File.expand_path('../..', __FILE__), 'plugin/runspec.vim')
 
 describe "runspec.vim" do
@@ -89,7 +88,7 @@ end
 {% endhighlight %}
 
 As you can see, we require the gem and then start a new Vim server with
-`start_gui_vim`. We add our plugin to the server using the `add_plugin` helper
+`start`. We add our plugin to the server using the `add_plugin` helper
 method and pass the directory (given relative to our current test file) and
 the relative path of the main plugin script. We also add an [RSpec `after`
 hook][after] to shut down the server once we are done.
@@ -113,7 +112,7 @@ Here's the first (admittedly simple) spec:
 {% highlight ruby %}
 require 'vimrunner'
 
-vim = Vimrunner.start_gui_vim
+vim = Vimrunner.start
 vim.add_plugin(File.expand_path('../..', __FILE__), 'plugin/runspec.vim')
 
 describe "runspec.vim" do
@@ -238,7 +237,7 @@ RSpec.configure do |config|
   end
 
   config.before(:suite) do
-    VIM = Vimrunner.start_gui_vim
+    VIM = Vimrunner.start
     VIM.add_plugin(File.expand_path('../..', __FILE__), 'plugin/runspec.vim')
   end
 
