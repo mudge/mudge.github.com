@@ -1,4 +1,6 @@
 markdown: rdiscount
 pygments: true
 lsi: true
-exclude: vendor
+rdiscount:
+  extensions: [smart]
+
