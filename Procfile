@@ -1,1 +1,1 @@
-web: bin/jekyll --server
+web: bin/jekyll --server --auto
