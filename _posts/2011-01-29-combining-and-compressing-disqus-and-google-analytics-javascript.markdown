@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Combining and Compressing Disqus' and Google Analytics' JavaScript
-summary: A step-by-step refactoring of Disqus' and Google Analytics' JavaScript.
+title: Combining and Compressing Disqus&rsquo; and Google Analytics&rsquo; JavaScript
+summary: A step-by-step refactoring of Disqus&rsquo; and Google Analytics&rsquo; JavaScript.
 ---
 In setting up this [Jekyll][]-powered blog, I had cause to dust off my [Google
 Analytics][] account and finally take [Disqus][] for a spin. Both services
 provide small snippets of JavaScript for inclusion in your web pages; Google
-Analytics' looks much like this (with line breaks added for readability):
+Analytics&rsquo; looks much like this (with line breaks added for readability):
 
 {% highlight html %}
 <script type="text/javascript">
@@ -26,7 +26,7 @@ Analytics' looks much like this (with line breaks added for readability):
 </script>
 {% endhighlight %}
 
-Disqus' is as follows (with line breaks added and extraneous comments
+Disqus&rsquo; is as follows (with line breaks added and extraneous comments
 removed):
 
 {% highlight html %}
@@ -49,12 +49,12 @@ removed):
 Both seem terse enough <del>and are meant for inclusion at the bottom
 of your web page</del> (*Update:* [enomar on Hacker News pointed out that
 Google's asynchronous tracking code is ideally meant to be included at the end
-of the `head` element][enomar] while Disqus' JavaScript is meant for inclusion
+of the `head` element][enomar] while Disqus&rsquo; JavaScript is meant for inclusion
 wherever you want your comments to appear but both can be placed at the bottom
 of your page, see "[Getting Started with the Asynchronous Snippet][]" and the end
 of this post for more information).
 
-A quick check with [Amy Hoy and Thomas Fuchs' "DOM Monster"][DOM Monster] shows that
+A quick check with [Amy Hoy and Thomas Fuchs&rsquo; "DOM Monster"][DOM Monster] shows that
 the number of `script` tags should ideally be kept to a minimum so let's combine
 the two into one (and let's specify those recommended Disqus variables while we're
 at it):
@@ -323,7 +323,7 @@ e.src="//example.disqus.com/embed.js";d.appendChild(c);d.appendChild(e);
 {% endhighlight %}
 
 If you want to follow [Google's recommendation of inserting their
-snippet at the bottom of the `head` element][Getting Started with the Asynchronous Snippet] (and continue inserting Disqus' snippet at the bottom of
+snippet at the bottom of the `head` element][Getting Started with the Asynchronous Snippet] (and continue inserting Disqus&rsquo; snippet at the bottom of
 the `body`) then you will have to sacrifice the single, unified `script` for two
 separate ones:
 

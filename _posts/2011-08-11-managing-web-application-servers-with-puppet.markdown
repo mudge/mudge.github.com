@@ -345,7 +345,7 @@ Firstly, what does the term mean? It's quite a dry title and obviously refers to
 
 How many times have you had to debug a problem with a system administrator by asking them to check the permissions or content of certain files? What if you could just state all these assumptions up front and in code?
 
-There are two main solutions for configuration management in the Ruby community (obviously there are more but these are the two most popular at the moment): Opcode's Chef and Puppet Labs' Puppet.
+There are two main solutions for configuration management in the Ruby community (obviously there are more but these are the two most popular at the moment): Opcode's Chef and Puppet Labs&rsquo; Puppet.
 
 I'm going to be talking about and sharing examples written with Puppet because that's what I use in my day job. When I joined the company, there was already some existing Puppet infrastructure so it made sense to leverage that but I did actually start learning Chef before I found that out. I want to make it clear that it doesn't matter which tool you use; give both a go and see which you prefer but the key thing is to embrace configuration management in some form. Don't let the nuances of one put you off the concept as a whole. You will see Puppet examples from me but [Gareth Rushgrove will be showing examples with Chef][chef-vagrant].
 
@@ -437,7 +437,7 @@ service { 'sshd':
 
 The `service` resource describes long running processes like those you would manage with an `init.d` script; in this example, it just makes sure the process labelled `sshd` is running.
 
-I've shown examples using `puppet apply` but, in real life, you would probably use a different approach altogether: by having a separate Puppet Master server and having your nodes all run the Puppet Agent, you would actually store your configuration on the Master and watch it be applied every 30 minutes by default on all nodes. This is how you can be reasonably confident of your systems' consistency but to keep things simple, we're going to leave that out for now.
+I've shown examples using `puppet apply` but, in real life, you would probably use a different approach altogether: by having a separate Puppet Master server and having your nodes all run the Puppet Agent, you would actually store your configuration on the Master and watch it be applied every 30 minutes by default on all nodes. This is how you can be reasonably confident of your systems&rsquo; consistency but to keep things simple, we're going to leave that out for now.
 
 <h2 id="the-better-way">The Better Way</h2>
 
