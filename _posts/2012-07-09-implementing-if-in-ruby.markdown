@@ -52,9 +52,9 @@ The aforementioned [Tom Stuart recently stated](https://twitter.com/mortice/stat
 
 > Applying my new rule: "conditional logic only allowed to determine class of object created". Hoping to infuriate some people with it.
 
-While Tom admitted this was a rather provocative statement, it is not an approach without merit. [Robert "Uncle Bob" Martin recently did a presentation at Skills Matter](http://skillsmatter.com/podcast/agile-scrum/uncle-bob-expert-insights) which discussed the fragility of code that relies heavily on conditions in place of polymorphism. What this really boiled down to was the difference between the following two bits of example code:
+While Tom admitted this was a rather provocative statement, it is not an approach without merit. [Robert "Uncle Bob" Martin recently did a presentation at Skills Matter](http://skillsmatter.com/podcast/agile-scrum/uncle-bob-expert-insights) which discussed the fragility of code that relies heavily on conditions in place of polymorphism. What this really boiled down to was the difference between the following the first version of some code to input and output some data:
 
-{% highlight c %}
+{% highlight csharp %}
 bool GtapeReader = false;
 bool GtapePunch = false;
 
@@ -70,7 +70,9 @@ void copy(void)
 }
 {% endhighlight %}
 
-{% highlight c %}
+And a second version of the same code:
+
+{% highlight csharp %}
 void Copy()
 {
   int c;
