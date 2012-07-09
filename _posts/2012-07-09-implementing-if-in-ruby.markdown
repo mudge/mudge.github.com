@@ -3,7 +3,7 @@ layout: post
 title: Implementing if in Ruby
 summary: Implementing Smalltalk conditionals in Ruby.
 ---
-It was with some interest that I watched [J. Pablo Fern&aacute;dez](http://pupeno.com/)'s presentation at the [London Ruby User Group](http://lrug.org/meetings/2012/06/18/july-2012-meeting/) tonight entitled "What Ruby Can't Do". Ever concerned of being too myopic about the language that happens to provide my income, I am keen to see what features other languages offer we can unabashedly steal. Pablo did this by implementing the "if" conditional first in Smalltalk, then Lisp.
+It was with some interest that I watched [J. Pablo Fern&aacute;ndez](http://pupeno.com/)'s presentation at the [London Ruby User Group](http://lrug.org/meetings/2012/06/18/july-2012-meeting/) tonight entitled "What Ruby Can't Do". Ever concerned of being too myopic about the language that happens to provide my income, I am keen to see what features other languages offer we can unabashedly steal. Pablo did this by implementing the "if" conditional first in Smalltalk, then Lisp.
 
 As [Tom Stuart succinctly put it on Twitter](https://twitter.com/mortice/status/222393465663787008), "Spoiler alert: Smalltalk lets you pass multiple blocks to a method naturally, Ruby doesn't." However, [I tweeted](https://twitter.com/mudge/status/222398046825234432) that this might not be true.
 
