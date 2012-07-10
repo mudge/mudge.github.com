@@ -10,8 +10,8 @@ While the Lisp example demonstrated homoiconicity and the power of macros, the S
 To summarise: Smalltalk eschews keywords for control structures such as `if` in favour of message sends (to use the Smalltalk parlance for method calls). This means that conditional logic is just another method on an object (not entirely dissimilar to Ruby's infamous `5.times { ... }` example):
 
 {% highlight smalltalk %}
-somePredicate ifTrue:  [ Transcript show: 'I am true'  ]
-              ifFalse: [ Transcript show: 'I am false' ]
+somePredicate ifTrue:  [ Transcript show: 'I am true'.  ]
+              ifFalse: [ Transcript show: 'I am false'. ]
 {% endhighlight %}
 
 The implementation of these messages is simple: define a method that takes two arguments, one block to call when true (e.g. `trueBlock`) and one block to call when false (e.g. `falseBlock`). Objects that can be considered "truthy" evaluate the first block and those that are "falsey" evaluate the second:
