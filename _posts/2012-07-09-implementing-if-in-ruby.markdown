@@ -20,7 +20,9 @@ The implementation of these messages is simple: define a method that takes two a
 ifTrue: trueBlock ifFalse: falseBlock
   "Implementation for truthy objects."
   ^ trueBlock value
+{% endhighlight %}
 
+{% highlight smalltalk %}
 ifTrue: trueBlock ifFalse: falseBlock
   "Implementation for falsey objects."
   ^ falseBlock value
