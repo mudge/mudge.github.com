@@ -19,13 +19,13 @@ The implementation of these messages is simple: define a method that takes two a
 {% highlight smalltalk %}
 ifTrue: trueBlock ifFalse: falseBlock
   "Implementation for truthy objects."
-  ^ trueBlock value.
+  ^ trueBlock value
 {% endhighlight %}
 
 {% highlight smalltalk %}
 ifTrue: trueBlock ifFalse: falseBlock
   "Implementation for falsey objects."
-  ^ falseBlock value.
+  ^ falseBlock value
 {% endhighlight %}
 
 Pablo bemoaned that such a construction cannot be done in Ruby easily without chaining `Proc` objects and [Tom Stuart summarised the problem on Twitter](https://twitter.com/mortice/status/222393465663787008): "Spoiler alert: Smalltalk lets you pass multiple blocks to a method naturally, Ruby doesn't." However, [I tweeted](https://twitter.com/mudge/status/222398046825234432) that this might not be true from Ruby 1.9 onwards.
