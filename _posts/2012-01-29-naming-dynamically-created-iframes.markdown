@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Naming Dynamically Created iframes
-summary: Working around issues with setting iframe names in Internet Explorer.
+excerpt: Working around issues with setting iframe names in Internet Explorer.
 ---
 For the past year, I have been working on a web application that relies heavily on [inline frames (aka `iframe`s)](https://developer.mozilla.org/en/HTML/Element/iframe). During the course of development, we have run into some interesting issues and I thought I would record some of these for posterity.
 

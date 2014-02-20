@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Implementing if in Ruby
-summary: Using multiple blocks in Ruby to implement Smalltalk-style control flow.
+excerpt: Using multiple blocks in Ruby to implement Smalltalk-style control flow.
 ---
 It was with great interest that I watched [J. Pablo Fern&aacute;ndez](http://pupeno.com/)'s presentation at the [London Ruby User Group](http://lrug.org/meetings/2012/06/18/july-2012-meeting/) tonight entitled "[What Ruby Can't Do](http://skillsmatter.com/podcast/ajax-ria/what-ruby-cant-do)". Concerned of being myopic about the language that happens to provide my income, I am keen to see what we can unabashedly steal from other languages (see [Joseph Wilk's excellent "Testing Outside of the Ruby World" for a similar sentiment](http://www.confreaks.com/videos/551-scotlandruby2011-testing-outside-of-the-ruby-world)). Pablo offered two alternatives to Ruby -- Smalltalk and Lisp -- and then demonstrated their relative power by implementing his own `if` condition in both.
 

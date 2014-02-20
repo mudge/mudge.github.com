@@ -1,1 +1,1 @@
-web: bin/jekyll --server --auto
+web: jekyll serve --watch

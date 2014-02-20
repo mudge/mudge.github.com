@@ -1,6 +1,6 @@
-markdown: rdiscount
+markdown: redcarpet
 pygments: true
 lsi: true
-rdiscount:
+redcarpet:
   extensions: [smart]
 

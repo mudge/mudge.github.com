@@ -1,4 +1,80 @@
 ---
 layout: nil
 ---
-<!DOCTYPE html><html lang=en><head><meta charset=utf-8><title>Paul Mucur</title><meta name=description content="The personal web site of web application developer Paul Mucur."><!--[if lt IE 9]><script src=http://html5shiv.googlecode.com/svn/trunk/html5.js></script><![endif]--><style>footer,header,hgroup,section{display:block}html,body,h1,h2{border:0;font-size:100%;margin:0;padding:0}html{background:#fff;color:#333;font:1em/1.4 'Merriweather',Georgia,serif}footer{color:#666}footer a{color:#669}dd{margin-bottom:1em}header,dl{text-align:center}h1{font-size:200%}h2{font-weight:normal}dt{font-size:140%}footer img{border:1px solid #999;margin-right:1em;float:left}section,header,footer{margin:3em auto;width:70%}code{font-family:Consolas,Inconsolata,monospace}</style><link rel=alternate type=application/atom+xml href=//feeds.feedburner.com/paul-mucur><script>var _gaq=[["_setAccount","UA-1804081-1"],["_trackPageview"]],WebFontConfig={google:{families:['Merriweather','Inconsolata']}},s=function(d,u,g){g=d.createElement("script");g.async=true;g.src=u;d.documentElement.firstChild.appendChild(g);};s(document,"//www.google-analytics.com/ga.js");s(document,"//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js");</script></head><body><header><hgroup><h1 class=author>Paul Mucur</h1><h2>Tales from a web application developer</h2></hgroup></header><section><dl>{% for post in site.posts %}<dt><a href={{ post.url }} rel=bookmark>{{ post.title }}</a></dt><dd>{{ post.summary }}</dd>{% endfor %}</dl></section>{% include footer.html %}</body></html>
+<!DOCTYPE html>
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <title>Paul Mucur</title>
+    <meta name=description content="The personal web site of web application developer Paul Mucur.">
+    <!--[if lt IE 9]><script src=http://html5shiv.googlecode.com/svn/trunk/html5.js></script><![endif]-->
+    <style>
+      footer, header, hgroup, section { display:block }
+      html, body, h1, h2 {
+        border:0;
+        font-size:100%;
+        margin:0;
+        padding:0;
+      }
+      html {
+        background:#fff;
+        color:#333;
+        font:1em/1.4 Merriweather,Georgia,serif;
+      }
+      footer { color:#666 }
+      footer a { color:#669 }
+      dd { margin-bottom:1em }
+      header, dl { text-align:center }
+      h1 { font-size:200% }
+      h2 { font-weight:normal }
+      dt { font-size:140% }
+      footer img {
+        border:1px solid #999;
+        margin-right:1em;
+        float:left;
+      }
+      section,header,footer {
+        margin:3em auto;
+        width:70%;
+      }
+      code { font-family:Consolas,Inconsolata,monospace }
+
+      @media only screen and (max-width: 35em) {
+        section,header,footer {
+          margin: 0 auto;
+          width: 90%;
+        }
+      }
+    </style>
+    <link rel=alternate type=application/atom+xml href=//feeds.feedburner.com/paul-mucur>
+    <script>
+      var _gaq = [['_setAccount','UA-1804081-1'],['_trackPageview']],
+          WebFontConfig = {google:{families:['Merriweather','Inconsolata']}},
+          s = function (d,u,g) {
+            g = d.createElement('script');
+            g.async = true;
+            g.src = u;
+            d.documentElement.firstChild.appendChild(g);
+          };
+      s(document,'//www.google-analytics.com/ga.js');
+      s(document,'//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+    </script>
+  </head>
+  <body>
+    <header>
+      <hgroup>
+        <h1 class=author>Paul Mucur</h1>
+        <h2>Tales from a web application developer</h2>
+      </hgroup>
+    </header>
+    <section>
+    <dl>
+      {% for post in site.posts %}
+      <dt><a href={{ post.url }} rel=bookmark>{{ post.title }}</a></dt>
+      <dd>{{ post.excerpt }}</dd>
+      {% endfor %}
+    </dl>
+    </section>
+    {% include footer.html %}
+  </body>
+</html>

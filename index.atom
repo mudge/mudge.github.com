@@ -4,10 +4,10 @@ layout: nil
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>Paul Mucur</title>
-<link href="http://mudge.github.com/"/>
-<link href="http://mudge.github.com/index.atom" rel="self"/>
+<link href="http://mudge.name/"/>
+<link href="http://mudge.name/index.atom" rel="self"/>
 <updated>{{ site.time | date_to_xmlschema }}</updated>
-<id>http://mudge.github.com/</id>
+<id>http://mudge.name/</id>
 <author>
   <name>Paul Mucur</name>
 </author>
@@ -15,9 +15,9 @@ layout: nil
 <entry>
   <title>{{ post.title | strip_html | escape_once }}</title>
   <link href="{{ post.url }}"/>
-  <id>http://mudge.github.com{{ post.url }}</id>
+  <id>http://mudge.name{{ post.url }}</id>
   <updated>{{ post.date | date_to_xmlschema }}</updated>
-  <summary type="html">{{ post.summary | xml_escape }}</summary>
+  <summary type="html">{{ post.excerpt | xml_escape }}</summary>
   <content type="html">{{ post.content | xml_escape }}</content>
 </entry>
 {% endfor %}

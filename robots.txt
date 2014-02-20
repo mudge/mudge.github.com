@@ -1,1 +1,1 @@
-Sitemap: http://mudge.github.com/sitemap.xml
+Sitemap: http://mudge.name/sitemap.xml

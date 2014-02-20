@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Managing Web Application Servers with Puppet
-summary: A transcript of my August 2011 LRUG presentation regarding configuration management and Puppet.
+excerpt: A transcript of my August 2011 LRUG presentation regarding configuration management and Puppet.
 ---
 *At the [August 2011 meeting of the London Ruby User Group][LRUG August], I delivered a presentation titled "Managing Web Application Servers with Puppet". You can watch a video of [the whole presentation and the Q & A session on the Skills Matter web site][Video] but for those of you who prefer to read, here is an edited transcript:*
 

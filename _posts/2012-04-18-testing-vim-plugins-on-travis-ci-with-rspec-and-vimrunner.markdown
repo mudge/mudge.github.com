@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Testing Vim Plugins on Travis CI with RSpec and Vimrunner
-summary: >
+excerpt: >
   How to continuously integrate and test-drive Vim plugin development
   with the Vimrunner gem.
 ---
