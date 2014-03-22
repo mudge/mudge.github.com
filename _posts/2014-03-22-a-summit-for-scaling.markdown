@@ -2,7 +2,7 @@
 layout: post
 title: A Summit for Scaling
 excerpt: >
-  A summary of my time at 2014's Scale Summit: a performance and
+  A summary of my time at 2014&rsquo;s Scale Summit: a performance and
   scalability unconference.
 ---
 Yesterday, I attended [Scale Summit][]: "a performance and scalability
