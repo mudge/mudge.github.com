@@ -7,10 +7,11 @@ excerpt: >
 ---
 Yesterday, I attended [Scale Summit][]: "a performance and scalability
 unconference" using the [Open Space Technology][] format. Scale Summit is the
-successor to [Scale Camp][], an event organised by [Michael Brunton-Spall][] and
-previously held at [The Guardian][] offices. Having attended Scale Camp in late
-2012 and considering it to be one of the most rewarding experiences of my
-career, it was without hesitation that I signed up for its follow-up.
+successor to [Scale Camp][], an event organised by [Mich&aelig;l
+Brunton-Spall][Michael Brunton-Spall] and previously held at [The Guardian][]
+offices. Having attended Scale Camp in late 2012 and considering it to be one
+of the most rewarding experiences of my career, it was without hesitation that
+I signed up for its follow-up.
 
 The quality of Scale Camp and Scale Summit is almost entirely dependent on
 the attendees: the unconference format and [Chatham House Rule][] mean that
