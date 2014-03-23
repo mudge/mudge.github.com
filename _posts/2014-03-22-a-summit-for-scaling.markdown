@@ -21,8 +21,8 @@ little more freely than they might elsewhere. For example, my highlight of
 consider experts and even *pioneers* of that practice.
 
 As Scale Summit is multi-track, I could not participate in all sessions but
-thankfully other attendees such as [Philip Potter][] and [Matthew
-Cottingham][] have also written up their notes.
+thankfully other attendees such as [Philip Potter][], [Matthew
+Cottingham][] and [Zac Stevens][] have also written up their notes.
 
 ## Real-Time Monitoring
 
@@ -93,8 +93,8 @@ siloes: where team members become segregated and shared knowledge of systems
 is largely absent. I fear this model of many small services would encourage
 siloes but the difficult question is whether this is a bad thing: perhaps it
 is better for small teams to move fast at the cost of shared understanding? If
-the benefits are to believed then if services are small and simple enough then
-the dread [Bus factor][] might be less of a problem.
+the benefits are to believed then services might be small and simple enough to
+alleviate the dreaded [Bus factor][].
 
 As an extreme example of this culture, the practice of allowing *competing*
 services was touched upon: where teams can freely develop another version of a
@@ -263,3 +263,4 @@ Summit.
   [HAProxy]: http://haproxy.1wt.eu
   [Python]: https://www.python.org
   [Snort]: http://www.snort.org
+  [Zac Stevens]: http://www.cryptocracy.com/blog/2014/03/23/scale-summit-2014/
