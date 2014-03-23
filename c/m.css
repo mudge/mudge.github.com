@@ -2,10 +2,24 @@ html {
     font: medium/1.4 'Helvetica Neue', Helvetica, sans-serif;
     color: #333;
     margin: 0;
+    background: #fff;
+    border-top: 5px solid #C5252B;
 }
 
 body {
     padding: 1em;
+}
+
+a {
+  color: #4A8B87;
+}
+
+a:active {
+  color: #7CBCAE;
+}
+
+a:visited {
+  color: #244358;
 }
 
 @media all and (min-width: 520px) {
@@ -75,7 +89,7 @@ address {
 }
 
 img, iframe {
-    border: 1px solid #999;
+    border: 1px solid #244358;
 }
 
 dd {
