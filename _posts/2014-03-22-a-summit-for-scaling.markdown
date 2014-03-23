@@ -5,7 +5,7 @@ excerpt: >
   A summary of my time at 2014&rsquo;s Scale Summit: a performance and
   scalability unconference.
 ---
-Yesterday, I attended [Scale Summit][]: "a performance and scalability
+<img src=/i/scalesummit.jpg width=200 height=200 alt class=pull-left>Yesterday, I attended [Scale Summit][]: "a performance and scalability
 unconference" using the [Open Space Technology][] format. Scale Summit is the
 successor to [Scale Camp][], an event organised by [Mich&aelig;l
 Brunton-Spall][Michael Brunton-Spall] and previously held at [The Guardian][]
@@ -136,7 +136,7 @@ this pattern (and some cited [Airbnb's Synapse][Synapse]) though the
 difficulty of debugging network traffic and managing health checks coming from
 every server were mentioned as downsides.
 
-## Surviving a DDoS Attack
+## Surviving a <abbr title="Distributed Denial of Service">DDoS</abbr> Attack
 
 The discussion of this topic was obviously a little more sensitive than most
 but the general recommendations were to use a content delivery network such as
