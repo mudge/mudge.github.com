@@ -32,7 +32,7 @@
         <h1 class=entry-title><a href={{ page.url }} rel=bookmark>{{ page.title }}</a></h1>
         <div class="byline vcard">
           <address class=author>By <a href=/ class=fn rel=author>Paul Mucur</a></address> on
-          <time class=updated datetime={{ page.date | date_to_xmlschema }} pubdate>{{ page.date | date: "%A, %d %B %Y" }}</time>
+          <time class=updated datetime={{ page.date | date_to_xmlschema }}>{{ page.date | date: "%A, %d %B %Y" }}</time>
         </div>
       </header>
       <div class=entry-content>{{ content }}</div>
