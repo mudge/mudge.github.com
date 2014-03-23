@@ -47,7 +47,7 @@ anomalies.
 While discussing the resolution of metrics (e.g. every second, every 5
 seconds, etc.), an interesting question was asked:
 
-> When investigating an outage, has anyone ever had *enough* data?
+> When investigating an outage, has anyone ever had *too much* data?
 
 It seems that collecting the right data is still difficult to predict so the
 sensible approach seems to be [measuring everything][Measure Anything]. The
@@ -66,7 +66,7 @@ which I had heard little about so I decided to take part in an extremely
 fast-paced Fishbowl discussion on the topic.
 
 There was some disagreement on the exact definition of a microservice and some
-took issue with Martin Fowler's insistence on the reliance of HTTP or purely
+took issue with Martin Fowler's insistence on HTTP as a transport or purely
 using lines of code as a defining factor. The loose definition seemed to be
 modelling applications as a collection of simple services responsible
 for a single piece of functionality (e.g. translating place names). In this
@@ -95,6 +95,13 @@ siloes but the difficult question is whether this is a bad thing: perhaps it
 is better for small teams to move fast at the cost of shared understanding? If
 the benefits are to believed then if services are small and simple enough then
 the dread [Bus factor][] might be less of a problem.
+
+As an extreme example of this culture, the practice of allowing *competing*
+services was touched upon: where teams can freely develop another version of a
+service without collaboration and let client applications decide which they
+prefer. The implications this environment would have on teams (where people
+could simply supplant your work and openly duplicate effort)
+makes me more than a little apprehensive.
 
 I remain sceptical but it has encouraged me to consider pursuing SOA more
 aggressively particularly considering success stories such as
