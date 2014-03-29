@@ -8,24 +8,20 @@ html {
 
 body {
     padding: 1em;
+    margin: 0 auto;
+    max-width: 1020px;
 }
 
 a {
-  color: #4A8B87;
+    color: #4A8B87;
 }
 
 a:active {
-  color: #7CBCAE;
+    color: #7CBCAE;
 }
 
 a:visited {
-  color: #244358;
-}
-
-@media all and (min-width: 520px) {
-    body {
-        padding: 1em 2em;
-    }
+    color: #244358;
 }
 
 h1 {
