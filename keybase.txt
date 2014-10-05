@@ -1,0 +1,71 @@
+==================================================================
+https://keybase.io/mudge
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://mudge.name
+  * I am mudge (https://keybase.io/mudge) on keybase.
+  * I have a public key with fingerprint 0EF4 F150 2E1F C40F DDEE  26FA 79CB 1D9B 9AF9 7329
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "client": {
+            "name": "keybase.io node.js client",
+            "version": "0.6.0"
+        },
+        "key": {
+            "fingerprint": "0ef4f1502e1fc40fddee26fa79cb1d9b9af97329",
+            "host": "keybase.io",
+            "key_id": "79CB1D9B9AF97329",
+            "uid": "4bcc073d2f7677b0a43b54933250d200",
+            "username": "mudge"
+        },
+        "merkle_root": {
+            "ctime": 1411030585,
+            "hash": "9f5eb8159ddfe8277374388f697cb0527062e48625a15b9a811840c9557809477be758c48bc7dc196c6dbcdabf1cf79de1fcdfb75ff787ba83b7c930d6478ae8",
+            "seqno": 51134
+        },
+        "service": {
+            "hostname": "mudge.name",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1411030617,
+    "expire_in": 157680000,
+    "prev": "8517268e34ae252b8bd102012bdd73c62c232f4a564dd2b7640422dc40e9c127",
+    "seqno": 3,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+owFVUj1rVEEUXeMXCoJpLEQhvEIQlmW+78x2JpJfIIIWrm9m7myeyb63vvd2dQlJ
+LRairYIp/QHa2FnZ5A9YKQgRFCwEG0HBmTXBZKq5M+eee8699+m5452Fxdnu5RfP
+fzVXj+1+tZ0bF1/e2sxs5WdZfzNzGwWWbbqV+QizfraOM5s32CuqpbLy2LvXLO1j
+utkU66aoyogiPdUj2VY3wVNyKMoh1uO6SFwZwSAClYQhDU6Q4D0iUyEH4yz1xpo8
+GODMRMq1qmmPVM3mnIPCx1cwK8v0ulk211YP8JP5h7DOEeCeBVAAluSCWykM50wS
+zwhJwAbrfUujiR9iEjvCen0DB3VVzR27tkj/VFBKOJFaRjl5sxYzTJBoNZXG+4Ca
+AXAQXOugDDhLJAOiGAqtmMypjHY0pVoQZ6QETYyIkhCkdkJbB95Ro5zy1vncBuoC
+GJ/64oMFGQJosLnmFpzhxCsBOkcd9Td4v6yyvqSUi60U1tPCYZKdWnbYWW8edLNx
+XbWVqzbi+1rbjvvJcTsbJ9wDtIN/DK9wYIvSx3EdnieN0KPdUBS6GT4cFzUOioSQ
+oDSJJ9XBaeTUkgJTGrnIkUlmtfWUMEKZ9R64U8wxzoLIpRLeMwtKEMGYj/uAxlEG
+/z3yqDMfRsqmGJZ5O6njsB6tnugsLnROnVxI+9o5e+b8wRLf/tnZubny7c/d75++
+vB39mMD2h8fFlcW9zs708/br99OPl56M9t79fnPhWU+cvvMX
+=8q4f
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/mudge
+
+==================================================================
+
