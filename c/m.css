@@ -7,7 +7,7 @@ html {
 }
 
 body {
-    padding: 1em;
+    padding: 2em;
     margin: 0 auto;
     max-width: 1020px;
 }
@@ -22,6 +22,19 @@ a:active {
 
 a:visited {
     color: #244358;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0 0 1em;
+  padding: 0;
+  width: 100%;
+}
+
+nav li {
+  border: solid rgba(0,39,59,.08);
+  border-width: 0 0 2px;
+  padding: 0.5em;
 }
 
 h1 {
@@ -78,6 +91,7 @@ header p, footer, .byline {
 .byline {
     font-style: italic;
     font-size: smaller;
+    line-height: 2;
 }
 
 address {

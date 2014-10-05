@@ -27,9 +27,16 @@
     </script>
   </head>
   <body>
+    <nav>
+      <ul>
+        <li><a href=/ rel=home>&larr; Back to the homepage</a></li>
+      </ul>
+    </nav>
     <article class=hentry>
       <header>
-        <h1 class=entry-title><a href={{ page.url }} rel=bookmark>{{ page.title }}</a></h1>
+        <h1 class=entry-title>
+          <a href={{ page.url }} rel=bookmark>{{ page.title }}</a>
+        </h1>
         <div class="byline vcard">
           <address class=author>By <a href=/ class=fn rel=author>Paul Mucur</a></address> on
           <time class=updated datetime={{ page.date | date_to_xmlschema }}>{{ page.date | date: "%A, %d %B %Y" }}</time>
