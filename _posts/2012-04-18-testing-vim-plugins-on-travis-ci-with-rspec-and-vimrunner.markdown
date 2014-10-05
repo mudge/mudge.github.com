@@ -57,8 +57,8 @@ In order to get up and running with these Ruby testing frameworks, I added a
 
 {% highlight ruby %}
 source 'https://rubygems.org'
-gem 'vimrunner', '0.1.0'
-gem 'rspec',     '~> 2.9.0'
+gem 'vimrunner', '~> 0.3.1'
+gem 'rspec',     '~> 3.1.0'
 {% endhighlight %}
 
 The actual process of testing the plugin is as follows:
@@ -80,7 +80,7 @@ require 'vimrunner'
 vim = Vimrunner.start
 vim.add_plugin(File.expand_path('../..', __FILE__), 'plugin/runspec.vim')
 
-describe "runspec.vim" do
+RSpec.describe "runspec.vim" do
   after(:all) do
     vim.kill
   end
@@ -115,15 +115,15 @@ require 'vimrunner'
 vim = Vimrunner.start
 vim.add_plugin(File.expand_path('../..', __FILE__), 'plugin/runspec.vim')
 
-describe "runspec.vim" do
+RSpec.describe "runspec.vim" do
   after(:all) do
     vim.kill
   end
 
   describe "#SpecPath" do
     it "returns the current file if it ends in _spec.rb" do
-      vim.command('echo runspec#SpecPath("bar/foo_spec.rb")').should ==
-          "bar/foo_spec.rb"
+      expect(vim.command('echo runspec#SpecPath("bar/foo_spec.rb")')).to
+          eq("bar/foo_spec.rb")
     end
   end
 end
@@ -132,7 +132,7 @@ end
 Running the spec produced the following, rather thrilling output:
 
 {% highlight console %}
-$ bundle exec rspec spec/runspec.vim_spec.rb 
+$ rspec spec/runspec.vim_spec.rb
 .
 
 Finished in 0.49066 seconds
@@ -213,8 +213,8 @@ it "finds a test with the most similar name" do
   FileUtils.mkdir_p("test/unit")
   FileUtils.touch("test/unit/user_test.rb")
 
-  vim.command('echo runspec#SpecPath("app/models/user.rb")').should ==
-      "test/unit/user_test.rb"
+  expect(vim.command('echo runspec#SpecPath("app/models/user.rb")')).to
+      eq("test/unit/user_test.rb")
 end
 {% endhighlight %}
 
@@ -267,7 +267,7 @@ In order to do that, we need a default [Rake][] task that will run the tests.
 Firstly, we need to add Rake as a dependency to our existing `Gemfile`:
 
 {% highlight ruby %}
-gem 'rake', '~> 0.9.2.2'
+gem 'rake', '~> 10.3.2'
 {% endhighlight %}
 
 Then we need to create a `Rakefile` and a task to run the tests. Luckily,
@@ -288,8 +288,7 @@ but I'm being explicit here for clarity.)
 You should now be able to run your suite like so:
 
 {% highlight console %}
-$ bundle exec rake
-/Users/mudge/.rbenv/versions/1.9.3-p125/bin/ruby -S rspec ./spec/runspec.vim_spec.rb
+$ rake
 ..............
 
 Finished in 4.85 seconds
@@ -302,7 +301,7 @@ named `.travis.yml` with the following contents:
 {% highlight yaml %}
 language: ruby
 rvm:
-  - 1.9.3
+  - 2.1.3
 before_install: sudo apt-get install vim-gtk
 before_script:
   - "export DISPLAY=:99.0"
@@ -322,6 +321,8 @@ build on Travis: see [Build #8 of runspec.vim](http://travis-ci.org/#!/mudge/run
 To see a fully worked example (and my finished plugin), feel free to browse
 the [source code of runspec.vim][runspec.vim] and look at the [build history
 on Travis CI][].
+
+*Update:* Updated for [RSpec 3][].
 
   [Vim]: http://www.vim.org/
   [runspec.vim]: https://github.com/mudge/runspec.vim
@@ -359,3 +360,4 @@ on Travis CI][].
   [after]: https://www.relishapp.com/rspec/rspec-core/v/2-9/docs/hooks/before-and-after-hooks
   [:!]: http://vimdoc.sourceforge.net/htmldoc/various.html#:!
   [RSpec Rake Task]: https://www.relishapp.com/rspec/rspec-core/v/2-9/docs/command-line/rake-task
+  [RSpec 3]: http://myronmars.to/n/dev-blog/2014/05/notable-changes-in-rspec-3
