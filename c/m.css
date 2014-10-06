@@ -4,6 +4,7 @@ html {
     margin: 0;
     background: #fff;
     border-top: 5px solid #C5252B;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
