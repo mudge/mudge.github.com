@@ -46,7 +46,7 @@ h1 {
   font-size: 2em;
 }
 
-header h1, header p {
+header h1, header p, h2 {
   margin: 0;
 }
 
