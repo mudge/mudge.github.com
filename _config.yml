@@ -1,6 +1,8 @@
+# GitHub Pages settings for local development
+safe: true
+lsi: false
+timezone: Europe/London
 markdown: redcarpet
-pygments: true
-lsi: true
 redcarpet:
   extensions: [smart]
 
