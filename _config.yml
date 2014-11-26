@@ -4,5 +4,5 @@ lsi: false
 timezone: Europe/London
 markdown: redcarpet
 redcarpet:
-  extensions: [smart]
+  extensions: [smart, with_toc_data]
 
