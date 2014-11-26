@@ -156,7 +156,7 @@ intermediate steps are not valid Ruby):
 ```ruby
 (1..30).map(&:to_s)
 (1..30).map(:to_s.to_proc)
-(1..30).map(->(x) { x.send(self) })
+(1..30).map(->(x) { x.send(:to_s) })
 (1..30).map { |x| x.send(:to_s) }
 (1..30).map { |x| x.to_s }
 ```
