@@ -1,28 +1,32 @@
 html {
-    font: medium/1.4 'Helvetica Neue', Helvetica, sans-serif;
-    color: #333;
-    margin: 0;
-    background: #fff;
-    border-top: 5px solid #C5252B;
-    -webkit-font-smoothing: antialiased;
+  font: medium/1.4 'Helvetica Neue', Helvetica, sans-serif;
+  color: #333;
+  margin: 0;
+  background: #fff;
+  border-top: 5px solid #C5252B;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-    padding: 2em;
-    margin: 0 auto;
-    max-width: 1020px;
+  padding: 2em;
+  margin: 0 auto;
+  max-width: 1020px;
 }
 
 a {
-    color: #4A8B87;
+  color: #4A8B87;
+  text-decoration: none;
+  border-bottom: 1px solid #A4C5C3;
 }
 
 a:active {
-    color: #7CBCAE;
+  color: #7CBCAE;
+  border-color: #BDDDD6;
 }
 
 a:visited {
-    color: #244358;
+  color: #244358;
+  border-color: #91A1AB;
 }
 
 nav ul {
@@ -39,72 +43,72 @@ nav li {
 }
 
 h1 {
-    font-size: 2em;
+  font-size: 2em;
 }
 
 header h1, header p {
-    margin: 0;
+  margin: 0;
 }
 
 header h1 {
-    line-height: 1;
+  line-height: 1;
 }
 
 .pull-left, .pull-right {
-    margin-top: 5px;
-    box-sizing: border-box;
+  margin-top: 5px;
+  box-sizing: border-box;
 }
 
 .pull-left {
-    margin-right: 10px;
-    float: left;
+  margin-right: 10px;
+  float: left;
 }
 
 .pull-right {
-    margin-left: 10px;
-    float: right;
+  margin-left: 10px;
+  float: right;
 }
 
 footer p {
-    box-sizing: border-box;
-    zoom: 1;
-    overflow: hidden;
+  box-sizing: border-box;
+  zoom: 1;
+  overflow: hidden;
 }
 
 code {
-    font-family: Inconsolata, Consolas, Menlo, Monaco, monospace;
+  font-family: Inconsolata, Consolas, Menlo, Monaco, monospace;
 }
 
 pre {
-    overflow: auto;
+  overflow: auto;
 }
 
 pre, blockquote {
-    border-left: 2px solid #eee;
-    padding-left: 1em;
-    margin-left: 0;
+  border-left: 2px solid #eee;
+  padding-left: 1em;
+  margin-left: 0;
 }
 
 header p, footer, .byline {
-    color: #666;
+  color: #666;
 }
 
 .byline {
-    font-style: italic;
-    font-size: smaller;
-    line-height: 2;
+  font-style: italic;
+  font-size: smaller;
+  line-height: 2;
 }
 
 address {
-    display: inline;
+  display: inline;
 }
 
 img, iframe {
-    border: 1px solid #244358;
+  border: 1px solid #244358;
 }
 
 dd {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 /* Syntax highlighting. */
