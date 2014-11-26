@@ -7,7 +7,7 @@ For the past year, I have been working on a web application that relies heavily 
 
 The [W3C specification for the `IFRAME` element][iframe] states the following document type definition:
 
-{% highlight html %}
+```html
 <!ELEMENT IFRAME - - (%flow;)*         -- inline subwindow -->
 <!ATTLIST IFRAME
   %coreattrs;                          -- id, class, style, title --
@@ -23,25 +23,25 @@ The [W3C specification for the `IFRAME` element][iframe] states the following do
   height      %Length;       #IMPLIED  -- frame height --
   width       %Length;       #IMPLIED  -- frame width --
   >
-{% endhighlight %}
+```
 
 The key thing I'm interested in here is the [`name` attribute][name]. Our particular application allows `iframe`s to fire events which are then caught by the parent window. In order to identify the source of these events, the `iframe`s send along their `name` (accessed via [`window.name`][window name]).
 
 If you have an `iframe` like the following in your web page:
 
-{% highlight html %}
+```html
 <iframe frameborder="0" name="bob" src="/some-page"></iframe>
-{% endhighlight %}
+```
 
 And `/some-page` contains the following HTML:
 
-{% highlight html %}
+```html
 <!DOCTYPE html>
 <title>Test</title>
 <script>
 document.write('My name is ' + window.name);
 </script>
-{% endhighlight %}
+```
 
 Then the `iframe` should output the following:
 
@@ -55,7 +55,7 @@ However, if you are dynamically creating `iframe`s with JavaScript (perhaps to a
 
 Specifically, if you create an `iframe` and set its name like so:
 
-{% highlight html %}
+```html
 <script>
 (function () {
     var iframe = document.createElement('iframe');
@@ -64,7 +64,7 @@ Specifically, if you create an `iframe` and set its name like so:
     document.body.appendChild(iframe);
 }());
 </script>
-{% endhighlight %}
+```
 
 Then `/some-page` will report the following:
 
@@ -86,7 +86,7 @@ Again, a live demonstration (note that this will only be broken in Internet Expl
 
 The same will occur if you use [jQuery][]:
 
-{% highlight html %}
+```html
 <script>
 $(function () {
   $('<iframe/>', {
@@ -95,7 +95,7 @@ $(function () {
   }).appendTo(document.body);
 });
 </script>
-{% endhighlight %}
+```
 
 The issue arises because the `name` of an `iframe` cannot be changed in Internet Explorer, much like the `type` attribute on `input` (there is a [caveat in the jQuery documentation about the `type` issue when creating elements][caveat]).
 
@@ -103,7 +103,7 @@ This means that you must set the `name` attribute on *creation* of the element, 
 
 With jQuery, it's a case of doing the following:
 
-{% highlight html %}
+```html
 <script>
 $(function () {
   $('<iframe name="bob"></iframe>').attr({
@@ -111,11 +111,11 @@ $(function () {
   }).appendTo(document.body);
 });
 </script>
-{% endhighlight %}
+```
 
 With pure JavaScript it is slightly trickier as you can no longer use [`document.createElement`](https://developer.mozilla.org/en/DOM/document.createElement). However, you can create a temporary container element (say, a [`div`](https://developer.mozilla.org/en/HTML/Element/div)), and then modify that element's [`innerHTML`](https://developer.mozilla.org/en/DOM/element.innerHTML) to create your `iframe` with its `name` from the beginning. You can then take your newly created `iframe` and insert that directly into the DOM (without ever inserting your temporary `div`) like so:
 
-{% highlight html %}
+```html
 <script>
 (function () {
   var temp = document.createElement('div');
@@ -123,7 +123,7 @@ With pure JavaScript it is slightly trickier as you can no longer use [`document
   document.body.appendChild(temp.firstChild);
 }());
 </script>
-{% endhighlight %}
+```
 
 (This is actually what jQuery does internally in the prior example.)
 

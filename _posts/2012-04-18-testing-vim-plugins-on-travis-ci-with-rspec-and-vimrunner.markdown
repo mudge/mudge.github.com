@@ -55,11 +55,11 @@ To begin with, I had the following directory layout with the standard files:
 In order to get up and running with these Ruby testing frameworks, I added a
 [`Gemfile`][Gemfile] with the following contents:
 
-{% highlight ruby %}
+```ruby
 source 'https://rubygems.org'
 gem 'vimrunner', '~> 0.3.1'
 gem 'rspec',     '~> 3.1.0'
-{% endhighlight %}
+```
 
 The actual process of testing the plugin is as follows:
 
@@ -74,7 +74,7 @@ The actual process of testing the plugin is as follows:
 If we're writing a spec called `spec/runspec.vim_spec.rb` then steps 1, 2
 and 4 are straightforward thanks to Vimrunner:
 
-{% highlight ruby %}
+```ruby
 require 'vimrunner'
 
 vim = Vimrunner.start
@@ -85,7 +85,7 @@ RSpec.describe "runspec.vim" do
     vim.kill
   end
 end
-{% endhighlight %}
+```
 
 As you can see, we require the gem and then start a new Vim server with
 `start`. We add our plugin to the server using the `add_plugin` helper
@@ -109,7 +109,7 @@ about namespace clashes.
 
 Here's the first (admittedly simple) spec:
 
-{% highlight ruby %}
+```ruby
 require 'vimrunner'
 
 vim = Vimrunner.start
@@ -127,17 +127,17 @@ RSpec.describe "runspec.vim" do
     end
   end
 end
-{% endhighlight %}
+```
 
 Running the spec produced the following, rather thrilling output:
 
-{% highlight console %}
+```console
 $ rspec spec/runspec.vim_spec.rb
 .
 
 Finished in 0.49066 seconds
 1 example, 0 failures
-{% endhighlight %}
+```
 
 As it ran, I saw an instance of Vim fire up and then be shut down as the test
 suite completed. More importantly, all my specified behaviour was checked
@@ -152,7 +152,7 @@ functionality?
 Well, we can simply write out a dummy `Gemfile.lock` during our test and see
 if the function works correctly:
 
-{% highlight ruby %}
+```ruby
 File.open("Gemfile.lock", "w") do |f|
   f.puts(<<-EOF)
 GEM
@@ -177,7 +177,7 @@ DEPENDENCIES
   rspec
   EOF
 end
-{% endhighlight %}
+```
 
 However, this file won't be removed at the end of your test runs and, what's
 worse, it could potentially interfere with other tests.
@@ -187,7 +187,7 @@ in an [RSpec `around` hook][around] to create a temporary directory and `cd`
 into it for every single test. As we are re-using the same instance of Vim for
 each test, we'll also have to `cd` the server into each new directory:
 
-{% highlight ruby %}
+```ruby
 # At the top of your spec:
 require "tmpdir"
 
@@ -200,7 +200,7 @@ around do |example|
     end
   end
 end
-{% endhighlight %}
+```
 
 By using the block form of both `mktmpdir` and `chdir`, Ruby will destroy the
 temporary directory and restore the current working directory after every run.
@@ -208,7 +208,7 @@ temporary directory and restore the current working directory after every run.
 This made it possible for me to write specs like the following without
 worrying about the disk being littered with test files:
 
-{% highlight ruby %}
+```ruby
 it "finds a test with the most similar name" do
   FileUtils.mkdir_p("test/unit")
   FileUtils.touch("test/unit/user_test.rb")
@@ -216,13 +216,13 @@ it "finds a test with the most similar name" do
   expect(vim.command('echo runspec#SpecPath("app/models/user.rb")')).to
       eq("test/unit/user_test.rb")
 end
-{% endhighlight %}
+```
 
 At this point, there was quite a bit of set up in the spec file so I decided
 to move it out into a separate `spec_helper.rb` to keep the actual tests
 concise:
 
-{% highlight ruby %}
+```ruby
 require 'tmpdir'
 require 'vimrunner'
 
@@ -245,7 +245,7 @@ RSpec.configure do |config|
     VIM.kill
   end
 end
-{% endhighlight %}
+```
 
 Note the use of a `VIM` constant in `before(:suite)` instead of a simple local
 variable so that the server is available to all specs and the changing of
@@ -266,39 +266,39 @@ In order to do that, we need a default [Rake][] task that will run the tests.
 
 Firstly, we need to add Rake as a dependency to our existing `Gemfile`:
 
-{% highlight ruby %}
+```ruby
 gem 'rake', '~> 10.3.2'
-{% endhighlight %}
+```
 
 Then we need to create a `Rakefile` and a task to run the tests. Luckily,
 RSpec ships with [such a task][RSpec Rake Task] by default which we can use
 and define as the default like so:
 
-{% highlight ruby %}
+```ruby
 require 'rspec/core/rake_task'
 
 RSpec::Core::RakeTask.new(:spec)
 
 task :default => :spec
-{% endhighlight %}
+```
 
 (Note that `RSpec::Core::RakeTask.new` will name the task `:spec` by default
 but I'm being explicit here for clarity.)
 
 You should now be able to run your suite like so:
 
-{% highlight console %}
+```console
 $ rake
 ..............
 
 Finished in 4.85 seconds
 14 examples, 0 failures
-{% endhighlight %}
+```
 
 All that is left is to configure Travis to do that too. Simply create a file
 named `.travis.yml` with the following contents:
 
-{% highlight yaml %}
+```yaml
 language: ruby
 rvm:
   - 2.1.3
@@ -306,7 +306,7 @@ before_install: sudo apt-get install vim-gtk
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
-{% endhighlight %}
+```
 
 This will inform Travis to use the latest version of Ruby (as of writing) and
 to install a version of Vim with the necessary client-server functionality we

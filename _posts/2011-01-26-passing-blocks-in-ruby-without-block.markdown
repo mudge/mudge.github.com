@@ -6,7 +6,7 @@ excerpt: Using yield and Proc.new to avoid unnecessary Proc object creation in R
 There are two main ways to receive [blocks][Containers, Blocks, and Iterators] in a method in Ruby:
 the first is to use the [`yield`][yield] keyword like so:
 
-{% highlight ruby %}
+```ruby
 def speak
   puts yield
 end
@@ -14,13 +14,13 @@ end
 speak { "Hello" }
 # Hello
 #  => nil
-{% endhighlight %}
+```
 
 The other is to prefix the last argument in a method signature with an
 ampersand which will then create a [`Proc`][Proc] object from any block passed
 in. This object can then be executed with the [`call`][call] method like so:
 
-{% highlight ruby %}
+```ruby
 def speak(&block)
   puts block.call
 end
@@ -28,7 +28,7 @@ end
 speak { "Hello" }
 # Hello
 #  => nil
-{% endhighlight %}
+```
 
 The problem with the second approach is that instantiating a new `Proc` object incurs
 a surprisingly heavy performance penalty as detailed by [Aaron Patterson][] in his
@@ -37,7 +37,7 @@ excellent RubyConf X presentation, "[ZOMG WHY IS THIS CODE SO SLOW?][ZOMG]"
 
 This can easily be verified with the following benchmark, `block_benchmark.rb`:
 
-{% highlight ruby %}
+```ruby
 require "benchmark"
 
 def speak_with_block(&block)
@@ -57,7 +57,7 @@ Benchmark.bmbm do |x|
     n.times { speak_with_yield { "ook" } }
   end
 end
-{% endhighlight %}
+```
 
 The results of this on my own machine are as follows (the numbers themselves aren't
 as important as their difference):
@@ -80,7 +80,7 @@ another, more generic method named `tell`. This sort of pattern is commonly done
 using [`method_missing`][method_missing] but I'll keep the methods explicit for
 simplicity:
 
-{% highlight ruby %}
+```ruby
 class Monkey
 
   # Monkey.tell_ape { "ook!" }
@@ -94,11 +94,11 @@ class Monkey
     puts "#{name}: #{block.call}"
   end
 end
-{% endhighlight %}
+```
 
 Such a thing is not possible with the `yield` keyword:
 
-{% highlight ruby %}
+```ruby
 class Monkey
 
   # Monkey.tell_ape { "ook!" }
@@ -111,11 +111,11 @@ class Monkey
     puts "#{name}: #{yield}"
   end
 end
-{% endhighlight %}
+```
 
 Neither does it work by using an ampersand:
 
-{% highlight ruby %}
+```ruby
 class Monkey
 
   # Monkey.tell_ape { "ook!" }
@@ -128,7 +128,7 @@ class Monkey
     puts "#{name}: #{yield}"
   end
 end
-{% endhighlight %}
+```
 
 However, there is a way to only create a `Proc` object when needed and that is
 to use the little known behaviour of [`Proc.new`][Proc.new] as explained in
@@ -137,7 +137,7 @@ Aaron Patterson's aforementioned presentation.
 If `Proc.new` is called from inside a method without any arguments of its own,
 it will return a new `Proc` containing the block given to its surrounding method.
 
-{% highlight ruby %}
+```ruby
 def speak
   puts Proc.new.call
 end
@@ -145,12 +145,12 @@ end
 speak { "Hello" }
 # Hello
 #  => nil
-{% endhighlight %}
+```
 
 This means that it is now possible to pass a block between methods without using the
 `&block` parameter:
 
-{% highlight ruby %}
+```ruby
 class Monkey
 
   # Monkey.tell_ape { "ook!" }
@@ -164,14 +164,14 @@ class Monkey
     puts "#{name}: #{yield}"
   end
 end
-{% endhighlight %}
+```
 
 Of course, if you do use `Proc.new` then you lose the performance benefit of using
 only `yield` (as `Proc` objects are being created as with `&block`) but it does
 avoid unnecessary creation of Proc objects when you don't need them. This can be
 demonstrated with the following benchmark, `proc_new_benchmark.rb`:
 
-{% highlight ruby %}
+```ruby
 require "benchmark"
 
 def sometimes_block(flag, &block)
@@ -199,7 +199,7 @@ Benchmark.bmbm do |x|
     end
   end
 end
-{% endhighlight %}
+```
 
 Which makes the following rather significant difference:
 

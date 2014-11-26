@@ -9,43 +9,43 @@ While the Lisp example demonstrated homoiconicity and the power of macros, the S
 
 To summarise: Smalltalk eschews keywords for control structures such as `if` in favour of message sends (to use the Smalltalk parlance for method calls). This means that conditional logic is just another method on an object (not entirely dissimilar to Ruby's infamous `5.times { ... }` example):
 
-{% highlight smalltalk %}
+```smalltalk
 somePredicate ifTrue:  [ Transcript show: 'I am true'.  ]
               ifFalse: [ Transcript show: 'I am false'. ].
-{% endhighlight %}
+```
 
 The implementation of these messages is simple: define a method that takes two arguments, one block to call when true (e.g. `trueBlock`) and one block to call when false (e.g. `falseBlock`). Objects that can be considered "truthy" evaluate the first block and those that are "falsey" evaluate the second:
 
-{% highlight smalltalk %}
+```smalltalk
 ifTrue: trueBlock ifFalse: falseBlock
   "Implementation for truthy objects."
   ^ trueBlock value
-{% endhighlight %}
+```
 
-{% highlight smalltalk %}
+```smalltalk
 ifTrue: trueBlock ifFalse: falseBlock
   "Implementation for falsey objects."
   ^ falseBlock value
-{% endhighlight %}
+```
 
 Pablo bemoaned that such a construction cannot be done in Ruby easily without chaining `Proc` objects and [Tom Stuart summarised the problem on Twitter](https://twitter.com/mortice/status/222393465663787008): "Spoiler alert: Smalltalk lets you pass multiple blocks to a method naturally, Ruby doesn't." However, [I tweeted](https://twitter.com/mudge/status/222398046825234432) that this might not be true from Ruby 1.9 onwards.
 
 To mimic the Smalltalk example, the following syntax is actually valid Ruby:
 
-{% highlight ruby %}
+```ruby
 some_predicate.if ->{ "It's true!" }, else: ->{ "It's false!" }
-{% endhighlight %}
+```
 
 While it might at first seem odd, it's actually equivalent to the following:
 
-{% highlight ruby %}
+```ruby
 some_predicate.if(lambda { "It's true!" },
     { :else => lambda { "It's false!" } })
-{% endhighlight %}
+```
 
 To implement this functionality, we can take advantage of Ruby's notoriously open classes:
 
-{% highlight ruby %}
+```ruby
 class BasicObject
   def if(if_true, options = {})
     if_true.call
@@ -67,7 +67,7 @@ end
 class FalseClass
   include Falsey
 end
-{% endhighlight %}
+```
 
 Note that I default the `if_false` case to a no-op to avoid using `if` internally (and therefore sidestep some furore).
 

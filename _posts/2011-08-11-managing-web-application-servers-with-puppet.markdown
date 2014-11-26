@@ -42,7 +42,7 @@ What I'm *not* going to talk about is:
 
 Let's introduce our Rails application. Because I'm a geek and because it will fit neatly on slides, it's just going to be called "[mcp][]" and it's a normal, no-frills Rails application.
 
-{% highlight console %}
+```console
 $ ls mcp
 Capfile      config       log
 Gemfile      config.ru    public
@@ -50,17 +50,17 @@ Gemfile.lock db           script
 README       doc          spec
 Rakefile     features     tmp
 app          lib          vendor
-{% endhighlight %}
+```
 
 It has a complete test suite, has been set up with Capistrano but has not been deployed yet. First, let's make sure all the tests pass...
 
-{% highlight console %}
+```console
 $ bundle exec rspec spec
 ................
 
 Finished in 0.00816 seconds
 Many, many examples, 0 failures
-{% endhighlight %}
+```
 
 Everything seems to work so let's get a server prepared for a first time deploy.
 
@@ -72,16 +72,16 @@ We're going to make some assumptions:
 
 Let's log into the server...
 
-{% highlight console %}
+```console
 $ ssh mudge@server1
 Last login: Mon Aug  1 21:08:06 2011 from 123-45-67-89.
-{% endhighlight %}
+```
 
 We like to separate our applications by user so -- as this is an application called `mcp` -- we'll use an `mcp` user and we will actually keep the application code inside the user's home folder.
 
 So the first thing we need to do is create a user but I can't quite remember what flags we need to pass to `adduser` on this machine...
 
-{% highlight console %}
+```console
 $ /usr/sbin/adduser -h
 adduser [--home DIR] [--shell SHELL]
 [--no-create-home] [--uid ID] [--firstuid ID]
@@ -90,11 +90,11 @@ adduser [--home DIR] [--shell SHELL]
 [--disabled-password] [--disabled-login]
 [--encrypt-home] USER
    Add a normal user
-{% endhighlight %}
+```
 
 It looks like this machine's `adduser` will create home directories for us by default (some operating systems require a `-m` flag to do that). Let's drop into a `root` prompt (just to make the slides a bit easier) and add our new user.
 
-{% highlight console %}
+```console
 $ sudo -i
 # adduser mcp
 Adding user `mcp' ...
@@ -106,24 +106,24 @@ Enter new UNIX password:
 Retype new UNIX password: 
 ...
 Is the information correct? [Y/n] 
-{% endhighlight %}
+```
 
 After filling out a little information, we now have our user and, from the output, it looks like we got a group named after the user created as well.
 
 As we're going to be deploying our application with Capistrano and we don't want to be passing around passwords, we now want to set up SSH keys. If you're not familiar with the concept, you can use SSH keys to log into a user account without entering a password by putting your public key in a file called `authorized_keys` in the user's home directory. There are a few tricky things to be aware of though particularly regarding permissions of the files involved in this process.
 The first thing we need to do is create a `.ssh` directory but do it in a way that means only the owner can access it...
 
-{% highlight console %}
+```console
 # mkdir -m 700 ~mcp/.ssh
-{% endhighlight %}
+```
 
 Then we're going to add our key to the `authorized_keys` file and, as I am running as `root` and not `mcp`, we need to make sure that we `chown` everything to the right user so they can access it.
 
-{% highlight console %}
+```console
 # vi ~mcp/.ssh/authorized_keys
 # chmod 600 ~mcp/.ssh/authorized_keys
 # chown -R mcp: ~mcp/.ssh
-{% endhighlight %}
+```
 
 That's now done and only the `mcp` user can access our list of public keys.
 
@@ -136,68 +136,68 @@ The final part (which will be managed by Capistrano itself) is a symbolic link c
 
 While Capistrano will create those directories for us, we want to take advantage of the `shared` directory now so that we can put our configuration in place before we deploy. Let's create our directory structure within the `mcp` user's home directory...
 
-{% highlight console %}
+```console
 # mkdir -p ~mcp/apps/mcp/shared/config
-{% endhighlight %}
+```
 
 As we're doing everything as `root`, we just need to make sure everything is owned by the right user...
 
-{% highlight console %}
+```console
 # chown -R mcp: ~mcp/apps
-{% endhighlight %}
+```
 
 As a developer in a large organisation, ideally I'm not supposed to see live usernames and passwords for things like the database so let's say, at this point, we hand over to a system administrator who *does* have authority to handle those details. Perhaps we could supply them with a `database.yml` with "FILL IN THE BLANKS HERE" for the username and password and then guide them to put the file in the right place. Once they have done that then we can make use of the file in our deploys without having to store it on development machines.
 
-{% highlight console %}
+```console
 # cd ~mcp/apps/mcp/shared/config
 # vi database.yml
-{% endhighlight %}
+```
 
 Again, make sure that the user is correct.
 
-{% highlight console %}
+```console
 # chown mcp: database.yml
-{% endhighlight %}
+```
 
 To run our application, we're going to need to install Ruby. As we might have several applications using different versions, let's install [RVM][] to manage Ruby for us *[NB: this predates the release of [rbenv and the ensuing controversy][rbenv controversy]]*.
 
 Firstly, we'll need to install RVM's dependencies; as we are using Debian, we'll need to use `apt-get` to install the required packages...
 
-{% highlight console %}
+```console
 # apt-get install curl git-core subversion
 Reading package lists... Done
 Building dependency tree
 Reading state information... Done
-{% endhighlight %}
+```
 
 You can install RVM using a one-liner but, as we are on a production server, we want to be a bit pickier about the version we are using. Luckily, RVM offers an alternative way to install by downloading a single script...
 
-{% highlight console %}
+```console
 # cd /root
 # curl -s \
 > https://rvm.beginrescueend.com/install/rvm \
 > -o rvm-installer
-{% endhighlight %}
+```
 
 Making it executable...
 
-{% highlight console %}
+```console
 # chmod +x rvm-installer
-{% endhighlight %}
+```
 
 And then using that to install a known good version, let's say 1.6.32...
 
-{% highlight console %}
+```console
 # ./rvm-installer --version 1.6.32
 Installation of RVM to /usr/local/rvm is
 complete.
-{% endhighlight %}
+```
 
 As we are running as `root`, everything will be installed to `/usr/local`.
 
 In order to actually compile and install versions of Ruby, there are a load of other dependencies we need (the list of which you can get by running `rvm notes` on your machine)...
 
-{% highlight console %}
+```console
 # apt-get install build-essential bison \
 > openssl libreadline6 libreadline6-dev \
 > zlib1g zlib1g-dev libssl-dev libyaml-dev \
@@ -207,34 +207,34 @@ In order to actually compile and install versions of Ruby, there are a load of o
 Reading package lists... Done
 Building dependency tree
 Reading state information... Done
-{% endhighlight %}
+```
 
 Now that we've got all those, we can finally install our chosen version of Ruby. We are lucky enough to be using the latest version of 1.9.2 so let's go ahead and use RVM to install that...
 
-{% highlight console %}
+```console
 # rvm install 1.9.2-p290
 Installing Ruby from source to:
 /usr/local/rvm/rubies/ruby-1.9.2-p290, this
 may take a while depending on your cpu(s)...
 Install of ruby-1.9.2-p290 - #complete 
-{% endhighlight %}
+```
 
 The final piece of the puzzle is our web server: we like to use [nginx][] and [Passenger][] to serve our applications so let's install and configure them. First we'll need to `source` RVM in order to switch environments...
 
-{% highlight console %}
+```console
 # source /usr/local/rvm/scripts/rvm
-{% endhighlight %}
+```
 
 Now we can choose Ruby 1.9.2...
 
-{% highlight console %}
+```console
 # rvm use 1.9.2-p290
 Using /usr/local/rvm/gems/ruby-1.9.2-p290
-{% endhighlight %}
+```
 
 And then we're going to install a specific version of Passenger...
 
-{% highlight console %}
+```console
 # gem install passenger -v3.0.8
 Fetching: fastthread-1.0.7.gem (100%)
 Building native extensions.  This could
@@ -243,15 +243,15 @@ Fetching: daemon_controller-0.2.6.gem (100%)
 Fetching: rack-1.3.2.gem (100%)
 ...
 Successfully installed passenger-3.0.8
-{% endhighlight %}
+```
 
 Then we can use the `passenger-install-nginx-module` command to actually compile an nginx for us.
 
-{% highlight console %}
+```console
 # passenger-install-nginx-module
 Welcome to the Phusion Passenger Nginx
 module installer, v3.0.8.
-{% endhighlight %}
+```
 
 Then after following the installation wizard, you will have a complete, compiled nginx in `/opt/nginx`. All we need to do now is configure it for our application.
 
@@ -262,66 +262,66 @@ By default, there is only one monolithic nginx configuration file but we're goin
 
 The main `nginx.conf` is then instructed to include any configuration found in `sites_enabled` and that is merely a collection of symbolic links to configuration in `sites_available`.
 
-{% highlight console %}
+```console
 # cd /opt/nginx/conf
 # mkdir sites_available sites_enabled
 # vi nginx.conf
-{% endhighlight %}
+```
 
 Now we just need to put our application configuration in `sites_available` and link to it from `sites_enabled` (this way you can easily disable applications without having to delete all their configuration).
 
-{% highlight console %}
+```console
 # cd sites_available
 # vi mcp.conf
 # ln -s \
 > /opt/nginx/conf/sites_available/mcp.conf \
 > /opt/nginx/conf/sites_enabled/mcp.conf
-{% endhighlight %}
+```
 
 As we installed nginx via Passenger, we will also need to make sure that we can control the web server and start it up on boot by creating an `init.d` script. Let's say we already have a stock one that we use and put that into place...
 
-{% highlight console %}
+```console
 # vi /etc/init.d/nginx
-{% endhighlight %}
+```
 
 Make it executable...
 
-{% highlight console %}
+```console
 # chmod +x /etc/init.d/nginx
-{% endhighlight %}
+```
 
 As we are using Debian, we need to use `update-rc.d` to start nginx up on boot...
 
-{% highlight console %}
+```console
 # update-rc.d -f nginx defaults
-{% endhighlight %}
+```
 
 And then finally we can start up nginx ourselves for the first time.
 
-{% highlight console %}
+```console
 # /etc/init.d/nginx start
 Starting nginx: nginx
-{% endhighlight %}
+```
 
 Our server is now totally set up and ready to go.
 
 It's just a case of going back to our deployment tool of choice (say, Capistrano) and performing the usual first-time deploy procedure. So we do a `deploy:setup` to create the directories we need...
 
-{% highlight console %}
+```console
 $ cap deploy:setup
-{% endhighlight %}
+```
 
 Do a quick `check` to make sure everything is OK...
 
-{% highlight console %}
+```console
 $ cap deploy:check
-{% endhighlight %}
+```
 
 And then do our big first `deploy` (hoping that everything will work first time).
 
-{% highlight console %}
+```console
 $ cap deploy:cold
-{% endhighlight %}
+```
 
 You might not think that's too bad if you've done it many times before and it's become second nature to you but there are a few big problems with setting up servers in this way.
 
@@ -351,7 +351,7 @@ Let's start with a little primer; if you've never seen Puppet before, let's do s
 
 Firstly, Puppet revolves around the idea of resources and this is one such resource...
 
-{% highlight ruby %}
+```ruby
 user { 'henry':
   ensure     => present,
   uid        => '507',
@@ -360,7 +360,7 @@ user { 'henry':
   home       => '/home/henry',
   managehome => true,
 }
-{% endhighlight %}
+```
 
 This is written in the Puppet language which looks a little like Ruby but *isn't* Ruby. (There is a [Ruby DSL for Puppet](http://puppetlabs.com/blog/ruby-dsl/) but I'm only going to be using the original Puppet language.)
 
@@ -368,70 +368,70 @@ This resource is describing a user called Henry: it's ensuring that he exists, t
 
 How would you actually use this? Let's take that definition, save it in a file called `henry.pp` and then run the following command...
 
-{% highlight console %}
+```console
 $ sudo puppet apply henry.pp
-{% endhighlight %}
+```
 
 What Puppet's going to do is look at your system, check for a user named Henry and, as he doesn't yet exist, create him.
 
-{% highlight console %}
+```console
 notice:
 /Stage[main]//User[henry]/ensure: created
 notice: Finished catalog run in 0.25 seconds
-{% endhighlight %}
+```
 
 We can verify that everything has run successfully by having a look in `/etc/passwd`...
 
-{% highlight console %}
+```console
 $ grep henry /etc/passwd
 henry:x:507:50::/home/henry:/bin/zsh
-{% endhighlight %}
+```
 
 As we can see, the user has been created and with the properties we specified.
 
 If someone now logs into the server and decides that Henry should be using Bash instead of ZSH...
 
-{% highlight console %}
+```console
 $ sudo chsh henry
 Changing shell for henry.
 New shell [/bin/zsh]: /bin/bash
 Shell changed.
-{% endhighlight %}
+```
 
 Then the next time you run Puppet it's actually going to look at the system and spot the discrepancy between our specification and the state of the system. Most importantly, it will attempt to resolve this issue itself...
 
-{% highlight console %}
+```console
 $ sudo puppet apply henry.pp
 notice:
 /Stage[main]//User[henry]/shell:
 shell changed '/bin/bash' to '/bin/zsh'
-{% endhighlight %}
+```
 
 Puppet is clever enough to just to make the appropriate changes to bring the system in-line with our specification. Notice that we didn't tell it to explicitly run `chsh` and that it didn't need to delete and recreate the user. This is the idea of consistency that was missing from the manual approach and also shows how powerful Puppet can be in enforcing system state.
 
 As well as specifying users, Puppet has many different types of resource. The official documentation refers to three in particular as the "Trifecta":
 
-{% highlight ruby %}
+```ruby
 package { 'openssh-server':
   ensure => installed,
 }
-{% endhighlight %}
+```
 
 A `package` resource is simply a software package that you might install via `apt-get` on Debian, `yum` on RedHat, etc.
 
-{% highlight ruby %}
+```ruby
 file { '/etc/sudoers':
   ensure => present,
 }
-{% endhighlight %}
+```
 
 The `file` resource allows you to perform operations on the file system; this example simply ensures that a file at `/etc/sudoers` exists and will create one if not. This is actually a very powerful resource type and we will see more of it later.
 
-{% highlight ruby %}
+```ruby
 service { 'sshd':
   ensure => running,
 }
-{% endhighlight %}
+```
 
 The `service` resource describes long running processes like those you would manage with an `init.d` script; in this example, it just makes sure the process labelled `sshd` is running.
 
@@ -443,7 +443,7 @@ So let's go back to our Rails application and go through its set up again but th
 
 Last time, I ran `adduser` and a group was created simultaneously but it's good to be more explicit about it. So let's state there is a group named `mcp` and then a user named `mcp` with that as its primary group and let's manage their home directory as well...
 
-{% highlight ruby %}
+```ruby
 group { 'mcp':
   ensure => present,
 }
@@ -454,36 +454,36 @@ user { 'mcp':
   home       => '/home/mcp',
   managehome => true,
 }
-{% endhighlight %}
+```
 
 One thing that is interesting to note here is that the user refers to the group we created above it. You might think that is due to Puppet executing things sequentially but that's not true: Puppet does not use the order of definitions to derive dependencies. Instead, when you write resources, you refer to them with a lowercase resource type such as `group`:
 
-{% highlight ruby %}
+```ruby
 group { 'mcp':
   ensure => present,
 }
-{% endhighlight %}
+```
 
 But if you then use title case such as `Group`:
 
-{% highlight ruby %}
+```ruby
 Group['mcp']
-{% endhighlight %}
+```
 
 You are actually creating a reference to your resource which can then be used in other definitions like so:
 
-{% highlight ruby %}
+```ruby
 user { 'mcp':
   ensure  => present,
   require => Group['mcp'],
 }
-{% endhighlight %}
+```
 
 This explictly states that the user `mcp` will not be checked until the *group* `mcp` has been enforced. The reason we didn't do that earlier is because Puppet will *autorequire* a lot of obvious things (you can check this in the documentation) but it never hurts to be explicit with dependencies.
 
 If you accidentally set up resources that depend on each other like so:
 
-{% highlight ruby %}
+```ruby
 user { 'mcp':
   ensure => present,
   require => Group['mcp'],
@@ -493,35 +493,35 @@ group { 'mcp':
   ensure => present,
   require => User['mcp'],
 }
-{% endhighlight %}
+```
 
 Puppet will actually spot the issue when you attempt to run it:
 
-{% highlight console %}
+```console
 err: Could not apply complete catalog:
 Found dependency cycles in the following
 relationships:
 User[mcp] => Group[mcp], Group[mcp] => User[mcp];
 try using the '--graph' option and open the '.dot'
 files in OmniGraffle or GraphViz
-{% endhighlight %}
+```
 
 This is because Puppet builds a [directed acyclic graph](http://en.wikipedia.org/wiki/Directed_acyclic_graph) of your resources and can actually output the whole thing as a `.dot` file as you can see in the output above.
 
 Now that we have user and group, we need to set up our SSH keys. Previously, we had to create the `.ssh` folder, add our key to `authorized_keys` and make sure that the ownership and permissions were set correctly. With Puppet, you can forget all that and simply use the built-in `ssh_authorized_key` resource type:
 
-{% highlight ruby %}
+```ruby
 ssh_authorized_key { 'mcp-mudge':
   ensure => present,
   key    => 'AAAAB3NzaC1yc2EAAAAB...',
   type   => dsa,
   user   => 'mcp',
 }
-{% endhighlight %}
+```
 
 As for the directory structure: we created `apps`, `apps/mcp`, `apps/mcp/shared` and `apps/mcp/shared/config` so let's do the same using the `file` resource:
 
-{% highlight ruby %}
+```ruby
 file {
   '/home/mcp/apps':
     ensure => directory,
@@ -543,39 +543,39 @@ file {
     owner  => 'mcp',
     group  => 'mcp';
 }
-{% endhighlight %}
+```
 
 This makes sure that each path is a directory owned by `mcp`; you can make this more concise by listing multiple paths at once but I've kept each definition discrete here for clarity.
 
 The next step is slightly more interesting: the management of sensitive configuration files. Last time we had someone trusted put the file in place for us; we can recreate that process again:
 
-{% highlight ruby %}
+```ruby
 file { '/home/mcp/apps/mcp/shared/config/database.yml':
   ensure => present,
   owner  => 'mcp',
   group  => 'mcp',
   source => 'puppet:///modules/mcp/database.yml',
 }
-{% endhighlight %}
+```
 
 The first part is clear enough but the `source` parameter is the interesting one. Without going into too much detail, as well as having manifests written in the Puppet language, you can also include other artefacts such as whole configuration files that will be copied into place. However, this example is no good as it assumes that I have the live `database.yml` to hand.
 
 However, the `source` option is really quite powerful and allows you specify not just one but many paths for a particular file:
 
-{% highlight ruby %}
+```ruby
 file { '/some/config.yml':
   source => [
     'puppet:///confidential/config.yml',
     'puppet:///modules/mcp/config.yml'
   ],
 }
-{% endhighlight %}
+```
 
 When Puppet attempts to create this file, it will check each path in the `source` list until it finds one it can access. In this way, you can have a `confidential` file server that can only be accessed from the live servers: when you run this manifest there, it will simply fetch that version but when you run it anywhere else, it will fall through the second version.
 
 However, this still isn't quite right as it assumes that you only have two types of servers: live and not. What if you have tiers such as staging or test? What you can actually do is use variable interpolation in the `source` paths like so:
 
-{% highlight ruby %}
+```ruby
 file { '/some/config.yml':
   source => [
     "puppet:///confidential/config.yml.$hostname",
@@ -583,11 +583,11 @@ file { '/some/config.yml':
     'puppet:///modules/mcp/config.yml'
   ],
 }
-{% endhighlight %}
+```
 
 As `$hostname` will be the hostname of your server (e.g. `webserver1`) then you can have a file such as `config.yml.webserver1` and that will be used on that machine; if no such file exists, it will fall through to `config.yml.$tier` and `$tier` can be set as follows:
 
-{% highlight ruby %}
+```ruby
 $tier = 'test'
 # => "puppet:///confidential/config.yml.test"
 
@@ -596,29 +596,29 @@ $tier = 'staging'
 
 $tier = 'live'
 # => "puppet:///confidential/config.yml.live"
-{% endhighlight %}
+```
 
 By simply setting a variable per tier, you can have several different configuration files but the same resource definition. This is the pattern that we are currently using at my job but there are still problems with it. The main being that you have redundant copies of configuration files when really the only thing that needs to be change between environments are usernames and passwords. When you are managing things like Java `.properties` files, it can get tiresome to make sure that any changes are rolled out to all versions of a particular file.
 
 A better approach might be to extract the username and password out into variables...
 
-{% highlight ruby %}
+```ruby
 $db_username = 'bob'
 $db_password = 'letmein'
 
 file { '/some/database.yml':
   content => template('mcp/database.yml.erb'),
 }
-{% endhighlight %}
+```
 
 If you can then keep those variable declarations in a file only on the Puppet Master then you can make use of them in a template. Luckily, as well as the `source` parameter, Puppet supports specifying the exact contents of a file as a string with `content` and, if you use the `template` function, you can actually process an entire [ERB](http://www.ruby-doc.org/stdlib/libdoc/erb/rdoc/) template just like you might be used to in Rails. In this case, our `database.yml.erb` might look like this:
 
-{% highlight erb %}
+```erb
 production:
   adapter: mysql
   username: <%= db_username %>
   password: <%= db_password %>
-{% endhighlight %}
+```
 
 This means that I can be free to change the `adapter` in one place without worrying about the other versions of this file.
 
@@ -626,7 +626,7 @@ There seems to be a lot of different recommendations for how to approach this ma
 
 Let's install RVM and Ruby. First, we need all the dependencies and we can just use `package` to do so:
 
-{% highlight ruby %}
+```ruby
 package { 'rvm-dependencies':
   ensure => installed,
   name   => [
@@ -637,13 +637,13 @@ package { 'rvm-dependencies':
     ...
   ],
 }
-{% endhighlight %}
+```
 
 The way that we installed RVM was very sequential: we ran a list of specific commands in a particular order. When writing manifests for Puppet, it's best not to think in terms of sequence but in terms of state and, most importantly, in a way that is idempotent.
 
 Firstly, we need the RVM installer; as it is just a single script and to save fetching it from the internet, let's include it with our modules and use the `source` parameter we saw earlier to copy it into place with the right permissions and ownership...
 
-{% highlight ruby %}
+```ruby
 file { '/root/rvm-installer':
   ensure => present,
   owner  => 'root',
@@ -651,11 +651,11 @@ file { '/root/rvm-installer':
   mode   => '0700',
   source => 'puppet:///modules/mcp/rvm',
 }
-{% endhighlight %}
+```
 
 Now we need to run the installer and, for that, we can use the `exec` resource which allows you to run any arbitrary command. This is discouraged when an alternative is available but we have no other choice in this situation...
 
-{% highlight ruby %}
+```ruby
 exec { 'install-rvm':
   command => '/root/rvm-installer --version 1.6.32',
   cwd     => '/root',
@@ -663,26 +663,26 @@ exec { 'install-rvm':
   path    => '/usr/bin:/usr/sbin:/bin:/sbin',
   require => Package['rvm-dependencies'],
 }
-{% endhighlight %}
+```
 
 You can see the `command` to run and the directory to run it from in `cwd` but don't forget that I said that Puppet will keep running your resources every 30 minutes and, by default, this would continually re-install RVM. This is what I meant when I said that resources must be idempotent: you must be able to run them multiple times without side effect. In order to stop this from happening, we can use the `unless` parameter to define a command that, should it return successfully, means that this resource doesn't need to be executed. The command that we are using is `grep` and we are checking to see that our particular version of RVM is installed; in this way, when RVM isn't installed at all, the command will fail and therefore the installer will run and if the version is out of date, it will also run, thereby seamlessly upgrading your installation. Also note the `require` dependency which ensures that RVM is not installed before its dependencies are satisfied.
 
 Now we can do `rvm install ruby` in much the same way:
 
-{% highlight ruby %}
+```ruby
 exec { 'rvm install ruby-1.9.2-p290':
   creates => '/usr/local/rvm/rubies/ruby-1.9.2-p290',
   timeout => 1800,
   path    => '/usr/local/rvm/bin:/usr/bin:/usr/sbin:/bin:/sbin',
   require => File['install-rvm'],
 }
-{% endhighlight %}
+```
 
 Instead of using `unless` which runs any arbitrary command and checks its exit code, we can use `creates` which checks for the presence of a file. This resource will therefore only be installed if `/usr/local/rvm/rubies/ruby-1.9.2-p290` doesn't already exist. As compiling Ruby can take some time, we also bump up the default `timeout` so Puppet doesn't assume something has gone wrong.
 
 Next is the installation of nginx and Passenger for which we will also use the `exec` resource.
 
-{% highlight ruby %}
+```ruby
 exec { 'install-passenger-3.0.8':
   command => 'rvm-shell ruby-1.9.2-p290 -c "gem install passenger -v3.0.8"',
   unless  => 'rvm-shell ruby-1.9.2-p290 -c "gem list passenger -v3.0.8 -i"',
@@ -690,13 +690,13 @@ exec { 'install-passenger-3.0.8':
   timeout => 1800,
   require => Exec['rvm install ruby-1.9.2-p290'],
 }
-{% endhighlight %}
+```
 
 We need to always think about the two commands: one to run and one to check whether it has already been run. Here we are simply installing a gem but not if it is already installed (`gem list -i` just being something built into RubyGems).
 
 Nginx is much the same:
 
-{% highlight ruby %}
+```ruby
 exec { 'install-nginx':
   command => 'rvm-shell ruby-1.9.2-p290 -c "passenger-install-nginx-module..."',
   creates => '...agents/nginx/PassengerHelperAgent',
@@ -704,22 +704,22 @@ exec { 'install-nginx':
   path    => '/usr/local/rvm/bin:/usr/bin:/usr/sbin:/bin:/sbin',
   require => Exec['install-passenger-3.0.8'],
 }
-{% endhighlight %}
+```
 
 From our experience, we know that when Passenger and nginx compile successfully, it results in `PassengerHelperAgent` being present in a certain directory so we can use this to detect whether nginx has been installed or not. I've truncated some of the paths to fit on the slides but the top command simply has flags to perform a headless install of Passenger and looks like so:
 
-{% highlight console %}
+```console
 $ rvm-shell ruby-1.9.2-p290 -c \
 >  "passenger-install-nginx-module --auto \
 >  --auto-download \
 >  --prefix=/opt/nginx"
-{% endhighlight %}
+```
 
 This is well-documented on the Passenger web site and just means that it will not prompt for user input when installing.
 
 Finally, our nginx configuration uses the `file` resource:
 
-{% highlight ruby %}
+```ruby
 file {
   '/opt/nginx/conf/sites_available/mcp.conf':
     ensure => present,
@@ -733,13 +733,13 @@ file {
     group  => 'root',
     target => '/opt/nginx/conf/sites_available/mcp.conf',
 }
-{% endhighlight %}
+```
 
 This just demonstrates that you can also manage symbolic links with Puppet as well and we could easily disable the site by changing `link` to `absent`.
 
 Then we've got our `init.d` script which we just copy:
 
-{% highlight ruby %}
+```ruby
 file { '/etc/init.d/nginx':
   ensure => present,
   owner  => 'root',
@@ -748,11 +748,11 @@ file { '/etc/init.d/nginx':
   source => 'puppet:///modules/mcp/nginx',
   require => Exec['install-nginx'];
 }
-{% endhighlight %}
+```
 
 Finally, we used `update-rc.d` to register our service previously but we can now use the `service` resource type to do that for us:
 
-{% highlight ruby %}
+```ruby
 service { 'nginx':
   ensure     => running,
   enable     => true,
@@ -764,7 +764,7 @@ service { 'nginx':
     File['/etc/init.d/nginx']
   ],
 }
-{% endhighlight %}
+```
 
 This is quite powerful as it describes the functionality of the service (whether it supports restarting natively, whether it can report its own status, etc.) and also sets up a special type of dependency in the `subscribe` parameter. By subscribing to the nginx configuration file, this service will automatically reload when any change to the configuration is made. This means that the web server can be tweaked and dependent services seamlessly reloaded without any need to run `init.d` scripts. You can also see a `require` dependency with more than one resource showing that you can have multiple dependencies at once.
 
@@ -780,17 +780,17 @@ A much more thorough way to test your configuration is to make use of [Vagrant][
 
 To make use of Puppet, you modify a file named `Vagrantfile` to point it at your modules and manifests:
 
-{% highlight ruby %}
+```ruby
 config.vm.provision :puppet do |puppet|
   puppet.module_path    = "modules"
   puppet.manifests_path = "manifests"
   puppet.manifest_file  = "mcp.pp"
 end
-{% endhighlight %}
+```
 
 Then it is simply a case of bringing up your virtual machine:
 
-{% highlight console %}
+```console
 $ bundle exec vagrant up
 [default] Box natty was not found. Fetching box...
 [default] Downloading with Vagrant::Downloaders::HTTP...
@@ -807,21 +807,21 @@ $ bundle exec vagrant up
 [default] Running any VM customizations...
 [default] Booting VM...
 [default] Waiting for VM to boot. This can take a few minutes.
-{% endhighlight %}
+```
 
 The first time you run it, Vagrant will inspect your `Vagrantfile` to download a base box (a blank slate virtual machine, e.g. a freshly installed Ubuntu server) and then provision it with Puppet. Then you can tweak your manifests and run the following command to do another Puppet run:
 
-{% highlight console %}
+```console
 $ bundle exec vagrant provision
 [default] Running provisioner: Vagrant::Provisioners::Puppet...
 [default] Running Puppet with mcp.pp...
-{% endhighlight %}
+```
 
 All of the examples in this presentation are actually available as a sample project with a `Gemfile`, `Vagrantfile` and all the modules and manifests required. Simply get it from [GitHub](https://github.com/mudge/managing_web_application_servers_with_puppet/tree/master/example), run `bundle` and then `bundle exec vagrant up` to download a base box I'm hosting on Dropbox and prepare a virtual machine for our `mcp` application including the user, SSH key (though it's just a fake key so you won't be able to log in with it), RVM, Ruby, nginx and Passenger as a demonstration of Puppet's power.
 
 While that is extremely useful, it is just another method of visual inspection; what might be better is to actual test-drive your Puppet manifests with a tool like [Cucumber-Puppet](https://github.com/nistude/cucumber-puppet). That allows you to write Cucumber features for your infrastructure:
 
-{% highlight gherkin %}
+```gherkin
 Feature: General catalog policy
   In order to ensure a host's catalog
   As a manifest developer
@@ -836,7 +836,7 @@ Feature: General catalog policy
     Examples:
       | hostname  |
       | localhost |
-{% endhighlight %}
+```
 
 This is just a sample feature from their web site and I admit that I haven't used this yet but it is definitely something I want to look into more closely. There are some exciting tools emerging for Chef regarding testing with minitest and my hope is that Puppet will also benefit from the enthusiasm in this area. *[NB: shortly after my talk, there was [an extensive post on testing Puppet on the Puppet Labs blog](http://puppetlabs.com/blog/testing-modules-in-the-puppet-forge/).]*
 

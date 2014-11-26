@@ -8,7 +8,7 @@ Analytics][] account and finally take [Disqus][] for a spin. Both services
 provide small snippets of JavaScript for inclusion in your web pages; Google
 Analytics&rsquo; looks much like this (with line breaks added for readability):
 
-{% highlight html %}
+```html
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-XXXXX-X']);
@@ -24,12 +24,12 @@ Analytics&rsquo; looks much like this (with line breaks added for readability):
     s.parentNode.insertBefore(ga, s);
   })();
 </script>
-{% endhighlight %}
+```
 
 Disqus&rsquo; is as follows (with line breaks added and extraneous comments
 removed):
 
-{% highlight html %}
+```html
 <script type="text/javascript">
   var disqus_shortname = 'example';
   // var disqus_identifier = 'unique_dynamic_id_1234';
@@ -44,7 +44,7 @@ removed):
       document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
-{% endhighlight %}
+```
 
 Both seem terse enough <del>and are meant for inclusion at the bottom
 of your web page</del> (*Update:* [enomar on Hacker News pointed out that
@@ -59,7 +59,7 @@ the number of `script` tags should ideally be kept to a minimum so let's combine
 the two into one (and let's specify those recommended Disqus variables while we're
 at it):
 
-{% highlight html %}
+```html
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-XXXXX-X']);
@@ -88,7 +88,7 @@ at it):
       document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
-{% endhighlight %}
+```
 
 We could stop at this point but I am something of a sucker for compressing web pages
 and JavaScript down to their bare minimum (I have been known to pore through the
@@ -104,7 +104,7 @@ attribute is optional and is [specified as having a default value of
 turns out that the actual JavaScript itself is also creating `script` tags
 and specifying the `type` attribute so let's remove those as well:
 
-{% highlight html %}
+```html
 <script>
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-XXXXX-X']);
@@ -131,7 +131,7 @@ and specifying the `type` attribute so let's remove those as well:
       document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
-{% endhighlight %}
+```
 
 Another thing that has caught my eye is the odd set up of the `_gaq` variable:
 it checks to see if it has already been defined (which it has not in my case),
@@ -142,18 +142,18 @@ more information) but seeing as I am only doing basic analytics and taking a cue
 Mark Pilgrim's code from "[dive into mark][]", we can simplify
 this quite drastically:
 
-{% highlight html %}
+```html
 <script>
   var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
   // ... omitted for brevity ...
 </script>
-{% endhighlight %}
+```
 
 While we are looking at variable declarations, another easy optimisation we
 can make is to take advantage of [JavaScript's syntax to declare multiple variables
 at once][var]:
 
-{% highlight html %}
+```html
 <script>
   var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']],
       disqus_shortname = 'example',
@@ -161,7 +161,7 @@ at once][var]:
       disqus_url = 'http://example.com/permalink-to-page.html';
   // ... omitted for brevity ...
 </script>
-{% endhighlight %}
+```
 
 With those low-hanging fruit out of the way, we need to consider what both snippets
 are actually *doing*. They are, in fact, very similar: they are both creating
@@ -178,7 +178,7 @@ With this knowledge, we can start to remove some repetition in the code. Firstly
 we can streamline the creation of the two `script` tags by setting them up
 simultaneously (and moving them into the same closure while we're at it):
 
-{% highlight html %}
+```html
 <script>
   var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']],
       disqus_shortname = 'example',
@@ -198,7 +198,7 @@ simultaneously (and moving them into the same closure while we're at it):
       document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
-{% endhighlight %}
+```
 
 We've stated that both snippets insert their newly-created `script` elements into
 the [DOM][] but they are currently doing it in different ways. Let's change this
@@ -206,7 +206,7 @@ and, in the spirit of following [Google's Performance Best Practices][], let's
 append the `script` elements to the `body` tag by using [`document.body`][body]
 and [`appendChild`][appendChild]:
 
-{% highlight html %}
+```html
 <script>
   var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']],
       disqus_shortname = 'example',
@@ -224,7 +224,7 @@ and [`appendChild`][appendChild]:
     document.body.appendChild(dsq);
   })();
 </script>
-{% endhighlight %}
+```
 
 We're now in much better shape than when we started and a lot closer to following
 the [Don't Repeat Yourself (DRY) principle][DRY].
@@ -246,7 +246,7 @@ might consider making:
 If you decide to take these (admittedly more drastic) steps then you might end up
 with something like the following:
 
-{% highlight html %}
+```html
 <script>
   var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']],
       disqus_shortname = 'example',
@@ -264,14 +264,14 @@ with something like the following:
     body.appendChild(dsq);
   }());
 </script>
-{% endhighlight %}
+```
 
 At this point you can now turn to more brutal compressors such as [YUI
 Compressor][] or the aforementioned [Closure Compiler][] which (after some
 tweaks to keep [JSLint][] happy) will result in a single snippet like
 so (line breaks added for some semblance of readability):
 
-{% highlight html %}
+```html
 <script>
 var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]],
 disqus_shortname="example",disqus_identifier="unique_dynamic_id_1234",
@@ -280,13 +280,13 @@ var a=document.createElement("script"),b=document.createElement("script"),
 c=document.body;a.async=b.async=true;a.src="http://www.google-analytics.com/ga.js";
 b.src="http://example.disqus.com/embed.js";c.appendChild(a);c.appendChild(b);}());
 </script>
-{% endhighlight %}
+```
 
 Of course, there's no reason for it to end there. I've got it down to 412
 characters while still passing [JSLint][], feel free to post your own attempts in
 the comments:
 
-{% highlight html %}
+```html
 <script>
 var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]],
 disqus_shortname="example",disqus_identifier="unique_dynamic_id_1234",
@@ -295,7 +295,7 @@ var a=document,b=a.createElement("script"),c=a.body,d;
 b.async=true;d=b.cloneNode(false);b.src="http://www.google-analytics.com/ga.js";
 d.src="http://example.disqus.com/embed.js";c.appendChild(b);c.appendChild(d);}());
 </script>
-{% endhighlight %}
+```
 
 There are only two rules:
 
@@ -310,7 +310,7 @@ There are only two rules:
 *Update:* Based on feedback from [Steve Klabnik][], [Anton Kovalyov][] and
 [Andrew Walker][], here is a solution that consists of only 345 characters:
 
-{% highlight html %}
+```html
 <script>
 var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]],
 disqus_shortname="example",disqus_identifier="unique_dynamic_id_1234";
@@ -320,14 +320,14 @@ c.async=b;e=c.cloneNode(b);c.src="//www.google-analytics.com/ga.js";
 e.src="//example.disqus.com/embed.js";d.appendChild(c);d.appendChild(e);
 }(document,true));
 </script>
-{% endhighlight %}
+```
 
 If you want to follow [Google's recommendation of inserting their
 snippet at the bottom of the `head` element][Getting Started with the Asynchronous Snippet] (and continue inserting Disqus&rsquo; snippet at the bottom of
 the `body`) then you will have to sacrifice the single, unified `script` for two
 separate ones:
 
-{% highlight html %}
+```html
 <head>
   <!-- Usual HTML head elements here... -->
   <script>
@@ -343,7 +343,7 @@ separate ones:
   <!-- Page content here... -->
   <script>a("//example.disqus.com/embed.js");</script>
 </body>
-{% endhighlight %}
+```
 
 This version consists of a total of 325 characters but introduces a new global
 function named `a` which will create a new `script` element and append it to
@@ -357,7 +357,7 @@ Monster][].
 elements created by synchronously requiring the Disqus JavaScript yourself at
 the bottom of the `body`:
 
-{% highlight html %}
+```html
 <head>
   <!-- Usual HTML head elements here... -->
   <script>
@@ -372,7 +372,7 @@ the bottom of the `body`:
   <!-- Page content here... -->
   <script src=//example.disqus.com/embed.js async></script>
 </body>
-{% endhighlight %}
+```
 
   [Steve Klabnik]: http://www.steveklabnik.com
   [Andrew Walker]: http://www.moddular.org
