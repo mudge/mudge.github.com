@@ -4,14 +4,80 @@ title: Data Structures as Functions (or, Implementing <code>Set#to_proc</code> a
 excerpt: Experimenting with using hashes and sets as functions in Ruby.
 ---
 
-<i>**Note:** In an attempt to stop myself from sitting on blog post drafts for
-months, I published this write-up as soon as possible but there are other
-topics I'd like to discuss including [Crystal's approach to `to_proc`][Crystal to_proc] and more about hashes as pure functions. Please feel free to use the comments for feedback and suggestions.</i>
+<i>**Update:** Now with a lot more background and alternate `Array#to_proc` and
+`Symbol#to_proc` implementations as ported from Clojure's vectors and
+keywords.</i>
 
 Reading [Henrik Nyh's "Array#to_proc for hash
 access"](http://thepugautomatic.com/2014/11/array-to-proc-for-hash-access/)
 made me think about a similar concept in [Clojure](http://clojure.org/): that
 of data structures being used as functions.
+
+## Functions
+
+First of all, let's be clear what we mean by "functions".
+The definition of a [function in mathematics][Functions] is as follows:
+
+> A <b>function</b> is a relation between a set of inputs and a set of
+permissible outputs with the property that each input is related to exactly
+one output.
+
+So a function `f` can be considered as a way of mapping from some input to some
+output, e.g.
+
+```ruby
+f(1)
+# => 2
+```
+
+Crucially, whenever the function is called with a specific input, it should
+*always* produce the same output. This means `f` in the following example
+would *not* be a function because it produces two different outputs given the
+same input:
+
+```ruby
+f(1)
+# => 2
+
+f(1)
+# => 3
+```
+
+Whole programming languages are built out of this concept (it's called
+[*functional* programming][functional programming] for a reason) but they also appear in languages
+that aren't purely functional, such as Ruby.
+
+A common place you might find them is when using methods from
+[`Enumerable`](http://ruby-doc.org/core-2.1.5/Enumerable.html) such as
+[`all?`][all?]
+and [`map`][Ruby map]:
+
+```ruby
+(1..10).all? { |x| x > 4 }
+# => false
+
+(1..10).map { |x| x * 2 }
+# => [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+```
+
+In both of the above cases, the [blocks][] passed to `all?` and `map` are
+actually simple functions.
+
+```ruby
+->(x) { x > 4 }
+```
+
+No matter how many times you call this function with the number 0, it will
+*always* return false.
+
+```ruby
+->(x) { x * 2 }
+```
+
+Similarly, no matter how many times you call this function with the number 1,
+it will *always* return true.
+
+With this in mind, let's take a look at functions in Clojure.
 
 ## Using sets as functions
 
@@ -22,11 +88,11 @@ in Ruby or a [dictionary][Python dictionary] in Python) but, unlike other
 languages, these structures can be used in places where you would expect a
 function.
 
-For example, Clojure's [`filter`][Clojure filter] is a function that takes two
-arguments: a function `pred` that returns true or false and some collection
-`coll`. It will test each item in the collection by calling `pred` with it and
-return a new collection containing only items that return true. We can use
-this to filter even numbers from a range using [`even?`][Clojure even]:
+For example, Clojure's [`filter`][Clojure filter] takes two arguments: a
+function `pred` and a collection `coll`. As you might expect from its name, it
+goes through `coll` and only returns elements that return true when fed into
+`pred`. We can use this to filter even numbers from a range using
+[`even?`][Clojure even]:
 
 ```clojure
 (filter even? (range 1 30))
@@ -68,9 +134,9 @@ as we did `even?`:
 ```
 
 It turns out that sets can be used as functions of their members: when given
-some value, they will return that value if (and only if) that value is a
-member of that set. This makes for a nifty shortcut when testing whether a
-value is in some whitelist:
+some input, they will return that input if (and only if) it is a member of the
+set; if it isn't, it returns `nil`. This behaviour makes for a nifty shortcut
+when testing whether a value is in some whitelist:
 
 ```clojure
 (def valid-attributes #{:name :age})
@@ -80,6 +146,10 @@ value is in some whitelist:
     ;; insert money-making business logic here
     (println "PROFIT")))
 ```
+
+The way this actually works in Clojure is that sets implement the [`IFn`
+interface][IFn] meaning that they have an `invoke` method that can be used to
+call them as if they were ordinary functions.
 
 We can achieve similar behaviour in Ruby by implementing `Set#to_proc` (in the same
 way Henrik implemented `to_proc` on `Array`):
@@ -105,13 +175,12 @@ perfect_numbers = Set[6, 28, 496]
 ```
 
 If you're unfamiliar with the syntax above, let's take a quick detour (if this
-is old news to you, feel free to [skip ahead](#using-hashes-as-functions)).
+is old news to you, feel free to [skip ahead](#calling-procs)).
 
 ## What's with the ampersand?
 
-In Ruby, there are methods (such as `select` above) that take
-[blocks](http://ruby-doc.com/docs/ProgrammingRuby/html/tut_containers.html#S2).
-A good example of this is [`map`][Ruby map] which evaluates a given block for
+In Ruby, there are methods (such as `select` above) that take [blocks][]. A
+good example of this is [`map`][Ruby map] which evaluates a given block for
 each item in a collection and returns a new collection with the results:
 
 ```ruby
@@ -151,7 +220,7 @@ class Symbol
 end
 ```
 
-(The real implementation actually features a cache to reduce some of the
+(The [real implementation][Symbol#to_proc] actually features a cache to reduce some of the
 performance overhead of this approach.)
 
 You can think of this as expanding like so (though note some of the
@@ -159,10 +228,52 @@ intermediate steps are not valid Ruby):
 
 ```ruby
 (1..30).map(&:to_s)
-(1..30).map(:to_s.to_proc)
-(1..30).map(->(x) { x.send(:to_s) })
+(1..30).map(:to_s.to_proc)           # invalid Ruby
+(1..30).map(->(x) { x.send(:to_s) }) # invalid Ruby
 (1..30).map { |x| x.send(:to_s) }
 (1..30).map { |x| x.to_s }
+```
+
+## Calling Procs
+
+With `to_proc` implemented on sets, can we use them as we did in Clojure?
+
+```ruby
+perfect_numbers.call(1)
+# NoMethodError: undefined method `call' for #<Set: {6, 28, 496}>
+```
+
+Sadly not, as sets themselves are not `Proc`s. Perhaps we could use the
+ampersand trick?
+
+```ruby
+&perfect_numbers.call(1)
+# SyntaxError: unexpected &, expecting end-of-input
+# &perfect_numbers.call(1)
+#  ^
+```
+
+No luck there either. In fact, we'd have to do the following:
+
+```ruby
+perfect_numbers.to_proc.call(1)
+# => nil
+```
+
+This is where our efforts diverge from Clojure: simply implementing `to_proc`
+doesn't mean that sets are now functions. You could maybe make them more
+`Proc`-like with something like the following but there is no equivalent to
+Clojure's `IFn` in Ruby:
+
+```ruby
+class Object
+  def call(*args)
+    to_proc.call(*args)
+  end
+end
+
+perfect_numbers.call(3)
+# => 6
 ```
 
 ## Using hashes as functions
@@ -177,15 +288,10 @@ A slightly more interesting case is that of maps in Clojure:
 ;; => nil
 ```
 
-This behaviour reminds me of the definition of a [function in
-mathematics][Functions]:
-
-> A <b>function</b> is a relation between a set of inputs and a set of
-permissible outputs with the property that each input is related to exactly
-one output.
-
-In this case, given the input of the key, the map returns the
-corresponding value for that key (or `nil` if there is no such entry).
+Like the behaviour of sets, maps are functions of their keys: given the input
+of the key, they returns the corresponding value (or `nil` if there is no such
+entry). This fits quite nicely our original mathematical functions: the keys
+being the [domain][] and the values being the [codomain][].
 
 As for how this might be useful, [Jay Fields wrote up an interesting use
 case][Jay Fields] when comparing and filtering two maps. It also gives us an
@@ -214,9 +320,80 @@ Or, to use a more realistic example:
 ```ruby
 person = { name: "Robert Paulson", age: 43 }
 
-name, age = %i(name age).map(&person)
+name, age = [:name, :age].map(&person)
 # => ["Robert Paulson", 43]
 ```
+
+In this second example, it's almost the reverse of Henrik's `Array#to_proc`
+behaviour where the hash is passed into a function created from the keys:
+
+```ruby
+[{ name: "A" }, { name: "B" }].map(&[:name])
+# => ["A", "B"]
+```
+
+In our case, it is the key that is passed into a function created from the
+hash:
+
+```ruby
+[:name].map(&{ name: "A" })
+# => "A"
+```
+
+## Other data structures as functions
+
+Maps and sets are not the only data structures to implement the `IFn`
+interface in Clojure.
+
+There are vectors:
+
+```clojure
+([1 2 3] 0)
+;; => 1
+```
+
+Which would be equivalent to the following `Array#to_proc`:
+
+```ruby
+class Array
+  def to_proc
+    method(:[]).to_proc
+  end
+end
+
+(1..3).map(&["A", "B", "C", "D", "E"])
+# => ["B", "C", "D"]
+```
+
+There are also keywords which are similar to Ruby's symbols:
+
+```clojure
+(:name {:name "Robert Paulson", :age 42})
+;; => "Robert Paulson"
+```
+
+To implement this in Ruby, we'd have to override the now standard
+`Symbol#to_proc` like so:
+
+```ruby
+class Symbol
+  def to_proc
+    ->(coll) { coll[self] }
+  end
+end
+
+[{ name: "Robert Paulson", age: 42 }].map(&:name)
+# => ["Robert Paulson"]
+```
+
+Of course, this would mean you can no longer use it for method access.
+
+In conclusion, we shouldn't be afraid to learn from concepts in other
+languages. After all, as [Alan Perlis
+said](http://blog.fogus.me/2011/08/14/perlis-languages/):
+
+> A language that doesn't affect the way you think about programming is not
+> worth knowing.
 
   [Clojure sets]: http://clojure.org/data_structures#Data%20Structures-Sets
   [Clojure maps]: http://clojure.org/data_structures#Data%20Structures-Maps%20(IPersistentMap)
@@ -233,3 +410,11 @@ name, age = %i(name age).map(&person)
   [Jay Fields]: http://blog.jayfields.com/2010/08/clojure-using-sets-and-maps-as.html
   [aref]: http://www.ruby-doc.org/core-2.1.5/Hash.html#method-i-5B-5D
   [Crystal to_proc]: http://crystal-lang.org/2013/09/15/to-proc.html
+  [functional programming]: http://en.wikipedia.org/wiki/Functional_programming
+  [blocks]: http://ruby-doc.com/docs/ProgrammingRuby/html/tut_containers.html#S2
+  [all?]: http://ruby-doc.org/core-2.1.5/Enumerable.html#method-i-all-3F
+  [IFn]: https://github.com/clojure/clojure/blob/master/src/jvm/clojure/lang/IFn.java
+  [Symbol#to_proc]: https://github.com/ruby/ruby/blob/25bab786cb416aa491ff62e6d9b6ba196251bfc6/string.c#L8631-L8669
+  [domain]: http://en.wikipedia.org/wiki/Domain_of_a_function
+  [codomain]: http://en.wikipedia.org/wiki/Codomain_(mathematics)
+
