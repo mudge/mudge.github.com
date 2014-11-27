@@ -289,7 +289,7 @@ A slightly more interesting case is that of maps in Clojure:
 ```
 
 Like the behaviour of sets, maps are functions of their keys: given the input
-of the key, they returns the corresponding value (or `nil` if there is no such
+of the key, they return the corresponding value (or `nil` if there is no such
 entry). This fits quite nicely with our original mathematical functions: the
 keys being the [domain][] and the values being the [codomain][].
 
@@ -388,7 +388,7 @@ end
 
 Of course, this would mean you can no longer use it for method access.
 
-In conclusion, we shouldn't be afraid to learn from concepts in other
+In conclusion, we shouldn't be afraid to experiment with concepts from other
 languages. After all, as [Alan Perlis
 said](http://blog.fogus.me/2011/08/14/perlis-languages/):
 
