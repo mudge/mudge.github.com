@@ -75,7 +75,7 @@ No matter how many times you call this function with the number 0, it will
 ```
 
 Similarly, no matter how many times you call this function with the number 1,
-it will *always* return true.
+it will *always* return 2.
 
 With this in mind, let's take a look at functions in Clojure.
 
