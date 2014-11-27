@@ -290,8 +290,8 @@ A slightly more interesting case is that of maps in Clojure:
 
 Like the behaviour of sets, maps are functions of their keys: given the input
 of the key, they returns the corresponding value (or `nil` if there is no such
-entry). This fits quite nicely our original mathematical functions: the keys
-being the [domain][] and the values being the [codomain][].
+entry). This fits quite nicely with our original mathematical functions: the
+keys being the [domain][] and the values being the [codomain][].
 
 As for how this might be useful, [Jay Fields wrote up an interesting use
 case][Jay Fields] when comparing and filtering two maps. It also gives us an
