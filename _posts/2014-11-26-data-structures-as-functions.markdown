@@ -4,6 +4,10 @@ title: Data Structures as Functions (or, Implementing <code>Set#to_proc</code> a
 excerpt: Experimenting with using hashes and sets as functions in Ruby.
 ---
 
+<i>**Note:** In an attempt to stop myself from sitting on blog post drafts for
+months, I published this write-up as soon as possible but there are other
+topics I'd like to discuss including [Crystal's approach to `to_proc`][Crystal to_proc] and more about hashes as pure functions. Please feel free to use the comments for feedback and suggestions.</i>
+
 Reading [Henrik Nyh's "Array#to_proc for hash
 access"](http://thepugautomatic.com/2014/11/array-to-proc-for-hash-access/)
 made me think about a similar concept in [Clojure](http://clojure.org/): that
@@ -228,3 +232,4 @@ name, age = %i(name age).map(&person)
   [Functions]: http://en.wikipedia.org/wiki/Function_(mathematics)
   [Jay Fields]: http://blog.jayfields.com/2010/08/clojure-using-sets-and-maps-as.html
   [aref]: http://www.ruby-doc.org/core-2.1.5/Hash.html#method-i-5B-5D
+  [Crystal to_proc]: http://crystal-lang.org/2013/09/15/to-proc.html
