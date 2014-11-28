@@ -156,10 +156,10 @@ magic method][invoke] in [PHP][] that allows objects to be called as functions:
 <?php
 class Monkey
 {
-  public function __invoke($name)
-  {
-    return "Ook, {$name}!";
-  }
+    public function __invoke($name)
+    {
+        return "Ook, {$name}!";
+    }
 }
 
 $monkey = new Monkey;
