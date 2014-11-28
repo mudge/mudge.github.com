@@ -22,8 +22,8 @@ The definition of a [function in mathematics][Functions] is as follows:
 permissible outputs with the property that each input is related to exactly
 one output.
 
-So a function `f` can be considered as a way of mapping from some input to some
-output, e.g.
+So a function `f` can be considered as a way of mapping from some input (its
+"[domain][]") to some output (its "[codomain][]"), e.g.
 
 ```ruby
 f(1)
@@ -149,7 +149,23 @@ when testing whether a value is in some whitelist:
 
 The way this actually works in Clojure is that sets implement the [`IFn`
 interface][IFn] meaning that they have an `invoke` method that can be used to
-call them as if they were ordinary functions.
+call them as if they were ordinary functions. There's a very similar [`__invoke`
+magic method][invoke] in [PHP][] that allows objects to be called as functions:
+
+```php
+<?php
+class Monkey
+{
+  public function __invoke($name)
+  {
+    return "Ook, {$name}!";
+  }
+}
+
+$monkey = new Monkey;
+$monkey('Bob');
+// => 'Ook, Bob!'
+```
 
 We can achieve similar behaviour in Ruby by implementing `Set#to_proc` (in the same
 way Henrik implemented `to_proc` on `Array`):
@@ -223,13 +239,12 @@ end
 (The [real implementation][Symbol#to_proc] actually features a cache to reduce some of the
 performance overhead of this approach.)
 
-You can think of this as expanding like so (though note some of the
-intermediate steps are not valid Ruby):
+You can think of this as expanding like so:
 
 ```ruby
 (1..30).map(&:to_s)
-(1..30).map(:to_s.to_proc)           # invalid Ruby
-(1..30).map(->(x) { x.send(:to_s) }) # invalid Ruby
+(1..30).map(&:to_s.to_proc)
+(1..30).map(&->(x) { x.send(:to_s) })
 (1..30).map { |x| x.send(:to_s) }
 (1..30).map { |x| x.to_s }
 ```
@@ -263,7 +278,7 @@ perfect_numbers.to_proc.call(1)
 This is where our efforts diverge from Clojure: simply implementing `to_proc`
 doesn't mean that sets are now functions. You could maybe make them more
 `Proc`-like with something like the following but there is no equivalent to
-Clojure's `IFn` in Ruby:
+Clojure's `IFn` or PHP's `__invoke` in Ruby:
 
 ```ruby
 class Object
@@ -417,4 +432,6 @@ said](http://blog.fogus.me/2011/08/14/perlis-languages/):
   [Symbol#to_proc]: https://github.com/ruby/ruby/blob/25bab786cb416aa491ff62e6d9b6ba196251bfc6/string.c#L8631-L8669
   [domain]: http://en.wikipedia.org/wiki/Domain_of_a_function
   [codomain]: http://en.wikipedia.org/wiki/Codomain_(mathematics)
+  [invoke]: http://php.net/manual/en/language.oop5.magic.php#object.invoke
+  [PHP]: http://php.net/
 
