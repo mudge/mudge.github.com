@@ -412,8 +412,8 @@ said](http://blog.fogus.me/2011/08/14/perlis-languages/):
   [using arguments with `Symbol#to_proc`](http://raganwald.com/2007/11/fun-with-symboltoproc.html) back in
   2007;
 * [James Hunt](http://ohthatjames.github.io/) has experimented with
-  [reducing](https://gist.github.com/ohthatjames/60a0b219443aeeb6cb41) and
-  [avoiding monkey-patching to achieve the same effects](https://gist.github.com/ohthatjames/de7a516ac13d0da2147e).
+  [reducing the amount](https://gist.github.com/ohthatjames/60a0b219443aeeb6cb41) and
+  [avoiding monkey-patching altogether to achieve the same effects](https://gist.github.com/ohthatjames/de7a516ac13d0da2147e).
 
   [Clojure sets]: http://clojure.org/data_structures#Data%20Structures-Sets
   [Clojure maps]: http://clojure.org/data_structures#Data%20Structures-Maps%20(IPersistentMap)
