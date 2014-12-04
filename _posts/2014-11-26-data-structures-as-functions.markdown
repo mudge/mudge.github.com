@@ -3,15 +3,10 @@ layout: post
 title: Data Structures as Functions (or, Implementing <code>Set#to_proc</code> and <code>Hash#to_proc</code> in Ruby)
 excerpt: Experimenting with using hashes and sets as functions in Ruby.
 ---
-
-<i>**Update:** Now with a lot more background and alternate `Array#to_proc` and
-`Symbol#to_proc` implementations as ported from Clojure's vectors and
-keywords.</i>
-
-Reading [Henrik Nyh's "Array#to_proc for hash
+Reading [Henrik Nyh's "`Array#to_proc` for hash
 access"](http://thepugautomatic.com/2014/11/array-to-proc-for-hash-access/)
-made me think about a similar concept in [Clojure](http://clojure.org/): that
-of data structures being used as functions.
+made me think about a similar concept in [Clojure](http://clojure.org/):
+data structures being used as functions.
 
 ## Functions
 
@@ -409,6 +404,16 @@ said](http://blog.fogus.me/2011/08/14/perlis-languages/):
 
 > A language that doesn't affect the way you think about programming is not
 > worth knowing.
+
+## Further reading
+
+* [Reginald Braithwaite](http://raganwald.com/) talked about
+  [a possible `String#to_proc`](http://raganwald.com/2007/10/stringtoproc.html) and
+  [using arguments with `Symbol#to_proc`](http://raganwald.com/2007/11/fun-with-symboltoproc.html) back in
+  2007;
+* [James Hunt](http://ohthatjames.github.io/) has experimented with
+  [reducing](https://gist.github.com/ohthatjames/60a0b219443aeeb6cb41) and
+  [avoiding monkey-patching to achieve the same effects](https://gist.github.com/ohthatjames/de7a516ac13d0da2147e).
 
   [Clojure sets]: http://clojure.org/data_structures#Data%20Structures-Sets
   [Clojure maps]: http://clojure.org/data_structures#Data%20Structures-Maps%20(IPersistentMap)
