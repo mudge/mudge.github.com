@@ -54,6 +54,10 @@ header h1 {
   line-height: 1;
 }
 
+.no-border {
+  border: 0;
+}
+
 .pull-left, .pull-right {
   margin-top: 5px;
   box-sizing: border-box;

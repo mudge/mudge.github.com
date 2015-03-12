@@ -3,6 +3,15 @@ layout: post
 title: Data Structures as Functions (or, Implementing <code>Set#to_proc</code> and <code>Hash#to_proc</code> in Ruby)
 excerpt: Experimenting with using hashes and sets as functions in Ruby.
 ---
+<a class="pull-right no-border"
+href=//skillsmatter.com/skillscasts/6282-exploring-to_proc><img
+src=/i/to_proc.png alt="View the full presentation on the Skills Matter web
+site" width=400 height=250></a> *At the [March 2015 meeting of the London Ruby
+User Group](http://lrug.org/meetings/2015/march/), I delivered a presentation
+based on this blog post with some supplemental material. I’ve since tweaked
+some of the examples to closer match the ones in the final talk but the
+content should largely be the same.*
+
 Reading [Henrik Nyh's "`Array#to_proc` for hash
 access"](http://thepugautomatic.com/2014/11/array-to-proc-for-hash-access/)
 made me think about a similar concept in [Clojure](http://clojure.org/):
@@ -59,14 +68,14 @@ In both of the above cases, the [blocks][] passed to `all?` and `map` are
 actually simple functions.
 
 ```ruby
-->(x) { x > 4 }
+proc { |x| x > 4 }
 ```
 
 No matter how many times you call this function with the number 0, it will
 *always* return false.
 
 ```ruby
-->(x) { x * 2 }
+proc { |x| x * 2 }
 ```
 
 Similarly, no matter how many times you call this function with the number 1,
@@ -168,7 +177,7 @@ way Henrik implemented `to_proc` on `Array`):
 ```ruby
 class Set
   def to_proc
-    ->(x) { x if include?(x) }
+    proc { |element| element if member?(element) }
   end
 end
 ```
@@ -203,7 +212,7 @@ Wherever you can pass a block in Ruby, you can also pass a
 [`Proc`][Proc] using an ampersand like so:
 
 ```ruby
-stringify = ->(x) { x.to_s }
+stringify = proc { |x| x.to_s }
 
 (1..30).map(&stringify)
 # => ["1", "2", "3", ..., "30"]
@@ -226,7 +235,7 @@ This works by implementing `Symbol#to_proc` with something like so:
 ```ruby
 class Symbol
   def to_proc
-    ->(x) { x.send(self) }
+    proc { |x| x.send(self) }
   end
 end
 ```
@@ -239,7 +248,7 @@ You can think of this as expanding like so:
 ```ruby
 (1..30).map(&:to_s)
 (1..30).map(&:to_s.to_proc)
-(1..30).map(&->(x) { x.send(:to_s) })
+(1..30).map(&proc { |x| x.send(:to_s) })
 (1..30).map { |x| x.send(:to_s) }
 (1..30).map { |x| x.to_s }
 ```
@@ -388,7 +397,7 @@ To implement this in Ruby, we'd have to override the now standard
 ```ruby
 class Symbol
   def to_proc
-    ->(coll) { coll[self] }
+    proc { |coll| coll[self] }
   end
 end
 

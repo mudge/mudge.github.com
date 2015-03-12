@@ -3,7 +3,7 @@ layout: post
 title: Managing Web Application Servers with Puppet
 excerpt: A transcript of my August 2011 LRUG presentation regarding configuration management and Puppet.
 ---
-<a class=pull-right href=//skillsmatter.com/podcast/home/lrug-puppet/><img src=/i/screengrab.png alt="View the full presentation on the Skillsmatter web site" width=239 height=179></a> *At the [August 2011 meeting of the London Ruby User Group][LRUG August], I delivered a presentation titled "Managing Web Application Servers with Puppet". You can watch a video of [the whole presentation and the Q & A session on the Skills Matter web site][Video] but for those of you who prefer to read, here is an edited transcript:*
+<a class="pull-right no-border" href=//skillsmatter.com/podcast/home/lrug-puppet/><img src=/i/screengrab.png alt="View the full presentation on the Skillsmatter web site" width=239 height=179></a> *At the [August 2011 meeting of the London Ruby User Group][LRUG August], I delivered a presentation titled "Managing Web Application Servers with Puppet". You can watch a video of [the whole presentation and the Q & A session on the Skills Matter web site][Video] but for those of you who prefer to read, here is an edited transcript:*
 
 ## Table of Contents
 
