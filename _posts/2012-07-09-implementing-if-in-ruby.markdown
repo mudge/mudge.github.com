@@ -76,3 +76,13 @@ the above code as a [gem](http://rubygems.org/gems/if).)
 
 Practically speaking, there is likely to be a performance penalty in avoiding Ruby's intrinsic optimisations for the `if` keyword. However, it implements functionality in typical Ruby that was previously reserved as a "special" language feature and, at the same time, demonstrates achieving conditional logic purely via polymorphism.
 
+***Update****: Yehuda Katz beat me to this by two years in his 2009 post ["Emulating
+Smalltalk's Conditionals in
+Ruby"](http://yehudakatz.com/2009/10/04/emulating-smalltalks-conditionals-in-ruby/). He uses separate, chainable `if_true` and `if_false` methods rather than multiple blocks to mirror Smalltalk's own `ifTrue` and `ifFalse` messages giving you code like so:*
+
+```ruby
+some_predicate
+  .if_true { puts "true" }
+  .if_false { puts "false" }
+```
+
