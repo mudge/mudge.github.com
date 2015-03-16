@@ -422,7 +422,10 @@ said](http://blog.fogus.me/2011/08/14/perlis-languages/):
   2007;
 * [James Hunt](http://ohthatjames.github.io/) has experimented with
   [reducing the amount](https://gist.github.com/ohthatjames/60a0b219443aeeb6cb41) and
-  [avoiding monkey-patching altogether to achieve the same effects](https://gist.github.com/ohthatjames/de7a516ac13d0da2147e).
+  [avoiding monkey-patching altogether to achieve the same effects](https://gist.github.com/ohthatjames/de7a516ac13d0da2147e);
+* [Sami Samhuri wrote about using `String#to_proc` and `Enumerable#to_proc` to
+  achieve a universal `Enumerable#pluck` back in
+  2007](http://samhuri.net/posts/2007/05/enumerable-pluck-and-string-to_proc-for-ruby/).
 
   [Clojure sets]: http://clojure.org/data_structures#Data%20Structures-Sets
   [Clojure maps]: http://clojure.org/data_structures#Data%20Structures-Maps%20(IPersistentMap)
