@@ -12,7 +12,7 @@
 </author>
 {% for post in site.posts %}
 <entry>
-  <title>{{ post.title | strip_html | escape_once }}</title>
+  <title type="html">{{ post.title | strip_html | escape_once }}</title>
   <link href="{{ post.url }}"/>
   <id>http://mudge.name{{ post.url }}</id>
   <updated>{{ post.date | date_to_xmlschema }}</updated>
