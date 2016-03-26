@@ -1,8 +1,15 @@
 # GitHub Pages settings for local development
 safe: true
 lsi: false
+incremental: false
+highlighter: rouge
 timezone: Europe/London
-markdown: redcarpet
-redcarpet:
-  extensions: [smart, with_toc_data]
-
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+gems:
+  - jekyll-coffeescript
+  - jekyll-paginate
+gist:
+  noscript: false
