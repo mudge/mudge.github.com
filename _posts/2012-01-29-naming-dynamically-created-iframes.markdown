@@ -49,7 +49,7 @@ Then the `iframe` should output the following:
 
 Here's that in action:
 
-<iframe frameborder=0 name=bob src=/code/iframe-test.html></iframe>
+<iframe frameborder="0" name="bob" src="/code/iframe-test.html"></iframe>
 
 However, if you are dynamically creating `iframe`s with JavaScript (perhaps to avoid [BFCache](https://developer.mozilla.org/En/Working_with_BFCache) bugs) then you may run into some issues where `window.name` is `undefined` in Internet Explorer 6 and 7.
 

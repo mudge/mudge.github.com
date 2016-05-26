@@ -4,9 +4,9 @@ title: Data Structures as Functions (or, Implementing <code>Set#to_proc</code> a
 excerpt: Experimenting with using hashes and sets as functions in Ruby.
 ---
 <a class="pull-right no-border"
-href=//skillsmatter.com/skillscasts/6282-exploring-to_proc><img
-src=/i/to_proc.png alt="View the full presentation on the Skills Matter web
-site" width=400 height=250></a> *At the [March 2015 meeting of the London Ruby
+href="//skillsmatter.com/skillscasts/6282-exploring-to_proc"><img
+src="/i/to_proc.png" alt="View the full presentation on the Skills Matter web
+site" width="400" height="250"></a> *At the [March 2015 meeting of the London Ruby
 User Group](http://lrug.org/meetings/2015/march/), I delivered a presentation
 based on this blog post with some supplemental material. I’ve since tweaked
 some of the examples to closer match the ones in the final talk but the
