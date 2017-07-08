@@ -1,5 +1,5 @@
 html {
-  font: 1.2em/1.4 'Helvetica Neue', Helvetica, sans-serif;
+  font: 1.2em/1.5 -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
   color: #333;
   margin: 0;
   background: #fff;
@@ -13,19 +13,14 @@ body {
 }
 
 a {
-  color: #4A8B87;
+  color: #c02f1d;
   text-decoration: none;
-  border-bottom: 2px solid #A4C5C3;
-}
-
-a:active {
-  color: #7CBCAE;
-  border-color: #BDDDD6;
+  border-bottom: 2px solid #DD8E84;
 }
 
 a:visited {
-  color: #244358;
-  border-color: #91A1AB;
+  color: #9a2617;
+  border-color: #C88980;
 }
 
 nav ul {
@@ -33,12 +28,6 @@ nav ul {
   margin: 0 0 1em;
   padding: 0;
   width: 100%;
-}
-
-nav li {
-  border: solid rgba(0,39,59,.08);
-  border-width: 0 0 2px;
-  padding: 0.5em;
 }
 
 dt {
@@ -95,31 +84,41 @@ pre {
 }
 
 pre, blockquote {
-  border-left: 2px solid #eee;
+  border-left: 2px solid #DADADA;
   padding-left: 1em;
   margin-left: 0;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+blockquote p:first-child {
+  margin-top: 0;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
 }
 
 header p, footer, .byline {
-  color: #666;
+  color: #6B6B6B;
 }
 
 .byline {
-  font-style: italic;
   font-size: smaller;
-  line-height: 2;
 }
 
 address {
+  font-style: normal;
   display: inline;
 }
 
 img, iframe {
-  border: 1px solid #244358;
+  border: 1px solid #6B6B6B;
 }
 
 dd {
   margin-bottom: 1em;
+  margin-left: 2em;
 }
 
 /* Syntax highlighting. */
