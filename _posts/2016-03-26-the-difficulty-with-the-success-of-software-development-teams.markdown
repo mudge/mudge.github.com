@@ -1,7 +1,7 @@
 ---
 layout: post
-title: The Difficulty With the Success of Software Development Teams
-excerpt: Thoughts on improving the success of development teams following Scale Summit 2016.
+title: What Is a &ldquo;Successful&rdquo; Software Development Team?
+excerpt: Thoughts on the difficulty of gauging and improving the success of development teams following Scale Summit 2016.
 ---
 Last Friday, I attended [Scale Summit][1] 2016, my fourth time at the conference formerly known as [Scale Camp][2]. I make no secret that it is [one of my favourite conferences][3] with its [open space technology format][4], the high calibre of attendees and its use of [Chatham House Rule][5].
 
