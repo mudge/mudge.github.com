@@ -1,13 +1,14 @@
 html {
-  font: 1.2em/1.5 -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
-  color: #333;
+  font: 16px/1.5 -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
+  color: #666;
   margin: 0;
   background: #fff;
   -webkit-font-smoothing: antialiased;
+  border-top: 6px solid #c02f1d;
 }
 
 body {
-  padding: 2em;
+  padding: 2rem;
   margin: 0 auto;
   max-width: 1020px;
 }
@@ -30,12 +31,12 @@ nav ul {
   width: 100%;
 }
 
-dt {
-  font-weight: bold;
+h1, h2 {
+  color: #333;
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 2rem;
 }
 
 h1 a {
@@ -46,31 +47,35 @@ header h1, header p, h2 {
   margin: 0;
 }
 
-header h1 {
-  line-height: 1;
-}
-
 .no-border {
   border: 0;
 }
 
 .pull-left, .pull-right {
-  margin-top: 5px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   box-sizing: border-box;
 }
 
 .pull-left {
-  margin-right: 10px;
+  margin-right: 1rem;
   float: left;
 }
 
 .pull-right {
-  margin-left: 10px;
+  margin-left: 1rem;
   float: right;
+}
+
+footer {
+  border-top: 1px solid #DADADA;
+  margin-top: 1rem;
+  padding-top: 1rem;
 }
 
 footer p {
   box-sizing: border-box;
+  margin-top: 0.5rem;
   zoom: 1;
   overflow: hidden;
 }
@@ -85,10 +90,10 @@ pre {
 
 pre, blockquote {
   border-left: 2px solid #DADADA;
-  padding-left: 1em;
+  padding-left: 1rem;
   margin-left: 0;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 blockquote p:first-child {
@@ -100,11 +105,7 @@ blockquote p:last-child {
 }
 
 header p, footer, .byline {
-  color: #6B6B6B;
-}
-
-.byline {
-  font-size: smaller;
+  color: #999;
 }
 
 address {
@@ -112,8 +113,8 @@ address {
   display: inline;
 }
 
-img, iframe {
-  border: 1px solid #6B6B6B;
+iframe {
+  border: 1px solid #DADADA;
 }
 
 dd {
