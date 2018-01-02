@@ -52,7 +52,6 @@ header h1, header p, h2 {
 }
 
 .pull-left, .pull-right {
-  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   box-sizing: border-box;
 }
@@ -74,8 +73,8 @@ footer {
 }
 
 footer p {
+  margin-top: 0;
   box-sizing: border-box;
-  margin-top: 0.5rem;
   zoom: 1;
   overflow: hidden;
 }
