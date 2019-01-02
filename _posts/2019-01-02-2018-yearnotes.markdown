@@ -100,7 +100,7 @@ heap.pop
 #=> #<FibonacciHeap::Node key=0 value="baz">
 ```
 
-Replacing my array-based implementation of Dijkstra's algoritm with a Fibonacci Heap-based one sped up our build times to mere _seconds_ and was well worth it.
+Replacing my array-based implementation of Dijkstra's algorithm with a Fibonacci Heap-based one sped up our build times to mere _seconds_ and was well worth it.
 
 That _would_ have been my open source highlight of the year until something else happened on Christmas Day: [Ruby 2.6 was released](https://www.ruby-lang.org/en/news/2018/12/25/ruby-2-6-0-released/) containing [a certain new feature](https://bugs.ruby-lang.org/issues/6284).
 
