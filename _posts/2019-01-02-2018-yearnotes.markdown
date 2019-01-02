@@ -108,7 +108,7 @@ That feature was the ability to compose [`Proc`](https://ruby-doc.org/core/Proc.
 
 ## Work
 
-The elephant in this post is that in August of this year, after 5 years, I gave notice of my resignation as CTO of [Altmetric](https://www.altmetric.com).
+<a href="https://www.instagram.com/p/Bmd7oNYAOVy/"><img src="https://www.instagram.com/p/Bmd7oNYAOVy/media/?size=l" class="pull-right" width="360" height="360" alt=""></a> The elephant in this post is that in August of this year, after 5 years, I gave notice of my resignation as CTO of [Altmetric](https://www.altmetric.com).
 
 The year leading up to that point had seen some great successes from the team: the rewrite of the company's oldest data source, the [addition of over 8 million patents](https://www.altmetric.com/press/press-releases/patent-data-in-altmetric-highlights-the-commercialization-of-research/), a [huge user interface and technology overhaul to the flagship product](https://www.altmetric.com/press/press-releases/altmetric-releases-explorer-highlights-and-enhanced-user-experience/), the [integration of scholarly citations for the full database](https://www.altmetric.com/press/press-releases/altmetric-adds-dimensions-citation-data-to-highlight-academic-impact-of-scholarly-work/) and some especially tricky performance work on the company's [Extract, transform, load processes](https://en.wikipedia.org/wiki/Extract,_transform,_load).
 
