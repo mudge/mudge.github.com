@@ -122,6 +122,6 @@ I hope to write more about my time at Altmetric in the future as I learnt an inc
 
 ## 2019
 
-I'm honestly not sure what is next. After working continuously for a decade in London, I plan to take a brief break from keyboards and screens for a short while before seeing how I can best be of help to others, be that as a contractor or as a full-time employee.
+I'm honestly not sure what is next. After working continuously for a decade in London, I plan to take a break from keyboards and screens for a short while before seeing how I can best be of help to others, be that as a contractor or as a full-time employee.
 
 Despite having already published [a new open source project this year](https://github.com/mudge/homer), I hope to continue seeking a better balance between work and life and, as with last year, get back into running.
