@@ -39,7 +39,7 @@ $ cd my-project
 $ php -S localhost:8080 -t public
 ```
 
-The core idea of Engine is that modelling a web application as a pure function that takes in a request and produces a response as an output (i.e. `f(request) = response`) is no longer true. Perhaps it is better to think of a web application as something that takes _both_ a request and a response as input and achieves its desired goal by using the response for side-effects (think of the response as a sort of open socket). This way, you can easily send your response in bits or stream responses indefinitely.
+The core idea of Engine is that modelling a web application as a pure function that takes in a request and produces a response as an output (i.e. `f(request) = response`) no longer feels accurate. Perhaps it is better to think of a web application as something that takes _both_ a request and a response as input and achieves its desired goal by using the response for side-effects (think of the response as a sort of open socket). This way, you can easily send your response in bits or stream responses indefinitely.
 
 It was also a great excuse to take advantage of [PHP 7.1's type system](http://php.net/releases/7_1_0.php) and baffle people who haven't seen any recent PHP. For example, here is some real source code from our wedding site:
 
