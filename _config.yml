@@ -1,15 +1,17 @@
-# GitHub Pages settings for local development
-safe: true
 lsi: false
+safe: true
 incremental: false
 highlighter: rouge
-timezone: Europe/London
-markdown: kramdown
-kramdown:
-  input: GFM
-  hard_wrap: false
-gems:
-  - jekyll-coffeescript
-  - jekyll-paginate
 gist:
   noscript: false
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
+  input: GFM
+  hard_wrap: false
+encoding: UTF-8
+future: true
+jailed: false
+theme: jekyll-theme-primer
+gfm_quirks: paragraph_end
+repository: mudge/mudge.github.com
