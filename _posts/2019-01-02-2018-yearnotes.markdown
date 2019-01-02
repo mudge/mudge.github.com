@@ -1,0 +1,127 @@
+---
+layout: post
+title: 2018 Yearnotes
+excerpt: Reflecting on the past year, both personally and professionally.
+date: 2019-01-02 15:36:00
+---
+Last year, inspired by [Nat Buckley's "2017 Yearnotes"](http://ntlk.net/2017/12/29/2017-yearnotes/) and [Julia Evans' "2017: Year in review"](https://jvns.ca/blog/2017/12/31/2017--year-in-review/), I wrote my own "2017 Yearnotes". Despite the fact that year saw me getting [engaged at the top of Goat Fell](https://www.instagram.com/p/BRlk68ngORO/?taken-by=mudgemeister) on the [Isle of Arran](https://en.wikipedia.org/wiki/Isle_of_Arran) and later [married](https://twitter.com/mudge/status/914594665315356672) (not before completing the [frankly colossal act of yak shaving](https://en.wiktionary.org/wiki/yak_shaving) of [writing my own PHP web framework](https://github.com/mudge/engine)), I never published the piece. Reading it now, it's somewhat strange to read my struggles with [London Computation Club](http://london.computation.club/), my reflections on a lack of separation between my career and my identity and that my two hopes for 2018 were as follows:
+
+* Figure out a healthier work-life balance;
+* Start running again.
+
+I flat-out failed at the latter and, as for the former, well, you could say I made some progress in that area but not in the way I could have predicted.
+
+And so, some reflections on 2018.
+
+## Travelling
+
+<a href="https://www.instagram.com/p/BftMkvVhmkP/"><img src="https://www.instagram.com/p/BftMkvVhmkP/media/?size=l" class="pull-right" width="360" height="270" alt=""></a> In February, I travelled to [Tromsø, Norway](https://en.wikipedia.org/wiki/Tromsø) for a week-long holiday exploring the breathtaking [Lofoten islands](https://en.wikipedia.org/wiki/Lofoten).
+
+It was the first time I've ever been within the [Arctic Circle](https://en.wikipedia.org/wiki/Arctic_Circle) and the combination of natural beauty and outside temperatures of -13 °C made for a heady mix of awe and fearful respect. That said, we spent a lot of time on the road trying to take it all in within seven days though I did get my first exposure to [lane assist technology](https://en.wikipedia.org/wiki/Lane_departure_warning_system) which was frankly terrifying on icy roads.
+
+One of the intentions of the trip was to break our daily habit of being glued to our phones and to break our dependence on constant stimulation from the internet. As with the rest of the year, I admit I wasn't wholly successful in this endeavour though the place itself was wonderful.
+
+Not long after returning from Norway, we travelled to Cheshire for the first of several weddings this year (the rest would later take us to Liverpool, Shoreditch and Durham) which---in a change from last year---are all-the-more enjoyable when you're not planning your own.
+
+2018 saw two weekend breaks: the first to sunny [Margate](https://en.wikipedia.org/wiki/Margate) and the second, my very first weekend break abroad when we went to [Porto, Portugal](https://en.wikipedia.org/wiki/Porto). The latter gave us 48 hours to spelunk in port caves and seek out [pastéis de nata](https://en.wikipedia.org/wiki/Pastel_de_nata) in very good company.
+
+In further attempts to "get away from it all", we journeyed up to Scotland several times, visiting family in Aberdeen and Glasgow and, in search of true respite, [retreating to remote parts of Skye](https://www.instagram.com/p/BotuE8vAnrs/) (where I ended up spending hours playing [Hollow Knight](http://hollowknight.com) on the Nintendo Switch).
+
+You may have noticed a recurring theme in the aforementioned journeys: attempts to dramatically switch context, to shake off daily routine and to find some peace outside of daily life in London.
+
+## Open source
+
+I began the year by open sourcing the aforementioned PHP web framework I wrote [in order to get married](https://twitter.com/mudge/status/908383877927985152): [Engine](https://github.com/mudge/engine).
+
+```console
+$ composer create-project mudge/engine-skeleton:dev-master my-project
+$ cd my-project
+$ php -S localhost:8080 -t public
+```
+
+The core idea of Engine is that modelling a web application as a pure function that takes in a request and produces a response as an output (i.e. `f(request) = response`) is no longer true. Perhaps it is better to think of a web application as something that takes _both_ a request and a response as input and achieves its desired goal by using the response for side-effects (think of the response as a sort of open socket). This way, you can easily send your response in bits or stream responses indefinitely.
+
+It was also a great excuse to take advantage of [PHP 7.1's type system](http://php.net/releases/7_1_0.php) and baffle people who haven't seen any recent PHP. For example, here is some real source code from our wedding site:
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Wedding;
+
+final class TravelController extends PrivateController
+{
+    public function index(): void
+    {
+        $this->requireUser();
+
+        $this->render(
+            'travel.html',
+            ['lodges' => $this->user->isStayingInLodges()]
+        );
+    }
+}
+```
+
+In February, I followed this up with a failed experiment to implement [a `Readable` module in Ruby](https://github.com/mudge/readable) that would allow users to create [`IO`](http://ruby-doc.org/core/IO.html) objects from arbitary sources much like [`Enumerator`](http://ruby-doc.org/core/Enumerator.html) allows users to create lazy [`Enumerable`](http://ruby-doc.org/core/Enumerable.html) objects:
+
+```ruby
+readable = Readable.new do |yielder|
+  yielder << "\u001F\x8B\b\u0000[\u0017\x88Z\u0000"
+  yielder << "\u0003\xF3H\xCD\xC9\xC9\xD7)\xCF/\xCAI"
+  yielder << "\u0001\u0000)^\u0014\xFC\v\u0000\u0000\u0000"
+end
+
+gz_reader = Zlib::GzipReader.new(readable)
+CSV(gz_reader).gets
+#=> ['Hello', 'world']
+```
+
+Sadly, this [didn't fully work due to the sprawling surface area of the `IO` module](https://github.com/mudge/readable#why) (though, later in the year, [Dmitry Kandalov's "Coroutines explained"](https://github.com/dkandalov/coroutines-explained) made me want to try this again with [`Fiber`](https://ruby-doc.org/core/Fiber.html)s).
+
+In July, thanks to the help of [London Computation Club](http://london.computation.club), a particularly thorny [Graph theory](https://en.wikipedia.org/wiki/Graph_theory) problem at work led me to implement [Dijkstra's algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm) in Ruby.
+
+While the initial implementation using arrays worked, it could take an hour to run and so I looked into implementing a [priority queue data structure](https://en.wikipedia.org/wiki/Priority_queue) to speed things up. In a surprising twist, I discovered an ideal algorithm not online but in a printed textbook gathering dust on my shelf: [Cormen, Leiserson, Rivest and Stein's "Introduction to Algorithms, Third Edition"](https://mitpress.mit.edu/books/introduction-algorithms-third-edition). Implementing their description of Fibonacci Heaps was difficult but ultimately rewarding when I published a new RubyGem imaginatively titled [Fibonacci Heap](https://github.com/mudge/fibonacci_heap).
+
+The data structure allows you to insert nodes with a given priority and efficiently `pop` the highest priority node from the heap even if that priority has been modified after insertion:
+
+```ruby
+heap = FibonacciHeap::Heap.new
+foo = FibonacciHeap::Node.new(1, 'foo')
+bar = FibonacciHeap::Node.new(0, 'bar')
+baz = FibonacciHeap::Node.new(2, 'baz')
+heap.insert(foo)
+heap.insert(bar)
+heap.insert(baz)
+heap.pop
+#=> #<FibonacciHeap::Node key=0 value="bar">
+heap.decrease_key(baz, 0)
+heap.pop
+#=> #<FibonacciHeap::Node key=0 value="baz">
+```
+
+Replacing my array-based implementation of Dijkstra's algoritm with a Fibonacci Heap-based one sped up our build times to mere _seconds_ and was well worth it.
+
+That _would_ have been my open source highlight of the year until something else happened on Christmas Day: [Ruby 2.6 was released](https://www.ruby-lang.org/en/news/2018/12/25/ruby-2-6-0-released/) containing [a certain new feature](https://bugs.ruby-lang.org/issues/6284).
+
+That feature was the ability to compose [`Proc`](https://ruby-doc.org/core/Proc.html) objects using [`<<`](https://ruby-doc.org/core-2.6/Proc.html#method-i-3C-3C) and [`>>`](https://ruby-doc.org/core-2.6/Proc.html#method-i-3E-3E). While I have dabbled in functional programming before, this feature is of particular interest to me as it is based on [a series of patches I submitted in 2015](https://bugs.ruby-lang.org/issues/6284#note-26). This is my first code contribution to Ruby to be accepted and, as such, has to be my open source highlight of the year.
+
+## Work
+
+The elephant in this post is that in August of this year, after 5 years, I gave notice of my resignation as CTO of [Altmetric](https://www.altmetric.com).
+
+The year leading up to that point had seen some great successes from the team: the rewrite of the company's oldest data source, the [addition of over 8 million patents](https://www.altmetric.com/press/press-releases/patent-data-in-altmetric-highlights-the-commercialization-of-research/), a [huge user interface and technology overhaul to the flagship product](https://www.altmetric.com/press/press-releases/altmetric-releases-explorer-highlights-and-enhanced-user-experience/), the [integration of scholarly citations for the full database](https://www.altmetric.com/press/press-releases/altmetric-adds-dimensions-citation-data-to-highlight-academic-impact-of-scholarly-work/) and some especially tricky performance work on the company's [Extract, transform, load processes](https://en.wikipedia.org/wiki/Extract,_transform,_load).
+
+Ultimately though, my struggle to find a sustainable place for myself within the company (as evidenced by my feelings in the previous year and by my attempts to take a break and even start [meditating](https://www.headspace.com)) was in vain. Considering how blissful I felt during my honeymoon at the end of 2017, it was shocking to me how much my work permeated my every waking thought and how quickly I fell into the same trap of my own doing.
+
+At my lowest ebb, I booked a long Bank Holiday weekend off at the last minute and asked many people in my field for advice, many of them from [London Computation Club](http://london.computation.club). I am hugely thankful to all those who kindly took the time to speak with me and help me navigate a very difficult decision.
+
+I worked the remaining four months of the year, handing over to [my amazing colleagues](https://www.altmetric.com/about-us/people/), confident in their ability to learn from my mistakes and lead the team to even greater success.
+
+I hope to write more about my time at Altmetric in the future as I learnt an incredible amount trying to build a software development team there over five and a half years and I would do it all over again in a heartbeat.
+
+## 2019
+
+I'm honestly not sure what is next. After working continuously for a decade in London, I plan to take a brief break from keyboards and screens for a short while before seeing how I can best be of help to others, be that as a contractor or as a full-time employee.
+
+Despite having already published [a new open source project this year](https://github.com/mudge/homer), I hope to continue seeking a better balance between work and life and, as with last year, get back into running.
