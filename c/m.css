@@ -4,13 +4,15 @@ html {
   margin: 0;
   background: #fff;
   -webkit-font-smoothing: antialiased;
-  border-top: 6px solid #c02f1d;
 }
 
 body {
-  padding: 2rem;
   margin: 0 auto;
   max-width: 1020px;
+}
+
+main {
+  padding: 2rem;
 }
 
 a {
@@ -45,6 +47,19 @@ h1 a {
 
 header h1, header p, h2 {
   margin: 0;
+}
+
+.strapline {
+  background: #c02f1d;
+  font-size: 0.8em;
+  color: #fff;
+  padding: 0.4em;
+  text-align: center;
+}
+
+.strapline a {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
 .no-border {

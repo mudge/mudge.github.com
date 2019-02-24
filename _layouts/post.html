@@ -30,36 +30,39 @@
     </script>
   </head>
   <body>
-    <nav>
-      <ul>
-        <li><a href=/ rel=home>&larr; Back to the homepage</a></li>
-      </ul>
-    </nav>
-    <article class=hentry>
-      <header>
-        <h1 class=entry-title>
-          <a href={{ page.url }} rel=bookmark>{{ page.title }}</a>
-        </h1>
-        <div class="byline vcard">
-          <address class=author>By <a href=/ class=fn rel=author>Paul Mucur</a></address> on
-          <time class=updated datetime={{ page.date | date_to_xmlschema }}>{{ page.date | date: "%A, %-dth %B %Y" | replace: "1th", "1st" | replace: "2th", "2nd" | replace: "3th", "3rd" | replace: "11st", "11th" | replace: "12nd", "12th" | replace: "13rd", "13th" }}</time>
-        </div>
-      </header>
-      <div class=entry-content>{{ content }}</div>
-      {% for post in site.related_posts limit:3 %}
-      {% if forloop.first %}
-      <aside>
-        <h2>Recent Posts</h2>
-        <ol>
+    <div class=strapline>Need help with software development? <a href=https://www.ghostcassette.com>I&rsquo;m available for hire</a>.</div>
+    <main>
+      <nav>
+        <ul>
+          <li><a href=/ rel=home>&larr; Back to the homepage</a></li>
+        </ul>
+      </nav>
+      <article class=hentry>
+        <header>
+          <h1 class=entry-title>
+            <a href={{ page.url }} rel=bookmark>{{ page.title }}</a>
+          </h1>
+          <div class="byline vcard">
+            <address class=author>By <a href=/ class=fn rel=author>Paul Mucur</a></address> on
+            <time class=updated datetime={{ page.date | date_to_xmlschema }}>{{ page.date | date: "%A, %-dth %B %Y" | replace: "1th", "1st" | replace: "2th", "2nd" | replace: "3th", "3rd" | replace: "11st", "11th" | replace: "12nd", "12th" | replace: "13rd", "13th" }}</time>
+          </div>
+        </header>
+        <div class=entry-content>{{ content }}</div>
+        {% for post in site.related_posts limit:3 %}
+        {% if forloop.first %}
+        <aside>
+          <h2>Recent Posts</h2>
+          <ol>
+          {% endif %}
+            <li><a href={{ post.url }} rel=bookmark>{{ post.title }}</a></li>
+          {% if forloop.last %}
+          </ol>
+        </aside>
         {% endif %}
-          <li><a href={{ post.url }} rel=bookmark>{{ post.title }}</a></li>
-        {% if forloop.last %}
-        </ol>
-      </aside>
-      {% endif %}
-      {% endfor %}
-    </article>
-    <div id=disqus_thread></div>
-    {% include footer.html %}
+        {% endfor %}
+      </article>
+      <div id=disqus_thread></div>
+      {% include footer.html %}
+    </main>
   </body>
 </html>

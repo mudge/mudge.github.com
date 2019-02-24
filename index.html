@@ -24,18 +24,21 @@
     </script>
   </head>
   <body>
-    <header>
-      <h1 class=author>Paul Mucur</h1>
-      <p>Tales from a web application developer.</p>
-    </header>
-    <section>
-    <dl>
-      {% for post in site.posts %}
-      <dt><a href={{ post.url }} rel=bookmark>{{ post.title }}</a></dt>
-      <dd>{{ post.excerpt }}</dd>
-      {% endfor %}
-    </dl>
-    </section>
-    {% include footer.html %}
+    <div class=strapline>Need help with software development? <a href=https://www.ghostcassette.com>I&rsquo;m available for hire</a>.</div>
+    <main>
+      <header>
+        <h1 class=author>Paul Mucur</h1>
+        <p>Tales from a web application developer.</p>
+      </header>
+      <section>
+      <dl>
+        {% for post in site.posts %}
+        <dt><a href={{ post.url }} rel=bookmark>{{ post.title }}</a></dt>
+        <dd>{{ post.excerpt }}</dd>
+        {% endfor %}
+      </dl>
+      </section>
+      {% include footer.html %}
+    </main>
   </body>
 </html>
