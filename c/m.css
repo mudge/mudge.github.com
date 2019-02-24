@@ -8,11 +8,11 @@ html {
 
 body {
   margin: 0 auto;
-  max-width: 1020px;
 }
 
 main {
   padding: 2rem;
+  max-width: 1020px;
 }
 
 a {
