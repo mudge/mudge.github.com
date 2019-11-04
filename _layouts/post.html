@@ -11,6 +11,7 @@
     <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
     <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
     <link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+    {% if page.comments %}
     <script>
       var _gaq = [['_setAccount','UA-1804081-1'],['_trackPageview']],
           disqus_shortname = 'mudge',
@@ -28,6 +29,18 @@
           s('//mudge.disqus.com/embed.js');
       }(document));
     </script>
+    {% else %}
+    <script>
+      var _gaq = [['_setAccount','UA-1804081-1'],['_trackPageview']];
+
+      (function (d, g) {
+        g = d.createElement('script');
+        g.async = true;
+        g.src = '//www.google-analytics.com/ga.js';
+        d.documentElement.firstChild.appendChild(g);
+      }(document));
+    </script>
+    {% endif %}
   </head>
   <body>
     <div class=strapline>Need help with software development? <a title="Ghost Cassette" href=https://www.ghostcassette.com>I&rsquo;m available for hire</a>.</div>
@@ -61,7 +74,9 @@
         {% endif %}
         {% endfor %}
       </article>
+      {% if page.comments %}
       <div id=disqus_thread></div>
+      {% endif %}
       {% include footer.html %}
     </main>
   </body>

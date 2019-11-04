@@ -15,3 +15,10 @@ jailed: false
 theme: jekyll-theme-primer
 gfm_quirks: paragraph_end
 repository: mudge/mudge.github.com
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      comments: true
