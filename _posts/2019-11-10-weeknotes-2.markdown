@@ -67,7 +67,7 @@ While I was conflicted about publishing [my first weeknotes last week](/2019/11/
 
         Then, to make it automatically appear in the Finder and Time Machine settings, I added the following to `/etc/avahi/services/samba.service`:
 
-        ```
+        ```xml
         <?xml version="1.0" standalone='no'?><!--*-nxml-*-->
         <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
         <service-group>
