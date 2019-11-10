@@ -1,0 +1,96 @@
+---
+layout: post
+title: Weeknotes 2
+excerpt: Fixing dates on old videos in Photos, using a Raspberry Pi for Time Machine and the right tool for the job.
+date: 2019-11-10
+comments: false
+---
+While I was conflicted about publishing [my first weeknotes last week](/2019/11/04/weeknotes-1.html) (were they too self-indulgent? are they interesting to anyone else?), I received some nice words of encouragement and so on with this week&rsquo;s!
+
+*   A recurring lesson in the past few weeks has been the importance of the right tool for the job:
+
+    1. Our kitchen tap began very occasionally dripping so I decided to replace its cartridges. However, despite my best efforts with a series of adjustable spanners and a hastily-purchased set of box spanners, all I managed to do was chew up the metal of the existing cartridge. Frustrated and close to admitting defeat, I remembered that I bought a set of socket and ratchet spanners to replace a car brakelight many years before and---lo and behold---that worked straight away and I was able to swap out the cartridges in mere minutes!
+
+    2. While I was engaged in this exciting DIY adventure, E was having a customer service battle with our water company as we&rsquo;d been sent a bill ten times our usual amount. Adamant we hadn't suddenly taking to bathing around the clock, the company finally agreed to send out an engineer to investigate. Ever keen to see the workings of such things, I accompanied them to the street as they discovered they have been reading the wrong water meter for us for six years. In trying to identify our _real_ meter, they accidentally broke the stop cock on it, leaving us without any running water. A second engineer promptly came to fix it using a simple-looking tool known as a stop cock key and complained to me that if only they sent all engineers out with one, there would be no need for him to have visited. I nodded politely.
+
+    3. As discussed [last week](/2019/11/04/weeknotes-1.html), I&rsquo;ve been baking some bread again and experimented with putting dough on baking parchment before lowering it into a Dutch oven. At least, I _thought_ I was using baking parchment but, thanks to swearing my head off while trying to pick apart an unholy fusion of paper and dough, I have since learnt that &ldquo;greaseproof paper&rdquo; and &ldquo;greaseproof _and baking_ paper&rdquo; are crucially different.
+
+*   Reading [Vincent Foley&rsquo;s &ldquo;Lesser Known Coding Fonts&rdquo;](https://vfoley.xyz/lesser-known-coding-fonts/) sent me down a bit of a rabbithole trying to find the _perfect_ monospaced typeface, particularly after watching the recent episode of [&ldquo;Abstract: The Art of Design&rdquo;](https://www.netflix.com/gb/title/80057883) about [typeface design with Jonathan Hoefler](https://www.typography.com). In the end, I abandoned this quest for what it was: an act of pure procrastination.
+
+*   It has been five years since [Casper Kelly&rsquo;s &ldquo;Too Many Cooks&rdquo;](https://www.youtube.com/watch?v=QrGrOK8oZG8). I continue to pay tribute to it in my own small way by having [Rush Coil&rsquo;s NES cover of it](http://rushcoil.bandcamp.com/track/too-many-cooks-rush-coil-nes-cover) as my ringtone.
+
+*   C having his 8-week [vaccinations](https://www.nhs.uk/conditions/vaccinations/) and talk of preventing fevers led me to [Jenny Kleeman&rsquo;s &ldquo;Why parents are addicted to Calpol&rdquo;](https://www.theguardian.com/lifeandstyle/2019/jun/04/why-parents-are-addicted-to-calpol) so it was with an unearned sense of pride I marched into our local pharmacy and asked for whatever generic, liquid baby paracetamol suspension they had.
+
+*   It has been quite the week for computer noodling for me:
+
+    *   As I manage my family&rsquo;s email accounts, I decided to spend some time implementing [Domain-based Message Authentication, Reporting & Conformance (DMARC)](https://support.google.com/a/answer/2466580?hl=en) for my domains. As a side-effect, I now get a daily report of the times people are sending emails pretending to be from `mudge.name`. These attempts _should_ now go straight to spam but it&rsquo;s still a little disconcerting.
+
+    *   Following [last week](/2019/11/04/weeknotes-1.html)&rsquo;s adventures with backups, I decided to set up [a network-based Time Machine backup](https://support.apple.com/en-us/HT202784).
+
+        The first step was to find a hard drive big enough to store backups and, in my search, I uncovered old videos of myself dating back to 1998. This led me to compress all these 21-year old videos using [Automator](https://support.apple.com/en-gb/guide/automator/welcome/mac) and then import them into [Photos](https://www.apple.com/uk/macos/photos/). However, none of the videos had the correct date on them.
+
+        Thankfully, I noticed the videos _did_ contain their real date and time in their titles, e.g. `CLIP-2003-08-02 21;40;28.MOV`. As there were over 700 of these videos, updating them manually didn&rsquo;t seem a smart option so I decided to look into scripting Photos via the [Mac Automation Scripting Guide](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/index.html#//apple_ref/doc/uid/TP40016239). While it seemed like I might have to learn a whole new programming language, I vaguely recalled that you can now script macOS applications with JavaScript.
+
+        I wondered if I could use any modern JavaScript features and [Matt MacLeod](http://umm.io) pointed out [&ldquo;ES6 Features in JXA&rdquo;](https://github.com/JXA-Cookbook/JXA-Cookbook/wiki/ES6-Features-in-JXA) which explains that you can use any JavaScript features supported by the version of Safari bundled with your OS.
+
+        With that, I was able to run the following JavaScript in Script Editor to update all my videos in one go:
+
+        ```javascript
+        const pattern = /CLIP-(\d{4})-(\d{2})-(\d{2}) (\d{2});(\d{2});(\d{2})\.MOV/;
+        const clips = Application("Photos").selection().filter(photo => pattern.test(photo.filename()));
+
+        for (const clip of clips) {
+          const filename = clip.filename();
+          const [, year, month, day, hours, minutes, seconds] = filename.match(pattern);
+          const newDate = new Date(year, month - 1, day, hours, minutes, seconds);
+
+          console.log(`Setting ${filename} date to ${newDate} from ${clip.date()}`);
+          clip.date = newDate;
+        }
+        ```
+
+    *   Videos of a much softer-faced and squeakier-voiced me safely stored in iCloud, it was time to get that Time Machine set up on my [Raspberry Pi](https://www.raspberrypi.org):
+    
+        I upgraded to the [latest version of Raspbian](https://www.raspberrypi.org/downloads/raspbian/), connected my USB hard drive (identifying it with `sudo fdisk -l`), formatted it as ext4 (with `mkfs -t ext4`) and mounted it under `/media` (after adding it to `/etc/fstab`).
+
+        I installed the latest version of [Samba](https://www.samba.org) and added the following configuration to `/etc/samba/smb.conf`:
+
+        ```
+        [backups]
+            comment = Backups
+            path = /media/backups
+            read only = No
+            valid users = mudge
+            vfs objects = catia fruit streams_xattr
+            fruit:time machine = yes
+        ```
+
+        Then, to make it automatically appear in the Finder and Time Machine settings, I added the following to `/etc/avahi/services/samba.service`:
+
+        ```
+        <?xml version="1.0" standalone='no'?><!--*-nxml-*-->
+        <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+        <service-group>
+          <name replace-wildcards="yes">%h</name>
+          <service>
+            <type>_smb._tcp</type>
+            <port>445</port>
+          </service>
+          <service>
+            <type>_device-info._tcp</type>
+            <port>0</port>
+            <txt-record>model=TimeCapsule8,119</txt-record>
+          </service>
+          <service>
+            <type>_adisk._tcp</type>
+            <txt-record>sys=waMa=0,adVF=0x100</txt-record>
+            <txt-record>dk0=adVN=backups,adVF=0x82</txt-record>
+          </service>
+        </service-group>
+        ```
+
+        Then it was just a case of choosing this new `backups` share in the Time Machine settings and ticking the "Encrypt backups" option and waiting. The first backup took around 13 hours but I now have a full backup as an encrypted sparse image on my USB hard drive.
+
+*   C is now ten weeks old and I&rsquo;ve been thinking about something from [Michael Please‘s BAFTA-winning short film, &ldquo;The Eagleman Stag&rdquo;](https://vimeo.com/41756240): yesterday was less than a 12,000th of my life but, for C, it was over 177 times more.
+
+*   [Tom Stuart](https://codon.com) said I might regret the semicolons in last week&rsquo;s notes so I hope you enjoy this week&rsquo;s luxurious full stops instead.
