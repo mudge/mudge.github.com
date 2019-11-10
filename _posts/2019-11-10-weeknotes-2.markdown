@@ -15,13 +15,13 @@ While I was conflicted about publishing [my first weeknotes last week](/2019/11/
 
     3. As discussed [last week](/2019/11/04/weeknotes-1.html), I&rsquo;ve been baking some bread again and experimented with putting dough on baking parchment before lowering it into a Dutch oven. At least, I _thought_ I was using baking parchment but, thanks to swearing my head off while trying to pick apart an unholy fusion of paper and dough, I have since learnt that &ldquo;greaseproof paper&rdquo; and &ldquo;greaseproof _and baking_ paper&rdquo; are crucially different.
 
-*   Reading [Vincent Foley&rsquo;s &ldquo;Lesser Known Coding Fonts&rdquo;](https://vfoley.xyz/lesser-known-coding-fonts/) sent me down a bit of a rabbithole trying to find the _perfect_ monospaced typeface, particularly after watching the recent episode of [&ldquo;Abstract: The Art of Design&rdquo;](https://www.netflix.com/gb/title/80057883) about [typeface design with Jonathan Hoefler](https://www.typography.com). In the end, I abandoned this quest for what it was: an act of pure procrastination.
+*   Reading [Vincent Foley&rsquo;s &ldquo;Lesser Known Coding Fonts&rdquo;](https://vfoley.xyz/lesser-known-coding-fonts/) sent me down a bit of a rabbithole trying to find the _perfect_ monospaced typeface, particularly after watching the recent episode of [&ldquo;Abstract: The Art of Design&rdquo;](https://www.netflix.com/gb/title/80057883) about [typeface design with Jonathan Hoefler](https://www.typography.com). In the end, I abandoned this quest for what it was: an act of pure time-wasting.
 
 *   It has been five years since [Casper Kelly&rsquo;s &ldquo;Too Many Cooks&rdquo;](https://www.youtube.com/watch?v=QrGrOK8oZG8). I continue to pay tribute to it in my own small way by having [Rush Coil&rsquo;s NES cover of it](http://rushcoil.bandcamp.com/track/too-many-cooks-rush-coil-nes-cover) as my ringtone.
 
 *   C having his 8-week [vaccinations](https://www.nhs.uk/conditions/vaccinations/) and talk of preventing fevers led me to [Jenny Kleeman&rsquo;s &ldquo;Why parents are addicted to Calpol&rdquo;](https://www.theguardian.com/lifeandstyle/2019/jun/04/why-parents-are-addicted-to-calpol) so it was with an unearned sense of pride I marched into our local pharmacy and asked for whatever generic, liquid baby paracetamol suspension they had.
 
-*   It has been quite the week for computer noodling for me:
+*   It has been quite the week of computer noodling for me:
 
     *   As I manage my family&rsquo;s email accounts, I decided to spend some time implementing [Domain-based Message Authentication, Reporting & Conformance (DMARC)](https://support.google.com/a/answer/2466580?hl=en) for my domains. As a side-effect, I now get a daily report of the times people are sending emails pretending to be from `mudge.name`. These attempts _should_ now go straight to spam but it&rsquo;s still a little disconcerting.
 
