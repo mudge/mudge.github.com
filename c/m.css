@@ -29,7 +29,7 @@ a:visited {
 
 nav ul {
   list-style: none;
-  margin: 0 0 1em;
+  margin: 0 0 1rem;
   padding: 0;
   width: 100%;
 }
@@ -52,9 +52,9 @@ header h1, header p, h2 {
 
 .strapline {
   background: #c02f1d;
-  font-size: 0.8em;
+  font-size: 0.8rem;
   color: #fff;
-  padding: 0.4em;
+  padding: 0.4rem;
   text-align: center;
 }
 
@@ -80,6 +80,15 @@ header h1, header p, h2 {
 .pull-right {
   margin-left: 1rem;
   float: right;
+}
+
+ul, ol {
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+li ul, li ol {
+  padding-left: 1rem;
 }
 
 footer {
@@ -133,8 +142,8 @@ iframe {
 }
 
 dd {
-  margin-bottom: 1em;
-  margin-left: 2em;
+  margin-bottom: 1rem;
+  margin-left: 2rem;
 }
 
 @media only screen and (max-width: 650px) {
