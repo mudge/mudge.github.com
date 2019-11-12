@@ -50,8 +50,8 @@ While I was conflicted about publishing [my first weeknotes last week](/2019/11/
         ```
 
     *   Videos of a much softer-faced and squeakier-voiced me safely stored in iCloud, it was time to get that Time Machine set up on my [Raspberry Pi](https://www.raspberrypi.org):
-    
-        I upgraded to the [latest version of Raspbian](https://www.raspberrypi.org/downloads/raspbian/), connected my USB hard drive (identifying it with `sudo fdisk -l`), formatted it as ext4 (with `mkfs -t ext4`) and mounted it under `/media` (after adding it to `/etc/fstab`).
+
+        I upgraded to the [latest version of Raspbian](https://www.raspberrypi.org/downloads/raspbian/), connected my USB hard drive (identifying it with `fdisk -l`), formatted it as ext4 (with `mkfs -t ext4`) and mounted it under `/media` (after adding it to `/etc/fstab`).
 
         I installed the latest version of [Samba](https://www.samba.org) and added the following configuration to `/etc/samba/smb.conf`:
 
@@ -91,6 +91,6 @@ While I was conflicted about publishing [my first weeknotes last week](/2019/11/
 
         Then it was just a case of choosing this new `backups` share in the Time Machine settings and ticking the "Encrypt backups" option and waiting. The first backup took around 13 hours but I now have a full backup as an encrypted sparse image on my USB hard drive.
 
-*   C is now ten weeks old and I&rsquo;ve been thinking about something from [Michael Please‘s BAFTA-winning short film, &ldquo;The Eagleman Stag&rdquo;](https://vimeo.com/41756240): yesterday was less than a 12,000th of my life but, for C, it was over 177 times more.
+*   C is now ten weeks old and I&rsquo;ve been thinking about something from [Michael Please‘s BAFTA award-winning short film, &ldquo;The Eagleman Stag&rdquo;](https://vimeo.com/41756240): yesterday was less than a 12,500th of my life but, for C, it was over 177 times more.
 
 *   [Tom Stuart](https://codon.com) said I might regret the semicolons in last week&rsquo;s notes so I hope you enjoy this week&rsquo;s luxurious full stops instead.
