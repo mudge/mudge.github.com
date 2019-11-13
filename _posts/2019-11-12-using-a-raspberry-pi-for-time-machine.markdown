@@ -3,6 +3,7 @@ layout: post
 title: Using a Raspberry Pi for Time Machine
 excerpt: How to share a disk with Samba and Avahi on a Raspberry Pi for use with macOS backups.
 comments: false
+image: /i/timemachine.png
 ---
 <img src="/i/timemachine.png" class="pull-right" width="360" height="246" alt=""> Ever since [Mac OS X Leopard](https://en.wikipedia.org/wiki/Mac_OS_X_Leopard), connecting an external storage device to your Mac will ask you if you want to use that storage to automatically back up all of your files with a feature called [Time Machine](https://support.apple.com/en-us/HT201250). However, Time Machine can also be configured to [back up to storage elsewhere on your network](https://support.apple.com/en-gb/HT202784#nas) and not directly connected to your computer.
 

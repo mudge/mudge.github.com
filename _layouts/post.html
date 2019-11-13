@@ -4,6 +4,22 @@
     <meta charset=utf-8>
     <title>{{ page.title | strip_html | escape_once }} &mdash; Paul Mucur</title>
     <meta name=description content="{{ page.excerpt }}">
+    <meta property=og:url content={{ page.url | absolute_url }}>
+    <meta property=og:type content=article>
+    <meta property=og:title content="{{ page.title | strip_html | escape_once }}">
+    <meta property=og:description content="{{ page.excerpt }}">
+    <meta name=twitter:card content=summary>
+    <meta name=twitter:site content=@mudge>
+    <meta name=twitter:creator content=@mudge>
+    <meta name=twitter:title content="{{ page.title | strip_html | escape_once }}">
+    <meta name=twitter:description content="{{ page.excerpt }}">
+    <meta itemprop=name content="{{ page.title | strip_html | escape_once }}">
+    <meta itemprop=description content="{{ page.excerpt }}">
+    {% if page.image %}
+    <meta name=twitter:image content={{ page.image | absolute_url }}>
+    <meta itemprop=image content={{ page.image | absolute_url }}>
+    {% endif %}
+
     <meta name=viewport content="width=device-width, initial-scale=1">
     <!--[if lt IE 9]><script src=http://html5shiv.googlecode.com/svn/trunk/html5.js></script><![endif]-->
     <link rel=stylesheet href=/c/m.css>
