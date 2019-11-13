@@ -49,48 +49,7 @@ While I was conflicted about publishing [my first weeknotes last week](/2019/11/
         }
         ```
 
-    *   Videos of a much softer-faced and squeakier-voiced me safely stored in iCloud, it was time to get that Time Machine set up on my [Raspberry Pi](https://www.raspberrypi.org):
-
-        I upgraded to the [latest version of Raspbian](https://www.raspberrypi.org/downloads/raspbian/), connected my USB hard drive (identifying it with `fdisk -l`), formatted it as ext4 (with `mkfs -t ext4`) and mounted it under `/media` (after adding it to `/etc/fstab`).
-
-        I installed the latest version of [Samba](https://www.samba.org) and added the following configuration to `/etc/samba/smb.conf`:
-
-        ```
-        [backups]
-            comment = Backups
-            path = /media/backups
-            read only = No
-            valid users = mudge
-            vfs objects = catia fruit streams_xattr
-            fruit:time machine = yes
-        ```
-
-        Then, to make it automatically appear in the Finder and Time Machine settings, I added the following to `/etc/avahi/services/samba.service`:
-
-        ```xml
-        <?xml version="1.0" standalone='no'?><!--*-nxml-*-->
-        <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
-        <service-group>
-          <name replace-wildcards="yes">%h</name>
-          <service>
-            <type>_smb._tcp</type>
-            <port>445</port>
-          </service>
-          <service>
-            <type>_device-info._tcp</type>
-            <port>0</port>
-            <txt-record>model=TimeCapsule8,119</txt-record>
-          </service>
-          <service>
-            <type>_adisk._tcp</type>
-            <port>0</port>
-            <txt-record>dk0=adVN=backups,adVF=0x82</txt-record>
-            <txt-record>sys=adVF=0x100</txt-record>
-          </service>
-        </service-group>
-        ```
-
-        Then it was just a case of choosing this new `backups` share in the Time Machine settings and ticking the "Encrypt backups" option and waiting. The first backup took around 13 hours but I now have a full backup as an encrypted sparse image on my USB hard drive.
+    *   Videos of a much softer-faced and squeakier-voiced me safely stored in iCloud, it was time to get that Time Machine set up on my [Raspberry Pi](https://www.raspberrypi.org). This resulted in [a new post about how to use a Raspberry Pi for Time Machine](/2019/11/12/using-a-raspberry-pi-for-time-machine.html).
 
 *   C is now ten weeks old and I&rsquo;ve been thinking about something from [Michael Please‘s BAFTA award-winning short film, &ldquo;The Eagleman Stag&rdquo;](https://vimeo.com/41756240): yesterday was less than a 12,500th of my life but, for C, it was over 177 times more.
 
