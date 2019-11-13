@@ -15,6 +15,7 @@ jailed: false
 theme: jekyll-theme-primer
 gfm_quirks: paragraph_end
 repository: mudge/mudge.github.com
+url: https://mudge.name
 defaults:
   -
     scope:
