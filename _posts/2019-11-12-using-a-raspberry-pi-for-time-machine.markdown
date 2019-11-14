@@ -9,6 +9,12 @@ image: /i/timemachine.png
 
 We're going to use a [Raspberry Pi](https://www.raspberrypi.org) (I used an old Model B) as a cheap alternative to a dedicated Network-attached Storage (NAS) device for use with Time Machine. I'm going to use an external hard drive connected via USB but the same principles should apply to any storage available to the Raspberry Pi.
 
+1. [Software dependencies](#software-dependencies)
+2. [Readying our storage](#readying-our-storage)
+3. [Configuring Samba](#configuring-samba)
+4. [Configuring Avahi](#configuring-avahi)
+5. [Accessing your backups in the Finder](#accessing-your-backups-in-the-finder)
+
 ## Software dependencies
 
 First, ensure you're using a recent version of [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) so we can rely entirely on Debian packages already built for your Raspberry Pi and avoid compiling software ourselves (which can take quite some time on older models). If not, please see the [official documentation for installing a Raspberry Pi operating system image on an SD card](https://www.raspberrypi.org/documentation/installation/installing-images/README.md). At the time of writing, I used the September 2019 version of Raspbian Buster with a kernel version of 4.19.
@@ -20,6 +26,8 @@ pi@raspberrypi:~ $ sudo apt install samba avahi-daemon
 ```
 
 Samba is an open source implementation of the SMB file sharing protocol which is [officially supported by Time Machine](https://developer.apple.com/library/archive/releasenotes/NetworkingInternetWeb/Time_Machine_SMB_Spec/index.html) for backing up over a network. This is all we really need to back up to storage attached to our Raspberry Pi but we can make it slightly easier to set up on the macOS end by also using Avahi's implementation of the mDNS/DNS-SD protocol (sometimes called ["Bonjour"](https://en.wikipedia.org/wiki/Bonjour_(software))) to make our Time Machine share automatically discoverable on our network. This way we don't need to manually connect to our Raspberry Pi from our Mac, it will automatically appear both in the Finder's sidebar and in the Time Machine System Preferences.
+
+It's important to have a recent version of Samba so that we can benefit from the latest support for macOS-specific extensions. At the time of writing, the versions I used were Samba 4.9.5-Debian and avahi-daemon 0.7.
 
 Note that we are _not_ using [Netatalk](http://netatalk.sourceforge.net) as we want to use SMB rather than AFP for file sharing as that seems to be the preferred file sharing protocol for network-attached storage in [Apple's current documentation](https://support.apple.com/en-gb/HT202784#nas).
 
@@ -37,7 +45,7 @@ pi@raspberrypi:~ $ sudo blkid
 /dev/mmcblk0: PTUUID="d565a392" PTTYPE="dos"
 ```
 
-The key entry here is `/dev/sda`: that's my USB drive and its unique ID I can use when configuring it.
+The key entry here is `/dev/sda`: that's my USB drive and its unique UUID I can use when configuring it.
 
 As the `TYPE="ext4"` in the output reveals, I've already formatted it with the default Linux [ext4 journaling file system](https://en.wikipedia.org/wiki/Ext4) but let's do it again for good measure:
 
@@ -105,28 +113,7 @@ We can make this permanent by adding the following stanza to `/etc/hdparm.conf`:
 
 Now that we have storage available to share with our Mac, let's set it up with Samba so that it will work with Time Machine.
 
-To do this, we need to do two things:
-
-1. Ensure that [`map to guest`](https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#MAPTOGUEST) is set to its default value of `Never` so that invalid passwords are rejected;
-2. Add a new section to `/etc/samba/smb.conf` for your shared directory.
-
-At the time of writing, the default `smb.conf` contains the following configuration:
-
-```
-# This option controls how unsuccessful authentication attempts are mapped
-# to anonymous connections
-   map to guest = bad user
-```
-
-This will cause problems when trying to browse your shared directory in the Finder so simply comment it out with a semicolon to reset it to its default value of `Never`:
-
-```
-# This option controls how unsuccessful authentication attempts are mapped
-# to anonymous connections
-;   map to guest = bad user
-```
-
-Now we can add our new share definition for our directory at `/media/backups` owned by the user `mudge`:
+To do this, we need to add a new share definition for our directory at `/media/backups` owned by the user `mudge`:
 
 ```
 [backups]
@@ -142,12 +129,24 @@ This creates a new share called `backups` which can only be accessed by using th
 
 The key configuration for Time Machine are the last two lines which enable [Samba's enhanced macOS interoperability module](https://www.samba.org/samba/docs/current/man-html/vfs_fruit.8.html).
 
+So that we can connect to the share as `mudge`, we need to explicitly add that user to Samba's password file and set a password with `smbpasswd`:
+
+```console
+pi@raspberrypi:~ $ sudo smbpasswd -a mudge
+```
+
+We can now use this username and password from macOS to connect to our `backups` share.
+
 With these changes in place, we can now run `testparm` to check our configuration is free of errors and reload our Samba configuration:
 
 ```console
-pi@raspberrypi:~ $ sudo testparm
+pi@raspberrypi:~ $ sudo testparm -s
 pi@raspberrypi:~ $ sudo service smbd reload
 ```
+
+At this point, we could manually connect our Mac to the share by choosing `Connect to Server...` or pressing Command-K in the Finder, entering the IP address of our Raspberry Pi, e.g. `smb://192.168.1.104/backups` and authenticating with our user credentials. This would then become available in the Time Machine Preference Pane as a backup destination when you choose "Select Disk...".
+
+However, we can make this even easier by also setting up autodiscovery of our share with Avahi.
 
 ## Configuring Avahi
 
@@ -155,8 +154,8 @@ pi@raspberrypi:~ $ sudo service smbd reload
 
 We're going to have to add a new Avahi service to `/etc/avahi/services/samba.service` which describes the two things [described in Apple's documentation for advertising Time Machine availability through Bonjour](https://developer.apple.com/library/archive/releasenotes/NetworkingInternetWeb/Time_Machine_SMB_Spec/index.html#//apple_ref/doc/uid/TP40017496-CH1-SW1):
 
-1. We are running an SMB server on port 445;
-2. We have an SMB share point available for Time Machine.
+1. That we are running an SMB server on port 445;
+2. That we have an SMB share point available for Time Machine.
 
 As a bonus, we're also going to advertise our Raspberry Pi as a now-defunct [AirPort Time Capsule](https://en.wikipedia.org/wiki/AirPort_Time_Capsule) so that it appears as such in the Finder.
 
@@ -219,14 +218,14 @@ This is the crucial part that advertises our specific `backups` share as a Time 
 <txt-record>dk0=adVN=backups,adVF=0x82</txt-record>
 ```
 
-Advertise a share named `backups` which has the following two AirDisk volume flags set:
+Advertise a share named `backups` (this _must_ match the name of your Samba share) which has the following two AirDisk volume flags set:
 
 1. `0x0002`: SMB is supported on this volume;
 2. `0x0080`: Time Machine should allow this SMB volume as a backup destination.
 
 Together, these make the single hex value string of `0x82`.
 
-The second part sets system-wide [volume flags](http://netatalk.sourceforge.net/wiki/index.php/Bonjour_record_adisk_adVF_values) of `0x100` so that connecting to any share prompts for a username and password:
+The second part sets system-wide [volume flags](http://netatalk.sourceforge.net/wiki/index.php/Bonjour_record_adisk_adVF_values) of `0x100` so that connecting to our share prompts for a username and password:
 
 ```xml
 <txt-record>sys=adVF=0x100</txt-record>
@@ -235,3 +234,11 @@ The second part sets system-wide [volume flags](http://netatalk.sourceforge.net/
 With this service file in place, Avahi should automatically pick up the configuration change and your Raspberry Pi will now appear in the Finder and in the Time Machine Preference Pane when you choose "Select Disk...".
 
 Ensure that you check "Encrypt backups" when selecting the disk and wait for your first backup to complete!
+
+## Accessing your backups in the Finder
+
+<img src="/i/finder-error.png" class="pull-right" width="365" height="176" alt=""> Note that choosing your Raspberry Pi in the Finder will initially connect as a guest (as indicated by `Connected as: Guest` in the Finder window) and your `backups` share will be visible there. However, attempting to open the share will fail with a puzzling error message stating that your share can't be found. This is because you need to explicitly connect as the appropriate user (`mudge`, in my case) by choosing `Connect As...` in the Finder.
+
+Once you do that, you should be able to see your backups stored as a sparse image with a `.backupbundle` extension.
+
+If you have any trouble connecting (especially if you have changed your user credentials at all), it's worth using the Keychain Access application in `/Applications/Utilities` to check for any cached network passwords and delete old entries. You may also need to forcibly relaunch the Finder by holding down the Option key and right-clicking on its icon in the Dock and choosing the `Relaunch` option at the bottom of the resulting menu.
