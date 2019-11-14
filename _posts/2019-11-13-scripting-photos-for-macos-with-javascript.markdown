@@ -66,7 +66,7 @@ However, while it appears that `mediaItems` here is an array, it is actually a f
 
 ```javascript
 typeof Application("Photos").mediaItems
-//=> "function"
+=> "function"
 ```
 
 It just happens that these "elements" functions allow you to access specific elements by their index but if you want a true JavaScript array, you'll need to explicitly call the property as a function:
@@ -82,7 +82,7 @@ for (const album of Application("Photos").albums()) {
 
 ```javascript
 Application("Photos").selection()
-//=> [Application("Photos").mediaItems.byId("16AE4D88-E094-466E-B726-74CE4E876DE5/L0/001"), Application("Photos").mediaItems.byId("D11B78C8-82CD-472F-9039-DA148FEF8092/L0/001")]
+=> [Application("Photos").mediaItems.byId("16AE4D88-E094-466E-B726-74CE4E876DE5/L0/001"), Application("Photos").mediaItems.byId("D11B78C8-82CD-472F-9039-DA148FEF8092/L0/001")]
 ```
 
 Read-only properties are documented as `r/o` (such as `selection` above) but properties without this mean they can be updated.
@@ -99,7 +99,7 @@ In order to read the filename and date, we know to call them as functions:
 
 ```javascript
 Application("Photos").selection()[0].filename()
-//=> "IMG_9295.HEIC"
+=> "IMG_9295.HEIC"
 
 Application("Photos").selection()[0].date()
 => Tue Nov 12 2019 08:28:34 GMT+0000 (GMT)
