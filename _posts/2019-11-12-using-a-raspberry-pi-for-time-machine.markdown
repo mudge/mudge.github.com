@@ -170,12 +170,12 @@ As a bonus, we're also going to advertise our Raspberry Pi as a now-defunct [Air
   </service>
   <service>
     <type>_device-info._tcp</type>
-    <port>0</port>
+    <port>9</port>
     <txt-record>model=TimeCapsule8,119</txt-record>
   </service>
   <service>
     <type>_adisk._tcp</type>
-    <port>0</port>
+    <port>9</port>
     <txt-record>dk0=adVN=backups,adVF=0x82</txt-record>
     <txt-record>sys=adVF=0x100</txt-record>
   </service>
@@ -196,7 +196,7 @@ This advertises our SMB server on port 445.
 ```xml
 <service>
   <type>_device-info._tcp</type>
-  <port>0</port>
+  <port>9</port>
   <txt-record>model=TimeCapsule8,119</txt-record>
 </service>
 ```
@@ -206,7 +206,7 @@ This advertises our Raspberry Pi as an AirPort Time Capsule but you can use any 
 ```xml
 <service>
   <type>_adisk._tcp</type>
-  <port>0</port>
+  <port>9</port>
   <txt-record>dk0=adVN=backups,adVF=0x82</txt-record>
   <txt-record>sys=adVF=0x100</txt-record>
 </service>
