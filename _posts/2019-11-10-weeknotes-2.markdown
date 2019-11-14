@@ -33,21 +33,7 @@ While I was conflicted about publishing [my first weeknotes last week](/2019/11/
 
         I wondered if I could use any modern JavaScript features and [Matt MacLeod](http://umm.io) pointed out [&ldquo;ES6 Features in JXA&rdquo;](https://github.com/JXA-Cookbook/JXA-Cookbook/wiki/ES6-Features-in-JXA) which explains that you can use any JavaScript features supported by the version of Safari bundled with your OS.
 
-        With that, I was able to run the following JavaScript in Script Editor to update all my videos in one go:
-
-        ```javascript
-        const pattern = /CLIP-(\d{4})-(\d{2})-(\d{2}) (\d{2});(\d{2});(\d{2})\.MOV/;
-        const clips = Application("Photos").selection().filter(photo => pattern.test(photo.filename()));
-
-        for (const clip of clips) {
-          const filename = clip.filename();
-          const [, year, month, day, hours, minutes, seconds] = filename.match(pattern);
-          const newDate = new Date(year, month - 1, day, hours, minutes, seconds);
-
-          console.log(`Setting ${filename} date to ${newDate} from ${clip.date()}`);
-          clip.date = newDate;
-        }
-        ```
+        I've since written up [how I scripted Photos with JavaScript to update all the videos in one go](/2019/11/13/scripting-photos-for-macos-with-javascript.html).
 
     *   Videos of a much softer-faced and squeakier-voiced me safely stored in iCloud, it was time to get that Time Machine set up on my [Raspberry Pi](https://www.raspberrypi.org). This resulted in [a new post about how to use a Raspberry Pi for Time Machine](/2019/11/12/using-a-raspberry-pi-for-time-machine.html).
 
