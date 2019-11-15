@@ -53,6 +53,8 @@ As the `TYPE="ext4"` in the output reveals, I've already formatted it with the d
 pi@raspberrypi:~ $ sudo mkfs -t ext4 /dev/sda
 ```
 
+We're making a trade-off here: using ext4 means we won't be able to plug our drive directly into a Mac and read and write to it but we benefit from the reliability of a [journaled file system](https://en.wikipedia.org/wiki/Journaling_file_system). If we used Apple's HFS+ instead, we would be able to plug our drive directly into a Mac but [we would have to disable journaling](https://en.wikipedia.org/wiki/HFS_Plus#Linux) thereby losing write safety. As the integrity of our backups is paramount and as long as we are happy doing both back ups and restores over our network, ext4 seems a good compromise between convenience and safety.
+
 Note this isn't an encrypted file system so anyone can read anything written to it. We could use [Linux Unified Key Setup](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup) to avoid this but Time Machine will store any network backups in a [sparse image](https://en.wikipedia.org/wiki/Sparse_image) which can itself be encrypted. To simplify setup, let's rely on Time Machine's encryption to keep our backups secure and leave our underlying storage unencrypted.
 
 Now we want to mount this filesystem on our Raspberry Pi so that we can access it like any other directory. Let's do this and ensure that the mount persists whenever the Raspberry Pi restarts by appending an entry to the `fstab`:
