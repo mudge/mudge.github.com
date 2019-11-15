@@ -205,6 +205,8 @@ This advertises our SMB server on port 445.
 
 This advertises our Raspberry Pi as an AirPort Time Capsule but you can use any device model name found in `/System/Library/CoreServices/CoreTypes.bundle/Contents/Info.plist`, e.g. `MacBook`, `Xserve`, `Windows`, etc.
 
+We use port 9 for both this and the next service as it is the port used by real Time Capsules and any data sent to it is [discarded by definition](https://en.wikipedia.org/wiki/Discard_Protocol).
+
 ```xml
 <service>
   <type>_adisk._tcp</type>
