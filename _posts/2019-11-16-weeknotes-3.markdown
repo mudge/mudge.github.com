@@ -109,4 +109,4 @@ comments: false
     Answer 6: false
     ```
 
-*   A friend bought C him a lovely [toy firefly](https://uk.tomy.com/products/lamaze-freddie-firefly) which constantly reminds me of the butterfly from [Don't Hug Me I'm Scared 3](https://youtu.be/sXOdn6vLCuU).
+*   A friend bought C a lovely [toy firefly](https://uk.tomy.com/products/lamaze-freddie-firefly) which constantly reminds me of the butterfly from [Don't Hug Me I'm Scared 3](https://youtu.be/sXOdn6vLCuU).
