@@ -1,0 +1,112 @@
+---
+layout: post
+title: Weeknotes 3
+excerpt: Writing, solving logic puzzles and the Bake Off we deserve.
+comments: false
+---
+*   While we initially recoiled at the adverts for the Junior Bake Off, after reading that [it is "the Bake Off we deserve" after this year's disappointing series](https://www.theguardian.com/tv-and-radio/2019/nov/11/junior-bake-off-the-kids-spinoff-thats-the-perfect-antidote-to-baking-brutality), we gave it a go and are now fully converted. Watching the contestants recover from baking disasters and help each other without hesitation is truly joyful in a way the regular series totally failed to be.
+
+*   After my [computer noodling last week](/2019/11/10/weeknotes-2.html), I decided to write up in detail how to [use a Raspberry Pi for Time Machine](/2019/11/12/using-a-raspberry-pi-for-time-machine/) and how to [script Photos for macOS with JavaScript](/2019/11/13/scripting-photos-for-macos-with-javascript/). It was good to write something in-depth again, especially for the first post as I wanted to ensure every step was both necessary and justified which was especially tricky given [the rather opaque configuration necessary for Avahi](/2019/11/12/using-a-raspberry-pi-for-time-machine/#configuring-avahi).
+
+*   Long-time host of the [London Ruby User Group](http://lrug.org) [Skills Matter recently went into administration](https://www.linkedin.com/pulse/skills-matter-appointed-administrators-wendy-devolder/) and their recordings of previous talks have sadly been disappearing from the internet. Among them, the video of my March 2015 talk ["Exploring `#to_proc`"](/2014/11/26/data-structures-as-functions.html) seems to have been been removed. Another day, another reason to think about the 21-year old ["Cool URIs don't change"](https://www.w3.org/Provider/Style/URI).
+
+*   [Tom Stuart](https://codon.com) shared the following [logic puzzle](https://math.stackexchange.com/questions/2217248/which-answer-in-this-list-is-the-correct-answer-to-this-question) on the [London Computation Club Slack](https://computationclub-slack.herokuapp.com/):
+
+    > Which answer in this list is the correct answer to this question?
+    >
+    > 1. All of the below.
+    > 2. None of the below.
+    > 3. All of the above.
+    > 4. One of the above.
+    > 5. None of the above.
+    > 6. None of the above.
+
+    I thought this would be an excellent opportunity to use [Chris Patuzzo's Sentient programming language](https://sentient-lang.org) to solve it:
+
+    ```ruby
+    bool answer1, answer2, answer3, answer4, answer5, answer6;
+
+    # 1. All of the below.
+    invariant answer1 == [answer2, answer3, answer4, answer5, answer6].all?(*self);
+
+    # 2. None of the below.
+    invariant answer2 == [answer3, answer4, answer5, answer6].none?(*self);
+
+    # 3. All of the above.
+    invariant answer3 == [answer1, answer2].all?(*self);
+
+    # 4. One of the above.
+    invariant answer4 == [answer1, answer2, answer3].one?(*self);
+
+    # 5. None of the above.
+    invariant answer5 == [answer1, answer2, answer3, answer4].none?(*self);
+
+    # 6. None of the above.
+    invariant answer6 == [answer1, answer2, answer3, answer4, answer5].none?(*self);
+
+    expose answer1, answer2, answer3, answer4, answer5, answer6;
+    ```
+
+    Which returned a single answer: number 5!
+
+    ```console
+    $ sentient --number 0 answers.snt
+    {"answer1":false,"answer2":false,"answer3":false,"answer4":false,"answer5":true,"answer6":false}
+    {}
+    ```
+
+    The story of Sentient is a great one and [is told excellently by Chris and Tom in episode 4 of "Why Are Computers"](https://whyarecomputers.com/4).
+
+*   A blog post circulated this week [about solving puzzles with Amb](https://thesmartnik.com/solving-pazzles-wth-amb.html) so I thought I'd try using [an ambiguous function/operator implementation in Ruby](https://github.com/chikamichi/amb) to solve the logic puzzle as well:
+
+    ```ruby
+    require 'amb'
+
+    A = Class.new { include Amb }.new
+
+    answer1 = A.choose(true, false)
+    answer2 = A.choose(true, false)
+    answer3 = A.choose(true, false)
+    answer4 = A.choose(true, false)
+    answer5 = A.choose(true, false)
+    answer6 = A.choose(true, false)
+
+    # 1. All of the below.
+    A.assert answer1 == [answer2, answer3, answer4, answer5, answer6].all?
+
+    # 2. None of the below.
+    A.assert answer2 == [answer3, answer4, answer5, answer6].none?
+
+    # 3. All of the above.
+    A.assert answer3 == [answer1, answer2].all?
+
+    # 4. One of the above.
+    A.assert answer4 == [answer1, answer2, answer3].one?
+
+    # 5. None of the above.
+    A.assert answer5 == [answer1, answer2, answer3, answer4].none?
+
+    # 6. None of the above.
+    A.assert answer6 == [answer1, answer2, answer3, answer4, answer5].none?
+
+    puts "Answer 1: #{answer1}"
+    puts "Answer 2: #{answer2}"
+    puts "Answer 3: #{answer3}"
+    puts "Answer 4: #{answer4}"
+    puts "Answer 5: #{answer5}"
+    puts "Answer 6: #{answer6}"
+    ```
+
+    And it returned the same answer!
+
+    ```console
+    $ ruby answers.rb
+    Answer 1: false
+    Answer 2: false
+    Answer 3: false
+    Answer 4: false
+    Answer 5: true
+    Answer 6: false
+    ```
+
+*   A friend bought C him a lovely [toy firefly](https://uk.tomy.com/products/lamaze-freddie-firefly) which constantly reminds me of the butterfly from [Don't Hug Me I'm Scared 3](https://youtu.be/sXOdn6vLCuU).
