@@ -16,6 +16,11 @@ theme: jekyll-theme-primer
 gfm_quirks: paragraph_end
 repository: mudge/mudge.github.com
 url: https://mudge.name
+permalink: pretty
+plugins:
+  - jekyll-redirect-from
+whitelist:
+  - jekyll-redirect-from
 defaults:
   -
     scope:

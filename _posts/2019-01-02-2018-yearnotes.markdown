@@ -3,6 +3,7 @@ layout: post
 title: 2018 Yearnotes
 excerpt: Reflecting on the past year, both personally and professionally.
 date: 2019-01-02 15:36:00
+redirect_from: /2019/01/02/2018-yearnotes.html
 ---
 Last year, inspired by [Nat Buckley's "2017 Yearnotes"](http://ntlk.net/2017/12/29/2017-yearnotes/) and [Julia Evans' "2017: Year in review"](https://jvns.ca/blog/2017/12/31/2017--year-in-review/), I wrote my own "2017 Yearnotes". Despite the fact that year saw me getting [engaged at the top of Goat Fell](https://www.instagram.com/p/BRlk68ngORO/?taken-by=mudgemeister) on the [Isle of Arran](https://en.wikipedia.org/wiki/Isle_of_Arran) and later [married](https://twitter.com/mudge/status/914594665315356672) (not before completing the [frankly colossal act of yak shaving](https://en.wiktionary.org/wiki/yak_shaving) of [writing my own PHP web framework](https://github.com/mudge/engine)), I never published the piece. Reading it now, it's somewhat strange to read my reflections on a lack of separation between my career and my identity and that my two hopes for 2018 were as follows:
 

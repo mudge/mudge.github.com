@@ -4,6 +4,7 @@ title: A Summit for Scaling
 excerpt: >
   A summary of my time at 2014&rsquo;s Scale Summit: a performance and
   scalability unconference.
+redirect_from: /2014/03/22/a-summit-for-scaling.html
 ---
 <img src="/i/scalesummit.jpg" width="200" height="200" alt="" class="pull-left">Yesterday, I attended [Scale Summit][]: "a performance and scalability
 unconference" using the [Open Space Technology][] format. Scale Summit is the

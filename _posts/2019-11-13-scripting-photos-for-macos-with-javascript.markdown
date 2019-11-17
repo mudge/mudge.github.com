@@ -4,6 +4,7 @@ title: Scripting Photos for macOS with JavaScript
 excerpt: Automatically editing photo metadata for iCloud Photos using JavaScript for Automation.
 comments: false
 image: /i/script-editor.png
+redirect_from: /2019/11/13/scripting-photos-for-macos-with-javascript.html
 ---
 I recently imported hundreds of home videos from the past 20 years into [Photos for macOS](https://www.apple.com/uk/macos/photos/) only to discover that none of the videos had the correct date and time. Thankfully, the correct date and time were encoded into each video's filename, e.g. `CLIP-2003-08-02 21;40;28.MOV` but I didn't fancy updating them all by hand.
 

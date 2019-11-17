@@ -2,6 +2,7 @@
 layout: post
 title: Cross-Compiling Rust for a Raspberry Pi on Travis CI
 excerpt: How to compile binaries from a Rust project that will run on a Raspberry Pi using Travis CI.
+redirect_from: /2019/01/02/cross-compiling-rust-for-a-raspberry-pi-on-travis-ci.html
 ---
 I recently wrote a [small program in Rust](https://github.com/mudge/homer) that I wanted to compile for an old [Raspberry Pi](https://www.raspberrypi.org) Model B but running `cargo build --release` on the Pi itself took several hours to complete. Researching online, I found [Jorge Aparicio's guide to Rust cross compilation](https://github.com/japaric/rust-cross) and their [Travis CI and AppVeyor template](https://github.com/japaric/trust) extremely useful but wasn't entirely successful in compiling a binary I could use directly on my device. After many experiments and many failed builds, I finally have a build pipeline that will compile a Rust binary for the Raspberry Pi, Linux and macOS in minutes using [Travis CI](https://travis-ci.org).
 

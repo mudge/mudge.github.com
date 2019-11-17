@@ -2,6 +2,7 @@
 layout: post
 title: Combining and Compressing Disqus&rsquo; and Google Analytics&rsquo; JavaScript
 excerpt: A step-by-step refactoring of Disqus&rsquo; and Google Analytics&rsquo; JavaScript.
+redirect_from: /2011/01/29/combining-and-compressing-disqus-and-google-analytics-javascript.html
 ---
 In setting up this [Jekyll][]-powered blog, I had cause to dust off my [Google
 Analytics][] account and finally take [Disqus][] for a spin. Both services
