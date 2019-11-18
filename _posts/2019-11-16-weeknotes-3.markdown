@@ -10,6 +10,8 @@ comments: false
 
 *   Long-time host of the [London Ruby User Group](http://lrug.org) [Skills Matter recently went into administration](https://www.linkedin.com/pulse/skills-matter-appointed-administrators-wendy-devolder/) and their recordings of previous talks have sadly been disappearing from the internet. Among them, the video of my March 2015 talk ["Exploring `#to_proc`"](/2014/11/26/data-structures-as-functions.html) seems to have been been removed. Another day, another reason to think about the 21-year old ["Cool URIs don't change"](https://www.w3.org/Provider/Style/URI).
 
+*   Having said that, I changed the [format of permalinks](https://jekyllrb.com/docs/permalinks/#built-in-formats) on this site to drop the `.html` extension from the URLs. Thankfully, there's a [redirection plugin for Jekyll](https://github.com/jekyll/jekyll-redirect-from) to keep the old URIs working.
+
 *   [Tom Stuart](https://codon.com) shared the following [logic puzzle](https://math.stackexchange.com/questions/2217248/which-answer-in-this-list-is-the-correct-answer-to-this-question) on the [London Computation Club Slack](https://computationclub-slack.herokuapp.com/):
 
     > Which answer in this list is the correct answer to this question?
@@ -109,4 +111,4 @@ comments: false
     Answer 6: false
     ```
 
-*   A friend bought C a lovely [toy firefly](https://uk.tomy.com/products/lamaze-freddie-firefly) which constantly reminds me of the butterfly from [Don't Hug Me I'm Scared 3](https://youtu.be/sXOdn6vLCuU).
+*   A friend bought C a lovely [toy firefly](https://uk.tomy.com/products/lamaze-freddie-firefly) which constantly reminds me of the butterfly from [Don't Hug Me I'm Scared 3](https://youtu.be/sXOdn6vLCuU) (we'd even taken to calling it "Bertie the Butterfly"). Pesky bee.
