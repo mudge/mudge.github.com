@@ -16,6 +16,8 @@ theme: jekyll-theme-primer
 gfm_quirks: paragraph_end
 repository: mudge/mudge.github.com
 url: https://mudge.name
+title: Paul Mucur
+description: The personal web site of software development consultant Paul Mucur.
 permalink: pretty
 plugins:
   - jekyll-redirect-from

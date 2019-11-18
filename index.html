@@ -4,18 +4,16 @@
 <html lang=en>
   <head>
     <meta charset=utf-8>
-    <title>Paul Mucur</title>
-    <meta name=description content="The personal web site of software development consultant Paul Mucur.">
+    <title>{{ site.title | escape_once }}</title>
+    <meta name=description content="{{ site.description | escape_once }}">
     <meta property=og:url content={{ "/" | absolute_url }}>
-    <meta property=og:title content="Paul Mucur">
-    <meta property=og:description content="The personal web site of software development consultant Paul Mucur.">
+    <meta property=og:title content="{{ site.title | escape_once }}">
+    <meta property=og:description content="{{ site.description | escape_once }}">
     <meta name=twitter:card content=summary>
     <meta name=twitter:site content=@mudge>
     <meta name=twitter:creator content=@mudge>
-    <meta name=twitter:title content="Paul Mucur">
-    <meta name=twitter:description content="The personal web site of software development consultant Paul Mucur.">
-    <meta itemprop=name content="Paul Mucur">
-    <meta itemprop=description content="The personal web site of software development consultant Paul Mucur.">
+    <meta name=twitter:title content="{{ site.title | escape_once }}">
+    <meta name=twitter:description content="{{ site.description | escape_once }}">
     <meta name=viewport content="width=device-width, initial-scale=1">
     <!--[if lt IE 9]><script src=http://html5shiv.googlecode.com/svn/trunk/html5.js></script><![endif]-->
     <link rel=stylesheet href=/c/m.css>
@@ -23,6 +21,20 @@
     <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
     <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
     <link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+    <script type=application/ld+json>
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "author": {
+          "@type": "Person",
+          "name": "Paul Mucur"
+        },
+        "name": {{ site.title | jsonify }},
+        "url": {{ "/" | absolute_url | jsonify }},
+        "datePublished": {{ site.time | date_to_xmlschema | jsonify }},
+        "description": {{ site.description | jsonify }}
+      }
+    </script>
     <script>
       var _gaq = [['_setAccount','UA-1804081-1'], ['_trackPageview']];
       (function (d, u, g) {

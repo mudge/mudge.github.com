@@ -2,7 +2,7 @@
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-<title>Paul Mucur</title>
+<title>{{ site.title | escape_once }}</title>
 <link href="{{ "/" | absolute_url }}"/>
 <link href="{{ page.url | absolute_url }}" rel="self"/>
 <updated>{{ site.time | date_to_xmlschema }}</updated>
