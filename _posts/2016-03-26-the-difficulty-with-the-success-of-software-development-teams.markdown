@@ -68,7 +68,7 @@ Without attempting to understand _both_ output and means, we are at risk of jeop
 
 [1]: http://www.scalesummit.org/
 [2]: http://www.scalecamp.org.uk/
-[3]: http://mudge.name/2014/03/22/a-summit-for-scaling.html
+[3]: /2014/03/22/a-summit-for-scaling.html
 [4]: https://en.wikipedia.org/wiki/Open_Space_Technology
 [5]: https://www.chathamhouse.org/about/chatham-house-rule
 [6]: https://gist.github.com/d6y/c063ccadfea3a6800ffd

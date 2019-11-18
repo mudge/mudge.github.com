@@ -1,5 +1,5 @@
 This is the source code for my [Jekyll](http://jekyllrb.com/)-powered blog of
-sorts at http://mudge.name
+sorts at https://mudge.name
 
 It is heavily inspired by the following existing sites to whom I am indebted:
 

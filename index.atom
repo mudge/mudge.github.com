@@ -3,18 +3,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>Paul Mucur</title>
-<link href="http://mudge.name/"/>
-<link href="http://mudge.name/index.atom" rel="self"/>
+<link href="{{ "/" | absolute_url }}"/>
+<link href="{{ page.url | absolute_url }}" rel="self"/>
 <updated>{{ site.time | date_to_xmlschema }}</updated>
-<id>http://mudge.name/</id>
+<id>{{ "/" | absolute_url }}</id>
 <author>
   <name>Paul Mucur</name>
 </author>
 {% for post in site.posts %}
 <entry>
-  <title type="html">{{ post.title | strip_html | escape_once }}</title>
-  <link href="{{ post.url }}"/>
-  <id>http://mudge.name{{ post.url }}</id>
+  <title type="html">{{ post.title | xml_escape }}</title>
+  <link href="{{ post.url | absolute_url }}"/>
+  <id>{{ post.url | absolute_url }}</id>
   <updated>{{ post.date | date_to_xmlschema }}</updated>
   <summary type="html">{{ post.excerpt | xml_escape }}</summary>
   <content type="html">{{ post.content | xml_escape }}</content>
