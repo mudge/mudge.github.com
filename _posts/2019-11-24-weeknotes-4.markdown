@@ -1,0 +1,25 @@
+---
+layout: post
+title: Weeknotes 4
+excerpt: Struggling with structured data, Christmas puddings, the joy of repairing things and everything being a trade-off.
+comments: false
+---
+*   I read [Blake Hyde's "The Danger of 'Simplicity'"](https://asthasr.github.io/posts/danger-of-simplicity/) this week and wished I had written it. I've wanted to write about everything being a trade-off for years (I even have a draft from 2014 but sadly it only contains a bulleted list of technology buzzwords) but this is a fantastic, concise piece on the difficulty of pursuing simplicity in software.
+
+    > In other words: every decision made in order to simplify a program will cost something.
+
+*   I also enjoyed [Dylan Araps' "I've gone to great lengths for this silence"](https://getkiss.org/blog/20191004a) as relentlessly optimising web page markup is also a bit of a guilty pleasure of mine. Dylan goes much further than I have but I thoroughly appreciated their efforts.
+
+*   On the topic of markup, I did _not_ have fun trying to switch to using [Google's recommended structured data](https://developers.google.com/search/docs/guides/sd-policies) (based on [JSON-LD](https://json-ld.org)) for this site. The [Google Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool) does not approve of these blog posts (marked up as [`BlogPosting`](https://schema.org/BlogPosting)s) not having a [`publisher`](https://schema.org/publisher) that is an [`Organization`](https://schema.org/Organization) with a mandatory [`logo`](https://schema.org/logo). Frustrated, I added only the markup that seemed to make sense but I risk the ire of Googlebot.
+
+*   E made our very first batch of Christmas puddings using [Felicity Cloake's "perfect" recipe](https://www.theguardian.com/lifeandstyle/wordofmouth/2016/nov/17/how-to-cook-the-perfect-christmas-pudding) (prefixing search terms with "Felicity Cloake perfect" is the first thing I do before cooking or baking _anything_) and we each took it in turns (including C) to stir the mixture. Unexpected bonus baked good: we used up the rest of the recipe's Guinness in [Nigella Lawson's Chocolate Guinness Cake](https://www.nigella.com/recipes/chocolate-guinness-cake) and let's just say that our daily regimen of tea and cake in the afternoon isn't doing wonders for my weight. I'd be remiss if I didn't also mention my former colleague [Matt MacLeod's Christmas pudding recipe](https://github.com/mattmacleod/Recipes/blob/master/Desserts%20and%20puddings/Christmas%20pudding.md) which features both [IRN-BRU](https://www.agbarr.co.uk/our-brands/irn-bru/) and [Buckfast](https://www.buckfast.com/) and is always in great demand.
+
+*   There's a new series of [BBC's "The Repair Shop"](https://www.bbc.co.uk/programmes/b08l581p) and it truly warms my heart. Having already been made a fan of [mechanical restoration videos](https://www.youtube.com/channel/UCMrMVIBtqFW6O0-MWq26gqw) following [Simon Coffey's recommendation](https://twitter.com/urbanautomaton/status/1087089421424513025), this takes the calming effect of watching a true expert methodically repair something and combines it with heartwrenching human emotion. E still teases me about being in floods of tears hearing [the tale of "wheelie ted"](https://www.bbc.co.uk/programmes/m0004ppp).
+
+*   We began watching [Apple TV+'s "The Morning Show"](https://tv.apple.com/us/show/the-morning-show/umc.cmc.25tn3v8ku4b39tr6ccgb8nl6m) as E has a free trial for a year and I was overjoyed to be reminded of the existence of [Benjamin Clementine's wonderful music](https://www.benjaminclementine.com) in [its theme song, "Nemesis"](https://open.spotify.com/track/7aNwPr0nR3zocELBBe0Xzv?si=oNhmBpTpRLqbYEuB7aCb3Q).
+
+*   We've taken to singing nursery rhymes to C but I'm having to make alterations to [the version of "The Wheels on the Bus" we found on Spotify](https://open.spotify.com/track/0EXodPnj0bgFFUg0o80s5S?si=PitqtcxiSWqkzyOn8du0TA) as we're not sure "the mummies on the bus go 'chatter, chatter, chatter'" and "the daddies on the bus go 'nod, nod, nod'" is a great depiction of our family life.
+
+*   I'm not exercising great restraint in sharing pictures, videos and stories of C with friends (have I told you he's taking to shouting "goo"?) but a poignant moment in [a recent episode of BBC's "Mortimer & Whitehouse: Gone Fishing"](https://www.bbc.co.uk/iplayer/episode/m00077cb/mortimer-whitehouse-gone-fishing-series-2-episode-1) as Bob talked about the loss of his mother gave me pause:
+
+    > When my mum died, so I had zero parents, do you know the thing I really miss? And I miss it nearly every Sunday, because I used to phone her every Sunday, so it always passes through my mind even now on Sundays is... It was lovely having someone to tell your kids' little achievements. Someone who _really_ was interested. No-one else cares less, do they, really? But you could phone up your mum and she loved hearing what they'd said or what they'd done. Now I've got no-one to tell, you know?
