@@ -1,0 +1,46 @@
+---
+layout: post
+title: Weeknotes 5
+excerpt: The unexpected joy of baby cinema, doing everything wrong and our daily multiplayer crossword routine.
+comments: false
+---
+*  <img src="/i/cookies.jpg" class="pull-right" width="375" height="468" alt="" /> For a few years now, cookery shows on TV have been a guilty pleasure of mine: when your day has been a little too trying for the latest nail-biting thriller or existential drama, I find there's no better way to unwind than to watch [Jamie](https://www.jamieoliver.com "Jamie Oliver") "glug" olive oil or "click off" lettuce leaves. This week I indulged in [Rick Stein's new series "Secret France"](https://www.bbc.co.uk/programmes/m000b1qp) which was [expertly summed up by Joel Golby in his review for The Guardian](https://www.theguardian.com/tv-and-radio/2019/nov/23/rick-stein-secret-france):
+
+    > Every episode of every TV show Rick Stein has ever made is essentially like watching your dad have a particularly joyful Christmas Day, rubbing his hands with glee over a long-aged sherry, sitting upright to eat a large plate of continental sausages, regaling you with tales of childhoods gone by as soon as someone rolls a braised rabbit out in front of him, saying he’s too full for pudding but eating it anyway.
+
+*   Having waited 12 years since [the last episode](https://www.half-life.com/en/episode2 "Half-Life 2: Episode Two"), watching [the announcement trailer](https://youtu.be/O2W0N3uKXmo) for "[Half-Life: Alyx](https://www.half-life.com/en/alyx)" was a strange experience having reached a kind of heavy-hearted acceptance I would never step foot in City 17 again.
+
+    I last built a PC 15 years ago, specifically to play "[Half-Life 2](https://www.half-life.com/en/halflife2)" and it is tempting to repeat that effort to meet [the new game's lofty VR requirements](https://www.half-life.com/en/alyx/vr). That said, the [Valve Index VR Kit](https://store.steampowered.com/valveindex) alone is over £900 so I might just have to rely on the kindness of any VR early adopters I know.
+
+*   I reluctantly attended my very first [Parent and Baby Screening at the Barbican](https://www.barbican.org.uk/whats-on/series/parent-and-baby-screenings) (or, as we like to call it, "baby cinema") to see [Noah Baumbach's "Marriage Story"](https://www.netflix.com/gb/title/80223779). I was mostly dreading trying to keep C happy and quiet throughout the film's two and a quarter hours of running time but, with E's help, we actually got to enjoy it. It's not exactly _light_ viewing for a married couple who have just had a child together but it's well worth it.
+
+    Before the film started, I took C for a tactical change and was unexpectedly grilled by a member of staff when trying to re-enter the screen. I was slightly incredulous as I stood there coatless, holding C in my arm as I recited my row and seat number, imagining someone going to great lengths to smuggle their baby into a screening but then I thought of [David Foster Wallace's "This Is Water"](https://fs.blog/2012/04/david-foster-wallace-this-is-water/).
+
+    > The point is that petty, frustrating crap like this is exactly where the work of choosing is gonna come in. Because the traffic jams and crowded aisles and long checkout lines give me time to think, and if I don't make a conscious decision about how to think and what to pay attention to, I'm gonna be pissed and miserable every time I have to shop. Because my natural default setting is the certainty that situations like this are really all about me. About _my_ hungriness and _my_ fatigue and _my_ desire to just get home, and it's going to seem for all the world like everybody else is just in my way. And who are all these people in my way? And look at how repulsive most of them are, and how stupid and cow-like and dead-eyed and nonhuman they seem in the checkout line, or at how annoying and rude it is that people are talking loudly on cell phones in the middle of the line. And look at how deeply and personally unfair this is.
+
+    As Wallace warned, it's difficult to catch yourself in a moment where you feel personally inconvenienced but it's good to consider---if only for a second---maybe this isn't all about _you_.
+
+*   Having said that, it is spectacularly annoying how many different, inconsistent screens one has to find the opt-out link on (no, I don't want an Amazon Prime trial; no, I don't want to try Kindle Unlimited) when resetting an [Amazon Kindle](https://www.amazon.com/kindle) these days.
+
+*   In this week's mostly pointless computer noodling corner: I was keen to get my [zsh](https://www.zsh.org) startup time down as much as possible and so used the "faster way to measure the total zsh startup time" from [Benjamin Esham's "How to profile your zsh startup time"](https://esham.io/2018/02/zsh-profiling) to gradually whittle it down under 30 milliseconds.
+
+    ```console
+    $ time zsh -i -c echo
+    zsh -i -c echo  0.01s user 0.01s system 89% cpu 0.028 total
+    ```
+
+    You can find [my full `.zshrc` for macOS Catalina on GitHub](https://github.com/mudge/dotfiles/blob/master/.zshrc) but the main trick is to avoid spawning subprocesses where possible. For me, this meant switching my prompt to use [the `vcs_info` function](http://zsh.sourceforge.net/Doc/Release/User-Contributions.html#Version-Control-Information) for showing git branch names and setting up my own alias for [`hub`](https://hub.github.com) rather than using [`hub alias -s`](https://hub.github.com/hub-alias.1.html).
+
+    (I told you it was mostly pointless.)
+
+*   As it is Christmas shopping season, I was roped in to do some technical support as a family member was struggling with an online retailer's checkout. Fortunately, after listening to [John Siracusa describe his latest bout of family tech support on Accidental Tech Podcast](https://atp.fm/episodes/354), I [used Messages on macOS' little known "Ask to Share Screen" functionality](https://support.apple.com/en-gb/guide/messages/icht11883/mac) to guide them through the process (and subsequently got angry that an email address ending in [`.name`](https://en.wikipedia.org/wiki/.name) was considered invalid 18 years after the domain was first introduced).
+
+*   A member of our [NCT group](https://www.nct.org.uk) told us about [an excellent episode of Adam Buxton's BBC Radio 4 show "You're Doing It Wrong" about parenting](https://www.bbc.co.uk/programmes/b09tf362) which led to us listening to [all other episodes](https://www.bbc.co.uk/programmes/b09v3gwk) covering topics such as [work](https://www.bbc.co.uk/programmes/b09snrb7), [diet](https://www.bbc.co.uk/programmes/b09v6vt6) and [the environment](https://www.bbc.co.uk/programmes/b09w0vhz).
+
+*   I started reading [Cixin Liu's award-winning "The Three-Body Problem"](https://en.wikipedia.org/wiki/The_Three-Body_Problem_(novel)) and was immediately struck by how much of what I read is based in USA or Western Europe and what a refreshing change it is to read something set elsewhere (in this case, China).
+
+*   I finally made a batch of [Bon Appétit's Best Chocolate Chip Cookies](https://www.bonappetit.com/recipe/bas-best-chocolate-chip-cookies) following [Chris Zetter](https://chriszetter.com)'s recommendation. I was warned they would spread when baking but I was still taken aback by how much! Luckily, they are delicious and even better the next day when they've firmed up a bit (eating them shortly after baking was basically like eating warm caramel-flavoured melted chocolate).
+
+*   Speaking of Chris, we have now formed a daily bedtime routine of using "[Several People are Solving](https://multicrosser.chriszetter.com)" to do [The Guardian quick crossword](https://www.theguardian.com/crosswords/series/quick) together. [Chris wrote up how he made it in "Multiplayer Crosswords"](https://chriszetter.com/blog/2018/12/02/multiplayer-crosswords/) and I highly recommend giving it a go with a fellow crossword enthusiast.
+
+*   C has his very first cold so I'll be spending today mostly worrying about him and audibly aching at every pitiful sneeze and cough.
