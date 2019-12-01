@@ -82,6 +82,11 @@ header h1, header p, h2 {
   float: right;
 }
 
+.plain {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
 ul, ol {
   list-style-position: inside;
   padding-left: 0;
