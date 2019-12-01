@@ -35,7 +35,11 @@ comments: false
 
 *   As it is Christmas shopping season, I was roped in to do some technical support as a family member was struggling with an online retailer's checkout. Fortunately, after listening to [John Siracusa describe his latest bout of family tech support on Accidental Tech Podcast](https://atp.fm/episodes/354), I [used Messages on macOS' little known "Ask to Share Screen" functionality](https://support.apple.com/en-gb/guide/messages/icht11883/mac) to guide them through the process (and subsequently got angry that an email address ending in [`.name`](https://en.wikipedia.org/wiki/.name) was considered invalid 18 years after the domain was first introduced).
 
-*   A member of our [NCT group](https://www.nct.org.uk) told us about [an excellent episode of Adam Buxton's BBC Radio 4 show "You're Doing It Wrong" about parenting](https://www.bbc.co.uk/programmes/b09tf362) which led to us listening to [all other episodes](https://www.bbc.co.uk/programmes/b09v3gwk) covering topics such as [work](https://www.bbc.co.uk/programmes/b09snrb7), [diet](https://www.bbc.co.uk/programmes/b09v6vt6) and [the environment](https://www.bbc.co.uk/programmes/b09w0vhz).
+*   A member of our [NCT group](https://www.nct.org.uk) told us about [an excellent episode of Adam Buxton's BBC Radio 4 show "You're Doing It Wrong" about parenting](https://www.bbc.co.uk/programmes/b09tf362):
+
+    > In this programme, we're taking a look at parenting and proving that no matter how hard you try, you're probably going to screw it up and raise a psychopath who hates you.
+
+    This quickly led to us listening to [all other episodes](https://www.bbc.co.uk/programmes/b09v3gwk) covering topics such as [work](https://www.bbc.co.uk/programmes/b09snrb7), [diet](https://www.bbc.co.uk/programmes/b09v6vt6) and [the environment](https://www.bbc.co.uk/programmes/b09w0vhz).
 
 *   I started reading [Cixin Liu's award-winning "The Three-Body Problem"](https://en.wikipedia.org/wiki/The_Three-Body_Problem_(novel)) and was immediately struck by how much of what I read is based in USA or Western Europe and what a refreshing change it is to read something set elsewhere (in this case, China).
 
