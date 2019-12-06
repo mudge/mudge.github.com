@@ -116,7 +116,7 @@ We can make this permanent by adding the following stanza to `/etc/hdparm.conf`:
 
 Now that we have storage available to share with our Mac, let's set it up with Samba so that it will work with Time Machine.
 
-To do this, we need to add a new share definition for our directory at `/media/backups` owned by the user `mudge`:
+To do this, we need to add a new share definition for our directory at `/media/backups` owned by the user `mudge` to our Samba configuration in `/etc/samba/smb.conf`:
 
 ```
 [backups]
