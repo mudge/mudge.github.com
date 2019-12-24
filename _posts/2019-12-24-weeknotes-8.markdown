@@ -1,0 +1,57 @@
+---
+layout: post
+title: Weeknotes 8
+excerpt: Being extraordinarily lazy, cobbling together a homemade banneton and this year's obligatory bit of family busywork.
+comments: false
+---
+*   My constant low-level consumption of gingerbread and "[Homes Under the Hammer](https://www.bbc.co.uk/programmes/b006v5kb)" over the past seven days has made it feel like the most sedentary week in recent memory (and this is coming from someone who was living off freezer food with a newborn not too long ago). Despite my only exercise being moving between sofa and dining chair, it's been remarkably difficult to find time to write this week's notes so I'll be brief!
+
+*   We spent the week at my in-laws and I wanted to repay their hospitality by whipping up a loaf of bread or two (as one does). This was yet another adventure in breadmaking away from all my various paraphernalia so I had to cobble together something in which to prove the loaves. Thankfully, a couple of bowls lined with a tea towel in a plastic shopping bag did the trick though you really do need to thoroughly dust the towels with some sort of rice or semolina flour. If not, you're in for the nerve-wracking and delicate task of gingerly teasing apart cloth and cold dough.
+
+*   A home luxury I've been surprised to miss as I idly scroll through my phone on relatives' WiFi is my [Pi-hole](https://pi-hole.net): the amount of internet advertising it has been dutifully hiding from me (particularly in iOS apps) is quite alarming.
+
+*   We're now at my family's home and every year I fail to simply enjoy my time here as a guest and, instead, find some inane job with which to busy myself.
+
+    Previously, I've found myself precariously balancing on wooden beams in the attic, coordinating with my dad by barking questions down the hatch in order to painstaking identify and label various coaxial cables connected to the TV aerial.
+
+    This year, I have somehow found myself feeling responsible for ensuring all my sister's photographs are stored in [iCloud Photo Library](https://www.apple.com/uk/icloud/) and---crucially---are free of duplicates.
+
+    Presumably because she used to be an avid [Picasa](https://picasa.google.co.uk) user, for some periods of time she has up to four copies of the exact same photo (sometimes in different sizes). I'm not sure how long this has been the case but I've been unable to let this rest and so, based on [my recent adventures scripting Photos for macOS](/2019/11/13/scripting-photos-for-macos-with-javascript/), I've been tinkering with cleaning them up automatically.
+
+    I've got as far as the following script but, in my heart of hearts, I know I should just let it be and move on with the holidays.
+
+    ```javascript
+    const Photos = Application("Photos");
+
+    const duplicatesAlbum = Photos.albums().byName("Duplicates");
+    const seen = new Map();
+
+    for (const photo of Photos.mediaItems()) {
+      const [lat, lng] = photo.location();
+      const date = photo.date();
+      const description = photo.description();
+      const fingerprint = `date:${date} lat:${lat} lng:${lng} desc:${description}`;
+
+      if (!lat || !lng || !date) {
+        continue;
+      }
+
+      if (seen.has(fingerprint)) {
+        seen.get(fingerprint).push(photo);
+      } else {
+        seen.set(fingerprint, [photo]);
+      }
+    }
+
+    for (let duplicates of seen) {
+      const [biggest, ...rest] = duplicates.sort((a, b) => b.width() - a.width());
+
+      if (rest.length) {
+        Photos.add(rest, {to: duplicatesAlbum});
+      }
+    }
+    ```
+
+    I'm hoping that tomorrow's traditional morning sherry will render me blissfully free of caring any more about this particular bit of busywork.
+
+*   We finally managed to watch "[Avengers: Endgame](https://www.imdb.com/title/tt4154796/)" but it took around six sittings and a lot of rewinding. It turns out 3 hour 1 minute action epics are trickier to enjoy with a three-month old.
