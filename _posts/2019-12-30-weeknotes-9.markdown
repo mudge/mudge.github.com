@@ -1,0 +1,38 @@
+---
+layout: post
+title: Weeknotes 9
+excerpt: Learning to do nothing, a deep, mirk widd and exactly which grandparent you can shove off a bus.
+comments: false
+---
+*   This past week of relative inactivity is probably best summed up by [Sam Delaney's "'No tricks. No mantras. I just want to learn how to do nothing': my quest to stay still"](https://www.theguardian.com/lifeandstyle/2019/dec/27/learn-how-to-do-nothing):
+
+    > "Doing nothing won’t be comfortable at first, however you try," he says. "You must deliberately put the time aside to do nothing, and have the discipline to get through it, even when it is boring or creates anxiety. You have to sweat it out and gnash your teeth doing nothing for a while, until you learn to cope. The only person you have to live with 24/7 is yourself, so you might as well learn how to do it."
+
+    Though I did manage to [let go of de-duplicating my sister's photographs](/2019/12/24/weeknotes-8/).
+
+*   I was struck by the poetry of [Samantha Harvey's "'It's as if I’m falling from a 50-storey building': a year without sleep"](https://www.theguardian.com/books/2019/dec/28/its-as-if-im-falling-from-a-50-storey-building-a-novelists-year-without-sleep):
+
+    > Why is it – she's thinking – that she has to sit there day after day listening to patients who refuse to take responsibility for their own wellbeing? People in Syria can sleep with bombs falling, why can’t you sleep on your king-size mattress with your winter-togged duvet and your kelp-scented hair on a fake-down pillow under a bomb-free sky? What pea disrupts your sleep, princess? A passing Audi? What paucity and fragility of spirit has left you relying on drugs to do that which is the natural inheritance of all animals everywhere and for ever?
+
+*   My [guide to function composition in Ruby](https://www.ghostcassette.com/function-composition-in-ruby/) made [Ruby Inside's "Top 6 Ruby Items of 2019"](https://rubyweekly.com/issues/481) which was an unexpected and very pleasant early Christmas present.
+
+*   Speaking of gifts, we were very spoilt by others' generosity including C receiving [Julia Donaldson's "The Gruffalo" translated into Scots by James Robertson](http://blackandwhitepublishing.com/the-gruffalo-in-scots.html) so he can really embrace his heritage:
+
+    > A moose took a dauner through the deep, mirk widd.  
+    > A tod saw the moose and the moose looked guid.
+
+*   I received a brand new pair of shoes and what was the first thing I did with them? Why re-lace them with [Ian's favourite "Over Under" lacing](https://www.fieggen.com/shoelace/overunderlacing.htm), of course!
+
+*   Having had a whale of a time playing it with colleagues earlier in the year, I finally managed to introduce [Codenames](https://en.wikipedia.org/wiki/Codenames_(board_game)) to another group of people---my in-laws---via [a free online version](https://www.horsepaste.com) and tried to dazzle them with my extremely obtuse code-words (with mixed success).
+
+*   There's far too much Christmas television to cover but I was particularly pleased to see [Mackenzie Crook](https://www.imdb.com/name/nm0188871/)'s "[Worzel Gummidge](https://www.bbc.co.uk/programmes/m000csng)" [being well-received](https://www.theguardian.com/tv-and-radio/2019/dec/26/worzel-gummidge-review-mackenzie-crook-hes-back-hes-hilarious-and-hes-wearing-a-cravat) after how much we enjoyed his last series, "[Detectorists](https://www.bbc.co.uk/programmes/b06l51nr)".
+
+*   I managed to put on an astonishing amount of weight over the festive period so I've already started thinking about having some extremely predictable New Year's Resolutions. The amount of junk food we've returned home with (Jaffa Cakes, After Eight Mints, chocolate Santa Clauses, Oreos, a slab of Christmas cake, mince pies, a tube of Smarties, two bags of chocolate coins, a box of Cadbury "Festive Friends", etc.) only makes that all the more _thrilling_.
+
+*   Finally, thanks to another gift for C, we've taken to regularly singing the Scottish classic "[Ye Canny Shove Yer Grannie](https://www.scotslanguage.com/articles/node/id/411)" and he loves it. My mum (and therefore his ill-fated "daddy's mammy" in the rhyme) is less keen.
+
+    > Ye cannae shove yer granny off a bus (Push push!)  
+    > No, ye cannae shove yer granny off a bus (Push push!)  
+    > No, ye cannae shove yer granny  
+    > 'Cause she's yer mammy's mammy  
+    > Ye cannae shove yer granny off a bus
