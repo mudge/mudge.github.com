@@ -1,0 +1,38 @@
+---
+layout: post
+title: Weeknotes 10
+excerpt: Revisiting 2018’s yearnotes, sharing podcasts in the park, the rhythm of baby talk and why you wouldn’t be able to cut much with Apple’s scissors emoji.
+comments: false
+---
+*   Happy New Year! And double digit weeknotes too!
+
+    It's amazing to me that it has been over a year since I nervously posted my [2018 Yearnotes](/2019/01/02/2018-yearnotes/) having just left a company after eight years. At the time, I was deeply conflicted about my career and didn't really know what to do. As I wrote then:
+
+    > I'm honestly not sure what is next. After working continuously for a decade in London, I plan to take a break from keyboards and screens for a short while before seeing how I can best be of help to others, be that as a contractor or as a full-time employee.
+
+    My "break from keyboards and screens" ended up being a month of not enjoying playing "[Red Dead Redemption 2](https://www.rockstargames.com/reddeadredemption2/)" and then, after interviewing for a few full-time roles, landing my first contract as a freelance software developer through a friend of a friend. It was only for two weeks but it took a mere three days to convince me to commit and set up my own limited company, [Ghost Cassette](https://www.ghostcassette.com).
+
+    I was extremely fortunate and managed to work with two other companies before C's turbulent arrival, getting the opportunity to work with technologies I had long wanted to use in production: e.g. [HashiCorp's Terraform](https://www.terraform.io) and [Facebook's React](https://reactjs.org).
+
+    Conspicuously missing from my yearnotes is that we knew C was on his way but it was far too early to share with anyone. During E's pregnancy, we referred to him as "Tujol" due to a vivid dream I had where I found myself in a hospital, watching [Turkish soap operas](/2019/12/16/weeknotes-7/) with a young boy of that name dressed in corduroy and with a small black felt triangle covering the end of his nose. It would later prove extremely difficult to stop affectionately referring to him as "Tuj" but it now seems a distant memory.
+
+    Against all odds, I did [manage to run again](/2019/11/04/weeknotes-1/) though.
+
+*   On New Year's Eve, E and I continued our tradition of asking each other to reflect on our highlights and lowlights of the past year (and there was no shortage of either) before thinking about what we'd like to change in 2020.
+
+    While I had a few ideas, a common theme in my resolutions was [my inability to do nothing](/2019/12/30/weeknotes-9/) or, more specifically, how often I squander the present worrying about something else (e.g. DIY jobs to be done, being a better person, comparing insurance providers, etc).
+
+*   I'm a little [late to the party](https://www.theguardian.com/tv-and-radio/2019/may/18/the-british-podcast-awards-review-george-the-poet) but have been blown away by [George the Poet's "Have You Heard George’s Podcast?"](https://www.georgethepoet.com).
+
+*   Continuing my accidental ["things you can do with AirPods" column](/2019/12/16/weeknotes-7/), E and I listened to "[A Grenfell Story](https://www.bbc.co.uk/programmes/p07qtmfs)" together while walking through the park thanks to [iOS 13's audio sharing](https://support.apple.com/en-us/HT210421) which I'm sure made us look extremely antisocial. (I also can't help but be reminded of the [Microsoft Zune's awfully-named "squirting"](https://www.newsweek.com/zune-should-go-beyond-squirting-107255).)
+
+*   On E's mum's recommendation, we listened to the director of the [Centre for Neuroscience in Education](https://www.cne.psychol.cam.ac.uk) at St. John's College, Cambridge, [Professor Usha Goswami discuss children's language development on BBC Radio 4's Woman's Hour](https://www.bbc.co.uk/programmes/m000cc0w):
+
+    > Rhythm is absolutely fundamental to the way the speech signal is structured. So when we're talking, we're creating a pressure wave in the air, it's like a sound wave. It comes to the brain, the brain has its own intrinsic brain rhythms or brainwaves and effectively what happens is that, through automatic synchronisation processes, the brainwaves at different speeds align themselves with these energy changes in the speech signal that are also occurring at different speeds and that's how you process the speech signal. It's actually the most complex processing that your brain does, it's more complex than vision.
+
+    Her explanation of the importance of "baby talk" (characterised by the strong-weak rhythm of words such as "mummy", "daddy", "baby", "doggy", etc.) was fascinating.
+
+    As a result, we're singing "[ye cannae shove your granny off a bus](/2019/12/30/weeknotes-9/)" with even _more_ gusto (if such a thing were possible) and I'm trying to break my habit of referring to C solely as "pud" (short for "pudding", of course).
+
+*   As with [my love of knot-related web sites](/2019/12/16/weeknotes-7/), I thoroughly enjoyed [a detailed analysis of which emoji scissors close](https://wh0.github.io/2020/01/02/scissors.html). I file it alongside a [Twitter thread rating every horse emoji](https://mobile.twitter.com/jelenawoehr/status/1191872816372600832?lang=e) and [an entomologist rating ant emojis](https://curlicuecal.tumblr.com/post/175362924100/an-entomologist-rates-ant-emojis).
+
