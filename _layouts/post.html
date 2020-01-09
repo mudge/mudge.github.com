@@ -31,78 +31,32 @@
     </script>
     <meta name=viewport content="width=device-width, initial-scale=1">
     <!--[if lt IE 9]><script src=http://html5shiv.googlecode.com/svn/trunk/html5.js></script><![endif]-->
-    <link rel=stylesheet href=/c/m.css>
+    <link rel=stylesheet href=/c/1.css>
     <link rel=alternate type=application/atom+xml href=/index.atom>
     <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
     <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
     <link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
-    {% if page.comments %}
-    <script>
-      var _gaq = [['_setAccount','UA-1804081-1'],['_trackPageview']],
-          disqus_shortname = 'mudge',
-          disqus_identifier = '{{ page.id }}';
-
-      (function (d, s) {
-          s = function (u, g) {
-            g = d.createElement('script');
-            g.async = true;
-            g.src = u;
-            d.documentElement.firstChild.appendChild(g);
-          };
-
-          s('//www.google-analytics.com/ga.js');
-          s('//mudge.disqus.com/embed.js');
-      }(document));
-    </script>
-    {% else %}
-    <script>
-      var _gaq = [['_setAccount','UA-1804081-1'],['_trackPageview']];
-
-      (function (d, g) {
-        g = d.createElement('script');
-        g.async = true;
-        g.src = '//www.google-analytics.com/ga.js';
-        d.documentElement.firstChild.appendChild(g);
-      }(document));
-    </script>
-    {% endif %}
   </head>
   <body>
-    <div class=strapline>Need help with software development? <a title="Ghost Cassette" href=https://www.ghostcassette.com>I&rsquo;m available for hire</a>.</div>
-    <main>
-      <nav>
-        <ul>
-          <li><a href=/ rel=home>&larr; Back to the homepage</a></li>
-        </ul>
-      </nav>
-      <article class=hentry>
-        <header>
-          <h1 class=entry-title>
-            <a href={{ page.url }} rel=bookmark>{{ page.title }}</a>
-          </h1>
-          <div class="byline vcard">
-            <address class=author>By <a href=/ class=fn rel=author>Paul Mucur</a></address> on
-            <time class=updated datetime={{ page.date | date_to_xmlschema }}>{{ page.date | date: "%A, %-dth %B %Y" | replace: "1th", "1st" | replace: "2th", "2nd" | replace: "3th", "3rd" | replace: "11st", "11th" | replace: "12nd", "12th" | replace: "13rd", "13th" }}</time>
-          </div>
-        </header>
-        <div class=entry-content>{{ content }}</div>
-        {% for post in site.related_posts limit:3 %}
-        {% if forloop.first %}
-        <aside>
-          <h2>Recent Posts</h2>
-          <ol>
-          {% endif %}
-            <li><a href={{ post.url }} rel=bookmark>{{ post.title }}</a></li>
-          {% if forloop.last %}
-          </ol>
-        </aside>
-        {% endif %}
-        {% endfor %}
-      </article>
-      {% if page.comments %}
-      <div id=disqus_thread></div>
-      {% endif %}
-      {% include footer.html %}
-    </main>
+    <div class=banner>Need help with software development? <a title="Ghost Cassette" href=https://www.ghostcassette.com>I&rsquo;m available for hire</a>.</div>
+    <nav>
+      <ul>
+        <li><a href=/ rel=home>&larr; Back to the homepage</a></li>
+      </ul>
+    </nav>
+    <article class=hentry>
+      <header>
+        <h1 class=entry-title>
+          <a href={{ page.url }} rel=bookmark>{{ page.title }}</a>
+        </h1>
+        <div class=vcard>
+          <address class=author>By <a href=/ class="url fn n" rel=author>Paul Mucur</a></address>
+          on
+          <time pubdate class=updated datetime={{ page.date | date_to_xmlschema }}>{{ page.date | date: "%A, %-dth %B %Y" | replace: "1th", "1st" | replace: "2th", "2nd" | replace: "3th", "3rd" | replace: "11st", "11th" | replace: "12nd", "12th" | replace: "13rd", "13th" }}</time>
+        </div>
+      </header>
+      <div class=entry-content>{{ content }}</div>
+    </article>
+    {% include footer.html %}
   </body>
 </html>
