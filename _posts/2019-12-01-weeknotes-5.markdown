@@ -2,7 +2,6 @@
 layout: post
 title: Weeknotes 5
 excerpt: The unexpected joy of baby cinema, doing everything wrong and our daily multiplayer crossword routine.
-comments: false
 ---
 *   For a few years now, cookery shows on TV have been a guilty pleasure of mine: when your day has been a little too trying for the latest nail-biting thriller or existential drama, I find there's no better way to unwind than to watch [Jamie](https://www.jamieoliver.com "Jamie Oliver") "glug" olive oil or "click off" lettuce leaves. This week I indulged in [Rick Stein's new series "Secret France"](https://www.bbc.co.uk/programmes/m000b1qp) which was [expertly summed up by Joel Golby in his review for The Guardian](https://www.theguardian.com/tv-and-radio/2019/nov/23/rick-stein-secret-france):
 

@@ -2,7 +2,6 @@
 layout: post
 title: Weeknotes 4
 excerpt: Struggling with structured data, Christmas puddings, the joy of repairing things and everything being a trade-off.
-comments: false
 ---
 *   I read [Blake Hyde's "The Danger of 'Simplicity'"](https://asthasr.github.io/posts/danger-of-simplicity/) this week and wished I had written it. I've wanted to write about everything being a trade-off for years (I even have a draft from 2014 but sadly it only contains a bulleted list of technology buzzwords) but this is a fantastic, concise piece on the difficulty of pursuing simplicity in software.
 

@@ -2,7 +2,6 @@
 layout: post
 title: Using a Raspberry Pi for Time Machine
 excerpt: How to share a disk with Samba and Avahi on a Raspberry Pi for use with macOS backups.
-comments: false
 image: /i/timemachine.png
 redirect_from: /2019/11/12/using-a-raspberry-pi-for-time-machine.html
 ---

@@ -2,7 +2,6 @@
 layout: post
 title: Weeknotes 9
 excerpt: Learning to do nothing, a deep, mirk widd and exactly which grandparent you can shove off a bus.
-comments: false
 ---
 *   This past week of relative inactivity is probably best summed up by [Sam Delaney's "'No tricks. No mantras. I just want to learn how to do nothing': my quest to stay still"](https://www.theguardian.com/lifeandstyle/2019/dec/27/learn-how-to-do-nothing):
 

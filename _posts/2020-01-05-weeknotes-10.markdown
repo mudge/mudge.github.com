@@ -2,7 +2,6 @@
 layout: post
 title: Weeknotes 10
 excerpt: Revisiting 2018’s yearnotes, sharing podcasts in the park, the rhythm of baby talk and why you wouldn’t be able to cut much with Apple’s scissors emoji.
-comments: false
 ---
 *   Happy New Year! And double digit weeknotes too!
 

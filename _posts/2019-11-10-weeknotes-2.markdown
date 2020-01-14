@@ -3,7 +3,6 @@ layout: post
 title: Weeknotes 2
 excerpt: Fixing dates on old videos in Photos, using a Raspberry Pi for Time Machine and the right tool for the job.
 date: 2019-11-10
-comments: false
 redirect_from: /2019/11/10/weeknotes-2.html
 ---
 While I was conflicted about publishing [my first weeknotes last week](/2019/11/04/weeknotes-1.html) (were they too self-indulgent? are they interesting to anyone else?), I received some nice words of encouragement and so on with this week&rsquo;s!

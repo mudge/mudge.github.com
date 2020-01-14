@@ -2,7 +2,6 @@
 layout: post
 title: Scripting Photos for macOS with JavaScript
 excerpt: Automatically editing photo metadata for iCloud Photos using JavaScript for Automation.
-comments: false
 image: /i/script-editor.png
 redirect_from: /2019/11/13/scripting-photos-for-macos-with-javascript.html
 ---

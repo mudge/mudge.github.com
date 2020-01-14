@@ -2,7 +2,6 @@
 layout: post
 title: Weeknotes 3
 excerpt: Writing, solving logic puzzles and the Bake Off we deserve.
-comments: false
 ---
 *   While we initially recoiled at the adverts for the [Junior Bake Off](https://www.channel4.com/programmes/junior-bake-off), after reading that [it is "the Bake Off we deserve" after this year's disappointing series](https://www.theguardian.com/tv-and-radio/2019/nov/11/junior-bake-off-the-kids-spinoff-thats-the-perfect-antidote-to-baking-brutality), we gave it a go and are now fully converted. Watching the contestants recover from baking disasters and help each other without hesitation is truly joyful in a way the regular series totally failed to be.
 

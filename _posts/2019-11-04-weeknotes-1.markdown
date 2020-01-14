@@ -3,7 +3,6 @@ layout: post
 title: Weeknotes 1
 excerpt: Dadding, baking, TV and being a paranormal insurance investigator.
 date: 2019-11-04
-comments: false
 redirect_from: /2019/11/04/weeknotes-1.html
 ---
 Following a trail already blazed by [Nat Buckley](https://natbuckley.co.uk/2019/01/20/weeknotes-1-tv-ads-and-business-models/), [Alice Bartlett](https://alicebartlett.co.uk/blog/weaknotes) and [Chris Zetter](https://chriszetter.com/blog/2019/10/26/a-visit-to-kew-gardens-and-a-baking-failure/) and at the very real risk of over-sharing, here are my first weeknotes:

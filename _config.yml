@@ -23,10 +23,3 @@ plugins:
   - jekyll-redirect-from
 whitelist:
   - jekyll-redirect-from
-defaults:
-  -
-    scope:
-      path: ""
-      type: "posts"
-    values:
-      comments: true
