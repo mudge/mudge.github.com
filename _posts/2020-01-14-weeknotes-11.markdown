@@ -1,0 +1,30 @@
+---
+layout: post
+title: Weeknotes 11
+excerpt: Redesigning the site, swimming lessons, first cousins once removed and screwdrivering.
+---
+*   I redesigned this site in response to feedback from a former colleague that the old inline lists made it look like the styling had failed to load (never what you want to hear).
+
+    It doesn't look too wildly different but I wanted it to resemble [Safari's Reader Mode](https://support.apple.com/en-gb/guide/iphone/iphdc30e3b86/ios) and look good on mobile devices so I've cranked both the font size and the contrast throughout.
+
+    I was most thrilled to replace the old `border`-based link underlines so [modern browsers can render better ones that respect descenders](https://css-tricks.com/styling-links-with-real-underlines/).
+
+    I've added an admittedly rather drab personal introduction to the [home page](/) after seeing much better introductions on [Nat Buckley](https://natbuckley.co.uk) and [Alice Bartlett](https://alicebartlett.co.uk)'s sites. I might tweak it some more but [perfect is the enemy of the good](https://en.wikipedia.org/wiki/Perfect_is_the_enemy_of_good).
+
+*   I felt rather sheepish after reading [Basecamp removed Google Analytics](https://m.signalvnoise.com/the-last-tracker-was-just-removed-from-basecamp-com/) so I removed all analytics from this site too. To be honest, I never checked the results and it feels increasingly hypocritical to run a [Pi-hole](https://pi-hole.net) at home and yet thoughtlessly track visitors on my own sites.
+
+    For similar reasons, I've also ditched [Disqus](https://disqus.com) comments from all posts. I'd disabled it for new posts but it felt a good time to remove them altogether.
+
+*   C had his very first swimming lesson this week. It consisted mostly of E walking up and down the shallow end of the swimming pool singing nursery rhymes while pumping his fat little legs but did involve submerging him completely under water twice. My own father (who was a competitive swimmer in his youth) is particularly excited to hear C is taking to the water as he recently revealed how disappointed he was that I never truly mastered the front crawl or butterfly. Keep those mildly distressing revelations coming, people!
+
+*   I was overjoyed to see two people publish their first weeknotes: [Tom Stuart](https://tomstu.art/weeknotes-0-collectively-meaningless) and my former colleague [Shane](http://technicallyshane.com/2020/01/07/week1.html). I continue my campaign to convince others to join in: perhaps _you'll_ be next?
+
+*   We all went up to Glasgow over the weekend for E's grandmother's 94th birthday. This meant C met three [grand uncles](/2019/12/16/weeknotes-7/) and three first cousins once removed (you could argue a second cousin was also present but is still in development). One of his grand uncles described C as someone who "perceives life as an adventure, not a threat" which I thought was rather lovely.
+
+    I can never remember how cousins work (first? second? how many times removed?) so I am very grateful for [this excellent family tree diagram from Wikipedia](https://en.wikipedia.org/wiki/Cousin#/media/File:CousinTree.svg).
+
+*   On the train up to Scotland, I enjoyed [Adam Buxton's podcast with Joe Cornish](https://adam-buxton.co.uk/podcasts/ep115-adam-joe) where he mentioned Brian Eno's concept of “screwdrivering”:
+
+    > When I had Brian Eno on the podcast he was saying the impulse is always to _add_ when you're making music or making anything creative. You always feel---he calls it "screwdrivering"---you always feel as if you should be putting more in and that'll be good but actually what you should be doing is taking things out.
+
+*   Speaking of creative endeavours, a [good friend of mine](http://willhigo.com) is currently making [his first full-length feature film](https://www.instagram.com/p/B7Ii7u0J1wfWfp48fmHwAwco965DDNgM44Np9o0/) and I keep thinking about the sheer enormity of such a project. Sadly, I won't be reprising my beloved character of [policeman in the background](https://vimeo.com/14098600).
