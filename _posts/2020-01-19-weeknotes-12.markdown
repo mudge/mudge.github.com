@@ -1,0 +1,38 @@
+---
+layout: post
+title: Weeknotes 12
+excerpt: Yearning for space, failing to make a video, ruining Christmas presents, smart meters and musculoskeletal woes.
+---
+*   Since returning to London after our stay in a Glasgow tenement last week, I've yearned for the high ceilings and sheer _space_ we enjoyed there. You can often find me standing in each room of our relatively pokey flat, a look of concentration on my face as I desperately try to rearrange furniture in my mind to somehow give us a single morsel more space. So far, I've only managed to do this successfully in our bedroom; disappointingly, everywhere else requires the removal of at least one major piece of furniture.
+
+*   E asked me who [Henry Cavill](https://m.imdb.com/name/nm0147147/) plays in [his new Netflix show](https://www.netflix.com/title/80189685) and I replied, "the titular Witcher."
+
+*   [Tom Stuart's video making Anna Jones' cassoulet](https://youtu.be/N8jL_ub9gy4) inspired me to make a similar video showing how I bake bread. Not having made a video since I was a teenager, I planned out the various parts I'd need to capture:
+
+    1. Making a starter
+    2. Making a leaven
+    3. Making the initial dough
+    4. Autolyse
+    5. Adding salt and water
+    6. Folding and bulk fermentation
+    7. Initial shaping
+    8. Final shaping
+    9. Proving overnight
+    10. Preparing the oven
+    11. Scoring
+    12. Baking in a Dutch oven
+
+    On reflection, I think I might have to pick something simpler for my first foray into moving pictures.
+
+*   In an attempt to curb my tissue habit, E gave me a set of handkerchiefs for Christmas. I decided to clean them this morning and may have squirted bleach all over them before really thinking through my actions resulting in an accidental and not entirely pleasant tie-dye.
+
+*   I've been going back through [episodes of Adam Buxton's podcast](https://adam-buxton.co.uk/podcasts) and especially enjoyed [his interview with David Sedaris](https://adam-buxton.co.uk/podcasts/ep79-david-sedaris). It might even have convinced me to purchase my very first audiobook just so that I can hear more of Sedaris' wonderful storytelling.
+
+*   We had our electricity meter replaced with a "smart" one which automatically reports readings to our supplier every month. It came with an "in-home display" but my creeping sense of paranoia has:
+
+    1. Precluded me from connecting it to our WiFi network
+    2. Encouraged me to consign the thing to a dark cupboard/possible future in the bin
+
+    I suspect my reticence to have any form of "smart" device in our household is increasingly antiquated and quaint.
+
+*   In a surprise to no one but myself, using my laptop on our sofa seems to have given me an exciting new repetitive strain injury. Sadly, wearing a neoprene splint, moving the computer to our 70s dining table and perching atop a pile of sofa cushions has not improved matters. In fact, I'm writing this week's notes on my phone thanks to GitHub's web interface though even this is making one of my hands feel suspiciously cold. Time for a bit of a break from musculoskeletal stress perhaps.
