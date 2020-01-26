@@ -1,0 +1,30 @@
+---
+layout: post
+title: Weeknotes 13
+excerpt: Posture, mouth guards, Guy Fieri’s “Trash Can Nachos” and hearing things in the noise.
+---
+*   Shoulders back and down.
+
+*   E, C and I went to see "[Uncut Gems](https://www.imdb.com/title/tt5727208/)" at [baby cinema](https://www.barbican.org.uk/whats-on/series/parent-and-baby-screenings). As the stress and tension in the film grew relentlessly, I thought of my last two trips to the dentist about the burgeoning "vertical cracks" on my teeth from [grinding](https://www.nhs.uk/conditions/teeth-grinding/).
+
+*   For that reason, I found myself curled up in bed, a neoprene wrist support velcroed to one arm and a remouldable mouth guard separating my long-suffering molars. Not so dissimilar to Bart in "[The Last Temptation of Homer](https://en.wikipedia.org/wiki/The_Last_Temptation_of_Homer)", laden with orthopaedic shoes, hair matted with medicated salve and voice hoarse with throat spray.
+
+*   A friend caught me describing a room as "roasty toasty" and successfully deduced I spend most of my time in conversation with a four-month old baby.
+
+*   Following [Tom Stuart's recommendation](https://tomstu.art/weeknotes-2-the-good-half), I started watching [Chris Morocco's "Reverse Engineering"](https://www.bonappetit.com/video/series/reverse-engineering). In it, Morocco attempts to recreate dishes in two days after only tasting them while blindfolded.
+
+    From [Gordon Ramsay's Beef Wellington](https://youtu.be/3eVMgUrEazA) to [Guy Fieri's "Trash Can Nachos"](https://youtu.be/E3e20718ioY), he does consistently well despite never having made these dishes before. There's a mastery in his ability to quickly recognise various components and techniques in dishes, e.g. a [Mornay sauce](https://en.wikipedia.org/wiki/Mornay_sauce) or a [roux](https://en.wikipedia.org/wiki/Roux). Just don't ask him to [identify a specific cheese](https://youtu.be/zlG_iUEybgM).
+
+*   In an attempt to improve my posture, I've been doing yoga every morning under E's tutelage. Naturally, I made the ritual my own by struggling to use Spotify to find appropriately soothing muzak on our aging iPad and ended up replacing our entire music setup with a [Raspberry Pi](https://www.raspberrypi.org) running [Shairport Sync](https://github.com/mikebrady/shairport-sync). We can now stream any audio of our choice over [AirPlay](https://support.apple.com/en-gb/HT202809) and I'm no longer allowed to procrastinate.
+
+*   Speaking of which: shoulders back and down.
+
+*   Among our desperate attempts to improve C's sleep, we use "[Rain Rain](https://www.rainrainapp.com)" and a small Bluetooth speaker to play the sound of running water throughout the night. When we're not accidentally increasing the volume or fast-forwarding to the sound of a raging thunderstorm, I hear the strangest things in the white noise: snatches of a distant news broadcast, the wailing of some audacious post-rock and the angry hiss of tinny Icelandic death metal on an AM radio.
+
+*   The self check-in at my GP was out of order this week. After speaking with the receptionist, I settled in the waiting room and looked up to see a display showing a "[Your Windows 7 PC is out of support](https://www.microsoft.com/en-us/microsoft-365/windows/end-of-windows-7-support)" screen.
+
+*   Watching [Claire Saffitz soak toast and popcorn in water to flavour jelly beans](https://youtu.be/VPYhem4GRGY) has inspired me to get back into making ice cream. I enjoyed making [Christina Tosi's "Cereal Milk ice cream"](https://www.telegraph.co.uk/foodanddrink/recipes/10957755/Momofukus-Cereal-Milk-ice-cream-recipe.html) but now I'm wondering what else I could steep.
+
+*   People are never impressed when I talk about my collection of not one, not two but _three_ types of [WD40](https://www.wd40.com). Only I will know the deep satisfaction of spraying [WD40 electrical contact cleaner](https://www.wd40.com/products/contact-cleaner/) into sticky game controller analogue sticks.
+
+*   One more time: shoulders back and down.
