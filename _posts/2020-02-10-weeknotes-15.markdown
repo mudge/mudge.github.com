@@ -1,0 +1,22 @@
+---
+layout: post
+title: Weeknotes 15
+excerpt: Looking for work, laughter, stinging nostrils and writing weeknotes for the future self.
+---
+*   After thoroughly enjoying my parental leave, I am now [looking for contract work](https://www.ghostcassette.com) so if you know anyone who could make use of a former CTO/Technical Lead with 14 years' experience developing Ruby and JavaScript in teams, [please get in touch](mailto:paul@ghostcassette.com).
+
+*   It took me a little while but I am loving "[Outer Wilds](https://www.mobiusdigitalgames.com/outer-wilds.html)" (and I am [not the only one](https://www.polygon.com/2019/12/13/21011871/outer-wilds-goty-best-games-of-the-year "Polygon's Game of the Year #1: Outer Wilds")). I'm looking forward to watching [Noclip's "The Making of Outer Wilds - Documentary"](https://youtu.be/LbY0mBXKKT0) when I'm done.
+
+*   I nearly nodded my head clean off my neck while reading [Basecamp's "Until the End of the Internet"](https://basecamp.com/about/policies/until-the-end-of-the-internet) policy for their products.
+
+*   For that reason, I was very excited to [read the teaser for Basecamp's new email service, "Hey"](https://hey.com) coming in April 2020.
+
+*   The [second episode of the Panic Podcast, "Pantscast"](https://podcast.panic.com/#episode002), is funny for admittedly puerile reasons but it made me laugh all the same. I'm not sure how I missed the app when it was [first released](https://daringfireball.net/linked/2009/03/09/pantscast).
+
+*   Speaking of laughter, let me join [many](https://www.theguardian.com/tv-and-radio/2020/feb/07/frankie-boyles-tour-of-scotland-review-bbc2) [others](https://tomstu.art/weeknotes-5-nothing-notable) by recommending ["Frankie Boyle's Tour of Scotland"](https://www.bbc.co.uk/iplayer/episode/m000f1vj/frankie-boyles-tour-of-scotland-series-1-1-aberdeen-to-oban). There are far too many lines to quote here but let's just say I have a soft spot for his monologue about the beautiful [Glen Coe](https://en.wikipedia.org/wiki/Glen_Coe).
+
+*   I didn't take any notes this week as I spent a large part of it blowing my nose and stinging my nostrils with a mixture of steam and [Olbas Oil](https://www.olbas.co.uk/products/olbas-oil/).
+
+*   Just as blogging about blogging or podcasting about podcasting is a real faux pas, thinking about writing this week's notes reminded me of a passage from [Paul Murray's "The Mark and the Void"](https://www.penguin.co.uk/books/181/181041/the-mark-and-the-void/9780241953860.html):
+
+    > Although technology has the capability now to record entire lifetimes, meaning that every moment may be pulled from the foaming sea of oblivion to the dry land of perfect recall, the mythic power of the photograph nevertheless relates to the future, and not to the past. Every recording conceals the secret fantasy of a future self who will observe it; this future self is himself the simulacrum, the _persona ficta_. He exists beyond time, beyond action, beyond need; his only function is to witness the continuum of the past, as he might observe the steps that brought him to godhood. Through this fantasy, time is transformed from the condition of loss into a commodity that may be acquired and stockpiled; rather than disappear ceaselessly into the past, life accumulates, each moment becoming a unit of a total self that is the culmination of our experiences in a way that we---biological composites who profligately shed our cells, our memories and our possessions---can never be.
