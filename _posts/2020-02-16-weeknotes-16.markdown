@@ -1,0 +1,24 @@
+---
+layout: post
+title: Weeknotes 16
+excerpt: Typing practice, an erosion of attention, puzzle solving and wishing we’d done everything differently.
+---
+*   [The job search](/2020/02/10/weeknotes-15/) continues.
+
+*   I'm slowly getting used to [my split keyboard](/2020/02/03/weeknotes-14/) thanks to some deliberate [typing practice](https://www.keybr.com) recommended by [Maciej](https://www.instagram.com/_weszlem/). I still managed to send an unfinished email instead of pressing the backspace key though.
+
+*   I was intrigued by [Oliver Burkeman's "How to stop the spread of fake news? Pause for a moment"](https://www.theguardian.com/lifeandstyle/2020/feb/07/how-to-stop-spread-of-fake-news-oliver-burkeman) about [continuous partial attention](https://lindastone.net/qa/continuous-partial-attention/):
+
+    > We tend to think of distraction as an all-or-nothing affair: either you’re concentrating successfully on something, or else you’ve been distracted by Twitter or Netflix yet again. But this is more like an erosion of attention, consistent with at least nominally remaining focused on the task at hand.
+
+    The article's conclusion reminded me of [the xkcd comic, "Listen to Yourself"](https://xkcd.com/481/) (which [was actually implemented](https://blog.xkcd.com/2008/10/08/youtube-audio-preview/)).
+
+*   Shane's mention that he was trying to write a solver for the ["Snake Egg Puzzle"](https://youtu.be/73Meh3NPno4) [in his weeknotes](http://technicallyshane.com/2020/02/12/week6.html) led me to recommend [Chris Patuzzo's Sentient programming language](https://sentient-lang.org) for the task and mention the problem to Chris. A few days later and [Chris successfully wrote a program to solve the puzzle and generate new ones](https://github.com/tuzz/snake-egg-puzzle).
+
+*   We've managed to drastically reduce the number of [white noise snafus](/2020/01/26/weeknotes-13/) by using [Guided Access](https://support.apple.com/en-gb/HT202612) on an old iPad. This way we can still enable and disable the susurration of a mild downpour but have the device ignore all accidental button presses. Thanks to [Tom](https://tomstu.art) for drawing my attention to this feature of iOS.
+
+*   I enjoyed [Robin Sloan's story of building a messaging app for his family, "An app can be a home-cooked meal"](https://www.robinsloan.com/notes/home-cooked-app/). For similar reasons, I've been enjoying hearing about [John Siracusa's new macOS apps written to meet his own needs](https://hypercritical.co/apps/) on [Accidental Tech Podcast](https://atp.fm) (["Big Hole In the Middle"](https://atp.fm/episodes/360) and ["Day-One Cowboy"](https://atp.fm/episodes/365)).
+
+*   On a slightly less optimistic note, I also enjoyed [Daniel Bogan's interview with the creator of the Rust programming language, Graydon Hoare](https://usesthis.com/interviews/graydon.hoare/):
+
+    > Software-wise I really wish we'd done almost everything differently. The focus has been on eyeballs and engagement, not like "does it work" or "can it resist attack by a bad actor". Almost no modern software works well or is safe in any serious sense. It's always on fire. A sinking ship with everyone frantically bailing. Swiss cheese. Pick your metaphor. So my dream setup would involve "software that has any sort of reliability". Which probably requires rewinding time to before the personal computing era and enacting liability legislation or something.
