@@ -17,7 +17,7 @@ gfm_quirks: paragraph_end
 repository: mudge/mudge.github.com
 url: https://mudge.name
 title: Paul Mucur
-description: The personal web site of freelance software developer Paul Mucur.
+description: The personal web site of consultant Technical/Engineering Lead Paul Mucur.
 permalink: pretty
 plugins:
   - jekyll-redirect-from
