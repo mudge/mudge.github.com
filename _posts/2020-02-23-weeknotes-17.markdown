@@ -1,0 +1,24 @@
+---
+layout: post
+title: Weeknotes 17
+excerpt: A car park disaster, animated GIFs, not rewriting legacy systems and how the internet really works.
+---
+*   My father-in-law was on [The One Show](https://www.bbc.co.uk/programmes/m000fk4f) discussing [why a multi-storey car park in Liverpool burnt down, destroying 1,300 cars](https://www.newcivilengineer.com/archive/liverpool-car-park-fire-a-perfect-storm-02-02-2018/).
+
+    <p class="center"><a href="https://www.bbc.co.uk/programmes/m000fk4f"><img src="/i/hero.gif" width="480" height="270" alt></a></p>
+
+*   In an effort to be a better son-in-law, I extracted an animated GIF of his heroic introduction and, thanks to [Collin Burger's "How to make GIFs with FFMPEG"](https://engineering.giphy.com/how-to-make-gifs-with-ffmpeg/), ended up using this one-liner:
+
+    ```console
+    $ ffmpeg -ss 1499.5 -t 2.5 -i oneshow.mp4 -filter_complex "[0:v] fps=12,scale=480:-1,split [a][b];[a] palettegen [p];[b][p] paletteuse" hero.gif
+    ```
+
+*   Following a recommendation from [Leo](https://twitter.com/leocassarani), I listened to [an episode of "On the Metal" interviewing Kenneth Finnegan about starting his own internet exchange](https://oxide.computer/blog/on-the-metal-6-kenneth-finnegan/). Despite working on the web for 20 years, it quickly became clear I had no idea how the internet really worked.
+
+*   I enjoyed [Nicolas Carlo's "Avoid rewriting a legacy system from scratch, by strangling it"](https://understandlegacycode.com/blog/avoid-rewriting-a-legacy-system-from-scratch-by-strangling-it/) about the [Strangler Fig Application pattern](https://martinfowler.com/bliki/StranglerFigApplication.html). It reminded me of the time I failed to migrate the main database in a legacy system from [MongoDB](https://www.mongodb.com) to [PostgreSQL](https://www.postgresql.org) while trying very hard [not to rewrite it from scratch](https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/).
+
+    When we finally cancelled the project, I wrote a long explanation to the whole company (not unlike an [Etsy PSA](https://qz.com/504661/why-etsy-engineers-send-company-wide-emails-confessing-mistakes-they-made/)) called "The State of Custard". Sadly, having left the company, that is now locked inside someone else's [Basecamp](https://basecamp.com) account.
+
+*   As part of my [job search](/2020/02/10/weeknotes-15/), I have spent a lot of time editing my [LinkedIn profile](https://www.linkedin.com/in/paulmucur/). In particular, I have changed my "headline" many times in an attempt to concisely explain what I do. At the time of writing it is "Consultant Technical/Engineering Lead", shamelessly inspired by [Andrew McDonough](https://www.linkedin.com/in/andrewmcdonough/) but I'm sure I will continue to agonise about it.
+
+*   Having tempted fate by writing that our [white noise snafus were over last week](/2020/02/16/weeknotes-16/), our Bluetooth speaker simply stopped charging. Sadly, no amount of [WD40](/2020/01/26/weeknotes-13/) could fix the problem.

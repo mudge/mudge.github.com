@@ -147,6 +147,10 @@ pre {
   color: #555;
 }
 
+.center {
+  text-align: center;
+}
+
 /* Syntax highlighting. */
 .highlight .c { color: #998; font-style: italic; }
 .highlight .err { background-color: #e3d2d2; color: #a61717; }
