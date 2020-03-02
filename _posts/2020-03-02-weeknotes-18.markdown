@@ -1,0 +1,44 @@
+---
+layout: post
+title: Weeknotes 18
+excerpt: The Tube, dad chat, “Shape Up”, improving sleep with first-order logic and what it means when the clown is down.
+---
+*   Thanks to all who helped with [my job search](/2020/02/10/weeknotes-15/). I started work with a new client today, commuting on the Tube for the first time in eight years.
+
+*   Speaking of the Tube, I hate that all news coverage of Coronavirus features a photo of someone wearing a face mask on public transport even when the news isn't about the UK.
+
+*   Every time I mention C to someone, I think of [Euan](https://twitter.com/Stew)'s mastery of undersharing. I remember first hearing he had a cat after working with him for _four_ years.
+
+*   Speaking of dad chat, I can't wait to invest in a [Father-Son Podcasting Microphone](https://youtu.be/LSYsmgZEKv0):
+
+    > Well, it's tough, you know? I mean, there's no book you can read about being a dad.
+    > 
+    > Actually, there are several.
+
+*   I've always had a soft spot for macOS indie developers. I have been a customer of [LaunchBar](https://www.obdev.at/products/launchbar/index.html), [NetNewsWire](https://ranchero.com/netnewswire/) (and its [recent update](https://inessential.com/2018/08/31/netnewswire_comes_home)), [DropDMG](https://c-command.com/dropdmg/), [Airfoil](https://rogueamoeba.com/airfoil/mac/), [SuperDuper!](https://www.shirt-pocket.com/SuperDuper/SuperDuperDescription.html), [Interarchy](https://www.kangacode.com/interarchy/), [OmniGraffle](https://www.omnigroup.com/omnigraffle), [DiskWarrior](https://www.alsoft.com), [BBEdit](https://www.barebones.com/products/bbedit/), [Transmit](https://panic.com/transmit/), [SpamSieve](https://c-command.com/spamsieve/) and [TextMate](https://macromates.com). This is partly why I [enjoyed hearing about John Siracusa's new apps](/2020/02/16/weeknotes-16/) and why I'm now trying [Craig Hockenberry](https://furbo.org)'s new notepad app---[Tot](https://tot.rocks)---after reading [John Gruber's summary of it](https://daringfireball.net/2020/02/tot).
+
+    I secretly wish I had an idea for an app of my own.
+
+*   I read [Ryan Singer's "Shape Up: Stop Running in Circles and Ship Work that Matters"](https://basecamp.com/shapeup) and---despite unnecessarily dismissing existing agile practices in the [foreword](https://basecamp.com/shapeup/0.1-foreword)---found a lot I agreed with.
+
+    I'm increasingly convinced of the need for something like [shaping](https://basecamp.com/shapeup/1.1-chapter-02) before something is picked up by a development team. The struggle, as Singer writes, is getting the right level of detail: neither [too abstract](https://basecamp.com/shapeup/1.1-chapter-02#words-are-too-abstract) nor [too concrete](https://basecamp.com/shapeup/1.1-chapter-02#wireframes-are-too-concrete).
+
+    I was especially intrigued by the idea of [appetite, not estimation](https://basecamp.com/shapeup/1.2-chapter-03#setting-the-appetite) as I've often found people unwilling to reveal truly how much they want a particular feature or project and drawing this out up front is extremely appealing.
+
+    The idea of [pitch documents](https://basecamp.com/shapeup/1.5-chapter-06) that can be reviewed asynchronously by members of the team sounds very similar to a Request For Comments (RFC) process (e.g. [RFCs for changes to Rust](https://github.com/rust-lang/rfcs), [Yarn](https://github.com/yarnpkg/rfcs) and [Ember](https://github.com/emberjs/rfcs); see also [Gergely Orosz' "Scaling Engineering Teams via Writing Things Down and Sharing - aka RFCs"](https://blog.pragmaticengineer.com/scaling-engineering-teams-via-writing-things-down-rfcs/)): something I am a huge fan of if you're looking to introduce both rigour and equitability when proposing significant changes to teams and systems.
+
+*   We took a trip to IKEA to get C a new cot and a Billy bookcase (one of which is sold [every 5 seconds](https://www.ikea.com/gb/en/p/billy-bookcase-white-00263850/)). I spent a lot of time in the kids' section, fawning over the train sets, toy kitchen and its many, many accessories. Luckily for my wallet, C is still too young for them.
+
+*   As one of my many "jobs to complete before returning to work", I lovingly re-seasoned our wooden chopping board following [J. Kenji López-Alt's advice](https://www.seriouseats.com/2015/09/how-to-season-and-maintain-a-wood-cutting-board.html). There is something therapeutic about rubbing a wooden board with coarse salt and half a lemon.
+
+*   The major thing E and I have been working on is getting C out of our bedroom and into his own room in the hope we can improve all of our quality of sleep. Not wanting to confuse him with too much change at once, we first moved ourselves out and onto our sofa bed. When contemplating the next step, I was reminded of the [2,000 year old problem of the wolf, goat and cabbage](https://en.wikipedia.org/wiki/Wolf,_goat_and_cabbage_problem).
+
+    In turn, this reminded me of a great [London Computation Club](https://london.computation.club) meeting back in 2015: ["The New Turing Omnibus, Chapter 58: Predicate Calculus"](https://github.com/computationclub/computationclub.github.io/wiki/The-New-Turing-Omnibus-Chapter-58-Predicate-Calculus) when [Tom](https://tomstu.art) showed us how to use [first-order logic](https://en.wikipedia.org/wiki/First-order_logic) to mechanically resolve the problem.
+
+    Bonus trivia: that was the same meeting that [Chris announced his work on his programming language, Sentient](https://github.com/computationclub/computationclub.github.io/wiki/The-New-Turing-Omnibus-Chapter-58-Predicate-Calculus#show--tell).
+
+*   E and I have many phrases that would be incomprehensible to others but a recent favourite is the following emoji-only message:
+
+    > 🤡⬇️
+
+    Of course, this translates to "the clown is down" which is a quote from [The Simpsons' "The Parent Rap"](https://en.wikipedia.org/wiki/The_Parent_Rap) we've distorted to mean "our baby is asleep".
