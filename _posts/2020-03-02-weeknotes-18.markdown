@@ -31,7 +31,7 @@ excerpt: The Tube, dad chat, “Shape Up”, improving sleep with first-order lo
 
 *   As one of my many "jobs to complete before returning to work", I lovingly re-seasoned our wooden chopping board following [J. Kenji López-Alt's advice](https://www.seriouseats.com/2015/09/how-to-season-and-maintain-a-wood-cutting-board.html). There is something therapeutic about rubbing a wooden board with coarse salt and half a lemon.
 
-*   The major thing E and I have been working on is getting C out of our bedroom and into his own room in the hope we can improve all of our quality of sleep. Not wanting to confuse him with too much change at once, we first moved ourselves out and onto our sofa bed. When contemplating the next step, I was reminded of the [2,000 year old problem of the wolf, goat and cabbage](https://en.wikipedia.org/wiki/Wolf,_goat_and_cabbage_problem).
+*   The major thing E and I have been working on is getting C out of our bedroom and into his own room in the hope we can all improve our quality of sleep. Not wanting to confuse him with too much change at once, we first moved ourselves out and onto our sofa bed. When contemplating the next step, I was reminded of the [2,000 year old problem of the wolf, goat and cabbage](https://en.wikipedia.org/wiki/Wolf,_goat_and_cabbage_problem).
 
     In turn, this reminded me of a great [London Computation Club](https://london.computation.club) meeting back in 2015: ["The New Turing Omnibus, Chapter 58: Predicate Calculus"](https://github.com/computationclub/computationclub.github.io/wiki/The-New-Turing-Omnibus-Chapter-58-Predicate-Calculus) when [Tom](https://tomstu.art) showed us how to use [first-order logic](https://en.wikipedia.org/wiki/First-order_logic) to mechanically resolve the problem.
 
