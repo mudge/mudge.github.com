@@ -1,0 +1,24 @@
+---
+layout: post
+title: Weeknotes 20
+excerpt: Working from home, low sodium bread, workplace superpowers and yet another secure shoelace knot.
+---
+*   Following [recent](/2020/03/08/weeknotes-19/) [events](https://www.nhs.uk/conditions/coronavirus-covid-19/), I've been working from home all week.
+
+    Thankfully, I recently cobbled together a standing desk out of an old [BenQ](https://www.benq.eu/en-eu/index.html) monitor perched atop [Donald Knuth's "The Art of Computer Programming"](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) and [Harold McGee's "McGee on Food & Cooking"](https://www.hachette.co.uk/titles/harold-mcgee/mcgee-on-food-and-cooking-an-encyclopedia-of-kitchen-science-history-and-culture/9780340831496/). Combining that with [Tuple](https://tuple.app) for pair-programming and [Miro](https://miro.com) as a virtual whiteboard has made the switch from being co-located to being fully remote easier.
+
+    If you're new to remote working, [Alice Goldfuss' "Work in the Time of Corona"](https://blog.alicegoldfuss.com/work-in-the-time-of-corona/) has some good, practical advice about maintaining good mental health when working from home.
+
+*   Somewhat late to [the party](https://www.rottentomatoes.com/m/hannah_gadsby_nanette), we finally watched---and were moved by---[Hannah Gadsby's "Nanette"](https://www.netflix.com/title/80233611).
+
+*   As someone who often uses [`git commit --fixup`](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---fixupltcommitgt) to [tell stories through my commits](https://blog.mocoso.co.uk/talks/2015/01/12/telling-stories-through-your-commits/) before code review, [`git absorb`](https://github.com/tummychow/git-absorb) could save me a lot of time (via [Andrew Gallant](https://twitter.com/burntsushi5/status/1238115091868012545)).
+
+*   I baked a loaf of bread with less salt than usual for C to try (although he'd have to eat 120g of my usual recipe to meet [his daily limit](https://www.nhs.uk/common-health-questions/childrens-health/how-much-salt-do-babies-and-children-need/)). Compared to his reaction to the kale and butternut squash on his plate, I'd say it was a rousing success.
+
+*   While I refuse to [stockpile](https://www.theguardian.com/world/2020/mar/02/coronavirus-fears-see-stockpiling-of-food-and-medicines-across-uk), I do have 41 kg of bread flour in my kitchen from a spontaneous purchase back in January.
+
+*   [Tom](https://tomstu.art) and I were discussing the workplace superpower of "saying you'll do a thing and then doing it" and he linked me to a [Twitter thread by Lucy Prebble arguing competence is culturally undervalued](https://twitter.com/lucyprebblish/status/1236334970869813248).
+
+*   I started playing "[The Legend of Zelda: Link's Awakening](https://www.nintendo.com/games/detail/the-legend-of-zelda-links-awakening-switch/)" and it is wonderful so far. Despite owning a [SNES](https://en.wikipedia.org/wiki/Super_Nintendo_Entertainment_System), the first Zelda game I really played was 1998's ["The Legend of Zelda: Ocarina of Time"](https://www.nintendo.co.uk/Games/Nintendo-64/The-Legend-of-Zelda-Ocarina-of-Time-269536.html) on a [Nintendo 64](https://en.wikipedia.org/wiki/Nintendo_64) so this is the first top-down perspective Zelda I've ever played.
+
+*   I put up a mirror in our bedroom today. Another day, another [Ian's secure shoelace knot](https://www.fieggen.com/shoelace/secureknot.htm).
