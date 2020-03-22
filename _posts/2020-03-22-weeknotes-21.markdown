@@ -1,0 +1,30 @@
+---
+layout: post
+title: Weeknotes 21
+excerpt: COVID-19, asynchronous working, surprise Smash Mouth fandom, flower arranging and being judged by book titles.
+---
+*   I would typically euphemistically refer to "[current events](/2020/03/15/weeknotes-20/)" but let's be plain: [<abbrev title="Coronavirus disease 2019">COVID-19</abbrev>](https://en.wikipedia.org/wiki/Coronavirus_disease_2019), the disease caused by the [coronavirus](https://en.wikipedia.org/wiki/Coronavirus) [<abbrev title="severe acute respiratory syndrome coronavirus 2">SARS-CoV-2</abbrev>](https://en.wikipedia.org/wiki/Severe_acute_respiratory_syndrome_coronavirus_2) has [dominated our lives](https://www.gov.uk/coronavirus) this week.
+
+*   We've been rallying together with our neighbours and are sharing a precious online supermarket order. I intend to repay their kindness in bread made from my [fortuitous flour stockpile](/2020/03/15/weeknotes-20/).
+
+*   With [UK schools now closed](https://www.gov.uk/government/publications/closure-of-educational-settings-information-for-parents-and-carers/closure-of-educational-settings-information-for-parents-and-carers), more people need to juggle childcare with remote working and I really want to make this work in my current team. I'm hoping "[The Basecamp Guide to Internal Communication](https://basecamp.com/guides/how-we-communicate)" and [Hailley Griffis' "Asynchronous Communication and Why It Matters For Remote Work"](https://open.buffer.com/asynchronous-communication/) will come in handy as we move to work more asynchronously.
+
+*   For those of you joining remote calls when you can't really control the level of background noise (e.g. because your six-month old is _really_ enthusiastic about eating his porridge), [Alex](https://alexspeller.com) recommended [Krisp App](https://krisp.ai) to me. I haven't tried it yet but might give it a go this week.
+
+*   Now that I am working from home for the foreseeable future, I was surprised to discover that the daily decision whether to wear socks or not has become much more significant.
+
+*   [NetNewsWire, an RSS reader for iOS](https://apps.apple.com/us/app/netnewswire-rss-reader/id1480640210) is now out. I admit I'm still struggling to get back into the habit of using an RSS reader versus mindlessly checking individual websites in turn.
+
+*   [Adrianna Chang's "Refactoring Legacy Code with the Strangler Fig Pattern"](https://engineering.shopify.com/blogs/engineering/refactoring-legacy-code-strangler-fig-pattern) looks like [another](/2020/02/23/weeknotes-17/) great dive into tackling legacy code in a considered, incremental way.
+
+*   Happy Mother's Day! Or is that [Mothering Sunday](https://en.wikipedia.org/wiki/Mothering_Sunday)?
+
+*   [Cabel Sasser](https://cabel.com) has been putting up [Twitter polls for MIDI songs to play on his Roland Music Player](https://twitter.com/cabel/status/1240001079103778816). I was proud to contribute to [Friday's vote](https://twitter.com/cabel/status/1241031821338406912), resulting in [Smash Mouth's "All Star"](https://twitter.com/cabel/status/1241047282406940672) and, as I enjoyed the tinny beats, E stunned me by singing along, revealing that she knew _all of the lyrics_.
+
+*   Keeping the weekend spirit alive, yesterday I indulged in a little flower arranging, adding a little homemade flower food made from a squirt of bleach and a sprinkling of granulated sugar.
+
+*   To celebrate the [end of winter](https://www.metoffice.gov.uk/weather/learn-about/weather/seasons/winter/when-does-winter-start), I removed the Sellotape from our patio door and stepped out onto our tiny spit of outside space. Our planter resembled something out of "[The Last of Us](https://www.playstation.com/en-gb/games/the-last-of-us-remastered-ps4/)" so I cleared it of dead salad plants and tilled the soil. It wasn't quite [forest bathing](https://www.theguardian.com/environment/2019/jun/08/forest-bathing-japanese-practice-in-west-wellbeing) but was surprisingly restorative.
+
+*   I learnt that the strange outcrop of salt on the outside of our water softener is known as "salt creep" and tackled it with a combination of a sturdy brush and [one of my three trusty cans of WD-40](/2020/01/26/weeknotes-13/) ([WD-40® Specialist® Water Resistant Silicone Lubricant](https://www.wd40.com/products/silicone-lubricant/), for those of you keeping track).
+
+*   One night, as I put my Kindle down, E asked me what I was reading and I replied "[Children of Ruin](https://www.hachettebookgroup.com/titles/adrian-tchaikovsky/children-of-ruin/9780316452540/)". She scoffed, "of course; that's a very Paul book title."
