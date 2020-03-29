@@ -5,7 +5,7 @@ excerpt: Experimenting with using hashes and sets as functions in Ruby.
 redirect_from: /2014/11/26/data-structures-as-functions.html
 ---
 <a class="pull-right"
-href="http://lrug.org/meetings/2015/march/"><img
+href="//skillsmatter.com/skillscasts/6282-exploring-to_proc"><img
 src="/i/to_proc.png" alt="View the full presentation on the Skills Matter web
 site" width="400" height="250"></a> *At the [March 2015 meeting of the London Ruby
 User Group](http://lrug.org/meetings/2015/march/), I delivered a presentation
