@@ -1,0 +1,34 @@
+---
+layout: post
+title: Weeknotes 22
+excerpt: Driveway picnics, “The Baby Club”, a new enemy at home and the etymology of DIY.
+---
+*   Now we are [staying at home](https://www.gov.uk/government/publications/full-guidance-on-staying-at-home-and-away-from-others) and have little outside space of our own, we're having to get creative when it comes to getting fresh air.
+
+    Our solution? Lunchtime driveway picnics!
+
+    Not only do we get to enjoy some sunshine while remaining on private property but we also get to use our rarely-seen [VonShef picnic backpack](https://www.vonshef.com/vs_en/ash-picnic-backpack-for-4).
+
+*   Following on from [last week](/2020/03/22/weeknotes-21/), I have been using [Krisp](https://krisp.ai) to mute background noise on calls and my colleagues report that it seems to work well.
+
+    If you're interested in trying it out, here's [an invite from me](https://ref.krisp.ai/u/u140a0e434?utm_source=refprogram&utm_campaign=121761&locale=en-GB) that'll give you a free month (and I'll get two back in return).
+
+*   After awkwardling wrangling my laptop lid a few too many times, I finally ordered a [Logitech C920 HD PRO Webcam](https://www.logitech.com/en-gb/product/hd-pro-webcam-c920) on several people's recommendation. Sadly, it seems I am not the only person who had this idea and they're [out of stock on Amazon](https://www.amazon.co.uk/Logitech-Calling-Recording-Microphones-Adjustable/dp/B006A2Q81M) until the second week of May.
+
+*   E has started doing yoga classes over [Zoom](https://zoom.us). It is reassuring to hear that every class begins by negotiating volume levels and asking people to mute themselves.
+
+*   As we continue to seek ways to entertain C at home, E discovered [CBeebies' "The Baby Club"](https://www.bbc.co.uk/cbeebies/shows/the-baby-club). You can now find us occasionally singing its theme song or, its other earworm, "what's in the bag?"
+
+*   [Skills Matter are back and have restored their videos](https://twitter.com/skillsmatter/status/1243183726101532674). After [previously lamenting their disappearance](/2019/11/16/weeknotes-3/), I fired up [youtube-dl](https://ytdl-org.github.io/youtube-dl/) as fast as I could to archive [my](https://skillsmatter.com/skillscasts/2435-lrug-puppet) [talks](https://skillsmatter.com/skillscasts/6282-exploring-to_proc).
+
+*   I had been struggling with [migraines](https://www.nhs.uk/conditions/migraine/) at the start of the year but, thankfully, wearing glasses has helped a lot. Unfortunately, it does mean that I have developed some unconscious new facial expressions. E is not a fan of these new tics and has taken to wordlessly scrunching up her own face as a gentle reminder.
+
+*   During our seven years in our flat, I have done battle with various unwanted house pests: first, moths and then mice. This week we met a new enemy: ants.
+
+    My hands are now lacerated and stinging with vinegar solution thanks to pulling out our kitchen appliances and spraying potential entry points.
+
+    My true nemesis is not the ants themselves but our cursed dishwasher, propped up on three---not four---flimsy plastic legs, ready to buckle at the slightest provocation. I may have spent more time yesterday trying to re-level the blasted thing than actually engaging my formic foe.
+
+*   Both E and I caught the end of an episode of "[The £100k House: Tricks of the Trade](https://www.bbc.co.uk/iplayer/episode/b07236fx/the-100k-house-tricks-of-the-trade-series-2-4-skye-and-mattmary-and-luke)" and looked at each other as we contemplated Piers Taylor's parting line:
+
+    > But will DIY turn to DI-don't?
