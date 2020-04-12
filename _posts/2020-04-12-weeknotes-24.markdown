@@ -1,0 +1,41 @@
+---
+layout: post
+title: Weeknotes 24
+excerpt: Repairs, a new Raspberry Pi, upgrading Casks, overcomplicated cooking and an unusual birthday.
+date: 2020-04-12 11:46:00
+---
+*   In [the spirit of repairing things](https://therestartproject.org "The Restart Project"), I took apart C's broken toy arch, cursing to myself as I pried open the stubborn end caps with a palette knife. The telltale cracking sound of glue gave way to reveal critical bits of broken plastic which I've now mended.
+
+    I was watching "[The Repair Shop](https://www.bbc.co.uk/iplayer/episode/m000h4n6/the-repair-shop-series-6-episode-4)" throughout, imagining myself as a regular [Will Kirk](http://www.williamkirkrestoration.co.uk).
+
+*   [One of Phil Gyford's weeknotes last week](https://www.gyford.com/phil/writing/2020/04/05/weeknotes/#s2) really made me rethink my own discomfort with "performative whimsy". I won't quote it here as it is worth reading it in its entirety.
+
+*   After over a year of running our [Pi-hole](https://pi-hole.net), [my DNS over HTTPS proxy "Homer"](https://github.com/mudge/homer), an [AirPlay audio player](https://github.com/mikebrady/shairport-sync) and [using it for Time Machine backups](/2019/11/12/using-a-raspberry-pi-for-time-machine/), my [Raspberry Pi 1 Model B](https://www.raspberrypi.org/products/raspberry-pi-1-model-b-plus/) started failing under load.
+
+    I decided to treat myself to a brand new [Raspberry Pi 4 Model B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/), going for a [starter kit from The Pi Hut](https://thepihut.com/collections/raspberry-pi-kits-and-bundles/products/raspberry-pi-starter-kit) and a [heatsink](https://thepihut.com/products/xl-raspberry-pi-4-heatsink) following [Matt](https://mobile.twitter.com/matt_macleod)'s recommendation to keep it from [overheating and throttling](https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/).
+
+    Everything is now up and running again and I took the opportunity to replace Homer with [running our own Unbound DNS resolver](https://docs.pi-hole.net/guides/unbound/) after reading [criticism of DNS over HTTPS](https://en.wikipedia.org/wiki/DNS_over_HTTPS#Criticism).
+
+*   I use [Homebrew Cask](https://github.com/Homebrew/homebrew-cask) to install software and noticed that running `brew cask upgrade` rarely does anything. However, forcibly calling `upgrade` on each installed Cask _does_:
+
+    ```shell
+    $ brew cask list | xargs brew cask upgrade
+    # or, if you're running bash/zsh:
+    $ brew cask upgrade $(brew cask list)
+    ```
+
+    This is because [Homebrew Cask ignores applications that update themselves when upgrading](https://github.com/Homebrew/homebrew-cask/blob/master/USAGE.md#updatingupgrading-casks) but you can override this with `--greedy`:
+
+    ```shell
+    $ brew cask upgrade --greedy
+    ```
+
+*   It was E's birthday and our first during the [Coronavirus outbreak](https://www.gov.uk/government/publications/coronavirus-outbreak-faqs-what-you-can-and-cant-do/coronavirus-outbreak-faqs-what-you-can-and-cant-do).
+
+    Alongside a pack of [Ocado's "Happy Birthday" balloons](https://www.ocado.com/products/9-happy-birthday-balloons-341958011), I decided to make [Felicity Cloake's perfect sticky orange cake](https://www.theguardian.com/lifeandstyle/wordofmouth/2017/feb/02/how-to-cook-the-perfect-sticky-orange-cake) (substituting Seville oranges with blood oranges) and a slap-up evening meal.
+
+    I decided to significantly complicate otherwise simple foods, e.g. instead of regular chips, I attempted [Heston's Triple Cooked chips](https://www.thefatduckgroup.com/hestons-triple-cooked-chips/), boiling and frying chipped potatoes the night before. While doing that, I was infusing white wine vinegar with tarragon and shallots for [The Hawkmoor](https://thehawksmoor.com)'s Stilton hollandaise, freeing time to simmer oranges for two hours in the morning while my sourdough bread baked in its Dutch oven.
+
+    Too late I realise: am I [a Sous Vide Bro](https://www.gq.com/story/the-best-way-to-sous-vide-is-to-shut-up-about-it)?
+
+*   [My new webcam](/2020/03/29/weeknotes-22/) arrived earlier than expected and we used it to host a birthday video conference in our living room. While I wasn't sure how it would turn out (after all, people can't have side conversations), it was surprisingly fun and it lifted E's spirits to see friends in Aberdeen, Madrid and Dallas all in one place on an unusual birthday.
