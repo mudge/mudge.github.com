@@ -51,6 +51,7 @@
         </h1>
         <div class=vcard>
           <address class=author>By <a href=/ class="url fn n" rel=author>Paul Mucur</a></address>
+          <span id=dotiw></span>
           on
           <time pubdate class=updated datetime={{ page.date | date_to_xmlschema }}>{{ page.date | date: "%A, %-dth %B %Y" | replace: "1th", "1st" | replace: "2th", "2nd" | replace: "3th", "3rd" | replace: "11st", "11th" | replace: "12nd", "12th" | replace: "13rd", "13th" }}</time>
         </div>
@@ -58,5 +59,6 @@
       <div class=entry-content>{{ content }}</div>
     </article>
     {% include footer.html %}
+    <script src=/j/t.m.js></script>
   </body>
 </html>
