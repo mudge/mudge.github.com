@@ -2,7 +2,7 @@
 layout: post
 title: Weeknotes 25
 excerpt: Bank holiday noodling, coffee paraphernalia, a use for Shortcuts and life advice from a Learn with Me Zebra walker.
-date: 2020-04-19 12:48:00
+date: 2020-04-19 12:51:00
 ---
 *   I spent part of the [Easter Monday bank holiday](https://www.gov.uk/bank-holidays) adding a new section to every post's byline, e.g.
 
@@ -35,7 +35,7 @@ date: 2020-04-19 12:48:00
     The next day, I received the following email:
 
     > Dear Paul,
-
+    >
     > As you might know, we've recently launched our 25% GRINDATHOME discount code on all our grinders. We know, you just missed it, and to make up for it we would like to extend the discount code to your order by refunding the 25% on your recently purchased Wilfa grinder.
 
     In a week of extremely stressful emails, this was an unexpected and very welcome kindness.
