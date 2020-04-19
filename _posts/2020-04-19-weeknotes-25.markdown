@@ -2,39 +2,35 @@
 layout: post
 title: Weeknotes 25
 excerpt: Bank holiday noodling, coffee paraphernalia, a use for Shortcuts and life advice from a Learn with Me Zebra walker.
-date: 2020-04-19 10:39:00
+date: 2020-04-19 11:24:00
 ---
-*   As is traditional, I spent part of the [Easter Monday bank holiday](https://www.gov.uk/bank-holidays) noodling on my computer and decided to add the amount of time passed since publishing to every post, e.g.
+*   I spent part of the [Easter Monday bank holiday](https://www.gov.uk/bank-holidays) adding the amount of time passed since publishing to every post, e.g.
 
     > By Paul Mucur, 7 days ago on Sunday 12th April 2020
 
-    As this site is powered by [GitHub Pages](https://pages.github.com) and therefore the static site generator [Jekyll](https://jekyllrb.com), these new relative dates are calculated entirely client-side in JavaScript so they are always up-to-date, regardless when I last generated the site. As a bonus, they live update every minute so, even if you leave a post open for a while, it should still be accurate.
+    As this site is powered by the static site generator [Jekyll](https://jekyllrb.com), these new relative dates are calculated entirely in the browser so they are always up-to-date, regardless of when I last generated the site. As a bonus, they live update every minute so it should still be accurate even if you leave a post open for a while.
 
-    In the spirit of the bank holiday, I was too lazy to come up with my own algorithm for turning distances in time into words so I decided to port [Rails' `time_ago_in_words`](https://api.rubyonrails.org/classes/ActionView/Helpers/DateHelper.html#method-i-time_ago_in_words) to JavaScript.
+    I was too lazy to come up with my own algorithm for turning lengths of time into words so I decided to port [Rails' `time_ago_in_words`](https://api.rubyonrails.org/classes/ActionView/Helpers/DateHelper.html#method-i-time_ago_in_words) to JavaScript.
 
     You can [view the full, unminified source code on GitHub](https://github.com/mudge/mudge.github.com/blob/47092082ed7ef6c133f5c35070e4f96c3f523b74/j/1.js) (or [enjoy the minified version](https://github.com/mudge/mudge.github.com/blob/47092082ed7ef6c133f5c35070e4f96c3f523b74/j/1.m.js)).
 
-*   Since [clearing out our planter a few weeks ago](/2020/03/22/weeknotes-21/), the sight of a rectangle of barren soil with a single, surviving [chard](https://en.wikipedia.org/wiki/Chard) plant has not been a cheery one. To improve matters and following [Matt](https://twitter.com/matt_macleod)'s lead, I planted a clove of garlic in the hope some future me will be able to enjoy some homegrown wild garlic.
+*   Since [clearing out our planter a few weeks ago](/2020/03/22/weeknotes-21/), the sight of a rectangle of barren soil with a single, surviving [chard](https://en.wikipedia.org/wiki/Chard) plant has not been a cheery one. To improve matters and following [Matt](https://twitter.com/matt_macleod)'s lead, I planted a clove of garlic in the hope it will grow.
 
 *   E and I watched [Bo Burnham's "Eighth Grade"](https://www.imdb.com/title/tt7014006/) and loved it.
 
-    Despite receiving [a lot of critical praise](https://en.wikipedia.org/wiki/Eighth_Grade_(film)#Critical_response), the movie doesn't seem to be that well known but deserves your attention.
+    The movie doesn't seem to be that well known despite receiving [a lot of critical praise](https://en.wikipedia.org/wiki/Eighth_Grade_(film)#Critical_response).
 
     As [Molly Ringwald put it](https://twitter.com/MollyRingwald/status/1022250943298121728):
 
     > I just saw [Eighth Grade] and thought it was the best film about adolescence I've seen in a long time. Maybe ever.
 
-*   After watching [the chefs of Bon Appétit make their favourite coffee](https://youtu.be/yssNu8Eynb8), E suggested we buy a coffee grinder. As a stereotypical programmer, I spent a lot of time in my twenties getting far too enthusiastic about coffee but stopped short of buying a conical burr grinder, placing a moratorium on any more home coffee equipment years ago.
+*   After watching [the chefs of Bon Appétit make their favourite coffee](https://youtu.be/yssNu8Eynb8), E suggested we buy a coffee grinder.
 
-    Back in September 2015, E and I visited Oslo and made a pilgrimage to [Tim Wendelboe](http://www.timwendelboe.no)'s café. Arriving hungry and about to ingest quite a lot of caffeine, E enquired as to whether there were any pastries or cakes on sale to be told that they served no food, lest it detract from the coffee drinking experience.
+    Asking for recommendations led me to the [Wilfa Svart Aroma Coffee Grinder](https://www.wilfa.co.uk/product/kitchen/black-aroma/). Seeing [Tim Wendelboe](http://www.timwendelboe.no)'s name [in association with Wilfa](http://nordiccoffeeculture.com/a-tim-wendelboe-review-of-the-wilfa-svart-presisjon/) made the decision easy given that E and I had visited his Espresso Bar in Oslo back in September 2015.
 
-    When asking for recommendations and doing a little research led me to the [Wilfa Svart Aroma Coffee Grinder](https://www.wilfa.co.uk/product/kitchen/black-aroma/) and seeing that [Wendelboe collaborates with them](http://nordiccoffeeculture.com/a-tim-wendelboe-review-of-the-wilfa-svart-presisjon/), the decision was easy.
-
-    While we disagree about the availability of pastries, I trust his judgement on coffee-making equipment.
+    During our visit, E asked whether there were any pastries but was told they served no food as it might detract from the coffee drinking experience. While we disagree about the importance of pastries, I trust his judgement on coffee-making equipment.
 
 *   We ended up buying [the grinder from Square Mile Coffee Roasters](https://shop.squaremilecoffee.com/products/wilfa-grinder) along with a bag of beans.
-
-    The day after I received a dispatch notification, I went back to the Square Mile website to see they had launched a new 25% discount if you bought a grinder with a bag of beans. Cursing the timing, I grumbled but was still excited enough about the prospect of a new kitchen gadget that it wasn't too upsetting.
 
     The next day, I received the following email:
 
@@ -44,14 +40,14 @@ date: 2020-04-19 10:39:00
 
     In a week of extremely stressful emails, this was an unexpected and very welcome kindness.
 
-*   It was therefore with great pleasure that I indulged in following [Blue Bottle Coffee's Chemex Brewing Guide](https://bluebottlecoffee.com/preparation-guides/chemex) yesterday and, reader, it was a glorious cup of coffee.
+*   To celebrate the arrival of the grinder, I followed [Blue Bottle Coffee's Chemex Brewing Guide](https://bluebottlecoffee.com/preparation-guides/chemex) and, reader, it was a glorious cup of coffee.
 
 *   Despite hearing about it on podcasts for a while, I hadn't found a use for [iOS Shortcuts](https://support.apple.com/en-gb/HT208309).
 
-    As we were woken by C in the night and I fumbled in the dark, trying to set a timer after reassuring him (to give him chance to go back to sleep), I realised this might be the perfect use case. I created a new shortcut which allows me to set a 10 minute timer without unlocking my phone and, while it is still a pain swiping over to the Shortcuts [widget in the Today View](https://support.apple.com/en-gb/HT207122), it is now only a single button press away.
+    As we were woken by C in the night and I fumbled in the dark, trying to set a timer after reassuring him, I realised this might be the perfect use case. I created a new shortcut to set a 10 minute timer and, while it is still awkward swiping over to the Shortcuts [widget in the Today View](https://support.apple.com/en-gb/HT207122), I can now set a timer by pressing a single button without unlocking my phone.
 
-*   In a remarkable use of a contrained medium, [Ted Littledale recreated the 15 questions Charles Ingram had to answer on "Who Wants To Be a Millionaire?"](https://twitter.com/_superted/status/1250054117432664066) including "Phone a Friend" and "Ask the Audience" on Twitter.
+*   E and I started watching [Alex Garland's "DEVS" on BBC iPlayer](https://www.bbc.co.uk/programmes/p087gj19). I'll join [others](https://twitter.com/waxy/status/1250911854123200517) in highly recommending it.
 
-*   E and I began watching [Alex Garland's "DEVS" on BBC iPlayer](https://www.bbc.co.uk/programmes/p087gj19) and let me join [others](https://twitter.com/waxy/status/1250911854123200517) in highly recommending it. Despite the title making it sound a little like "[The IT Crowd](https://www.channel4.com/programmes/the-it-crowd)", it is a drama more in the vein of Garland's previous work, "[Ex Machina](https://www.imdb.com/title/tt0470752)" and "[Annihilation](https://www.imdb.com/title/tt2798920)".
+    While the title makes it sound like a comedy in the vein of "[The IT Crowd](https://www.channel4.com/programmes/the-it-crowd)" or "[Silicon Valley](https://www.hbo.com/silicon-valley)", it is a drama more akin to Garland's previous work: "[Ex Machina](https://www.imdb.com/title/tt0470752)" and "[Annihilation](https://www.imdb.com/title/tt2798920)".
 
-*   It has been a trying week but, as we retired for bed one evening, I accidentally kicked [C's walker](https://www.fisher-price.com/en-gb/product/learn-with-me-zebra-walker-dlf00) and, in its cheery voice, it told me to "keep going!"
+*   It has been a trying week but as we retired for bed one evening, I accidentally kicked [C's walker](https://www.fisher-price.com/en-gb/product/learn-with-me-zebra-walker-dlf00). In its cheery voice, it said "keep going!"
