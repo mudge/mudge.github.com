@@ -44,9 +44,9 @@ date: 2020-04-19 13:28:00
 
 *   Despite hearing about it on podcasts for a while, I hadn't found a use for [iOS Shortcuts](https://support.apple.com/en-gb/HT208309).
 
-    When C wakes up unexpectedly in the night, I get up to reassure him and set a timer for 10 minutes to see if he will put himself back to sleep. After struggling to do this in the dark for over a month now, I realised this might be the perfect use case for a Shortcut.
+    When C wakes up unexpectedly in the night, I get up to reassure him and set a timer for 10 minutes to see if he will put himself back to sleep. After struggling to do this in the dark for over a month, I realised this might be the perfect use case.
 
-    I created a new shortcut to set a 10 minute timer and, while it is still awkward swiping over to the [widget in the Today View](https://support.apple.com/en-gb/HT207122), I can now set a timer by pressing a single button without unlocking my phone.
+    I created a new shortcut to set a 10 minute timer with a single button press but it is still awkward swiping over to the [widget in the Today View](https://support.apple.com/en-gb/HT207122).
 
 *   E and I started watching [Alex Garland's "DEVS" on BBC iPlayer](https://www.bbc.co.uk/programmes/p087gj19). I'll join [others](https://twitter.com/waxy/status/1250911854123200517) in highly recommending it.
 
