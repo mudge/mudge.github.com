@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang=en>
   <head>
+    <meta http-equiv=Content-Security-Policy content="default-src 'none'; img-src 'self' gravatar.com; script-src 'self'{{ page.script_hashes }}; style-src 'self'; frame-src 'self'">
     <meta charset=utf-8>
     <title>{{ page.title | strip_html | escape_once }} &mdash; {{ site.title | escape_once }}</title>
     <meta name=description content="{{ page.excerpt }}">
@@ -59,7 +60,6 @@
       <div class=entry-content>{{ content }}</div>
     </article>
     {% include footer.html %}
-    <script src=/j/2.js></script>
-    <script>!function(){var c=document.getElementById("dotiw"),d=new Date(c.nextSibling.nextSibling.dateTime),f=function(){c.innerHTML=distanceOfTimeInWords(d,new Date)+" ago"};f(),setInterval(f,6e4)}();</script>
+    <script src=/j/3.js></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-const distanceOfTimeInWords = require("./2");
+const distanceOfTimeInWords = require("./dotiw");
 
 test("less than a minute", () => {
   expect(

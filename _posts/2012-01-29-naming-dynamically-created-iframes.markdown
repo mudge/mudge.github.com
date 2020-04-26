@@ -3,6 +3,7 @@ layout: post
 title: Naming Dynamically Created iframes
 excerpt: Working around issues with setting iframe names in Internet Explorer.
 redirect_from: /2012/01/29/naming-dynamically-created-iframes.html
+script_hashes: " 'sha256-s7s2WZRJCteVwuSuyEE/LbZOwQbHPLHs3pkoDZrlwbs=' 'sha256-o8Vt9+rw+ThF7xCGqNhp3dfq5KiMHJfIoMFUSVA7gLA='"
 ---
 For the past year, I have been working on a web application that relies heavily on [inline frames (aka `iframe`s)](https://developer.mozilla.org/en/HTML/Element/iframe). During the course of development, we have run into some interesting issues and I thought I would record some of these for posterity.
 

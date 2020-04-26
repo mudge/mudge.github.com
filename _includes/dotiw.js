@@ -78,3 +78,4 @@ function distanceOfTimeInWords(from, to) {
 if (typeof module === "object" && module.exports) {
   module.exports = distanceOfTimeInWords;
 }
+
