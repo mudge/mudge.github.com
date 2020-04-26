@@ -12,7 +12,6 @@ kramdown:
 encoding: UTF-8
 future: true
 jailed: false
-theme: jekyll-theme-primer
 gfm_quirks: paragraph_end
 repository: mudge/mudge.github.com
 url: https://mudge.name
@@ -23,3 +22,13 @@ plugins:
   - jekyll-redirect-from
 whitelist:
   - jekyll-redirect-from
+exclude:
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - Procfile
+  - README.markdown
+  - jest.config.js
+  - node_modules
+  - package.json
+  - yarn.lock
