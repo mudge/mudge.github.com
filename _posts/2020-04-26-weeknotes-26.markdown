@@ -1,0 +1,51 @@
+---
+layout: post
+title: Weeknotes 26
+excerpt: The importance of editing, unminifying JavaScript, inappropriate Zoom virtual backgrounds and a thirst for life.
+date: 2020-04-26 11:00:00
+---
+*   I waffle.
+
+    My first draft of that sentence was:
+
+    > When writing, I have a tendency to waffle.
+
+    Last week’s notes were a perfect example of this. When I first published them, E proofread and found so much to cut and simplify. So [I did](https://github.com/mudge/mudge.github.com/commit/ccc989bfa7780bb1f5e684d799065cb2c82d92b4), [over](https://github.com/mudge/mudge.github.com/commit/95daf898f4063c6b918d2f6702da2c9f1a454971) and [over](https://github.com/mudge/mudge.github.com/commit/1c7eae2c11e473bdc13aad21f1f940bd3075f0e0) and [over](https://github.com/mudge/mudge.github.com/commit/bb91896504140b5b605030f276b8279379e540bd) and [over again](https://github.com/mudge/mudge.github.com/commit/d05f3b4932e060b1794ef972d76065b684de6e88).
+
+    In the words of [Blaise Pascal (not Mark Twain)](https://quoteinvestigator.com/2012/04/28/shorter-letter/):
+
+    > I have made this longer than usual because I have not had time to make it shorter.
+
+*   I'm experimenting with writing these notes on my phone during the week. The main issue is how inept I am at editing text on iOS, especially when trying to place the insertion pointer to paste text. It turns out there are [three finger gestures for cut, copy and paste](https://support.apple.com/en-gb/guide/iphone/iph3c50f96e/13.0/ios/13.0) which make things much easier. I doubt I would have ever discovered them on my own.
+
+*   [Piotr flagged that my unminified JavaScript from last week fits into a single TCP packet when gzipped](https://twitter.com/chastell/status/1252337694320910336). As [gzip compression has been supported in browsers for the past 20 years](https://caniuse.com/#search=gzip) and I'm using [Cloudflare to compress my JavaScript with Brotli](https://support.cloudflare.com/hc/en-us/articles/200168396-What-will-Cloudflare-compress-), there really isn’t any need to minify it.
+
+    Still, I couldn’t resist playing [a little code golf](https://github.com/mudge/mudge.github.com/commit/dd318af9d8182f80538536d0077947e043275a97).
+
+*   I [ported the original `distance_of_time_in_words` test suite from Rails to JavaScript](https://github.com/mudge/mudge.github.com/blob/51d0fd06ccf168428e1b51ad878db7031c50fb27/_includes/dotiw.test.js) and used it as an excuse to [set up my first workflow with GitHub Actions](https://github.com/mudge/mudge.github.com/actions/runs/87789354).
+
+    Running the test suite revealed [JavaScript's `Date.prototype.getYear()` doesn't return what I expected](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getYear):
+
+    > A number representing the year of the given date, according to local time, minus 1900.
+
+    Sure enough:
+
+    ```javascript
+    > (new Date("2020-04-26")).getYear()
+    120
+    ```
+
+    Thankfully, you can use [`Date.prototype.getFullYear()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getFullYear) instead:
+
+    ```javascript
+    > (new Date("2020-04-26")).getFullYear()
+    2020
+    ```
+
+*   I disappeared down a bit of a rabbit hole trying to add a [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) to this site in pursuit of a perfect score from [Mozilla Observatory](https://observatory.mozilla.org/).
+
+*   Following both [Nat](https://natbuckley.co.uk/2020/04/19/weeknotes-66-the-novelty-has-worn-off/) and [Tom](https://tomstu.art/weeknotes-15-what-a-ride) mentioning [Professor Robert Kelly’s infamous interview](https://youtu.be/Mh4f9AYRCZY), Leo told me about a colleague using the footage as a [Zoom virtual background](https://support.zoom.us/hc/en-us/articles/210707503-Virtual-Background). This was too good an idea not to copy, so I downloaded [a version of the video with Professor Kelly removed](https://youtu.be/62a-1ZYcsV0) and set it as my background. Sadly, I had to quickly turn it off when the meeting I was hoping to brighten with [that entrance dance](https://natbuckley.co.uk/images/girl.gif) turned unexpectedly gloomy.
+
+*   On an impulse, I bought [Doom Eternal](https://bethesda.net/game/doom) from the [PlayStation Network](https://www.playstation.com/en-gb/explore/playstation-network/). The jury is still out whether blasting fiends from hell at an [intentionally unrelenting pace](https://youtu.be/I9ZsFT_eqXY) is an activity that can be considered "relaxing".
+
+*   C is fascinated by anyone drinking. When he gets chance to drink water himself, he goes into a kind of joyful frenzy, finding every aspect of the experience wonderful. His enthusiasm for mundane things is an inspiration.
