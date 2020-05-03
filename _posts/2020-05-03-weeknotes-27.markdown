@@ -1,0 +1,39 @@
+---
+layout: post
+title: Weeknotes 27
+excerpt: Getting emotional about cups and saucers, a home haircut, the only two good types of advert, new kitchen scales and a debugging adventure.
+date: 2020-05-03 09:40:00
+---
+*   E and I started watching series 3 of "[The Great Pottery Throw Down](https://www.channel4.com/programmes/the-great-pottery-throw-down)". I was drawn in by the sight of expert judge [Keith Brymer Jones](https://en.wikipedia.org/wiki/Keith_Brymer_Jones) in dungarees throwing an amphora before asking contestants to do the same. We were hooked when we saw him moved to tears while judging a breakfast set:
+
+    > That’s fantastic, mate. Fantastic!
+
+    After writing about my disappointment with the Great British Bake Off in [my early weeknotes](/2019/11/16/weeknotes-3/), this is the feel-good show I've been looking for.
+
+*   In [Coronavirus lockdown](https://www.gov.uk/coronavirus) news: E cut my hair with a beard trimmer. After watching a few YouTube videos and [trying to convert UK haircut "grades" into millimetres](https://travel.stackexchange.com/questions/14915/how-to-know-your-number-for-a-machine-haircut-in-a-foreign-country), we went for 6 mm on the side, 12 mm on top and 9 mm in between.
+
+*   After [my adoption of Shortcuts a few weeks ago](/2020/04/19/weeknotes-25/), [Tom](https://tomstu.art) asked why I didn't use "[Hey Siri](https://support.apple.com/en-gb/HT204389#ios)" to activate my shortcuts instead of fumbling with my phone's screen in the dark. I had tried but was frustrated pausing between saying "Hey Siri" and waiting for the telltale "hmm?".
+
+    Tom told me you don't need to pause at all: Siri will buffer everything you say after being activated. You will now find me occasionally saying "Hey Siri Bounce", "Hey Siri Fold" and "Hey Siri [Autolyse](https://www.bakerybits.co.uk/resources/autolyse-what-why-how/)".
+
+*   I haven't been enjoying the increased number of emotionally manipulative Coronavirus-related advertisements from commercial companies and seeing [Uber's "Thank You For Not Riding"](https://youtu.be/_e8XLnMiCOE) made me particularly cynical. As [Sean Haney demonstrated, "Every Covid-19 Commercial is Exactly the Same"](https://youtu.be/vM3J9jDoaTA).
+
+*   There should only be two types of advert: the straightforward [Cillit Bang](https://youtu.be/lrMD_z_FnNk) approach or the utterly sublime [Halo Top](https://youtu.be/j4IFNKYmLa8).
+
+*   Someone in this household accidentally cooked our kitchen scales, reducing them to molten plastic so we had to invest in a replacement. As [Neven Mrgan mentions in his pizza dough recipe](https://mrgan.tumblr.com/post/615569556634763264/nevens-pizza-dough/amp), having gram-precision scales that have an extra long timeout is ideal for baking:
+
+    > My favorite feature: extra long timeout (before it turns off) so I can forget to get the flour and run downstairs and hunt for it and when I come back, my measurement is still up on the screen.
+
+    We got ourselves some [Salter Pro Stainless Steel Digital Kitchen Scales](http://www.salterhousewares.co.uk/salter-pro-stainless-steel-digital-kitchen-scales.html) as a replacement and, while it isn't listed anywhere, they have a very generous timeout.
+
+*   [Siguza's write-up of their "Psychic Paper" security exploit for iOS](https://siguza.github.io/psychicpaper/) is a great and extremely accessible read on how the incidental complexity of XML parsing resulted in a very serious bug.
+
+*   We finished [DEVS](https://www.bbc.co.uk/iplayer/episode/p087gkct/devs-series-1-episode-1) and, [like Tom](https://tomstu.art/weeknotes-15-what-a-ride), I think it is well worth watching even if it wasn't perfect.
+
+    It made me want to re-read [Ted Chiang's "Exhalation"](https://www.penguinrandomhouse.com/books/538034/exhalation-by-ted-chiang/), ["Arrival" (formerly published as "Stories of Your Life and Others")](https://www.penguinrandomhouse.com/books/538163/arrival-stories-of-your-life-mti-by-ted-chiang/) and [Greg Egan's "Permutation City"](https://www.gregegan.net/PERMUTATION/Permutation.html).
+
+*   I investigated and fixed [an issue related to re2](https://github.com/mudge/re2/issues/43), my most popular open source project, which led me on a journey to better understand [shared library names and how they communicate <abbr title="Application binary interface">ABI</abbr> compatibility](http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html). This then led me to discover and [fix a bug in a Homebrew formula](https://github.com/Homebrew/homebrew-core/pull/54136) to resolve the original issue.
+
+    I do love the twists and turns of debugging.
+
+*   [The jury is in](/2020/04/26/weeknotes-26/): Doom Eternal is far too stressful.
