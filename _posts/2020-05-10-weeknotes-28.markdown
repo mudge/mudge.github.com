@@ -1,0 +1,51 @@
+---
+layout: post
+title: Weeknotes 28
+excerpt: A new thought technology, supporting old Ruby versions, making the most of the long weekend and filling the hole left in my life by Keith Brymer Jones.
+date: 2020-05-10 10:16:00
+---
+*   Following [radical candor](https://www.radicalcandor.com) and [radical sensibleness](https://www.newyorker.com/sports/sporting-scene/world-cup-2018-radical-sensibleness-england-team-manager-gareth-southgate), I propose a new [thought technology](https://twitter.com/hotdogsladies/status/656676217408614400): radical competency.
+
+    It can be summarised in three steps:
+
+    1. Think about a thing.
+    2. Say you'll do something related to step 1.
+    3. Do the thing you said you'd do in step 2.
+
+    This is inspired by recent experience and by [Maciej](https://www.instagram.com/_weszlem/) sharing [Chelsea Troy's "Reviewing Pull Requests"](https://chelseatroy.com/2019/12/18/reviewing-pull-requests/). While I'm not sure I agree about pushing commits to someone else's branch, I agree with the goal of saving time and frustration by placing more burden on the reviewer.
+
+    In any exchange, you should be trying to _reduce_ effort for the other party.
+
+*   E and I watched "[Star Wars: Episode IX - The Rise of Skywalker](https://www.imdb.com/title/tt2527338/)". It was not good.
+
+*   Following [last week's debugging adventures](/2020/05/03/weeknotes-27/), I switched [re2](https://github.com/mudge/re2) from using [Travis CI](https://travis-ci.org) to [GitHub Actions](https://github.com/features/actions).
+
+    Most of my effort went into writing a [new, custom GitHub Action called "re2 Test Action"](https://github.com/mudge/re2-test-action) which creates a consistent environment using [Docker](https://www.docker.com) for running the [re2 test suite](https://github.com/mudge/re2/tree/master/spec) against [different versions](https://github.com/mudge/re2/blob/master/.github/workflows/tests.yml#L13-L22) of Ruby and the [underlying re2 library](https://github.com/google/re2).
+
+    It was a little tricky because the [recommended way to setup Ruby versions with GitHub Actions](https://github.com/actions/setup-ruby) only supports Ruby 2.4, 2.5, 2.6 and 2.7. However, the recently released [RubyGems.org stats](http://stats.rubygems.org) shows that the most popular Ruby version is Ruby 2.3 (and over 7% of people still use Ruby 2.1).
+
+    I'm [attempting to get](https://twitter.com/mudge/status/1259036292752576513) a [more detailed breakdown of older Ruby versions](https://github.com/rubytogether/ecosystem/pull/284) as I'd love to know how many people are still using long end-of-lifed versions.
+
+    People have often been surprised, confused and occasionally frustrated that I support Ruby 1.8 in my libraries such as re2, [Fieldhand](https://github.com/fieldhand/fieldhand) and [Embiggen](https://github.com/altmetric/embiggen). Having wasted so much time in my career struggling to upgrade dependencies that have, in turn, caused other breakages, I strongly believe libraries should go out of their way to be as compatible and frictionless as possible for the user to use. I never want one of my libraries to cause you incidental issues because I made a change internally.
+
+    While [Mike Perham called for us to "Kill Your Dependencies"](https://www.mikeperham.com/2016/02/09/kill-your-dependencies/), I agree more with [James Coglan](http://jcoglan.com) who talked about this in [Why Are Computers' "Episode 1: A Fairly Deep Yak Shave"](https://whyarecomputers.com/1):
+
+    > The thing that most concerns me is stuff that gets changed because
+    > someone thought that the new way is how it should’ve been done in the
+    > first place and it’s obviously better, but it doesn’t give any real new
+    > capabilities or power and doesn’t really fix any mistakes, and it breaks
+    > their existing software.
+    >
+    > To me the canonical example of that is the Ruby 1.9 hash syntax, which a
+    > lot of people are like “oh, it’s obviously better”, but it doesn’t let
+    > you write programs that you couldn’t write before, it doesn’t fix any
+    > mistakes that anyone was making before, and it means that if someone uses
+    > that syntax, that program now won’t run on an older thing. It’s purely an
+    > aesthetic change. The aesthetics of code are important, and it’s
+    > important to have stuff that’s readable, but if you have a thing that’s
+    > already been shipped, making those tiny little fussy aesthetic changes to
+    > it, to me, never seems really worth it.
+
+*   Never one to let a [bank holiday weekend](https://www.gov.uk/bank-holidays) go to waste, I spent a large portion of yesterday on administrivia mostly informed by [Martin Lewis' "Money Saving Expert"](https://www.moneysavingexpert.com).
+
+*   On a bittersweet note, we [finished "The Great Pottery Throw Down"](/2020/05/03/weeknotes-27/). I am attempting to fill the hole it has left in my life by encouraging C to watch "[Hey Duggee](https://www.bbc.co.uk/cbeebies/shows/hey-duggee)" instead.
