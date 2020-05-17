@@ -4,7 +4,7 @@ title: Weeknotes 29
 excerpt: An infernal whining, the pit of success, a GPG rabbithole and teaching babies about quantum mechanics.
 date: 2020-05-17 09:59:00
 ---
-*   After publishing last week’s notes, E and I noticed a high pitched whining noise coming from our kitchen.
+*   After publishing [last week’s notes](/2020/05/10/weeknotes-28/), E and I noticed a high pitched whining noise coming from our kitchen.
 
     Unable to locate the source of the noise, I switched off the power to our oven, fridge and freezer but still the whining continued. I resorted to holding the cardboard tube from a toilet roll to one ear while plugging my other ear with a headphone, crawling on all fours trying to pinpoint this infernal whine.
 
@@ -28,9 +28,9 @@ date: 2020-05-17 09:59:00
 
     Having overheard this, E wished me well "turning off the fire engine".
 
-*   After seeing [John Siracusa recommend using `pmset` to diagnose problems with a Mac that refuses to sleep](https://twitter.com/siracusa/status/1258113504499904512), I had occasion to use it myself when E's laptop would repeatedly drain its battery while closed.
+*   After seeing [John Siracusa recommend using `pmset` to diagnose problems with a Mac that refuses to sleep](https://twitter.com/siracusa/status/1258113504499904512), I used it myself when E's laptop kept draining its battery with the lid closed.
 
-    Using `pmset -g` and `pmset -g assertions` revealed that `sharingd` was preventing `UserIdleSystemSleep` and, sure enough, toggling Screen Sharing (and a reboot) fixed the problem.
+    `pmset -g` and `pmset -g assertions` revealed that `sharingd` was preventing `UserIdleSystemSleep` and, sure enough, toggling Screen Sharing (and a reboot) fixed the problem.
 
 *   I went down a bit of a [GPG](https://www.gnupg.org) rabbithole after discovering that my 12 year old [1024 bit DSA key is threatened by weaknesses found in SHA-1](https://infra.apache.org/openpgp.html#generate-key). Thankfully, [The Apache Software Foundation's "How to transition to a new PGP key"](https://infra.apache.org/key-transition.html) was an excellent guide to [generating a new 4096 bit RSA key](https://infra.apache.org/openpgp.html#generate-key) and [transitioning to using it](https://infra.apache.org/key-transition.html#single-keyring).
 
