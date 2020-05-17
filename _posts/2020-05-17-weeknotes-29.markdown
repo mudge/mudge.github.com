@@ -1,0 +1,39 @@
+---
+layout: post
+title: Weeknotes 29
+excerpt: An infernal whining, the pit of success, a GPG rabbithole and teaching babies about quantum mechanics.
+date: 2020-05-17 09:59:00
+---
+*   After publishing last week’s notes, E and I noticed a high pitched whining noise coming from our kitchen.
+
+    Unable to locate the source of the noise, I switched off the power to our oven, fridge and freezer but still the whining continued. I resorted to holding the cardboard tube from a toilet roll to one ear while plugging my other ear with a headphone, crawling on all fours trying to pinpoint this infernal whine.
+
+    With a growing headache, I climbed onto the kitchen counter and checked our fire alarm when suddenly I realised: the noise was coming from [C’s baby bouncer](https://uk.joiebaby.com/product/dreamer/). He’d accidentally turned on one of its soothing sounds and the manufacturers had seemingly chosen the sound of a single, agitated mosquito to represent the rainforest.
+
+*   In my search, I did discover our fire alarm had a sticker on its underside that read "Replace by 2014".
+
+*   Following [Facebook's description of their newly rebuilt tech stack for Facebook.com](https://engineering.fb.com/web/facebook-redesign/), I enjoyed reading [Tom MacWright's "Second-guessing the modern web"](https://macwright.org/2020/05/10/spa-fatigue.html).
+
+    I was particularly drawn to the idea of the [pit of success](https://blog.codinghorror.com/falling-into-the-pit-of-success/):
+
+    > And it should be easy to do a good job.
+    >
+    > Frameworks should lure people into the pit of success, where following the normal rules and using normal techniques is the winning approach.
+
+    I've [mentioned my interest in the design concept of "affordance" before](/2019/12/08/weeknotes-6/) and my main consideration when designing software is what kind of behaviours does a decision encourage and discourage. "Pit of success" is a pithy way to communicate this idea: how can we construct a system such that the _easiest_ possible thing is also the _right_ thing to do?
+
+*   In one of our recent trips to [The Baby Club](https://www.bbc.co.uk/cbeebies/shows/the-baby-club), the answer to the regular question of "what’s in the bag?" was "a bag". The recursive nature of this answer reminded me of [the filling inside KitKats](https://www.foodandwine.com/news/solving-mystery-kit-kat-filling) and made me secretly wish the show would take a more surreal turn. I suppose I'll just have to rewatch "[Don't Hug Me I'm Scared](https://www.youtube.com/channel/UCZOnoLKzoBItcEk5OsES2TA)" instead.
+
+*   This week at work, after successfully launching a major new feature, we took a few days to clean up some [technical debt](https://martinfowler.com/bliki/TechnicalDebt.html) we'd accrued to meet our deadline. I took to calling it a "firebreak" week, having [stolen the term from GOV.UK](https://insidegovuk.blog.gov.uk/2015/02/06/gov-uks-firebreak-why-and-how-we-spent-a-month-working-differently/).
+
+    Having overheard this, E wished me well "turning off the fire engine".
+
+*   After seeing [John Siracusa recommend using `pmset` to diagnose problems with a Mac that refuses to sleep](https://twitter.com/siracusa/status/1258113504499904512), I had occasion to use it myself when E's laptop would repeatedly drain its battery while closed.
+
+    Using `pmset -g` and `pmset -g assertions` revealed that `sharingd` was preventing `UserIdleSystemSleep` and, sure enough, toggling Screen Sharing (and a reboot) fixed the problem.
+
+*   I went down a bit of a [GPG](https://www.gnupg.org) rabbithole after discovering that my 12 year old [1024 bit DSA key is threatened by weaknesses found in SHA-1](https://infra.apache.org/openpgp.html#generate-key). Thankfully, [The Apache Software Foundation's "How to transition to a new PGP key"](https://infra.apache.org/key-transition.html) was an excellent guide to [generating a new 4096 bit RSA key](https://infra.apache.org/openpgp.html#generate-key) and [transitioning to using it](https://infra.apache.org/key-transition.html#single-keyring).
+
+*   After reading many recommendations, we started watching "[The Mandalorian](https://disneyplusoriginals.disney.com/show/the-mandalorian)". It's fine.
+
+*   A recurring section of C's [Sing and Sign](https://www.singandsign.co.uk) lessons is a cat named Jessie hidden in a box. I assume this is to teach children [the problem of the Copenhagen interpretation of quantum mechanics](https://en.wikipedia.org/wiki/Schrödinger%27s_cat).
