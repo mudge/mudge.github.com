@@ -1,0 +1,25 @@
+---
+layout: post
+title: Weeknotes 30
+excerpt: A birthday, the island of Custard, more public keys and a new earworm.
+date: 2020-05-24 14:06:00
+---
+*   I successfully completed another full orbit around the sun. To celebrate, E, C and I went for our first "[stay alert](https://www.gov.uk/government/publications/coronavirus-outbreak-faqs-what-you-can-and-cant-do/coronavirus-outbreak-faqs-what-you-can-and-cant-do)" picnic in the park. While it was surprisingly busy for a weekday, it was great to be outside for the longest time since lockdown began.
+
+*   As an antidote to [the stress of Doom Eternal](/2020/05/03/weeknotes-27/), [Will](http://willhigo.com) and [Andrew](http://andrewlitt.co.uk) gave me the gift of "[Animal Crossing: New Horizons](https://www.animal-crossing.com/new-horizons/)". I don't think I've played a game that requires waiting real days for progression before but the enforced slow pace is a welcome change. My island is called Custard and I now understand more of [Tom's tweets](https://twitter.com/tomstuart/status/1261942415553728512).
+
+*   As a birthday treat, E made [Felicity Cloake's perfect miso ramen](https://www.theguardian.com/lifeandstyle/wordofmouth/2017/mar/30/how-to-cook-the-perfect-miso-ramen) and it was fantastic.
+
+*   Following [last week's adventures with GPG](/2020/05/17/weeknotes-29/), [Maciej](https://www.instagram.com/_weszlem/) recommended [drduh's guide to using YubiKey for GPG and SSH](https://github.com/drduh/YubiKey-Guide/blob/master/README.md#creating-keys). Even if you don't have a [YubiKey](https://www.yubico.com/products/yubikey-hardware/), it is a thorough guide to setting up [a single GPG master key](https://github.com/drduh/YubiKey-Guide#master-key) and single-purpose [sub-keys](https://github.com/drduh/YubiKey-Guide#sub-keys).
+
+*   I went on a related adventure to [upgrade my SSH keys from a sole 2048-bit RSA key to a 4096-bit RSA key and a Ed25519 key](https://blog.g3rt.nl/upgrade-your-ssh-keys.html).
+
+    [Leo](https://twitter.com/leocassarani) pointed out you can get the public SSH keys for any GitHub user by appending `.keys` to their profile URL, e.g. <https://github.com/mudge.keys>. You can also use `.gpg` to get their public GPG keys, e.g. <https://github.com/mudge.gpg>.
+
+*   [Shane](https://technicallyshane.com) [told me off](https://twitter.com/shamess/status/1261981790794850305) for not simply tilting my head in order to better locate [last week's infernal whining noise](/2020/05/17/weeknotes-29/).
+
+*   We watched (or is that played?) Netflix's interactive "[Unbreakable Kimmy Schmidt: Kimmy vs. the Reverend](https://www.netflix.com/title/81131714)" and enjoyed it more than I expected. I'm not sure we'll go back to watch all the alternate paths we could have taken though.
+
+*   Despite being indifferent about the show, E will not stop singing [The Mandalorian theme tune](https://open.spotify.com/track/6tJFtthY0rI1x06qb8NjK0?si=E3pDqHKiT2Cap3lrdmYxCw). It may well unseat [the Outer Wilds theme](https://open.spotify.com/track/25lTenJPmSfwCRZi2hjCcB?si=DLXmTdOCSLuyQmf6Gq5zcQ) and [XCOM 2's "Squad Loadout"](https://open.spotify.com/track/05pN1ltuUivUgSzRlTXhtr?si=E2IjricSTwC9-OrDJ96QyA) music as the most annoying earworm in this house.
+
+* [Paul Ford has started writing a newsletter called "i absolutely am going to bail on this in a month"](https://ftrain.substack.com/) (there's an [RSS feed](https://ftrain.substack.com/feed/) too). As a fan of Ford's [Ftrain.com](https://ftrain.com) back in the 2000s, this makes me happy.
