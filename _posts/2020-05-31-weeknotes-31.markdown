@@ -1,0 +1,48 @@
+---
+layout: post
+title: Weeknotes 31
+excerpt: Unexpected socialising; your mission, should you choose to accept it; computer means and a lifelong commitment.
+date: 2020-05-31 10:12:00
+---
+*   [The stress of buying turnips](https://www.polygon.com/2020/5/26/21270653/animal-crossing-new-horizons-turnips-daisy-mae-acnh-nintendo-switch-stress-prices) may have impacted the quality of [last week's notes](/2020/05/24/weeknotes-30/).
+
+*   After putting C to bed, E said "I wish we could just sit outside and have a glass of wine." Thanks to the range of [our baby monitor](/2020/03/08/weeknotes-19/), we did exactly that.
+
+    While setting up, our upstairs neighbour walked by and invited us to join them further up our driveway. We ended up chatting the evening away from socially distanced camping chairs, contactlessly sharing our last four After Eight mints and giving directions to lost Deliveroo riders.
+
+    I didn't realise how much I miss socialising with people outside our household.
+
+*   I don't know why but E and I have been making our way through the "Mission: Impossible" films.
+
+    So far, we've watched [Brian De Palma's "Mission: Impossible"](https://www.imdb.com/title/tt0117060/), [John Woo's "Mission: Impossible II"](https://www.imdb.com/title/tt0120755/), [J.J. Abrams' "Mission: Impossible III"](https://www.imdb.com/title/tt0317919/) and [Brad Bird's "Mission: Impossible - Ghost Protocol"](https://www.imdb.com/title/tt1229238/).
+
+    The second one has not aged well.
+
+*   I made bread this weekend after a short break from baking.
+
+    <p class="center"><img src="/i/bread.jpg" width="375" height="375" alt></p>
+
+    While I must make use of our [large quantity of flour](/2020/03/15/weeknotes-20/), [Leo](https://twitter.com/leocassarani) sharing a [video of a baker shaping sourdough](https://www.reddit.com/r/Breadit/comments/glzuiz/heres_another_video_of_me_shaping_sourdough_i/?utm_source=share&utm_medium=web2x) has inspired me to try different shaping techniques.
+
+*   I have a file called `budget.rb` that contains all our household expenses and calculates how much money we spend every month. I often tinker with it and decided to switch to using the [geometric mean](https://en.wikipedia.org/wiki/Geometric_mean) instead of the typical [arithmetic mean](https://en.wikipedia.org/wiki/Arithmetic_mean) for some averages. (Despite E dismissing anything other than the arithmetic mean, [median](https://en.wikipedia.org/wiki/Median) and [mode](https://en.wikipedia.org/wiki/Mode_(statistics)) as a "computer mean".)
+
+    This led to me write [a Ruby refinement to add all three Pythagorean means to `Enumerable` objects](https://gist.github.com/mudge/a653a1fb837e108a5501937c456f4412), e.g.
+
+    ```ruby
+    using PythagoreanMeans
+
+    [1, 2, 3, 4, 5].arithmetic_mean
+    # => 3
+
+    [1, 2, 3, 4, 5].geometric_mean
+    # => ~2.61
+
+    [1, 2, 3, 4, 5].harmonic_mean
+    # => ~2.18
+    ```
+
+    I've never written a [refinement](https://docs.ruby-lang.org/en/2.7.0/syntax/refinements_rdoc.html) before and immediately encountered [a bug in Ruby 2.7 meaning that you can't refine the `Enumerable` module](https://bugs.ruby-lang.org/issues/16852). Despite being four years old, [James Adam's "Why is nobody using Refinements?"](https://interblah.net/why-is-nobody-using-refinements) is still as relevant as ever.
+
+*   C got his first teeth.
+
+    Despite months of asking ourselves "could he be teething?" whenever he was irrationally grumpy, it was still a surprise to see them. This means we have to brush his teeth twice daily. So begins a lifelong [wretched task](https://natbuckley.co.uk/2019/06/02/weeknotes-20-the-wretched-task/).
