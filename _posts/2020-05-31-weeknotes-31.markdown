@@ -10,7 +10,7 @@ date: 2020-05-31 10:12:00
 
     While setting up, our upstairs neighbour walked by and invited us to join them further up our driveway. We ended up chatting the evening away from socially distanced camping chairs, contactlessly sharing our last four After Eight mints and giving directions to lost Deliveroo riders.
 
-    I didn't realise how much I miss socialising with people outside our household.
+    I didn't realise how much I miss socialising in person with people outside our household.
 
 *   I don't know why but E and I have been making our way through the "Mission: Impossible" films.
 
@@ -22,11 +22,11 @@ date: 2020-05-31 10:12:00
 
     <p class="center"><img src="/i/bread.jpg" width="375" height="375" alt></p>
 
-    While I must make use of our [large quantity of flour](/2020/03/15/weeknotes-20/), [Leo](https://twitter.com/leocassarani) sharing a [video of a baker shaping sourdough](https://www.reddit.com/r/Breadit/comments/glzuiz/heres_another_video_of_me_shaping_sourdough_i/?utm_source=share&utm_medium=web2x) has inspired me to try different shaping techniques.
+    While our [large quantity of flour](/2020/03/15/weeknotes-20/) means I can't deviate from [my usual recipe](https://tartinebakery.com/stories/country-bread), [Leo](https://twitter.com/leocassarani) sharing a [video of a baker shaping sourdough](https://www.reddit.com/r/Breadit/comments/glzuiz/heres_another_video_of_me_shaping_sourdough_i/?utm_source=share&utm_medium=web2x) has inspired me to try different shaping techniques.
 
 *   I have a file called `budget.rb` that contains all our household expenses and calculates how much money we spend every month. I often tinker with it and decided to switch to using the [geometric mean](https://en.wikipedia.org/wiki/Geometric_mean) instead of the typical [arithmetic mean](https://en.wikipedia.org/wiki/Arithmetic_mean) for some averages. (Despite E dismissing anything other than the arithmetic mean, [median](https://en.wikipedia.org/wiki/Median) and [mode](https://en.wikipedia.org/wiki/Mode_(statistics)) as a "computer mean".)
 
-    This led to me write [a Ruby refinement to add all three Pythagorean means to `Enumerable` objects](https://gist.github.com/mudge/a653a1fb837e108a5501937c456f4412), e.g.
+    This led me to write [a Ruby refinement to add all three Pythagorean means to `Enumerable` objects](https://gist.github.com/mudge/a653a1fb837e108a5501937c456f4412), e.g.
 
     ```ruby
     using PythagoreanMeans
