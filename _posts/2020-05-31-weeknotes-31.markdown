@@ -41,7 +41,7 @@ date: 2020-05-31 10:12:00
     # => ~2.18
     ```
 
-    I've never written a [refinement](https://docs.ruby-lang.org/en/2.7.0/syntax/refinements_rdoc.html) before and immediately encountered [a bug in Ruby 2.7 meaning that you can't refine the `Enumerable` module](https://bugs.ruby-lang.org/issues/16852). Despite being four years old, [James Adam's "Why is nobody using Refinements?"](https://interblah.net/why-is-nobody-using-refinements) is still as relevant as ever.
+    I've never written a [refinement](https://docs.ruby-lang.org/en/2.7.0/syntax/refinements_rdoc.html) before and immediately encountered [a bug in Ruby 2.7 meaning you can't refine the `Enumerable` module](https://bugs.ruby-lang.org/issues/16852). Despite being four years old, [James Adam's "Why is nobody using Refinements?"](https://interblah.net/why-is-nobody-using-refinements) is still as relevant as ever.
 
 *   C got his first teeth.
 
