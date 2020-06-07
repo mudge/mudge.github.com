@@ -46,12 +46,12 @@ date: 2020-06-07 14:18:00
     So to block the two example domains above, we would need the following Unbound configuration:
 
     ```config
-    local-zone: "some.bad.domain.here" redirect
-    local-data: "some.bad.domain.here A 0.0.0.0"
-    local-data: "some.bad.domain.here AAAA ::"
-    local-zone: "another.bad.domain.here" redirect
-    local-data: "another.bad.domain.here A 0.0.0.0"
-    local-data: "another.bad.domain.here AAAA ::"
+    local-zone: "some.bad.domain.here." redirect
+    local-data: "some.bad.domain.here. IN A 0.0.0.0"
+    local-data: "some.bad.domain.here. IN AAAA ::"
+    local-zone: "another.bad.domain.here." redirect
+    local-data: "another.bad.domain.here. IN A 0.0.0.0"
+    local-data: "another.bad.domain.here. IN AAAA ::"
     ```
 
     We can do this by stitching together some basic command-line tools:
@@ -61,7 +61,7 @@ date: 2020-06-07 14:18:00
       grep '^0\.0\.0\.0' | # Filter out any comments, etc. that aren't rules
       tr -d '\r' |         # Normalize line endings by removing carriage returns
       sort -u |            # Remove any duplicates
-      awk '{print "local-zone: \""$2"\" redirect\nlocal-data: \""$2" A 0.0.0.0\"\nlocal-data: \""$2" AAAA ::\""}' | # Convert to Unbound configuration
+      awk '{print "local-zone: \""$2".\" redirect\nlocal-data: \""$2". IN A 0.0.0.0\"\nlocal-data: \""$2". IN AAAA ::\""}' | # Convert to Unbound configuration
     ```
 
     (You can find my [full script to download and re-format all ticked blocklists on GitHub](https://gist.github.com/mudge/eaff0a816e8ee49046e263b0a6e99fe7#file-blocklist-sh).)
@@ -75,7 +75,7 @@ date: 2020-06-07 14:18:00
     So, if we wanted to allow traffic to `some.bad.domain.here` even though it is already in our configuration, we need to add the following to our Unbound configuration before our blocklist:
 
     ```config
-    local-zone: "some.bad.domain.here" always_transparent
+    local-zone: "some.bad.domain.here." always_transparent
     ```
 
     This will ensure we ignore our `redirect` to `local-data` and look the domain up normally.
@@ -85,7 +85,7 @@ date: 2020-06-07 14:18:00
     ```bash
     curl -sSf "https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt" |
       sort -u | # Remove any duplicates
-      awk '{print "local-zone: \""$1"\" always_transparent"}' # Convert to Unbound configuration
+      awk '{print "local-zone: \""$1".\" always_transparent"}' # Convert to Unbound configuration
     ```
 
     If we save those two lists into separate configuration files called `01-safelist.conf` and `02-blocklist.conf` under `/etc/unbound/lists.d`, we can `include` them in our Unbound `server` definition (e.g. under `/etc/unbound/unbound.conf.d`):
