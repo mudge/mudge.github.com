@@ -105,6 +105,8 @@ date: 2020-06-07 14:18:00
     ```console
     ~> dig @127.0.0.1 doubleclick.net +short
     0.0.0.0
+    ~> dig @127.0.0.1 doubleclick.net AAAA +short
+    ::
     ```
 
     And check that any exceptions still return results:
