@@ -88,7 +88,7 @@ date: 2020-06-07 14:18:00
       awk '{print "local-zone: \""$1"\" always_transparent"}' # Convert to Unbound configuration
     ```
 
-    If we save those two lists into separate configuration files called `01-safelist.conf` and `02-blocklist.conf` under `/etc/unbound/lists.d`, we can `include` them into our Unbound `server` definition (e.g. under `/etc/unbound/unbound.conf.d`):
+    If we save those two lists into separate configuration files called `01-safelist.conf` and `02-blocklist.conf` under `/etc/unbound/lists.d`, we can `include` them in our Unbound `server` definition (e.g. under `/etc/unbound/unbound.conf.d`):
 
     ```config
     server:
@@ -124,6 +124,6 @@ date: 2020-06-07 14:18:00
 
     [Matt](https://twitter.com/matt_macleod) wrote [Rocksteady](https://github.com/PowerRhino/rocksteady) to handle orchestrating [jobspec](https://www.nomadproject.io/docs/job-specification/) updates when deploying but thankfully, this is provided out-of-the-box by the [AWS ECS Orb's `deploy-service-update` job](https://circleci.com/orbs/registry/orb/circleci/aws-ecs#jobs-deploy-service-update).
 
-    After all these changes, I'm hoping I will have cut down the total time to deploy (meaning from the start of our CI build to running our test suite, deploying to staging and then deploying to production) from over 34 minute to 13 minutes.
+    After all these changes, I'm hoping I will have cut down the total time to deploy (meaning from the start of our CI build to running our test suite, deploying to staging and then deploying to production) from over 34 minutes to 13 minutes.
 
 *   [After a bad week on the Stalk Market](https://turnipprophet.io?prices=106.90.85.82.78.73.70.66.63....&pattern=3), I have now spent my entire life savings in bells on turnips.
