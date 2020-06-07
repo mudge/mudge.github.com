@@ -45,7 +45,7 @@ date: 2020-06-07 14:18:00
 
     So to block the two example domains above, we would need the following Unbound configuration:
 
-    ```
+    ```config
     local-zone: "some.bad.domain.here" redirect
     local-data: "some.bad.domain.here A 0.0.0.0"
     local-data: "some.bad.domain.here AAAA ::"
@@ -74,7 +74,7 @@ date: 2020-06-07 14:18:00
 
     So, if we wanted to allow traffic to `some.bad.domain.here` even though it is already in our configuration, we need to add the following to our Unbound configuration before our blocklist:
 
-    ```
+    ```config
     local-zone: "some.bad.domain.here" always_transparent
     ```
 
@@ -90,7 +90,7 @@ date: 2020-06-07 14:18:00
 
     If we save those two lists into separate configuration files called `01-safelist.conf` and `02-blocklist.conf` under `/etc/unbound/lists.d`, we can `include` them into our Unbound `server` definition (e.g. under `/etc/unbound/unbound.conf.d`):
 
-    ```
+    ```config
     server:
       # ...other configuration here
 
@@ -102,14 +102,14 @@ date: 2020-06-07 14:18:00
 
     We can test this by doing a lookup of a blocked domain with [dig](https://en.wikipedia.org/wiki/Dig_(command)):
 
-    ```bash
+    ```console
     ~> dig @127.0.0.1 doubleclick.net +short
     0.0.0.0
     ```
 
     And check that any exceptions still return results:
 
-    ```bash
+    ```console
     ~> dig @127.0.0.1 cdn.optimizely.com +short
     cdn.o6.edgekey.net.
     e5048.dsca.akamaiedge.net.
