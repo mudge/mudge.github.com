@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Weeknotes 32
-excerpt: Replacing a Pi-hole with Unbound and ISC DHCP, speeding up deployments and a wreckless root vegetable investment.
+excerpt: Replacing a Pi-hole with Unbound and ISC DHCP, speeding up deployments and a reckless root vegetable investment.
 date: 2020-06-07 14:18:00
 ---
 *   [Thom May's "Sinkholing with PowerDNS Recursor"](https://blog.may.yt/2020/06/pdns-sinkhole/) made me wonder why [I run both a Pi-hole _and_ our own Unbound DNS resolver](/2020/04/12/weeknotes-24/). Perhaps I could implement [blocklists](https://firebog.net) and [recommended exceptions](https://github.com/anudeepND/whitelist) using only [Unbound configuration](https://nlnetlabs.nl/documentation/unbound/unbound.conf/)?
