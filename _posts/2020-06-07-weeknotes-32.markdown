@@ -33,7 +33,7 @@ date: 2020-06-07 14:18:00
     > www.foo.example.com are redirected, so that users with web browsers
     > cannot access sites with suffix example.com.
 
-    We'll [copy Pi-hole's unspecific IP blocking strategy](https://docs.pi-hole.net/ftldns/blockingmode/#pi-holes-unspecified-ip-blocking-default) and return `0.0.0.0` for any A record lookups and `::` for any AAAA record lookups:
+    We'll [copy Pi-hole's unspecified IP blocking strategy](https://docs.pi-hole.net/ftldns/blockingmode/#pi-holes-unspecified-ip-blocking-default) and return `0.0.0.0` for any A record lookups and `::` for any AAAA record lookups:
 
     > Following [RFC 3513, Internet Protocol Version 6 (IPv6) Addressing
     > Architecture, section
