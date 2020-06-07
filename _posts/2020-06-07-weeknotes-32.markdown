@@ -1,0 +1,129 @@
+---
+layout: post
+title: Weeknotes 32
+excerpt: Replacing a Pi-hole with Unbound and ISC DHCP, speeding up deployments and a wreckless root vegetable investment.
+date: 2020-06-07 14:18:00
+---
+*   [Thom May's "Sinkholing with PowerDNS Recursor"](https://blog.may.yt/2020/06/pdns-sinkhole/) made me wonder why [I run both a Pi-hole _and_ our own Unbound DNS resolver](/2020/04/12/weeknotes-24/). Perhaps I could implement [blocklists](https://firebog.net) and [recommended exceptions](https://github.com/anudeepND/whitelist) using only [Unbound configuration](https://nlnetlabs.nl/documentation/unbound/unbound.conf/)?
+
+    Our Pi-hole currently serves two purposes:
+
+    1. It runs [its built-in DHCP server](https://discourse.pi-hole.net/t/how-do-i-use-pi-holes-built-in-dhcp-server-and-why-would-i-want-to/3026) so every device connecting to our network uses the Pi-hole's DNS server rather than my ISP's DNS servers (as [this isn't configurable on my router](https://community.bt.com/t5/Archive-Staging/Manual-DNS-settings-please-for-home-hub-5/td-p/1226381)).
+    2. It runs its [own <abbrev title="Faster Than Light">FTL</abbrev>DNS server to block access to domains](https://docs.pi-hole.net/ftldns/blockingmode/).
+
+    As Thom points out in his post, given only those two roles and the fact I'm already running [Unbound](https://nlnetlabs.nl/projects/unbound/about/), the required tech stack for the Pi-hole ([PHP](https://www.php.net), [Lighttpd](https://www.lighttpd.net), [Dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html), etc.) seems excessive.
+
+    I decided to replace the Pi-hole with only two pieces of software:
+
+    1. Use [ISC DHCP](https://www.isc.org/dhcp/) as a standalone DHCP server, replacing the Pi-hole's Dnsmasq-based DHCP server.
+    2. Use the existing Unbound DNS server to block unwanted domains.
+
+    [The Firebog's "The Big Blocklist Collection"](https://firebog.net) contains a curated list of domains to block, all in the following format:
+
+    ````
+    0.0.0.0 some.bad.domain.here
+    0.0.0.0 another.bad.domain.here
+    ````
+
+    In order to block these domains with Unbound, we can use the [`local-zone`](https://nlnetlabs.nl/documentation/unbound/unbound.conf/#local-zone) and [`local-data`](https://nlnetlabs.nl/documentation/unbound/unbound.conf/#local-zone) configuration options. The documentation for `local-zone`'s `redirect` type contains the following example:
+
+    > It can be used to redirect a domain to return a different address record
+    > to the end user, with `local-zone: "example.com." redirect` and
+    > `local-data: "example.com. A 127.0.0.1"` queries for www.example.com and
+    > www.foo.example.com are redirected, so that users with web browsers
+    > cannot access sites with suffix example.com.
+
+    We'll [copy Pi-hole's unspecific IP blocking strategy](https://docs.pi-hole.net/ftldns/blockingmode/#pi-holes-unspecified-ip-blocking-default) and return `0.0.0.0` for any A record lookups and `::` for any AAAA record lookups:
+
+    > Following [RFC 3513, Internet Protocol Version 6 (IPv6) Addressing
+    > Architecture, section
+    > 2.5.2](https://tools.ietf.org/html/rfc3513#section-2.5.2), the address
+    > `0:0:0:0:0:0:0:0` (or `::` for short) is the unspecified address. It must
+    > never be assigned to any node and indicates the absence of an address.
+    > Following RFC1122, section 3.2, the address `0.0.0.0` can be understood
+    > as the IPv4 equivalent of `::`.
+
+    So to block the two example domains above, we would need the following Unbound configuration:
+
+    ```
+    local-zone: "some.bad.domain.here" redirect
+    local-data: "some.bad.domain.here A 0.0.0.0"
+    local-data: "some.bad.domain.here AAAA ::"
+    local-zone: "another.bad.domain.here" redirect
+    local-data: "another.bad.domain.here A 0.0.0.0"
+    local-data: "another.bad.domain.here AAAA ::"
+    ```
+
+    We can do this by stitching together some basic command-line tools:
+
+    ```bash
+    curl -sSf "https://v.firebog.net/hosts/static/w3kbl.txt" | # Download a blocklist
+      grep '^0\.0\.0\.0' | # Filter out any comments, etc. that aren't rules
+      tr -d '\r' |         # Normalize line endings by removing carriage returns
+      sort -u |            # Remove any duplicates
+      awk '{print "local-zone: \""$2"\" redirect\nlocal-data: \""$2" A 0.0.0.0\"\nlocal-data: \""$2" AAAA ::\""}' | # Convert to Unbound configuration
+    ```
+
+    (You can find my [full script to download and re-format all ticked blocklists on GitHub](https://gist.github.com/mudge/eaff0a816e8ee49046e263b0a6e99fe7#file-blocklist-sh).)
+
+    As the blocklists contain domains which break essential functionality when blocked, we want to explicitly allow any domains on [Anudeep's list of exceptions](https://github.com/anudeepND/whitelist).
+
+    To do this, we can use [the `always_transparent` type of `local-zone`](https://nlnetlabs.nl/documentation/unbound/unbound.conf/#local-zone):
+
+    > Like transparent, but ignores local data and resolves normally.
+
+    So, if we wanted to allow traffic to `some.bad.domain.here` even though it is already in our configuration, we need to add the following to our Unbound configuration before our blocklist:
+
+    ```
+    local-zone: "some.bad.domain.here" always_transparent
+    ```
+
+    This will ensure we ignore our `redirect` to `local-data` and look the domain up normally.
+
+    Again, we can do [some basic scripting to convert the list into configuration for us](https://gist.github.com/mudge/eaff0a816e8ee49046e263b0a6e99fe7#file-safelist-sh):
+
+    ```bash
+    curl -sSf "https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt" |
+      sort -u | # Remove any duplicates
+      awk '{print "local-zone: \""$1"\" always_transparent"}' # Convert to Unbound configuration
+    ```
+
+    If we save those two lists into separate configuration files called `01-safelist.conf` and `02-blocklist.conf` under `/etc/unbound/lists.d`, we can `include` them into our Unbound `server` definition (e.g. under `/etc/unbound/unbound.conf.d`):
+
+    ```
+    server:
+      # ...other configuration here
+
+      # Include blocklist and safelist
+      include: /etc/unbound/lists.d/*.conf
+    ```
+
+    We can use [`unbound-checkconf`](https://nlnetlabs.nl/documentation/unbound/unbound-checkconf/) to ensure we don't have any syntax errors and `service unbound reload` to load our new configuration if you're using [`control-enable`](https://nlnetlabs.nl/documentation/unbound/unbound.conf/#control-enable), otherwise `service unbound restart`.
+
+    We can test this by doing a lookup of a blocked domain with [dig](https://en.wikipedia.org/wiki/Dig_(command)):
+
+    ```bash
+    ~> dig @127.0.0.1 doubleclick.net +short
+    0.0.0.0
+    ```
+
+    And check that any exceptions still return results:
+
+    ```bash
+    ~> dig @127.0.0.1 cdn.optimizely.com +short
+    cdn.o6.edgekey.net.
+    e5048.dsca.akamaiedge.net.
+    23.59.68.248
+    ```
+
+    And with that, I could run [`pihole uninstall`](https://docs.pi-hole.net/core/pihole-command/#uninstall).
+
+*   I spent a good part of the week working with [The Scale Factory](https://www.scalefactory.com) to migrate a project to [AWS Fargate](https://aws.amazon.com/fargate/) using the [CircleCI Amazon Elastic Container Registry](https://circleci.com/orbs/registry/orb/circleci/aws-ecr) and [Elastic Container Service](https://circleci.com/orbs/registry/orb/circleci/aws-ecs) [Orbs](https://circleci.com/docs/2.0/orb-intro/).
+
+    It all felt rather familiar given how similar Fargate is to [Hashicorp Nomad](https://www.hashicorp.com/products/nomad/) and my experience [kicking off a migration to Nomad at Altmetric](https://technicallyshane.com/2020/01/14/week2.html).
+
+    [Matt](https://twitter.com/matt_macleod) wrote [Rocksteady](https://github.com/PowerRhino/rocksteady) to handle orchestrating [jobspec](https://www.nomadproject.io/docs/job-specification/) updates when deploying but thankfully, this is provided out-of-the-box by the [AWS ECS Orb's `deploy-service-update` job](https://circleci.com/orbs/registry/orb/circleci/aws-ecs#jobs-deploy-service-update).
+
+    After all these changes, I'm hoping I will have cut down the total time to deploy (meaning from the start of our CI build to running our test suite, deploying to staging and then deploying to production) from over 34 minute to 13 minutes.
+
+*   [After a bad week on the Stalk Market](https://turnipprophet.io?prices=106.90.85.82.78.73.70.66.63....&pattern=3), I have now spent my entire life savings in bells on turnips.
