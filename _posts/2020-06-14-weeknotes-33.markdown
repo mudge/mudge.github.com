@@ -1,0 +1,73 @@
+---
+layout: post
+title: Weeknotes 33
+excerpt: Generating human-friendly codes, keeping my cool running a Raspberry Pi and threatening my marriage.
+date: 2020-06-14 11:03:54
+---
+*   I've been researching how best to generate unique, human-friendly codes for a new project.
+
+    [Scott](https://medium.com/@scottm) recommended we take a look at [Douglas Crockford's "Base 32" system](https://www.crockford.com/base32.html):
+
+    > The encoding scheme is required to
+    >
+    > * Be human readable and machine readable.
+    > * Be compact. Humans have difficulty in manipulating long strings of arbitrary symbols.
+    > * Be error resistant. Entering the symbols must not require keyboarding gymnastics.
+    > * Be pronounceable. Humans should be able to accurately transmit the symbols to other humans using a telephone.
+
+    Crockford excludes the letters I, L, O to avoid ambiguity with the numbers 1 and 0. Less intuitively, he also excludes the letter U as this helps avoid accidentally generating codes that contain English obsceneties: a problem I would have missed entirely.
+
+    We looked into the implementation of [Rails' `SecureRandom.base58`](https://api.rubyonrails.org/classes/SecureRandom.html#method-c-base58):
+
+    ```ruby
+    def self.base58(n = 16)
+      SecureRandom.random_bytes(n).unpack("C*").map do |byte|
+        idx = byte % 64
+        idx = SecureRandom.random_number(58) if idx >= 58
+        BASE58_ALPHABET[idx]
+      end.join
+    end
+    ```
+
+    I wondered why they didn't simply [modulo](https://en.wikipedia.org/wiki/Modulo_operation) `byte` with 58 like so:
+
+    ```ruby
+    def self.base58(n = 16)
+      SecureRandom.random_bytes(n).unpack("C*").map do |byte|
+        idx = byte % 58
+        BASE58_ALPHABET[idx]
+      end.join
+    end
+    ```
+
+    Scott found the explanation in [a four-year old pull request to simplify the implementation](https://github.com/rails/rails/pull/25734): [modulo bias](https://cmvandrevala.wordpress.com/2016/09/24/modulo-bias-when-generating-random-numbers/). Naïvely simplifying the implementation would mean that the "random" choice would actually be biased towards picking some characters more than others.
+
+    Coincidentally, [someone else suggested the same change again](https://github.com/rails/rails/pull/39511) 12 days ago.
+
+*   After [last week's big migration to Fargate](/2020/06/07/weeknotes-32/), I wanted to double check the new [Docker](https://www.docker.com) version of our application wasn't writing to disk (in order to remain [stateless](https://12factor.net/processes)).
+
+    The [docker diff](https://docs.docker.com/engine/reference/commandline/diff/) command handily told me exactly what a container was changing on its file system when running and revealed that [Phusion Passenger was logging to a file when I didn't expect it to](https://www.phusionpassenger.com/library/admin/nginx/log_file/#location-of-the-log-file).
+
+    ```console
+    $ docker diff 1fdfd1f54c1b
+    A /var/log/nginx/error.log
+    ```
+
+*   E has been binging the French spy drama "[The Bureau](https://www.imdb.com/title/tt4063800/)" but I can't help but think of [The Day Today's BBC drama of the same name](https://youtu.be/WjjXTr9F77g) every time I see her watching it:
+
+    > This is supposed to be a high class _bureau de change_, not some two-bit Punch and Judy show down on the seafront at Margate!
+
+*   [Jeff Geerling's "The best way to keep your cool running a Raspberry Pi 4"](https://www.jeffgeerling.com/blog/2019/best-way-keep-your-cool-running-raspberry-pi-4) convinced me to buy the [FLIRC case from The Pi Hut](https://thepihut.com/products/flirc-raspberry-pi-4-case) and he's right: my Pi runs much cooler than my previous setup with a [large heatsink](https://thepihut.com/products/xl-raspberry-pi-4-heatsink) inside [the official case](https://thepihut.com/products/raspberry-pi-4-case):
+
+    ```console
+    mudge@raspberrypi:~ $ cat /sys/class/thermal/thermal_zone0/temp
+    36998
+    ```
+
+*   In a move that threatens my marriage, I have spent far too much time this weekend trying to generate a custom [Raspbian](https://www.raspbian.org) image that already has my [Time Machine backups](/2019/11/12/using-a-raspberry-pi-for-time-machine/), [Unbound DNS sinkhole](/2020/06/07/weeknotes-32/) and [AirPlay receiver](https://github.com/mikebrady/shairport-sync) set up on it.
+
+    Thankfully, the [tool used to create the raspberrypi.org images](https://github.com/RPi-Distro/pi-gen) is open-source and you can find the results of my indulgent noodling in [my fork of pi-gen](https://github.com/mudge/pi-gen).
+
+*   [Last week's investment](/2020/06/07/weeknotes-32/) paid off.
+
+    <p class="center"><img src="/i/turnips.jpg" width="375" height="375" alt></p>
