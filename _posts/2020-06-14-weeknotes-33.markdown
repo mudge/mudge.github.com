@@ -15,7 +15,7 @@ date: 2020-06-14 11:03:54
     > * Be error resistant. Entering the symbols must not require keyboarding gymnastics.
     > * Be pronounceable. Humans should be able to accurately transmit the symbols to other humans using a telephone.
 
-    Crockford excludes the letters I, L and O to avoid ambiguity with the numbers 1 and 0. Less intuitively, he also excludes the letter U as this helps avoid accidentally generating codes that contain English obsceneties: a problem I would have missed entirely.
+    Crockford excludes the letters I, L and O to avoid ambiguity with the numbers 1 and 0. Less intuitively, he also excludes the letter U as this helps avoid accidentally generating codes that contain English obscenities: a problem I would have missed entirely.
 
     We looked into the implementation of [Rails' `SecureRandom.base58`](https://api.rubyonrails.org/classes/SecureRandom.html#method-c-base58):
 
