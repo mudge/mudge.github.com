@@ -1,24 +1,60 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
 html {
   box-sizing: border-box;
-  font: 18px/1.6 -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
+  font: 16px -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
+  line-height: 1.5rem;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
-body {
-  margin: 0;
-  padding: 0;
+.banner {
+  background: #c02f1d;
+  text-align: center;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 2px solid #922416;
+  margin-bottom: -2px;
 }
 
-a {
-  color: #c02f1d;
-  text-decoration: underline;
-  text-decoration-color: #dd8e84;
+nav ul {
+  margin-top: 1.5rem;
+  list-style: none;
 }
 
-a:visited {
-  color: #9a2617;
-  text-decoration-color: #c88980;
+.ipa {
+  color: #555;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  display: block;
 }
 
 address {
@@ -29,7 +65,46 @@ address {
 article, footer, header, main, nav {
   margin: 0 auto;
   max-width: 45rem;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  line-height: 3rem;
+  font-weight: bold;
+  margin-top: 1.5rem;
+}
+
+h1 code {
+  font-size: 1.9rem;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 3rem;
+}
+
+p, blockquote, pre, iframe, ul, ol, dl, dd, .vcard, .ipa {
+  margin-bottom: 1.5rem;
+}
+
+a {
+  color: #c02f1d;
+  text-decoration: underline;
+  text-decoration-color: #dd8e84;
+  text-decoration-thickness: 0.1rem;
+  text-underline-offset: 0.1rem;
+}
+
+a:visited {
+  color: #9a2617;
+  text-decoration-color: #c88980;
+}
+
+.banner a {
+  color: #fff;
 }
 
 blockquote {
@@ -38,54 +113,20 @@ blockquote {
 
 blockquote, pre {
   border-left: 3px solid #eee;
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 1rem;
 }
 
-code, pre {
+blockquote, pre, ul, ol, dd {
+  padding-left: 1.5rem;
+}
+
+code {
+  line-height: 1rem;
   font-size: 0.9rem;
   font-family: "SF Mono", Menlo, Monaco, monospace;
 }
 
-dd {
-  margin-bottom: 0.6rem;
-}
-
 dd:last-child {
   margin-bottom: 0;
-}
-
-footer {
-  text-align: center;
-  color: #555;
-  margin-top: 2rem;
-}
-
-footer h2 {
-  font-weight: normal;
-  font-size: 1rem;
-  margin-bottom: 0;
-}
-
-footer h2 + p {
-  margin-top: 0;
-}
-
-h1, h2 {
-  margin-bottom: 0;
-}
-
-h1 {
-  text-align: center;
-}
-
-h2 + p, h2 + ol {
-  margin-top: 0;
-}
-
-h1 code {
-  font-size: 1.4rem;
 }
 
 iframe {
@@ -97,9 +138,16 @@ img {
   height: auto;
 }
 
-nav ul {
-  list-style: none;
-  padding: 0;
+footer {
+  text-align: center;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+footer h2 {
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 pre {
@@ -107,39 +155,26 @@ pre {
   overflow: auto;
 }
 
-.banner {
-  background: #c02f1d;
-  text-align: center;
-  color: #fff;
-  padding: 0.6rem;
-  font-size: 0.9rem;
-  border-bottom: 3px solid #922416;
+em, i {
+  font-style: italic;
 }
 
-.banner a {
-  color: #fff;
-}
-
-.ipa {
-  color: #555;
-  font-size: 0.9rem;
-  font-weight: normal;
-  line-height: 1;
-  display: block;
+strong, b {
+  font-weight: bold;
 }
 
 .pull-left, .pull-right {
-  margin-bottom: 0.6rem;
+  margin-bottom: 1.5rem;
 }
 
 .pull-left {
   float: left;
-  margin-right: 1rem;
+  margin-right: 1.5rem;
 }
 
 .pull-right {
   float: right;
-  margin-left: 1rem;
+  margin-left: 1.5rem;
 }
 
 .vcard {
