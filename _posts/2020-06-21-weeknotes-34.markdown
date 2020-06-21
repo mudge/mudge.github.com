@@ -1,0 +1,50 @@
+---
+layout: post
+title: Weeknotes 34
+excerpt: Shia LaBeouf, bad bakes, vertical rhythm, finding a stranger in the Alps and the streetlight effect.
+date: 2020-06-21 10:55:00
+---
+*   While making coffee with C in my arms one morning, he suddenly lunged for the [Chemex](https://www.chemexcoffeemaker.com), spilling a slurry of hot water and coffee grounds as I shouted "no no no no no!" A stunned E declared she would now call me [Shia LaBeouf](https://youtu.be/8IXCK1EyP4s) but thankfully that has not happened.
+
+*   I can't mention Shia LaBeouf without recommending [Rob Cantor's song about the true story of an actual cannibal](https://youtu.be/o0u4M6vppCI).
+
+*   I've been making sourdough bread since March 2012 [long before it became cool](https://www.theguardian.com/us-news/2020/apr/19/coronavirus-stress-baking-sourdough-kneading-relax), even [encouraging others to get into it](https://tomstu.art/weeknotes-3-sweating-and-swearing) but my recent bakes have not been good.
+
+    My starter has been underactive and overactive, the bulk fermentation has been both too long and too short. More often than not, my bread is what [Murray](http://www.h-lame.com) would call "a tasty cowpat".
+
+    As others got into baking, measuring their dough temperature with infrared thermometers and making their own blend of flour based on exacting protein levels, I was dismissive, believing only in some woolly notion of technique. Those bakers now produce consistently great loaves; each of [Leo](https://twitter.com/leocassarani)'s bakes is more beautiful than the last.
+
+    Perhaps I should get with the times and be less ["son-mat"](https://oneforkonespoon.wordpress.com/2009/04/24/the-taste-of-your-hands/) and more [molecular gastronomy](https://en.wikipedia.org/wiki/Molecular_gastronomy).
+
+*   After correcting some typos in [last week's notes](/2020/06/14/weeknotes-33/), I enabled [Vim's spell checking](http://vimdoc.sourceforge.net/htmldoc/spell.html). The following bit of configuration now highlights any misspelt words in [Markdown](https://daringfireball.net/projects/markdown/) files:
+
+    ```vimscript
+    autocmd BufRead,BufNewFile *.markdown,*.md setlocal spell spelllang=en_gb
+    ```
+
+    E tells me I should look into something called a "word processor".
+
+*   I changed both this site and the [Ghost Cassette](https://www.ghostcassette.com) website to have a more consistent [vertical rhythm](https://zellwk.com/blog/why-vertical-rhythms/). I found this little snippet of CSS to display a baseline grid extremely useful when trying to debug spacing issues:
+
+    ```css
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 1px);
+      background-size: 100% 24px;
+    }
+    ```
+
+*   C's latest discovery is clapping. I recommend everyone indulge in a round of applause every meal and at random times throughout the day.
+
+*   I've been listening to a lot of [Phoebe Bridgers](https://phoebefuckingbridgers.com) as her new album "Punisher" came out this week. I dearly hope her 2018 album "Stranger in the Alps" is named after the [censored TV edit of "The Big Lebowski"](https://youtu.be/LCcKBcZzGdA).
+
+*   I've been thinking about [the streetlight effect](https://en.m.wikipedia.org/wiki/Streetlight_effect) and problem solving. There are many versions of the story but here's "[Nasreddin's ring](https://en.m.wikipedia.org/wiki/Nasreddin#Nasreddin's_ring)":
+
+    > Mulla had lost his ring in the living room. He searched for it for a
+    > while, but since he could not find it, he went out into the yard and
+    > began to look there. His wife, who saw what he was doing, asked: “Mulla,
+    > you lost your ring in the room, why are you looking for it in the yard?”
+    > Mulla stroked his beard and said: “The room is too dark and I can’t see
+    > very well. I came out to the courtyard to look for my ring because there
+    > is much more light out here.”
+
+    As a software developer, I wonder if there is a trap as you solve similar problems over and over again during the course of your career. Do you become more likely to take _any_ problem and turn it into a familiar one even if it's not appropriate?
