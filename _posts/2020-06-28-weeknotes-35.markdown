@@ -1,0 +1,27 @@
+---
+layout: post
+title: Weeknotes 35
+excerpt: Pixels per inch, kicking up the 4d3d3d3, the importance of ventilation and genuine Computer Science.
+date: 2020-06-28 09:40:00
+---
+*   [Nikita Prokopov's "Time to upgrade your monitor"](https://tonsky.me/blog/monitors/) finally convinced me to upgrade to [a 4K display](https://www.dell.com/en-uk/shop/dell-24-ultra-hd-4k-monitor-p2415q/apd/210-adzc/monitors-monitor-accessories) after over a decade of staring at less than [100 pixels per inch](https://www.sven.de/dpi/) on an old [BenQ](https://www.benq.eu/en-eu/index.html) monitor.
+
+    In the words of [Alex](https://alexspeller.com), I've been [punching myself in the eyes with squares](https://twitter.com/alexspeller/status/288661716710068224) for too long.
+
+*   I was [reminded](https://twitter.com/siracusa/status/1274765016655372289) that "[Celery Man](https://youtu.be/MHWBEK8w_YY)" exists and it brought me great joy.
+
+*   For the past few weeks, my laptop has been increasingly struggling when running Zoom calls with multiple video streams, screen sharing, etc. with its performance dragging to a halt and the [fan noise approaching that of a jet engine](https://twitter.com/Kolokodess/status/1275879372830973952).
+
+    Receiving the new monitor and seeing photos of [Tom](https://tomstu.art)'s setup inspired me to remove the protective plastic case from my computer and stand it on its end with the help of an old, wooden iPad stand. The roaring fan noise is now gone and my performance woes are no more.
+
+    In retrospect, it probably wasn't a great idea covering up the few vents on the underside of my MacBook Pro for several years.
+
+*   A former colleague asked me for a copy of a presentation I had given at [Altmetric](https://www.altmetric.com) about using [Dijkstra's algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm) to exhaustively map scholarly identifiers to one another (e.g. [DOI](https://www.doi.org)s to [PubMed](https://pubmed.ncbi.nlm.nih.gov) IDs to [Handle](http://handle.net)s to [ISBNs](https://en.wikipedia.org/wiki/International_Standard_Book_Number) to [arXiv identifiers](https://arxiv.org/help/arxiv_identifier)).
+
+    That project was so much fun to work on and led me to write [a Fibonnaci Heap implementation](https://github.com/mudge/fibonacci_heap).
+
+    To paraphrase [Murray](http://www.h-lame.com): so much of modern software development on the web is putting strings _in_ to databases and getting strings _out_ of databases so it is a rare treat to work on a problem that requires [genuine Computer Science](https://en.wikipedia.org/wiki/Graph_(abstract_data_type)) to solve.
+
+*   Apologies for the brevity of this week's notes: I have started working on my [unfinished article about React Hooks](/2019/11/04/weeknotes-1/) again.
+
+*   I enjoyed my very first Fathers' Day.
