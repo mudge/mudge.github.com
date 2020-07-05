@@ -1,0 +1,76 @@
+---
+layout: post
+title: Weeknotes 36
+excerpt: Visiting other islands, comfort food TV, a market trader mystery, not understanding prescriptions and unexpected sobbing.
+date: 2020-07-05 09:19:00
+---
+*   [Since getting "Animal Crossing" over a month ago](/2020/05/24/weeknotes-30/), I've gone through phases with it: at first, learning how to play then relentlessly [plundering other islands for resources](https://tomstu.art/weeknotes-15-what-a-ride) then [checking turnip prices twice a day and having a bad time on the Stalk Market](/2020/06/07/weeknotes-32/). After feeling a little burnt out, I let go of all material concerns and simply fished to my heart's content.
+
+    This week I visited some friends' islands for the very first time and hosted [my first guest](https://twitter.com/ShaneOnSwitch/status/1278770022081388544). This social aspect is entirely new to me and, having seen how beautiful others' islands are, you will now find me happily planting imaginary flowers.
+
+    <p class="center"><a href="https://twitter.com/ShaneOnSwitch/status/1278770022081388544"><img src="/i/animalcrossing.jpg" width="375" height="211" alt></a></p>
+
+*   We had occasion to use our car for the first time in months and weren't surprised when it failed to start. Thankfully, I've had to charge our car battery several times before and so painstakingly removed it from the car after reading [the order in which to disconnect the two terminals](https://www.wikihow.com/Disconnect-a-Car-Battery) at least six times (negative then positive and then the reverse order to reconnect).
+
+    There's nothing like bringing a metal socket spanner toward a car battery terminal for focussing the mind.
+
+*   [Last week](/2020/06/28/weeknotes-35/) I credited [Murray](http://www.h-lame.com/) with describing modern web development as "putting strings into databases and getting strings out of databases" but [it turns out](https://twitter.com/hlame/status/1277179500510543875) he was paraphrasing [James Darling](https://medium.com/@abscond/putting-strings-into-databases-and-then-taking-them-back-out-again-ce95c2ad2183) who, [in turn](https://twitter.com/abscond/status/1277182825016557569), was quoting [Ben Griffiths](https://twitter.com/beng/status/1277575198338883584).
+
+*   There's a new series of ["Everybody Loves Raymond" creator Phil Rosenthal's travel documentary "Somebody Feed Phil"](https://www.netflix.com/title/80146601). I find all food-based TV shows comforting but Rosenthal's genuine, unbridled glee makes it especially optimistic viewing. I forgot how [catchy the theme song is](https://twitter.com/PhilRosenthal/status/949471533994594304).
+
+*   Speaking of food TV, a recent episode of "[Bake Off: The Professionals](https://www.channel4.com/programmes/bake-off-the-professionals)" featured host [Tom Allen](https://www.tomindeed.com) posing as a market trader. When I lived in south-east London, I used to walk past a market stall selling fruit every day and the trader would bellow a single phrase:
+
+    > Tray of bananas, sayp!
+
+    For literal years, I could never decode what this last word was.
+
+    Finally, after nearly four years, I happened to hear the trader's bark one more time:
+
+    > Box of strawberries a pound, tray of bananas same!
+
+    The mystery was solved.
+
+*   I decided to get a repeat prescription for my [occasional migraines](/2020/03/29/weeknotes-22/) and struggled to navigate the different websites and iOS apps required to talk to a doctor.
+
+    * At first, I tried the [myGP app](https://www.mygp.com) which I've used to book appointments before but nothing was visible there.
+    * I then tried to use the [Patient Access](https://www.patientaccess.com) website but still nothing was available.
+    * I then followed instructions to set up the [NHS app](https://www.nhs.uk/using-the-nhs/nhs-services/the-nhs-app/) but, again, nothing.
+    * I rang my local surgery and they told me I needed to use a _fourth_ service: [WebGP](https://demo.webgp.com).
+
+    After filling out a long questionnaire (and tweaking my answers so it didn't tell me to immediately ring 999 for an ambulance), I got a call from a GP that same morning who happily created a repeat prescription for me.
+
+    However, it then became obvious I have no idea how repeat prescriptions work (a familiar fact given I was once shouted out over the phone by a receptionist for not understanding the difference between the _prescription_ and the medication itself). The doctor said they had created the prescription but what did that mean? Looking in the NHS app, I could see the prescription but there was a separate section for "orders"; did I need to order it? After finding no answers online, I went ahead and ordered it.
+
+    The next day, my order was marked as "rejected" in the NHS app and I was instructed to ring my GP. After a hilarious exchange as my local surgery attempted to verify my email address and I ran through the four separate addresses I used for each of their services, it turns out I _didn't_ need to order anything: my prescription was waiting for me at the local pharmacy.
+
+    Utterly baffling.
+
+*   Whenever E and I are discussing a topic that requires some disclaimer (e.g. a relatively petty matter given the current pandemic), we'll preface what we say with the single word "Rigby", e.g.
+
+    > Rigby, I wish there was more variety to our day.
+
+    This [incomprehensive phrase](/2020/03/02/weeknotes-18/) comes from [an episode of "Silicon Valley"](https://youtu.be/IAGoLFCgNtY):
+
+    > "I know we keep saying this but even though Richard is a great guy—"
+    >
+    > "And a brilliant coder."
+    >
+    > "Wonderful. Nevertheless, he is lacking in certain managerial capacities."
+    >
+    > "Totally fair."
+    >
+    > "It's fair, right?"
+    >
+    > "He's still a great coder."
+    >
+    > "And an amazing human being!"
+    >
+    > "OK, we have a lot of shit we want to say about him, do we have to keep prefacing it with all this nice guy stuff? I mean, if so, we're going to be here all night. [...] What if we use like a dictionary patch to compress all the nice guy stuff?"
+    >
+    > "Like an acronym?"
+    >
+    > "Exactly. Richard Is Great But, Y'know. RIGBY."
+
+*   Despite being put off by the trailer, E and I watched "[Eurovision Song Contest: The Story of Fire Saga"](https://www.netflix.com/title/80244088) last night after hearing recommendations from several people.
+
+    It reduced us both to actual tears.
