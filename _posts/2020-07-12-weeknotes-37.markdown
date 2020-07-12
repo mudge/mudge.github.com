@@ -1,0 +1,31 @@
+---
+layout: post
+title: Weeknotes 37
+excerpt: How I discovered adventure games, saving your life, converting cups of sifted flour into moon masses and feeling out of sorts.
+date: 2020-07-12 13:55:00
+---
+*   The [Double Fine Productions](https://twitter.com/DoubleFine) remasters of classic [LucasArts](https://en.wikipedia.org/wiki/LucasArts)' adventure games "[Day of the Tentacle](http://dott.doublefine.com)", "[Full Throttle](http://fullthrottle.doublefine.com)" and "[Grim Fandango](http://grimremastered.com)" (as well as Double Fine's own, more recent adventure game "[Broken Age](http://www.brokenagegame.com)") are all [free on the Mac App Store this weekend](https://twitter.com/DoubleFine/status/1281618886744576003).
+
+    When I was a child, my mum came back from [PC World](https://en.wikipedia.org/wiki/PC_World_(retailer)) with a copy of ["The Lion King" video game](https://en.wikipedia.org/wiki/The_Lion_King_(video_game)) on [3½-inch floppy disks](https://en.wikipedia.org/wiki/Floppy_disk). Sadly, I had broken my disk drive when the sliding metal shutter from a diskette got stuck inside. My mum returned to the shop and swapped it for "[Day of the Tentacle](https://en.wikipedia.org/wiki/Day_of_the_Tentacle)" on [CD-ROM](https://en.wikipedia.org/wiki/CD-ROM) and my love of adventure games began.
+
+    In the words of the mechanics from one of my personal favourites:
+
+    > We shoot you now like an arrow into the wind. May you pierce the heart of the wind itself, and drink the blood of flight.
+
+*   The [latest episode of Adam Buxton's podcast](http://adam-buxton.co.uk/podcasts/ep126-joe-cornish) where he discusses the recent death of his mother with Joe Cornish is worth your time.
+
+*   Reading [Una Kravets' "Ten modern layouts in one line of CSS"](https://web.dev/one-line-layouts/) drives home how woefully out-of-date my CSS knowledge is.
+
+*   I caught C as he toppled backwards in surprise while sat on his mat and, without pausing, E said: "tell your mum I saved your life."
+
+*   [Hillel Wayne's "The Frink Is Good, the Unit Is Evil"](https://www.hillelwayne.com/post/frink/) introduced me to [Frink](https://frinklang.org), a "special purpose [language] for dealing with units".
+
+    There's a [web-based interface to Frink](https://futureboy.us/fsp/frink.fsp) available and it supports [a dizzying number of units](https://frinklang.org/frinkdata/units.txt). As someone who often has to convert [American recipe quantities](https://twitter.com/adamliaw/status/1255608557027749888), it will come in [very handy indeed](https://futureboy.us/fsp/frink.fsp?fromVal=4+tbsp+butter&toVal=grams#calc).
+
+    Of course, it was named after [Professor John Frink](https://en.wikipedia.org/wiki/Professor_Frink):
+
+    > I predict that within 100 years, computers will be twice as powerful, ten thousand times larger, and so expensive that only the five richest kings of Europe will own them.
+
+*   After an intense week at work, I feel somewhat out of sorts and so decided to take a long, meandering walk and catch up on some [podcasts](https://atp.fm) while E took C to visit her aunt.
+
+    I made it as far as the local reservoir before a group of people gathered in my path made me turn back. Turns out I'm neither good at meandering nor staying outside the house for longer than half an hour.
