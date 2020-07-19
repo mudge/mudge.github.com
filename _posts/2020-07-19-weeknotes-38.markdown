@@ -1,0 +1,25 @@
+---
+layout: post
+title: Weeknotes 38
+excerpt: Gold trees, some small sense of freedom, quartz glass platters and the villain in your history.
+date: 2020-07-19 10:10:00
+---
+*   After feeling ["out of sorts" last week](/2020/07/12/weeknotes-37/) due to the monotony of life during the pandemic, I decided to go for a walk with C every lunchtime this week. I get a change of scenery and he gets to babble at dog walkers.
+
+    Now that [Alice Bartlett's "Week 98: Trees"](https://alicebartlett.co.uk/blog/weaknotes-98) has introduced me to [TreeTalk](https://www.treetalk.co.uk), I might alter my route to investigate one of only two [Portuguese laurel trees](https://www.rhs.org.uk/plants/14003/Prunus-lusitanica/Details) in London.
+
+*   E and I decided to make our first trip outside London since lockdown began. We drove north for two hours and E's family drove south for two hours and we all met for a picnic in the grounds of a country house.
+
+    As it seems unlikely we'll be able to spend more time together soon, it felt good to exercise some small amount of freedom after feeling hopelessly trapped.
+
+    It has given us the confidence to get away for C's first birthday and be closer to family so we won't have to celebrate it purely virtually as we did for both [E's](/2020/04/12/weeknotes-24/) and [my birthday](/2020/05/24/weeknotes-30/) this year.
+
+*   This week saw the [introduction of "Arctic Code Vault Badges" on GitHub](https://github.blog/2020-07-16-github-archive-program-the-journey-of-the-worlds-open-source-code-to-the-arctic/), meaning open source software I wrote made it into the [GitHub Archive Program](https://archiveprogram.github.com).
+
+    More specifically, it is stored on "[3,500-foot film reels](https://www.piql.com)" and has been written "into [quartz glass platters using a femtosecond laser](https://www.microsoft.com/en-us/research/project/project-silica/)" with the intent of being archived for "over 10,000 years".
+
+    Let future historians judge the value of [adding Solaris support to rbenv](https://github.com/rbenv/rbenv/commit/b7e19b4953f6f9c3377781342e517c78ebf27bce) or [passing blocks to `ActiveSupport::OrderedHash#merge`](https://github.com/rails/rails/commit/58e21a4a0d4eefc395139e88c1f184b9eaf0b4c4).
+
+*   I'm currently avoiding tweeting my weeknotes as my mentions are full of [people mistaking me](https://twitter.com/hexadecim8/status/1281224429863919619) for [Peiter Zatko](https://en.wikipedia.org/wiki/Peiter_Zatko).
+
+*   After adding `bamtech.sc.omtrdc.net` to my [DNS sinkhole](/2020/06/07/weeknotes-32/)'s safelist, we watched ["Hamilton" on Disney+](https://www.disneyplus.com/movies/hamilton/3uPmBHWlO6HJ) having previously seen it [on stage in London](https://hamiltonmusical.com/london/home/) a year ago. It's still [rather good](https://twitter.com/mudge/status/983827873063690240).
