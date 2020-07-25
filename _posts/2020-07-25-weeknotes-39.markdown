@@ -1,0 +1,29 @@
+---
+layout: post
+title: Weeknotes 39
+excerpt: Nurseries, unwinding with wooden blocks, things people say to you when you wear a baby carrier and a computation anniversary.
+date: 2020-07-25 10:48:00
+---
+*   Working from home with C in the house can be a strange experience. After a morning of calls about [tree shaking](https://webpack.js.org/guides/tree-shaking/), [QR codes](https://twitter.com/qrlitycontrol) and [gas fees](https://ethereum.stackexchange.com/questions/3/what-is-meant-by-the-term-gas), I'll leave my desk and upon seeing him for the first time in a few hours, I'll ask E, "whose baby is that?"
+
+*   As E will be going back to work soon, we've been trying to find a nursery for C to attend three days a week. We were lucky enough to get more than one place for him but hadn't seen one of the options due to the lockdown. This week, we arranged to have a look around (wearing masks, of course) and, after much deliberation, made our decision and paid our deposit.
+
+    (It still doesn't feel real.)
+
+*   After a stressful day, there's no better way to unwind than by meticulously organising the wooden blocks in C's walker.
+
+    <p class="center"><img src="/i/blocks.jpg" width="375" height="375" alt="" /></p>
+
+*   During one of my lunchtime walks with C, he was fascinated by a passing bin lorry. One of the dustmen noticed him watching and waved emphatically.
+
+*   During another stroll, a man crossing the street cooed at C in his baby carrier and gleefully called for all to hear, "look at his chubby cheeks!"
+
+*   On a call with a potential vendor this week, when discussing the user experience of a particular system, their representative said:
+
+    > Sure, if you want to cater to Joe Schmoe... from Kokomo.
+
+*   It was the third anniversary of the [London Computation Club trip to Bletchley Park](https://github.com/computationclub/computationclub.github.io/wiki/Bletchley-Park).
+
+    <p class="center"><img src="/i/bletchley.jpg" width="512" height="384" alt=""/></p>
+
+    Just look at us all: bright-eyed, bushy-tailed and sitting so close to one another.
