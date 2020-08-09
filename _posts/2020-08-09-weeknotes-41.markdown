@@ -1,0 +1,49 @@
+---
+layout: post
+title: Weeknotes 41
+excerpt: Almost all the colours of the rainbow, what we wear on our feet, reminiscing with Radiohead, René Redzepi and technical tests.
+date: 2020-08-09 10:12:00
+---
+*   C has a set of "First Word" books that he often wants to read. They came in a little paper box so they can be kept together and each one is a different colour. Every time I put them away, I recite the mnemonic "[Richard Of York Gave Battle In](https://en.wikipedia.org/wiki/ROYGBIV)" for there are only six.
+
+*   As it has been unusually hot and humid, I had to forego [wearing socks](/2020/03/22/weeknotes-21/) and even resort to flip-flops on Friday. This marks my first slipper-free day working from home since March.
+
+*   As the word "flip-flop" is not quite onomatopoeic (or is that [echomimetic](https://en.wikipedia.org/wiki/Echomimetic)?) enough for this household, we like to use the much more accurate phrase "snicker-snackers".
+
+*   Listening to [Adam Buxton interview Radiohead guitarist Ed O'Brien](https://www.adam-buxton.co.uk/podcasts/7-bfk9m-4l8kp-blcga-jwabs-blbb8-b9mjx-r3ftc) reminded me of my deep and perhaps-in-retrospect-unhealthy love of [the band](https://www.radiohead.co.uk) in my teens.
+
+*   Buxton and O'Brien's discussion of [Christopher Nolan's 2014 film "Interstellar"](https://www.imdb.com/title/tt0816692/) in relation to parenting reminded me of something I mentioned in [my second weeknotes](/2019/11/10/weeknotes-2/):
+
+    > It's like the experience of being a parent is an exercise in relativity in a way because your sense of time is so different to theirs and it's so cruel how fast it is for you as an adult and it's so torturously slow for them.
+
+*   On a more joyous (but still poignant note), they also mentioned [Tom Petty, Jeff Lynne, Steve Winwood, Dhani Harrison and Prince's performance of "While My Guitar Gently Weeps" during A Tribute to George Harrison in 2004](https://youtu.be/6SFNW5F8K9Y). Where _does_ that guitar go?
+
+*   We [continue to watch "Parts Unknown"](/2020/08/02/weeknotes-40/) and, despite owning [one of his books](https://www.mendo.nl/product/noma-guide-fermentation/) and seeing him on countless other cookery shows, I found the episode about [Noma](https://noma.dk)'s [René Redzepi](https://en.wikipedia.org/wiki/René_Redzepi) fascinating.
+
+    It's one thing to hear the phrase "[New Nordic Cuisine](https://en.wikipedia.org/wiki/New_Danish_cuisine#New_Nordic_Cuisine)" over and over but another to hear of Redzepi's [childhood in Macedonia](https://en.wikipedia.org/wiki/René_Redzepi#Early_life_and_education) foraging with his father and watching chefs present their dishes for the scrutiny of their peers:
+
+    > And that might well end up on the menu?
+
+    > No. This is not about putting things on the menu. No, I mean, if somebody makes a masterpiece, its _their_ masterpiece.
+
+    > _Really?_
+
+    > Yeah, yeah, of course.
+
+    > Isn't it your historical imperative as the chef to take his good work and innovation and put it on the menu and take credit for it as your own? I mean, that's the way it's been done for centuries.
+
+    > This is not the point here.
+
+    > The pursuit of enlightenment and knowledge is its own reward?
+
+    > To me, yes.
+
+*   I did a technical test this week for a potential client and, in doing so, thought about the difficulty of trying to condense your experience and philosophy of programming into the solution of a canned exercise.
+
+    There's often an expectation from interviewers this is possible: that a candidate can concisely convey their approach and a lot of what you need to know about them with these exercises which are typically blind of context.
+
+    Last year, I was doing a lot of recruitment for a client and saw many solutions to the same problem. It's a variation on one I dare say a lot of Ruby programmers in London have seen: a checkout with various discount rules.
+
+    I grew to love the problem after seeing so many people focus on different aspects of it. With each new submission, I got a clearer and clearer idea of what _I_ thought was interesting and what was unimportant. In the end, I was driven to write my own minimal solution: with nothing spare, focussed purely on my view of what the beating heart of the problem was.
+
+    In the end though, it was just my opinion. I believe code should be optimised for change (or [deletion](https://programmingisterrible.com/post/139222674273/write-code-that-is-easy-to-delete-not-easy-to)) but predicting exactly _which_ changes it needs to accommodate is extremely hard. In the case of a tech test which contains only business rules and no context, perhaps it borders on the impossible.
