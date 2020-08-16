@@ -1,0 +1,25 @@
+---
+layout: post
+title: Weeknotes 42
+excerpt: A void that cannot be filled with ergonomic equipment, tech brain and decapitating cardboard dogs.
+date: 2020-08-16 09:42:00
+---
+*   I made no notes this week.
+
+*   [Andrew Helwer's "Taking my home work setup seriously"](https://ahelwer.ca/post/2020-08-09-home-ergonomics/) is making me reconsider the suitability of my [Magic Trackpad](https://www.apple.com/uk/shop/product/MJ2R2Z/A/magic-trackpad-2-silver) especially given that I've developed some sort of callus between my palm and my wrist.
+
+    Then again:
+
+    > Inside us all there is a void. People want to complete themselves and fill this void with spirituality, or hedonistic pursuits, or material things. If you’ll indulge a metaphor, this is not a void that can be filled - its nature is more akin to a black hole of the cosmic variety. Feeding it things - for example, expensive ergonomic equipment - will simply add to its mass and pull. Only if left alone might it slowly evaporate. You must learn to live with it. 
+
+*   [stephanie's "tech brain"](https://pycnocline.substack.com/p/tech-brain) provoked discussion among myself and some fellow software developers.
+
+    > what is tech brain? there are lots of things to point to, but if i had to come up with a thesis it would be that tech brain is a sort of constant willful reductionism: an addiction to easy answers combined with a wholesale cultural resistance to any kind of complexity.
+
+    [Like](https://twitter.com/eightbitraptor/status/1293901151591702528) [others](https://twitter.com/tomstuart/status/1293641281667764224), I found myself nodding along but [Maciej](https://zerodivisionerror.neocities.org) asked an interesting question: how much of this is _Twitter_ brain rather than being specific to the tech industry?
+
+*   I'm currently running a full backup of my laptop with [SuperDuper!](https://www.shirt-pocket.com/SuperDuper/SuperDuperDescription.html). Next week, in a ritual to mark moving on from a client I've been working with since March, I'll wipe my computer clean and start afresh.
+
+*   C's current favourite activity is to prop himself up on a bookshelf and systematically pull all of the books onto the floor.
+
+    Sometimes he wants to read them (or, in the case of certain pop-up books, attempt to decapitate as many cardboard dogs as possible) and sometimes he just wants to see ~~the world burn~~ the shelf emptied.
