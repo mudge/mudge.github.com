@@ -1,0 +1,17 @@
+---
+layout: post
+title: Weeknotes 43
+excerpt: New experiences, starting over and Daddy Pig holding a mirror up to society.
+date: 2020-08-23 15:23:00
+---
+*   I met a former colleague at a local pub and we sat out front to catch up. After taking my order, a member of staff asked to scan my wrist with an infrared thermometer. This was an entirely new experience and I was quite giddy at having my faculties critically assessed by a beige handheld device.
+
+*   I finished my latest contract on Friday and, due to [last week's preparation](/2020/08/16/weeknotes-42/), I write these notes on a freshly formatted laptop.
+
+    There's something cathartic about starting afresh, clearing out my old [1Password vaults](https://support.1password.com/create-share-vaults/) and asking whether each piece of software [sparks joy](https://konmari.com) or not.
+
+*   I went down a [bit of a rabbit-hole](https://github.com/Homebrew/homebrew-cask/pull/88039) installing [Backblaze](https://www.backblaze.com) via [Homebrew](https://brew.sh).
+
+*   Now that I'll be helping out with childcare more, I inevitably found myself watching [Peppa Pig](https://www.peppapig.co.uk) this morning and was reminded of [its damning satire of knowledge work](https://youtu.be/oZC790urhtw?t=136) at Daddy Pig's office.
+
+*   [Once more, I'm not sure what's next](/2019/01/02/2018-yearnotes/) but I'm looking forward to a break and to celebrating C's first birthday.
