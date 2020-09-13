@@ -1,0 +1,25 @@
+---
+layout: post
+title: Weeknotes 46
+excerpt: T'north, Netflix tips and tricks and coffee brewing theory.
+date: 2020-09-13 10:23:00
+---
+*   We're back in London after two weeks up in t'north of England.
+
+    It had been six months since our families had properly seen C which is basically half his life so far. I got to rummage through old toys, uncovering an old [DUPLO](https://www.lego.com/en-gb/themes/duplo) aeroplane and train set of mine. We discovered a local [Yorkshire gelateria](https://www.themilkchurn.com) and revisited the [bakery that provided bread for our wedding](http://theangelssharebakery.com/), giving C his first taste of a [Yorkshire Curd tart](http://theangelssharebakery.com/about/specialities/).
+
+    It was the break we all needed before everything changes in the next few weeks as E returns to work and C starts nursery.
+
+*   Part of the ritual of leaving guest accommodation is logging out of one's Netflix account. Depending on the device, this may involve [an arcane sequence of button presses](https://help.netflix.com/en/node/23876) to reveal a secret Settings screen:
+
+    > From within the Netflix app, use the arrows on your remote to enter the following sequence: **Up, Up, Down, Down, Left, Right, Left, Right, Up, Up, Up, Up.**
+
+    It is easier to remember if you think of it as a [variation of the Konami Code](https://en.wikipedia.org/wiki/Konami_Code).
+
+*   Speaking of Netflix: during the trip, we signed my dad up for his own account so he could stop filling my viewing history with endless shows related to the drug trade. I've been tempted to delete my profile and start again but am trying to [hide the things he has watched instead](https://help.netflix.com/en/node/22205).
+
+    However, it can "take up to 24 hours for a hidden title to be removed from all your devices" and the interface seems remarkably flaky. I'm currently having to delete each and every episode of "Suits" and "Homeland" individually (I blame [eventual consistency](https://en.wikipedia.org/wiki/Eventual_consistency)).
+
+    Hopefully I'll soon be rewarded for my meticulous clicking with fewer recommendations for documentaries about Pablo Escobar and El Chapo.
+
+*   One thing we've missed while being away was a [damn fine cup of coffee](https://youtu.be/KxwcQ1dapw8). Leo recommended [James Hoffmann's "The Ultimate V60 Technique"](https://youtu.be/AI4ynXzkSQo) which has immediately sent me down something of a "coffee brewing theory" rabbit-hole.
