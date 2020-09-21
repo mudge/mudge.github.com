@@ -1,0 +1,28 @@
+---
+layout: post
+title: Weeknotes 47
+excerpt: Settling in, potentially diseased garlic and being at a loss for notes.
+date: 2020-09-21 11:55:00
+---
+*   It was C's "settling in" week at nursery this week. E took him in for a few hours every day to get used to the unfamiliar surroundings and his key worker. This meant ironing [name labels](https://www.easy2name.com) into all of his clothes and that he was in someone else's care for an hour or two for the first time.
+
+    I capitalised on this strange, guilty sense of freedom by going for a run for the first time in months. I didn't get very far and spent a lot of the time trying to keep my running tights up. I also indulged in [some](https://www.netflix.com/title/80186863 "Umbrella Academy") [science fiction](https://www.netflix.com/title/80097140 "Altered Carbon").
+
+*   [Five months ago](/2020/04/19/weeknotes-25/), I planted a clove of garlic. Today, I harvested it!
+
+    <p class="center"><img src="/i/garlic.jpg" width="360" height="480" alt></p>
+
+    It certainly _looks_ like a bulb of garlic but we now need to dry it out for a few days. I'm only slightly alarmed by the [RHS Gardening website's warning](https://www.rhs.org.uk/advice/grow-your-own/vegetables/garlic) that growing garlic from a supermarket "may carry disease".
+
+*   The official [GitHub CLI 1.0 was released](https://github.blog/2020-09-17-github-cli-1-0-is-now-available/). I've long used [hub](https://hub.github.com) but [as its maintainer Mislav was hired by GitHub to build GitHub CLI](https://mislav.net/2020/01/github-cli/), I'm going to try switching over.
+
+    > The GitHub CLI that we are building is not exactly what I would have
+    > chosen to create if I was the only person in charge of making it, but
+    > this is A Good Thing. Before, I never really made an effort to understand
+    > who the audience of hub was, but with an actual team we finally get to
+    > explore that and hopefully build something that’s ambitious not in terms
+    > of the number of features it offers or how much of the GitHub API it
+    > covers, but in how well it helps people be productive with their daily
+    > work.
+
+*   With an increasingly mobile C in nursery, E going back to work and me working with multiple clients for the first time, I'm at a bit of a loss for notes this week.
