@@ -1,0 +1,44 @@
+---
+layout: post
+title: Weeknotes 48
+excerpt: Mentor envy, calculating the surface area of pizza, separation, adding HTTP headers and how to use your entire body to express dissatisfaction.
+date: 2020-09-27 12:45:00
+---
+*   I thoroughly enjoyed [Anna Shipman's "Meeting everyone on a new team"](https://www.annashipman.co.uk/jfdi/meeting-everyone.html):
+
+    > When I joined the Financial Times as Technical Director for FT.com, I inherited a team of around 50 engineers. One of the first things I did was meet each of them for a one-to-one.
+
+    Though it did make me envious of Anna's mentors:
+
+    > The idea was suggested to me by a mentor, who’d been advised to do it by his mentor, a _Rear Admiral_ [emphasis added], who said this was something you should do whenever you have a team of fewer than 150 people.
+
+*   Torn between sharing two takeaway 12 inch pizzas or a single 18 inch one, E and I turned to [Wolfram Alpha](https://www.wolframalpha.com):
+
+    * "[area of circle with diameter 12 inches](https://www.wolframalpha.com/input/?i=area+of+circle+with+diameter+12+inches)" = 36 square inches * 2 = 72 square inches
+    * "[area of circle with diameter 18 inches](https://www.wolframalpha.com/input/?i=area+of+circle+with+diameter+18+inches)" = 81 square inches
+
+*   I dropped C off at nursery for the first time. Wearing a face mask, I had to slip on blue, disposable shoe covers while waiting for him to settle.
+
+    At a certain point, one of the key workers said to the other "let's do the separation now" and it was time for me to leave.
+
+*   In order to test parts of a new project, I have to send an extra HTTP header with my requests. If you use Chrome or Firefox, [ModHeader](https://bewisse.com/modheader/) seems a popular choice for doing this but, as a Safari user, I needed an alternative.
+
+    Instead of using a browser extension, I settled on using [mitmproxy](https://mitmproxy.org), a "free and open source interactive HTTPS proxy". I use its "[Set Headers](https://mitmproxy.readthedocs.io/en/v2.0.2/features/setheaders.html)" feature to add my extra header to requests matching a particular domain, e.g. to add `X-Special-Header: header-value` to any request to a [Heroku review app](https://devcenter.heroku.com/articles/github-integration-review-apps):
+
+    ```console
+    $ mitmdump --modify-headers '/herokuapp.com/X-Special-Header/header-value'
+    ```
+
+    This works regardless of browser and with tools such as [HTTPie](https://httpie.org).
+
+*   "[The Great British Bake Off](https://thegreatbritishbakeoff.co.uk)" is back.
+
+    After [finding last year's competition disappointing and upsetting](/2019/11/16/weeknotes-3/), my faith was somewhat restored by the much more joyful "[Junior Bake Off](https://www.channel4.com/programmes/junior-bake-off)" and "[Bake Off: The Professionals](https://www.channel4.com/programmes/bake-off-the-professionals)".
+
+    After the first episode and [Matt Lucas' surprisingly accurate impression of Boris Johnson](https://youtu.be/JKhOFKCOH5M), I'm cautiously optimistic.
+
+*   I'm a big fan of mint chocolate and have come to the conclusion the only mint chocolate worth buying is "[Lindt Excellence Dark Mint Intense](https://www.lindt.co.uk/lindt-excellence-dark-mint-intense-bar-100g-en-gb-03046920028752)". Anything else just doesn't cut it.
+
+*   C has been developing a special move he deploys whenever you prevent him doing something he wants (e.g. pulling things out of the fridge, grabbing bottles of gel for unclogging drains) where he'll suddenly stiffen his entire body, arching backwards as hard as he can. We've tried explaining this usually results in an outcome no one desires: flying headfirst backwards.
+
+    We call it the "protest banana".
