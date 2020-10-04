@@ -1,0 +1,28 @@
+---
+layout: post
+title: Weeknotes 49
+excerpt: Paracetamol suspensions, 90s music and final shaping.
+date: 2020-10-04 09:34:00
+---
+*   C had his [1 year vaccinations](https://www.nhs.uk/conditions/vaccinations/NHS-vaccinations-and-when-to-have-them/) which meant we had to [top him up with a cherry-flavoured paracetamol suspension](https://www.gov.uk/government/publications/menb-vaccine-and-paracetamol) to keep his fever down. At the same time, he was fighting off his first cold caught from nursery which made for a grumpy, ruddy-cheeked boy.
+
+    I caught C's cold so my [Lemsip](https://www.lemsip.co.uk) intake has sky-rocketed.
+
+*   E and I began watching HBO's "[Watchmen](https://www.hbo.com/watchmen)" TV series after [its success at the Emmy Awards](https://www.imdb.com/title/tt7049682/awards). E has neither read the [comic](https://en.wikipedia.org/wiki/Watchmen) nor seen the [2009 Zack Snyder film](https://www.imdb.com/title/tt0409459/) so I attempted to summarise the key plot points.
+
+    It got tricky when I had to explain the squid.
+
+*   We celebrated our third wedding anniversary by exchanging gifts, making an extravagant dinner and indulging in various indie classics from the 90s including [Garbage's "Version 2.0"](https://en.wikipedia.org/wiki/Version_2.0), [Placebo's "Without You I'm Nothing"](https://en.wikipedia.org/wiki/Without_You_I%27m_Nothing_(Placebo_album)) and [Belle and Sebastian's "If You're Feeling Sinister"](https://en.wikipedia.org/wiki/If_You%27re_Feeling_Sinister).
+
+*   [I worked on a project with Chris](https://blog.chrislowis.co.uk/2020/10/03/weeknotes.html) all week, mostly pair-programming via [Tuple](https://tuple.app). As my other project work is quite solitary, this was a welcome change. It was great to get a chance to work with Chris for the first time after years of being involved with [London Computation Club](https://london.computation.club) and [London Ruby User Group](https://lrug.org) together.
+
+*   Despite being put off Netflix's "[The Chef Show](https://thechefshow.com)" by its first episode with Gwyneth Paltrow, I watched the episode with Chad Robertson and Chris Bianco at [Tartine Bakery](https://tartinebakery.com) and am warming to it a little. I assumed it was yet another entry in the genre of "[famous chef and their celebrity friends](/2020/03/08/weeknotes-19/)" but, in this recent episode, Favreau seems genuinely humble and keen to learn from others.
+
+    It also gave me a detailed look at Robertson's final shaping technique for his country loaf recipe which prompted me to give it a try:
+
+    <p class="center"><img src="/i/final-shaping.gif" width="270" height="480" alt></p>
+
+
+    And here's the result:
+
+    <p class="center"><img src="/i/tartine-loaf.jpg" width="375" height="375" alt></p>
