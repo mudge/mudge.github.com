@@ -1,0 +1,53 @@
+---
+layout: post
+title: Weeknotes 50
+excerpt: Baby-proofing, Richard Osman’s role in my life, carrying pliers, zeitgeist marketing, ergonomic experiments and escaping from Hades.
+date: 2020-10-11 12:02:00
+---
+*   After realising our [DNS sinkhole](/2020/06/07/weeknotes-32/) was causing the [BBC iPlayer app for the PlayStation 4](https://store.playstation.com/en-gb/product/EP4338-CUSA00122_00-IPLAYER0FULL0000) to crash (presumably because some essential telemetry was being blocked), I switched it over to use [CloudFlare's 1.1.1.1](https://1.1.1.1/dns/) and discovered two whole series of "[Hey Duggee](https://www.bbc.co.uk/cbeebies/shows/hey-duggee)" [not on Netflix](https://www.netflix.com/gb/title/80989192). That's my viewing for the foreseeable sorted.
+
+*   As C grows more confident with his toddling, his love of opening cupboards and drawers to explore their contents has also increased. I began securing certain cupboards with "child safety locks": plastic straps secured at either end with adhesive tape.
+
+    Having placed a lock on our fridge the wrong way round, I followed the instructions to remove it: heat up the adhesive with a hair-dryer and peel it off. While that did the trick, it also melted the [thermofoil](https://en.wikipedia.org/wiki/Thermofoil) on our fridge door causing it to warp and peel away from the wood.
+
+    It turns out the lock is no match for C's strength as he can easily pull the ruined door open.
+
+*   My mum refers to C's teeth as "tooshy pegs".
+
+*   Our evening schedule is dictated entirely by [Richard Osman](https://en.wikipedia.org/wiki/Richard_Osman).
+
+    First, there's "[Pointless](https://www.bbc.co.uk/programmes/b00rhg2r)" from 5:15 pm to 6 pm when C has his dinner. We switch over to BBC Two for "[Richard Osman's House of Games](https://www.bbc.co.uk/programmes/b094mjv0)", the end of which marks the beginning of C's bedtime routine.
+
+    After a hard day, I long for the "Answer Smash" siren.
+
+*   Following [Maciej](https://zerodivisionerror.neocities.org)'s recommendation, I've been reading [Cixin Liu's "The Dark Forest"](https://en.wikipedia.org/wiki/The_Dark_Forest). [I read the previous book](/2019/12/01/weeknotes-5/) back in December last year but didn't continue with [the series](https://en.wikipedia.org/wiki/Remembrance_of_Earth%27s_Past). In looking for something new to read, I'm not sure why I overlooked this as I am thoroughly enjoying it so far.
+
+*   Our flat has an automatic car gate that stops working whenever it rains. As this week has been particularly wet, one of our neighbours discovered you can unlock the gate arms (so they can be opened and closed manually) by turning a small bolt.
+
+    You can now find a pair of needle-nose pliers in my coat pocket wherever I go.
+
+*   E and I watched "[Onward](https://www.imdb.com/title/tt7146812/)" last night. While she wasn't especially moved, I cried the most I have in years.
+
+*   I enjoyed the first two episodes of [Noah Kalina and Adam Lisagor's "All Consuming" podcast](https://allconsuming.show) reviewing new direct-to-consumer products commonly advertised on the likes of Instagram, etc.
+
+    The subject of [their first episode](https://allconsuming.show/listen/nuggs), "the Tesla of chicken" [NUGGS' release notes](https://eatnuggs.com/releases) are quite the read:
+
+    > * Enables a close to indistinguishable chicken-like substrate (utilizing soy and wheat proteins)
+
+*   [Ben Schott's "Welcome to Your Bland New World"](https://www.bloomberg.com/opinion/articles/2020-09-07/welcome-to-your-bland-new-world-of-consumer-capitalism) (via [Alice Bartlett](https://alicebartlett.co.uk/blog/weaknotes-110)) is another exploration of this "zeitgeist marketing":
+
+    > All startups seek to disrupt and disintermediate a smug status quo, or
+    > originate and dominate an entirely new niche. But what makes a brand a
+    > bland is duality: claiming simultaneously to be unique in product,
+    > groundbreaking in purpose, and singular in delivery, while slavishly
+    > obeying an identikit formula of business model, look and feel, and tone
+    > of voice.
+
+
+*   In need of a fun game to pass the time, I read [Eurogamer.net's review of "Hades"](https://www.eurogamer.net/articles/2020-09-17-hades-review-of-myth-and-mayhem) and bought it.
+
+    Having previously tried and failed to get into "[Dead Cells](https://dead-cells.com)", I was nervous about another "[roguelike](https://en.wikipedia.org/wiki/Roguelike)" but something about it works for me. Perhaps the sense of progress with every failed run as the story and world unfolds breaks the monotony of dying over and over.
+
+    It has also inspired me to listen to [Anaïs Mitchell's "Hadestown"](https://www.hadestown.com) again.
+
+*   While not going quite so far [down the ergonomic keyboard rabbit hole as Steven Waterman](https://blog.scottlogic.com/2020/10/09/ergo-rabbit-hole.html), I did buy the wired version of [Kensington's Expert Mouse Trackball](https://www.kensington.com/en-gb/p/products/control/trackball-products/expert-mouse-wireless-trackball/). It is comically large with a 55 mm diameter trackball but if it [helps my ailing skeleton](https://www.nytimes.com/wirecutter/reviews/best-trackballs/), I'm willing to try it.
