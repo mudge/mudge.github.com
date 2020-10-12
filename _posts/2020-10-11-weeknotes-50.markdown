@@ -4,7 +4,7 @@ title: Weeknotes 50
 excerpt: Baby-proofing, Richard Osman’s role in my life, carrying pliers, zeitgeist marketing, ergonomic experiments and escaping from Hades.
 date: 2020-10-11 12:02:00
 ---
-*   After realising our [DNS sinkhole](/2020/06/07/weeknotes-32/) was causing the [BBC iPlayer app for the PlayStation 4](https://store.playstation.com/en-gb/product/EP4338-CUSA00122_00-IPLAYER0FULL0000) to crash (presumably because some essential telemetry was being blocked), I switched it over to use [CloudFlare's 1.1.1.1](https://1.1.1.1/dns/) and discovered two whole series of "[Hey Duggee](https://www.bbc.co.uk/cbeebies/shows/hey-duggee)" [not on Netflix](https://www.netflix.com/gb/title/80989192). That's my viewing for the foreseeable sorted.
+*   After realising our [DNS sinkhole](/2020/06/07/weeknotes-32/) was causing the [BBC iPlayer app for the PlayStation 4](https://store.playstation.com/en-gb/product/EP4338-CUSA00122_00-IPLAYER0FULL0000) to crash (presumably because some essential telemetry was being blocked), I switched it over to use [Cloudflare's 1.1.1.1](https://1.1.1.1/dns/) and discovered two whole series of "[Hey Duggee](https://www.bbc.co.uk/cbeebies/shows/hey-duggee)" [not on Netflix](https://www.netflix.com/gb/title/80989192). That's my viewing for the foreseeable sorted.
 
 *   As C grows more confident with his toddling, his love of opening cupboards and drawers to explore their contents has also increased. I began securing certain cupboards with "child safety locks": plastic straps secured at either end with adhesive tape.
 
