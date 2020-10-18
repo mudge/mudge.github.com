@@ -1,0 +1,32 @@
+---
+layout: post
+title: Weeknotes 51
+excerpt: Pizza crusts, London Computation Club wiki, what to do with an inherited codebase and collective disbelief.
+date: 2020-10-18 09:33:00
+---
+*   [Two weeks ago](/2020/09/27/weeknotes-48/) I wrote about choosing between two 12" pizzas and one 18" pizza by comparing their surface area but [Tom](https://tomstu.art) pointed out this only works if you care about sheer quantity of pizza.
+
+    If you care more about pizza crust (especially when [studded with burgers](https://www.theguardian.com/global-development/2014/mar/02/pizza-hut-2880-calorie-monstrosity-worlds-burgeoning-food-crisis)), you should instead compare the circumference:
+
+    * "[circumference of 12 inch diameter circle](https://www.wolframalpha.com/input/?i=Circumference+of+12+inch+diameter+circle)" = 37.7 inches * 2 = 75.4 inches
+    * "[circumference of 18 inch diameter circle](https://www.wolframalpha.com/input/?i=Circumference+of+18+inch+diameter+circle)" = 56.6 inches
+
+*   I added [a page about Leo's astounding "iCE2Tetris" project](https://github.com/computationclub/computationclub.github.io/wiki/iCE2Tetris) to the [London Computation Club wiki](https://github.com/computationclub/computationclub.github.io/wiki) this week.
+
+    According to the git history, I have made 637 changes to the wiki since 2015, adding 8,228 lines and removing 1,911.
+
+    While I'd go [years](/2014/11/26/data-structures-as-functions/ "Data Structures as Functions, published in 2014") [between](/2016/03/26/the-difficulty-with-the-success-of-software-development-teams/ "What Is a Successful Software Development Team?, published in 2016") [posts](/2019/01/02/cross-compiling-rust-for-a-raspberry-pi-on-travis-ci/ "Cross-Compiling Rust for a Raspberry Pi on Travis CI, published in 2019") on this site, you could often find me writing up [club meetings](https://github.com/computationclub/computationclub.github.io/wiki#meetings) every few weeks.
+
+    The write-up I remember most is "[Types and Programming Languages Chapter 15: Subtyping](https://github.com/computationclub/computationclub.github.io/wiki/Types-and-Programming-Languages-Chapter-15-Subtyping-–-Part-1)" as I left the meeting defeated and burnt out, ready to give up on the club altogether but the act of writing it up clarified my understanding and restored my energy for returning to the club.
+
+*   I recently inherited a codebase and am the sole developer working on it. This means I'm in the rare position to make whatever change I see fit to make it easier to work on and so I decided to start with dependency updates.
+
+    Having seen it used before, I decided to [set up GitHub Dependabot](https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/enabling-and-disabling-version-updates). While finding the right documentation was tricky given that [Dependabot is being integrated into GitHub itself](https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/), once I had it set up I was pleasantly surprised how well it worked: raising PRs for upgrades, automatically rebasing them and even detecting when multiple dependencies need to be updated in tandem.
+
+    I have mixed feelings about updating dependencies now being an essential part of being a web developer but if you're going to have to do it anyway, you might as well automate it.
+
+*   The other change I'd like to make is to the code style itself: the formatting, linting, etc. Running [RuboCop](https://github.com/rubocop-hq/rubocop) with the project's current configuration produces over 1,000 violations so I needed some advice on how to approach this in a manageable way.
+
+    Thankfully, [Scott Matthewman's "Calling in the cops"](https://youtu.be/Cd1aLLwTNKc) is an excellent talk about this exact topic: how to sensibly approach linting a legacy codebase.
+
+*   This led me to discover the [`Rails/FilePath` cop prefers using forward slashes in paths](https://github.com/rubocop-hq/rubocop-rails/issues/195) and share in the [collective disbelief that Ruby's `File.join` does not change separators based on platform](https://twitter.com/tenderlove/status/842064491936280576).
