@@ -4,7 +4,7 @@ title: Weeknotes 52
 excerpt: A year of weeknotes, inconsequential quests, kernel extensions, using Terraform to manage multiple AWS accounts at once, testing feature flags and the secret fantasy of a future self.
 date: 2020-10-29 10:32:00
 ---
-*   It has been a year since my [first weeknotes](https://tomstu.art/weeknotes-42-breezy-manner).
+*   It has been a year since my [first weeknotes](/2019/11/04/weeknotes-1/).
 
     I still haven't finished that blog post on [React Hooks](https://reactjs.org/docs/hooks-intro.html).
 
