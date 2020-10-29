@@ -1,0 +1,137 @@
+---
+layout: post
+title: Weeknotes 52
+excerpt: A year of weeknotes, inconsequential quests, kernel extensions, using Terraform to manage multiple AWS accounts at once, testing feature flags and the secret fantasy of a future self.
+date: 2020-10-29 10:32:00
+---
+*   It has been a year since my [first weeknotes](https://tomstu.art/weeknotes-42-breezy-manner).
+
+    I still haven't finished that blog post on [React Hooks](https://reactjs.org/docs/hooks-intro.html).
+
+*   Since reading [Caroline Crampton's "The Problem with the Inconsequential Quest"](https://hotpodnews.com/the-problem-with-the-inconsequential-quest/), I've found it hard to listen to recommended podcasts that fit the description, e.g. [Underunderstood's "Amazon's Next Top Model"](https://underunderstood.com/podcast/episode/amazons-next-top-model/):
+
+    > I’m sure readers will be very familiar with the form: a host chooses something that is of seemingly little importance and investigates it with a thoroughness and journalistic rigour that seems completely out of proportion to the original question. The resulting episode or series documents this journey in detail and ultimately reveals a conclusion that surprises and delights listeners.
+
+*   Instead of writing these notes on Sunday while C napped, I attempted to remap the extra buttons on [my trackball](https://www.kensington.com/en-gb/p/products/control/trackballs/expert-mouse-wireless-trackball/) to go back and forwards in my browser. I tried [USB Overdrive](https://www.usboverdrive.com), [SteerMouse](http://plentycom.jp/en/steermouse/) and [Sensible Side Buttons](https://sensible-side-buttons.archagon.net) but balked at the need for [kernel extensions](https://developer.apple.com/support/kernel-extensions/) (and sadly Sensible Side Buttons doesn't work because one of the buttons is interpreted as a middle-click).
+
+    I spent an hour trying to clean up the various bits of software I'd tried as `kextstat` revealed USB Overdrive's kernel extension lingered after uninstallation. In the end, I had to use `kextcache` to clear "staged" extensions in [Recovery Mode](https://support.apple.com/en-gb/HT201314).
+
+    I've actually made things worse than when I installed the [official Kensington TrackballWorks driver](https://www.kensington.com/en-gb/software/trackballworks-customization-software/).
+
+*   I've been doing quite a lot of work with [Amazon Web Services](https://aws.amazon.com) for a client and was very grateful to have automated it with [Hashicorp Terraform](https://www.terraform.io) as I needed to quickly destroy and recreate [S3](https://aws.amazon.com/s3/) buckets connected to [CloudFront](https://aws.amazon.com/cloudfront/) distributions with [ACM](https://aws.amazon.com/certificate-manager/) certificates.
+
+    I've found it useful to manage both our production and staging environment using a single Terraform repository by leveraging [AWS Organizations](https://aws.amazon.com/organizations/) and the ability for an administrator in the root organization to temporarily assume the role of an administrator in any of the member accounts. By default, [AWS will create a role called `OrganizationAccountAccessRole`](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html) to do exactly this.
+
+    To manage [Terraform resources](https://www.terraform.io/docs/configuration/resources.html) in different AWS accounts we can then use an "[Assume Role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#assume-role)" block in an [AWS provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#assume-role) like so:
+
+    ```terraform
+    provider "aws" {
+      alias  = "root"
+      region = "eu-west-1"
+    }
+
+    provider "aws" {
+      alias  = "production"
+      region = "eu-west-1"
+      assume_role {
+        role_arn = "arn:aws:iam::PRODUCTION-ID:role/OrganizationAccountAccessRole"
+      }
+    }
+
+    provider "aws" {
+      alias  = "staging"
+      region = "eu-west-1"
+      assume_role {
+        role_arn = "arn:aws:iam::STAGING-ID:role/OrganizationAccountAccessRole"
+      }
+    }
+    ```
+
+    Then you specify the appropriate provider alias in each resource, e.g.
+
+    ```terraform
+    resource "aws_s3_bucket" "staging" {
+      provider = aws.staging
+      bucket   = "bucket-staging"
+    }
+
+    resource "aws_s3_bucket" "production" {
+      provider = aws.production
+      bucket   = "bucket-production"
+    }
+    ```
+
+    You can use something like [AWS Vault](https://github.com/99designs/aws-vault) to run your Terraform commands as an administrator in your root account and it'll assume the appropriate role for each resource automatically:
+
+    ```console
+    $ aws-vault exec root-account-administrator -- terraform plan
+    ```
+
+*   I've been working on a new feature in a [Rails](https://rubyonrails.org) application and needed to hide it behind a [feature flag](https://martinfowler.com/articles/feature-toggles.html) so I wasn't blocking other features that needed deploying. Now that I have two possible sets of behaviour in various parts of the application, I wanted to test them both with [RSpec](https://rspec.info).
+
+    The feature flag lives in a bit of [custom Rails configuration](https://guides.rubyonrails.org/configuring.html#custom-configuration), e.g.
+
+    ```ruby
+    Rails.configuration.cool_new_feature = ENV['COOL_NEW_FEATURE']
+    ```
+
+    Then various parts of the application switch on the value of that flag:
+
+    ```ruby
+    if Rails.configuration.cool_new_feature
+      # do something cool
+    else
+      # do something less cool
+    end
+    ```
+
+    I wanted to change the value of that configuration before running some examples and reset it back to its original value after the test, e.g.
+
+    ```ruby
+    context 'with the cool new feature enabled' do
+      around do |example|
+        original_value = Rails.configuration.cool_new_feature
+        Rails.configuration.cool_new_feature = true
+
+        example.run
+
+        Rails.configuration.cool_new_feature = original_value
+      end
+
+      # Examples here...
+    end
+    ```
+
+    However, adding this across several places in the test suite seemed rather noisy but we can leverage [user-defined metadata](https://relishapp.com/rspec/rspec-core/v/3-9/docs/metadata/user-defined-metadata) with [hook filtering](https://relishapp.com/rspec/rspec-core/v/3-9/docs/hooks/filters#filtering-hooks-using-a-regular-expression) to clean this up:
+
+    ```ruby
+    # in spec/rails_helper.rb
+    RSpec.configure do |config|
+      # ...
+
+      config.around(:each, :cool_new_feature) do |example|
+        original_value = Rails.configuration.cool_new_feature
+        Rails.configuration.cool_new_feature = example.metadata[:cool_new_feature]
+
+        example.run
+
+        Rails.configuration.cool_new_feature = original_value
+      end
+    end
+    ```
+
+    Then in our specs, we simply tag examples with the appropriate metadata:
+
+    ```ruby
+    context 'with cool new feature enabled', cool_new_feature: true do
+      # ...
+    end
+
+    context 'with cool new feature disabled', cool_new_feature: false do
+      # ...
+    end
+    ```
+
+*   I haven't had any epiphanies after writing these notes every week for a year but I still think about the [Paul Murray quote I shared in weeknotes 15](/2020/02/10/weeknotes-15/):
+
+    > Although technology has the capability now to record entire lifetimes, meaning that every moment may be pulled from the foaming sea of oblivion to the dry land of perfect recall, the mythic power of the photograph nevertheless relates to the future, and not to the past. Every recording conceals the secret fantasy of a future self who will observe it; this future self is himself the simulacrum, the persona ficta. He exists beyond time, beyond action, beyond need; his only function is to witness the continuum of the past, as he might observe the steps that brought him to godhood. Through this fantasy, time is transformed from the condition of loss into a commodity that may be acquired and stockpiled; rather than disappear ceaselessly into the past, life accumulates, each moment becoming a unit of a total self that is the culmination of our experiences in a way that we—biological composites who profligately shed our cells, our memories and our possessions—can never be.
