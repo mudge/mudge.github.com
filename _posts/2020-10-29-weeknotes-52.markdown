@@ -102,7 +102,7 @@ date: 2020-10-29 10:32:00
     end
     ```
 
-    However, adding this across several places in the test suite seemed rather noisy but we can leverage [user-defined metadata](https://relishapp.com/rspec/rspec-core/v/3-9/docs/metadata/user-defined-metadata) with [hook filtering](https://relishapp.com/rspec/rspec-core/v/3-9/docs/hooks/filters#filtering-hooks-using-a-regular-expression) to clean this up:
+    However, adding this across several places in the test suite seemed rather noisy but we can leverage [user-defined metadata](https://relishapp.com/rspec/rspec-core/v/3-9/docs/metadata/user-defined-metadata) with [hook filtering](https://relishapp.com/rspec/rspec-core/v/3-9/docs/hooks/filters) to clean this up:
 
     ```ruby
     # in spec/rails_helper.rb
