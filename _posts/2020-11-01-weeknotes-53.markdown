@@ -1,0 +1,25 @@
+---
+layout: post
+title: Weeknotes 53
+excerpt: An unwelcome return, low spirits and removing a special case.
+date: 2020-11-01 14:35:00
+---
+*   A year ago---one week before [C was born](/2020/09/06/weeknotes-45/)---wearing rubber gloves and a face mask, I pulled out all of our kitchen appliances and stuffed every crevice with steel wool. I covered the wool with electrical tape before carefully arranging boxes of mouse poison given to me by the council along the walls.
+
+    Last night, just as E and I were falling asleep, there was the sound of scratching mere metres from our heads. As soon as we moved to investigate, it stopped and I spent the rest of the night waiting to hear something else other than the pounding of my own heart.
+
+*   With that and the [new national restrictions in the UK from 5th November](https://www.gov.uk/guidance/new-national-restrictions-from-5-november), my level of ["cheersy-cheers" spirit](https://github.com/computationclub/computationclub.github.io/wiki/Types-and-Programming-Languages-Chapter-13-References#pub) is at an all-time low.
+
+*   [Brian David Gilbert's "Earn $20K EVERY MONTH by being your own boss"](https://youtu.be/wbfu39l0kxg) helped a little though.
+
+*   I'm working on a publishing platform that has a lot of special cases for a single publication. That publication is now being handled by another codebase so I have the opportunity to remove it and simplify a lot of the existing software. However, removing it cleanly without risking breaking other functionality has proven very difficult.
+
+    I tried a few different strategies: trying to remove all of the view-related code first then trying to come at it by removing a whole feature and all its related dependencies at a time. However, I kept coming unstuck: finding myself having deleted a lot of code but with far too many tests failing and not enough confidence I was on the right track so I'd [`git reset --hard`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---hard) and abandon the approach.
+
+    On Friday, I finally succeeded by being far more conservative in the amount I deleted at any one time. Rather than deleting an entire feature, I'd pick a small aspect of it (say, an admin-only view) and remove that, ensuring all the tests still passed before removing the next slice.
+
+    The result?
+
+    > 39 additions and 2,786 deletions.
+
+*   Time to find some ear plugs.
