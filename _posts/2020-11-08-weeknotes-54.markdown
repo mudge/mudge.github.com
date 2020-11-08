@@ -1,0 +1,118 @@
+---
+layout: post
+title: Weeknotes 54
+excerpt: Handling numeric user input with React, cleaning up unused Homebrew dependencies, Command Line Tools woe, losing control of your eyes and comparing our son to icons in IKEA instruction manuals.
+date: 2020-11-08 14:12:00
+---
+*   I worked on two projects with [Chris](https://blog.chrislowis.co.uk) for [Go Free Range](https://gofreerange.com), the first of which involved working with a [React](https://reactjs.org) form to record numbers given by the user. We already had some [`<select>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) elements to do this, e.g.
+
+    ```jsx
+    const Form = () => {
+      const [unit, setUnit] = useState(1);
+
+      const handleUnitChange = ({ target: { value }}) => {
+        setUnit(parseFloat(value));
+      };
+
+      return (
+        <select value={unit} onChange={handleUnitChange}>
+          <option value="1">m</option>
+          <option value="100">cm</option>
+          <option value="1000">mm</option>
+        </select>
+      );
+    };
+    ```
+
+    This works fine. React is able to interpret our numeric value for `unit` and select the appropriate [`<option>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) in our dropdown. When the user changes their selection, the corresponding value is passed to `handleUnitChange` and stored as a floating point number. This way, we keep our `unit` as a number throughout so it is ready to be passed to other functions without any coercion.
+
+    However, if we try to do the same thing with an [`<input type="text">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input), we quickly run into trouble:
+
+    ```jsx
+    const Form = () => {
+      const [unit, setUnit] = useState(1);
+
+      const handleUnitChange = ({ target: { value }}) => {
+        setUnit(parseFloat(value));
+      };
+
+      return (
+        <input type="text" value={unit} onChange={handleUnitChange} />
+      );
+    };
+    ```
+
+    What happens when the user tries to empty the field (e.g. perhaps to enter a new value from scratch)? `handleUnitChange` will fire with a value of an empty string:
+
+    ```javascript
+    > parseFloat("")
+    NaN
+    ```
+
+    Perhaps then we try to avoid storing `NaN` and instead set `unit` to be `undefined` or `null` if it is [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)?
+
+    ```javascript
+    const handleUnitChange = ({ target: { value }}) => {
+      setUnit(value ? parseFloat(value) : undefined);
+      // or setUnit(value ? parseFloat(value) : null);
+    }
+    ```
+
+    If we do this, when the user clears the field, React will log a warning that we're switching a component from being [controlled](https://reactjs.org/docs/forms.html#controlled-components) to being [uncontrolled](https://reactjs.org/docs/uncontrolled-components.html) because setting the `value` of a field to `undefined` or `null` has a special meaning: it tells React this field is now uncontrolled.
+
+    Given it is totally valid for the user to enter an empty value, we realised we needed to separate our concerns: use strings for the `input` value but convert the value to a number when we pass it elsewhere in our application.
+
+    ```jsx
+    const Form = () => {
+      const [unit, setUnit] = useState("1");
+
+      const handleUnitChange = ({ target: { value }}) => {
+        setUnit(value);
+      };
+
+      doSomeCalculation(parseFloat(unit));
+
+      return (
+        <input type="text" value={unit} onChange={handleUnitChange} />
+      );
+    };
+
+    const doSomeCalculation = (unit) => {
+      if (Number.isNaN(unit)) {
+        return;
+      }
+
+      // ...
+    };
+    ```
+
+    Using an [`<input type="number">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number) helps a little with this as it prevents non-numeric inputs firing the `onChange` event but it seemed cleaner to deal with the problem in our logic than rely on browser behaviour.
+
+*   The second project Chris and I worked on involved a [Python](https://www.python.org) API written with [Flask](https://flask.palletsprojects.com/en/1.1.x/). Getting things running locally was quite a pain with my attempts to use [pip](https://pip.pypa.io/en/stable/) to install [NumPy](https://numpy.org) ending in compilation errors. In the end, switching to the previous stable [Python release of 3.8](https://www.python.org/downloads/release/python-386/) (rather than the latest of [3.9](https://www.python.org/downloads/release/python-390/)) using [pyenv](https://github.com/pyenv/pyenv) solved my problems.
+
+    However, I was left with a bit of a mess of installed [Homebrew](https://brew.sh) formulae and wanted to clean things up. Thankfully, I found [an answer on the macOS Super User](https://superuser.com/a/1509213) with a great tip for removing unused Homebrew dependencies:
+
+    ```console
+    $ brew bundle dump
+    $ brew bundle --force cleanup
+    ```
+
+    This will first dump all explicitly installed formulae and [casks](https://github.com/Homebrew/homebrew-cask) into a `Brewfile` (which you could then edit) and then uninstall anything no longer required.
+
+*   I ended up in a similar mess after installing [Xcode](https://developer.apple.com/xcode/) and [`brew doctor`](https://docs.brew.sh/Manpage#doctor-options) reported that I had out-of-date Command Line Tools.
+
+    Attempting to use [`xcode-select --install`](https://developer.apple.com/library/archive/technotes/tn2339/_index.html#//apple_ref/doc/uid/DTS40014588-CH1-DOWNLOADING_COMMAND_LINE_TOOLS_IS_NOT_AVAILABLE_IN_XCODE_FOR_MACOS_10_9__HOW_CAN_I_INSTALL_THEM_ON_MY_MACHINE_) failed with a strange error about the software update not being found and Software Update itself couldn't install the update properly.
+
+    It turns out that Xcode _includes_ the Command Lines Tools itself even though I had a previous installation in `/Library/Developers/CommandLineTools` installed via `xcode-select`. I ended up completely removing both Xcode and the Command Line Tools and reinstalling the latter before Software Update could successfully pick up the right update.
+
+*   [Simon](https://www.urbanautomaton.com) wrote a truly excellent blog post about Rails autoloading with [Zeitwerk](https://github.com/fxn/zeitwerk) titled "[Rails autoloading — now it works, and how!](https://www.urbanautomaton.com/blog/2020/11/04/rails-autoloading-heaven/)". This is a follow-up to his [2013 post "Rails autoloading — how it works, and when it doesn't"](https://www.urbanautomaton.com/blog/2013/08/27/rails-autoloading-hell/) to which I often found myself referring.
+
+*   Following [last week's need for earplugs](/2020/11/01/weeknotes-53/), I lost some hearing in my left ear. I returned from a trip to the pharmacy with some [urea hydrogen peroxide](https://en.wikipedia.org/wiki/Hydrogen_peroxide_-_urea) and watched the [Great British Bake Off](https://thegreatbritishbakeoff.co.uk) sideways with the deeply unsettling sensation of fizzing in my ear canal.
+
+    I woke in the small hours of Thursday morning to find the room uncontrollably spinning around me. I staggered to the bathroom where I discovered I could no longer get my eyes to focus straight ahead without them constantly drifting to my right. With E's help, I managed to speak to a doctor on the phone and go in to our local GP's surgery to see someone in person that morning.
+
+    After waiting outside, the doctor greeted me at the door wrapped in plastic, said that they needed to "fire [their] gun" (a thermometer) at me and instructed me not to touch anything as we walked to a consultation room.
+
+    Thankfully, it's a viral ear infection that'll clear up by itself in a matter of days.
+
+*   Now that C is confident enough walking, he happily roams our flat looking for things to prod, pull or combine in some way. We've already lost three bowls to his curiosity and I've had to rewire one plug. It also means that I took the step of lowering the mattress in his cot now that he more closely resembles the IKEA cartoon for "toddler" than the one for "baby".
