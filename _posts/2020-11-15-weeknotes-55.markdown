@@ -54,10 +54,13 @@ date: 2020-11-15 10:52:00
         ```javascript
         document.querySelectorAll("[data-shopify-product-handle]").forEach((element) => {
           const { dataset: { shopifyProductHandle } } = element;
+          const temporaryWrapper = document.createElement("div");
+
+          element.appendChild(temporaryWrapper);
 
           ui.createComponent("product", {
             handle: shopifyProductHandle,
-            node: element,
+            node: temporaryWrapper,
           });
         });
         ```
@@ -65,6 +68,8 @@ date: 2020-11-15 10:52:00
         ```html
         <div data-shopify-product-handle="some-product-handle"></div>
         ```
+
+        I create a new `<div>` for the component to use as calling [`destroy` will remove the node from the DOM](https://github.com/Shopify/buy-button-js/blob/ba89d7fa2f4944da7f388a9b6d632d764b376e5f/src/component.js#L197-L202).
 
     I still need to iron out some issues with Turbolinks caching but I'm optimistic.
 
