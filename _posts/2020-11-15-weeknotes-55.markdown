@@ -66,7 +66,7 @@ date: 2020-11-15 10:52:00
         <div data-shopify-product-handle="some-product-handle"></div>
         ```
 
-        I still need to iron out some issues with Turbolinks caching but I'm optimistic.
+    I still need to iron out some issues with Turbolinks caching but I'm optimistic.
 
 *   On Tuesday, [Apple announced the M1 system on a chip](https://www.apple.com/mac/m1/). While I'm not in a hurry to replace my [beloved](https://marco.org/2017/11/14/best-laptop-ever) refurbished 2015 15-inch MacBook Pro, the pandemic and [my musculoskeletal woes](/2020/01/19/weeknotes-12/) have made my working setup decidedly stationary. I'm seriously considering the [Mac mini](https://www.apple.com/uk/mac-mini/) for the first time.
 
