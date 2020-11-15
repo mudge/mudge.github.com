@@ -1,0 +1,113 @@
+---
+layout: post
+title: Weeknotes 55
+excerpt: Integrating Shopify BuyButton.js with Turbolinks, the M1 SoC, testing signed Stripe webhooks and cavorting.
+date: 2020-11-15 10:52:00
+---
+*   This week, I've been trying to make [Shopify BuyButton.js](http://shopify.github.io/buy-button-js/) play nicely with [Turbolinks](https://github.com/turbolinks/turbolinks).
+
+    Integration with Turbolinks is often tricky because [it retains the state of `window` and `document` across page changes and any other JavaScript objects will stay in memory](https://github.com/turbolinks/turbolinks#building-your-turbolinks-application). In the case of BuyButton.js, this means any [UI state](https://github.com/Shopify/buy-button-js/blob/v2.1.7/src/ui.js#L29-L36) and [bound event listeners](https://github.com/Shopify/buy-button-js/blob/v2.1.7/src/ui.js#L50-L53) will persist as a user clicks around your site. This is further complicated by [Turbolinks' caching](https://github.com/turbolinks/turbolinks#understanding-caching) which means [any transformations may be applied multiple times](https://github.com/turbolinks/turbolinks#making-transformations-idempotent).
+
+    If you don't take Turbolinks into consideration, you might see broken behaviour such as clicks on "Add to cart" not working, the entire UI failing to appear or multiple buy buttons appearing every time you use the browser's back and forward buttons.
+
+    While I'm still working on this, I've had some success with the following strategy:
+
+    1.  [Create a Shop client](http://shopify.github.io/buy-button-js/#creating-a-shop-client) _once_ to be re-used across all pages.
+
+        ```javascript
+        const client = ShopifyBuy.buildClient({
+          domain: "my-shop.myshopify.com",
+          storefrontAccessToken: "your-storefront-access-token",
+        });
+        ```
+
+    2.  [Initialize the library](http://shopify.github.io/buy-button-js/#initializing-the-library) _once_ to be re-used across all pages.
+
+        ```javascript
+        const ui = ShopifyBuy.UI.init(client);
+        ```
+
+        This will [append a `<style>` tag to the `<head>` of your `document`](https://github.com/Shopify/buy-button-js/blob/v2.1.7/src/ui.js#L273-L281) and [add various event listeners to `document`](https://github.com/Shopify/buy-button-js/blob/v2.1.7/src/ui.js#L273-L281). As the `<head>` of your page will be [merged when a user navigates between pages](https://github.com/turbolinks/turbolinks#navigating-with-turbolinks) this will retain the styles and it is [best practice to only bind event listeners once on `document`](https://github.com/turbolinks/turbolinks#observing-navigation-events).
+
+    3.  On `turbolinks:load`, _reset the inner state of the library_ using [`destroyComponent`](https://github.com/Shopify/buy-button-js/blob/v2.1.7/src/ui.js#L92-L105) as you can no longer guarantee the various DOM elements the UI will have injected into your `<body>` are still present.
+
+        ```javascript
+        ui.destroyComponent("product");
+        ui.destroyComponent("cart");
+        ui.destroyComponent("collection");
+        ui.destroyComponent("productSet");
+        ui.destroyComponent("modal");
+        ui.destroyComponent("toggle");
+        ```
+
+    4.  Following that, [create your components](http://shopify.github.io/buy-button-js/#creating-a-component) as normal.
+
+        ```javascript
+        ui.createComponent("product", {
+          handle: "some-product-handle",
+          node: element,
+        });
+        ```
+
+        To make it easy for Turbolinks to create the appropriate components based on the `<body>` contents for every `turbolinks:load`, I embedded the necessary information in [data attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes).
+
+        ```javascript
+        document.querySelectorAll("[data-shopify-product-handle]").forEach((element) => {
+          const { dataset: { shopifyProductHandle } } = element;
+
+          ui.createComponent("product", {
+            handle: shopifyProductHandle,
+            node: element,
+          });
+        });
+        ```
+
+        ```html
+        <div data-shopify-product-handle="some-product-handle"></div>
+        ```
+
+        I still need to iron out some issues with Turbolinks caching but I'm optimistic.
+
+*   On Tuesday, [Apple announced the M1 system on a chip](https://www.apple.com/mac/m1/). While I'm not in a hurry to replace my [beloved](https://marco.org/2017/11/14/best-laptop-ever) refurbished 2015 15-inch MacBook Pro, the pandemic and [my musculoskeletal woes](/2020/01/19/weeknotes-12/) have made my working setup decidedly stationary. I'm seriously considering the [Mac mini](https://www.apple.com/uk/mac-mini/) for the first time.
+
+*   I've also been working on an integration with [Stripe](https://stripe.com/) and have been amazed how good their [developer tools](https://stripe.com/docs/development) are. From the ability to [test webhooks with their CLI](https://stripe.com/docs/cli/listen), their [go-live checklist](https://stripe.com/docs/development/checklist) and [extensive support for testing](https://stripe.com/docs/testing), it has been surprisingly pleasant to work with.
+
+    If you need to test handling their webhooks but are [verifying their signatures](https://stripe.com/docs/webhooks/signatures), I found the following useful in my [controller specs](https://relishapp.com/rspec/rspec-rails/docs/controller-specs) (assuming you're storing your signing secret in [`Rails.configuration.stripe_webhook_signing_secret`](https://guides.rubyonrails.org/configuring.html#custom-configuration)):
+
+    ```ruby
+    def sign_stripe_webhook(payload)
+      timestamp = Time.zone.now
+      signature = Stripe::Webhook::Signature.compute_signature(
+        timestamp,
+        payload.to_json,
+        Rails.configuration.stripe_webhook_signing_secret
+      )
+
+      request.headers['Stripe-Signature'] = Stripe::Webhook::Signature.generate_header(timestamp, signature)
+    end
+    ```
+
+    Then I can use it like so:
+
+    ```ruby
+    it 'returns a 200 OK with a valid Stripe event' do
+      event = {
+        'id' => 'evt_1',
+        'object' => 'event',
+        'type' => 'checkout.session.completed',
+        'data' => {}
+      }
+
+      sign_stripe_webhook(event)
+
+      post :create, params: event, as: :json
+
+      expect(response).to have_http_status(:ok)
+    end
+    ```
+
+*   Following [last week's adventures with `brew bundle`](/2020/11/08/weeknotes-54/) and [Scott](https://medium.com/@scottm)'s tip about [Homebrew Bundle](https://medium.com/@scottm) being integrated with [mas](https://github.com/mas-cli/mas), I committed my [`Brewfile` to my dotfiles](https://github.com/mudge/dotfiles/blob/master/Brewfile).
+
+*   > The days of spring will surely bring the birds and bees cavorting.
+    >
+    > But since I am a gentleman, I'd much rather be [jorting](https://youtu.be/Sx3ORAO1Y6s).
