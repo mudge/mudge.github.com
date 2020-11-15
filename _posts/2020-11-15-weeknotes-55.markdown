@@ -40,6 +40,38 @@ date: 2020-11-15 10:52:00
         ui.destroyComponent("toggle");
         ```
 
+        _Update:_ In writing this, I thought of a better way to separate the resetting of the UI state from creating your components:
+
+        1. [`destroyComponent`](https://github.com/Shopify/buy-button-js/blob/v2.1.7/src/ui.js#L92-L105) doesn't work if you don't pass the ID of a component's model as it uses [`Array.prototype.splice()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) in a loop. This means the `index` of each component is changing as it iterates so not all components will be destroyed.
+
+           We can fix this by destroying and resetting the components ourselves:
+
+           ```javascript
+           ui.components.product.forEach((component) => component.destroy());
+           ui.components.cart.forEach((component) => component.destroy());
+           ui.components.collection.forEach((component) => component.destroy());
+           ui.components.productSet.forEach((component) => component.destroy());
+           ui.components.modal.forEach((component) => component.destroy());
+           ui.components.toggle.forEach((component) => component.destroy());
+           ui.components.product = [];
+           ui.components.cart = [];
+           ui.components.collection = [];
+           ui.components.productSet = [];
+           ui.components.modal = [];
+           ui.components.toggle = [];
+           ```
+
+           What's more, we can do this when the [`turbolinks:before-cache` event](https://github.com/turbolinks/turbolinks#preparing-the-page-to-be-cached) fires as recommended in the documentation:
+
+           > You can use this event to reset forms, collapse expanded UI elements, or tear down any third-party widgets so the page is ready to be displayed again.
+
+           ```javascript
+            document.addEventListener("turbolinks:before-cache", () => {
+              ui.components.product.forEach((component) => component.destroy());
+              // ...
+            });
+           ```
+
     4.  Following that, [create your components](http://shopify.github.io/buy-button-js/#creating-a-component) as normal.
 
         ```javascript
