@@ -29,7 +29,7 @@ date: 2020-11-15 10:52:00
 
         This will [append a `<style>` tag to the `<head>` of your `document`](https://github.com/Shopify/buy-button-js/blob/v2.1.7/src/ui.js#L273-L281) and [add various event listeners to `document`](https://github.com/Shopify/buy-button-js/blob/v2.1.7/src/ui.js#L273-L281). As the `<head>` of your page will be [merged when a user navigates between pages](https://github.com/turbolinks/turbolinks#navigating-with-turbolinks) this will retain the styles and it is [best practice to only bind event listeners once on `document`](https://github.com/turbolinks/turbolinks#observing-navigation-events).
 
-    3.  On `turbolinks:load`, _reset the inner state of the library_ using [`destroyComponent`](https://github.com/Shopify/buy-button-js/blob/v2.1.7/src/ui.js#L92-L105) as you can no longer guarantee the various DOM elements the UI will have injected into your `<body>` are still present.
+    3.  ~~On `turbolinks:load`, _reset the inner state of the library_ using [`destroyComponent`](https://github.com/Shopify/buy-button-js/blob/v2.1.7/src/ui.js#L92-L105) as you can no longer guarantee the various DOM elements the UI will have injected into your `<body>` are still present.~~
 
         ```javascript
         ui.destroyComponent("product");
@@ -40,37 +40,55 @@ date: 2020-11-15 10:52:00
         ui.destroyComponent("toggle");
         ```
 
-        _Update:_ In writing this, I thought of a better way to separate the resetting of the UI state from creating your components:
+        _Update:_ In writing this, I discovered [`destroyComponent`](https://github.com/Shopify/buy-button-js/blob/v2.1.7/src/ui.js#L92-L105) doesn't work if you don't pass the ID of a component's model. It uses [`Array.prototype.splice()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) to mutate an array while looping over it. This means the position of each component in the array is changing as the loop advances so some components will not be destroyed, e.g.
 
-        1. [`destroyComponent`](https://github.com/Shopify/buy-button-js/blob/v2.1.7/src/ui.js#L92-L105) doesn't work if you don't pass the ID of a component's model as it uses [`Array.prototype.splice()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) in a loop. This means the `index` of each component is changing as it iterates so not all components will be destroyed.
+        ```javascript
+        > const foo = [1, 2, 3, 4];
+        > foo.forEach((e, index) => foo.splice(index, 1));
+        > foo
+        [ 2, 4 ]
+        ```
 
-           We can fix this by destroying and resetting the components ourselves:
+        We can fix this by destroying and resetting the components ourselves:
 
-           ```javascript
-           ui.components.product.forEach((component) => component.destroy());
-           ui.components.cart.forEach((component) => component.destroy());
-           ui.components.collection.forEach((component) => component.destroy());
-           ui.components.productSet.forEach((component) => component.destroy());
-           ui.components.modal.forEach((component) => component.destroy());
-           ui.components.toggle.forEach((component) => component.destroy());
-           ui.components.product = [];
-           ui.components.cart = [];
-           ui.components.collection = [];
-           ui.components.productSet = [];
-           ui.components.modal = [];
-           ui.components.toggle = [];
-           ```
+        ```javascript
+        ui.components.product.forEach((component) => component.destroy());
+        ui.components.cart.forEach((component) => component.destroy());
+        ui.components.collection.forEach((component) => component.destroy());
+        ui.components.productSet.forEach((component) => component.destroy());
+        ui.components.modal.forEach((component) => component.destroy());
+        ui.components.toggle.forEach((component) => component.destroy());
+        ui.components.product = [];
+        ui.components.cart = [];
+        ui.components.collection = [];
+        ui.components.productSet = [];
+        ui.components.modal = [];
+        ui.components.toggle = [];
+        ```
 
-           What's more, we can do this when the [`turbolinks:before-cache` event](https://github.com/turbolinks/turbolinks#preparing-the-page-to-be-cached) fires as recommended in the documentation:
+        Or, more concisely:
 
-           > You can use this event to reset forms, collapse expanded UI elements, or tear down any third-party widgets so the page is ready to be displayed again.
+        ```javascript
+        Object.keys(ui.components).forEach((type) => {
+          ui.components[type].forEach((component) => component.destroy());
+          ui.components[type] = [];
+        });
+        ```
 
-           ```javascript
-            document.addEventListener("turbolinks:before-cache", () => {
-              ui.components.product.forEach((component) => component.destroy());
-              // ...
-            });
-           ```
+        We can do this when the [`turbolinks:before-cache` event fires as recommended in the documentation](https://github.com/turbolinks/turbolinks#preparing-the-page-to-be-cached):
+
+        > You can use this event to reset forms, collapse expanded UI elements, or tear down any third-party widgets so the page is ready to be displayed again.
+
+        This will ensure any DOM elements injected by BuyButton.js won't be cached so you don't end up with duplicate "Add to cart" buttons that don't do anything when clicked.
+
+        ```javascript
+         document.addEventListener("turbolinks:before-cache", () => {
+           Object.keys(ui.components).forEach((type) => {
+             ui.components[type].forEach((component) => component.destroy());
+             ui.components[type] = [];
+           });
+         });
+        ```
 
     4.  Following that, [create your components](http://shopify.github.io/buy-button-js/#creating-a-component) as normal.
 
@@ -103,7 +121,7 @@ date: 2020-11-15 10:52:00
 
         I create a new `<div>` for the component to use as calling [`destroy` will remove the node from the DOM](https://github.com/Shopify/buy-button-js/blob/ba89d7fa2f4944da7f388a9b6d632d764b376e5f/src/component.js#L197-L202).
 
-    I still need to iron out some issues with Turbolinks caching but I'm optimistic.
+    ~~I still need to iron out some issues with Turbolinks caching but I'm optimistic.~~ _Update:_ with the update to use `turbolinks:before-cache` above, all my caching issues are now resolved.
 
 *   On Tuesday, [Apple announced the M1 system on a chip](https://www.apple.com/mac/m1/). While I'm not in a hurry to replace my [beloved](https://marco.org/2017/11/14/best-laptop-ever) refurbished 2015 15-inch MacBook Pro, the pandemic and [my musculoskeletal woes](/2020/01/19/weeknotes-12/) have made my working setup decidedly stationary. I'm seriously considering the [Mac mini](https://www.apple.com/uk/mac-mini/) for the first time.
 
