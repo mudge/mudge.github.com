@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Weeknotes 56 and 57
-excerpt: Cooking as a balm in troubled times, boil in the bag routine change, mistaken Twitter identity, meditating with DUPLO, sending cookies with the Fetch API, increasing errors by nearly 500,000%, trying to collect truly anonymous usage data and not thinking about child's jaws.
+excerpt: Cooking as a balm in troubled times, boil in the bag routine change, mistaken Twitter identity, meditating with DUPLO, sending cookies with the Fetch API, increasing errors by nearly 500,000%, trying to collect truly anonymous usage data and not thinking about a child's jaws.
 date: 2020-11-28 13:47:00
 ---
 *   It has been a trying couple of weeks so we have been in need of uplifting television shows.
