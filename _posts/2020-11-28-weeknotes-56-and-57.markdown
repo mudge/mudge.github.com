@@ -1,0 +1,96 @@
+---
+layout: post
+title: Weeknotes 56 and 57
+excerpt: Cooking as a balm in troubled times, boil in the bag routine change, mistaken Twitter identity, meditating with DUPLO, sending cookies with the Fetch API, increasing errors by nearly 500,000%, trying to collect truly anonymous usage data and not thinking about child's jaws.
+date: 2020-11-28 13:47:00
+---
+*   It has been a trying couple of weeks so we have been in need of uplifting television shows.
+
+    Our current rotation is "[Schitt's Creek](https://www.netflix.com/gb/title/80036165)", "[Ted Lasso](https://tv.apple.com/us/show/ted-lasso/umc.cmc.vtoh0mn0xn7t3c643xqonfzy)", "[Nadiya Bakes](https://www.bbc.co.uk/programmes/m000mfhl)" and "[Nigella's Cook, Eat, Repeat](https://www.bbc.co.uk/programmes/m000pbhc)".
+
+    The latter two are a bit heavy-handed on the "[everything's alright, _everything_'s alright, it's OK, it's _fine_](https://youtu.be/T72TopWbXJg)" but I don't mind.
+
+*   In an attempt to break the [Groundhog Day](https://www.imdb.com/title/tt0107048/) of cooking at home and re-introduce some semblance of a date night, E and I ordered a [meal kit from Perilla](https://perilladining.slerp.com/order). It met our hopes of providing a change from something we would typically make ourselves without being a chore to prepare: the main course came in two vacuum sealed bags and only needed boiling in water for 12 minutes.
+
+    We sat at our dining table for the first time in months and realised how much we needed a break from our daily routine.
+
+*   I got a [Raspberry Pi 400](https://www.raspberrypi.org/products/raspberry-pi-400/) and was pleasantly surprised to find a print edition of the [Raspberry Pi Beginner's Guide](https://magpi.raspberrypi.org/books/beginners-guide-4th-ed) in the box. Leafing through it while booting the Pi 400 for the first time, I pictured myself at 8 years old opening this on Christmas Day.
+
+*   I've had [my Twitter account](https://twitter.com/mudge) for 14 years, initially only using it to send free group text messages. I am not [the most famous "mudge"](https://twitter.com/dotMudge) and am constantly mistaken for [Peiter "Mudge" Zatko](https://en.wikipedia.org/wiki/Peiter_Zatko), so much so that I decided to ["protect" my account](https://help.twitter.com/en/safety-and-security/public-and-protected-tweets) a few weeks ago.
+
+    I did so in the nick of time as [Zatko is the new Head of Security for Twitter](https://uk.reuters.com/article/us-twitter-security/twitter-names-famed-hacker-mudge-as-head-of-security-idUSKBN27W2MB).
+
+    Alas, now I'm receiving a whole new type of misdirected tweet: support and feature requests for Twitter itself.
+
+*   When looking after C, one of my favourite things to do is build him the most elaborate tower out of [DUPLO](https://www.lego.com/en-gb/themes/duplo) possible. I'll incorporate [bogies](https://en.wikipedia.org/wiki/Bogie), animal heads and even the occasional [submarine](https://www.lego.com/en-gb/product/submarine-adventure-10910).
+
+    As I know he will eventually destroy it, it has become a sort of [mandala](https://en.wikipedia.org/wiki/Mandala).
+
+*   In versions of [Mozilla Firefox](https://www.mozilla.org/en-GB/firefox/new/) prior to [61.0](https://www.mozilla.org/en-US/firefox/61.0/releasenotes/), requests made with the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) won't send cookies unless you specify the [`credentials` option](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters).
+
+    I ran into this when [Rails' cross-site request forgery countermeasures](https://guides.rubyonrails.org/security.html#csrf-countermeasures) prevented my [Stripe Checkout](https://stripe.com/en-gb/payments/checkout) integration from working properly in Firefox 52. Switching to the new default value of `same-origin` for `credentials` meant the Rails session cookie _was_ correctly sent and the CSRF forgery protection would permit the request:
+
+    ```javascript
+    fetch("/some-endpoint", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": csrfToken,
+      },
+      // ...
+    })
+    ```
+
+*   Concerned there were other bugs I had missed, I started using [React's Strict Mode](https://reactjs.org/docs/strict-mode.html) to perform stricter checks in development. In particular, I wanted to see how my components would behave when [intentionally double-rendered](https://reactjs.org/docs/strict-mode.html#detecting-unexpected-side-effects).
+
+*   I added [JavaScript error monitoring with Sentry](https://sentry.io/for/javascript/) which caused a 493,803% increase in "events" since the previous week when I was only [monitoring Ruby errors](https://sentry.io/for/ruby/).
+
+    Specifically, I started to see a _lot_ of errors from a [`window.fetch` polyfill](https://github.com/github/fetch/) bundled with the [Shopify BuyButton.js](http://shopify.github.io/buy-button-js/) but almost all of them came from a download page.
+
+    This page shows a simple "Thank you" message to the user and immediately redirects them to a PDF using a [`<meta http-equiv="refresh">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-http-equiv). When trying to reproduce the error in [Safari](https://www.apple.com/uk/safari/), I noticed a bunch of different errors all due to the fact the redirect effectively _cancels_ any JavaScript in progress.
+
+    To work around this, I copied [a technique used by SourceForge and Audible](https://stackoverflow.com/questions/156686/how-to-start-automatic-download-of-a-file-in-internet-explorer) and used an invisible [`<iframe>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) with a `src` pointing to a file with a [`Content-Disposition`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition) of `attachment`, e.g.
+
+    ```html
+    <iframe src="https://example.com/some.pdf" class="d-none"></iframe>
+    ```
+
+    This immediately causes the browser to start downloading the PDF without cancelling any JavaScript running on the page.
+
+*   I've been working on a web service to record anonymous usage statistics of a desktop application. A key goal of this project is to avoid storing [personal data](https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/key-definitions/what-is-personal-data/) and exemplify [data minimisation](https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/principles/data-minimisation/).
+
+    In looking for other applications that do a similar thing, I dug into the [anonymous aggregate user behaviour analytics collected by Homebrew](https://docs.brew.sh/Analytics) which [uses `curl` to report events](https://github.com/Homebrew/brew/blob/ae0332a0f6fcf4846ef032ba217fb00ef66ccc48/Library/Homebrew/utils/analytics.rb) to the [Google Analytics Measurement Protocol](https://developers.google.com/analytics/devguides/collection/protocol/v1).
+
+    Reporting events to a third party over HTTP opens a whole can of worms, particularly as IP addresses alone can be considered personal data. As our reporting needs are very simple, I decided to implement my own service using [Rack](https://rack.github.io) and [Redis](https://redis.io).
+
+    Specifically, requests to the service are stored as daily counts in [Sorted Sets](https://redis.io/topics/data-types#sorted-sets) that expire after 90 days like so:
+
+    ```
+    ZADD choice:2020-11-28 INCR 1 "Some choice"
+    EXPIRE choice:2020-11-28 7776000
+    ```
+
+    This way, we can see what the top ten most popular choices for a particular day are with [`ZREVRANGE`](http://redis.io/commands/zrevrange) like so:
+
+    ```
+    ZREVRANGE choice:2020-11-28 0 10 WITHSCORES
+    ```
+
+    If we want to look at choices over a longer time period, we use [`ZUNIONSTORE`](http://redis.io/commands/zunionstore) to aggregate each of the dates in the range:
+
+    ```
+    ZUNIONSTORE choice:past_week 8 choice:2020-11-20 choice:2020-11-21 choice:2020-11-22 choice:2020-11-23 choice:2020-11-24 choice:2020-11-25 choice:2020-11-26 choice:2020-11-27
+    ```
+
+    Then we use `ZREVRANGE` again to get the results:
+
+    ```
+    ZREVRANGE choice:past_week 0 10 WITHSCORES
+    ```
+
+    Despite best intentions, it is very easy to accidentally store personal data without realising it. For example, even if you don't log requests to your service in your application code, Heroku will log the IP addresses of every request made to your app, [retaining the most recent 1,500 lines of logs for one week](https://devcenter.heroku.com/articles/logging#log-history-limits).
+
+*   I enjoyed [Rowan Manning's "Yeehaw!"](https://rowanmanning.com/posts/yeehaw/) about attempting side projects and tip #5 "When the Fun Stops, Stop" feels especially relevant when working alone. I've had several situations recently where I find myself down some blind alley of refactoring and have to force myself to [`git restore .`](https://git-scm.com/docs/git-restore) and refocus my efforts.
+
+*   C is unhappily teething but please try not to think about how [every child's jaws are packed with teeth](http://memento.muttermuseum.org/detail/child-skull).
