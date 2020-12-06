@@ -1,0 +1,109 @@
+---
+layout: post
+title: Weeknotes 58
+excerpt: Dealing with bad news, very specific tools for the job and migrating from Paperclip to Active Storage.
+date: 2020-12-06 14:22:00
+---
+*   While preparing some chocolate chip cookies, E asked, "there's one left from the last batch, shall I [KitKat it](/2020/05/17/weeknotes-29/)?"
+
+*   I completed my first successful escape attempt from [Hades](https://www.supergiantgames.com/games/hades/) thanks to repeatedly watching [Haelian's videos](https://www.youtube.com/channel/UCSnGGntxMnAM6oDHML2qzaw), particularly the [top 6 easiest builds](https://www.youtube.com/watch?v=EbMkJBxIVaI).
+
+*   After receiving some bad news, I went to make bread and discovered [our kitchen scales](/2020/05/03/weeknotes-27/) didn't work. Sitting on a flat worktop with nothing on the pan, the reading jumped around of its own accord.
+
+    With a ratchet screwdriver in one hand and some [WD-40® Specialist® Fast Drying Contact Cleaner](https://wd40.co.uk/specialist/fast-drying-contact-cleaner/) in the other, I took the whole thing apart.
+
+    <p class="center"><img src="/i/scales.jpg" width="375" height="375" alt></p>
+
+    Prying up the circuit board with a plectrum and discovering water pooled underneath the screen, I thought about my 92 year old grandfather who was the subject of the morning's bad news. Taken ill in hospital, my occasionally overzealous sense of DIY comes entirely from him.
+
+    Always one to be fixing or building something throughout my childhood (or, on one occasion, inexplicably sawing the base off a beloved bin of my mother's), he would invite me to help with whatever contraption he was working on. Even in his eighties, he drilled a hole in his walking stick so he could thread a loop through and secure it to his wrist, preventing it from ever falling from his grasp.
+
+*   After [rain broke our car gate again](/2020/10/11/weeknotes-50/), I bought myself a four-way utility key which could lock and unlock the gate arms properly (rather than struggling with a pair of needle nose pliers). There's something strangely satisfying about having a very specific tool for a job.
+
+    This might be why I own a spanner designed specifically for removing bath taps.
+
+*   I finally had justification to migrate from [Thoughtbot's long-deprecated Paperclip](https://thoughtbot.com/blog/closing-the-trombone) to [Rails' Active Storage](https://guides.rubyonrails.org/active_storage_overview.html) for storing uploads in a web application.
+
+    While Thoughtbot maintain a [migration guide](https://github.com/thoughtbot/paperclip/blob/master/MIGRATING.md), I wanted to make sure I really understood the changes required before making them. Especially since I'm using [Amazon S3](https://aws.amazon.com/s3/) and [Paperclip has a bug that can truncate your uploads when using S3](https://github.com/thoughtbot/paperclip/pull/2637).
+
+    While Paperclip concerns itself with processing uploads and storing them on disk or in a service like S3, it expects you to handle serving them by storing them somewhere publicly accessible (e.g. by [storing files with a `public-read` ACL by default](https://www.rubydoc.info/gems/paperclip/Paperclip/Storage/S3)). As such, all my current uploads are stored in a public S3 bucket and I serve them via a [CloudFront](https://aws.amazon.com/cloudfront/) distribution.
+
+    This notion of both storage and serving are entwined: uploads are stored with relatively human-readable paths, e.g. `/system/books/full_pdfs/00/00/01/original/MyPDF.pdf`, and are used to render any links, images, etc.
+
+    Looking at Active Storage, I was initially confused not to see any support for serving uploads via a CDN. When doing some test uploads to my existing S3 bucket, I was even more confused to see that a file like `MyPDF.pdf` was uploaded to the top-level of the bucket with a [base58](https://api.rubyonrails.org/classes/SecureRandom.html#method-c-base58) filename like `77TMHrHJFvFDwodq8w7Ev2m7`.
+
+    This is because I was still thinking of storage and serving as being one and the same. Diving into [how Active Storage handles linking to uploads](https://guides.rubyonrails.org/active_storage_overview.html#linking-to-files), things started making a little more sense.
+
+    Instead of serving uploads using their "real" location in your storage service, e.g. a random key in an S3 bucket, Active Storage serves all uploads through its own controller with its own URLs. This way, the URL can contain the original filename, e.g. `/rails/blobs/lengthy-signed-id-here/MyPDF.pdf` and generate short-lived, signed URLs to uploads in an otherwise private S3 bucket. What's more, the [implementation of this controller for Rails 6.0](https://github.com/rails/rails/blob/6-0-stable/activestorage/app/controllers/active_storage/blobs_controller.rb) (and [its replacement in the upcoming Rails 6.1](https://github.com/rails/rails/blob/6-1-stable/activestorage/app/controllers/active_storage/blobs/redirect_controller.rb)) is fantastically simple, effectively boiling down to:
+
+    ```ruby
+    def show
+      @blob = ActiveStorage::Blob.find_signed!(params[:signed_id])
+
+      expires_in ActiveStorage.service_urls_expire_in
+      redirect_to @blob.service_url(disposition: params[:disposition]) # or @blob.url(...) for Rails 6.1
+    end
+    ```
+
+    The [official documentation explains this design decision](https://guides.rubyonrails.org/active_storage_overview.html#linking-to-files):
+
+    > Upon access, a redirect to the actual service endpoint is returned. This
+    > indirection decouples the public URL from the actual one, and allows, for
+    > example, mirroring attachments in different services for
+    > high-availability.
+
+    This decoupling means you rely on Rails to maintain your public URLs rather than using the underlying storage (as they rely on signed IDs to records in your database) but affords you the flexibility of moving storage services.
+
+    The difficult bit now is figuring out how to migrate all my existing Paperclip attachments to Active Storage without anyone noticing.
+
+    One useful thing I've discovered is that it is relatively easy to get a reference to a Paperclip attachment for a record even once you've replaced your call to [`has_attached_file`](https://www.rubydoc.info/gems/paperclip/Paperclip%2FClassMethods:has_attached_file) with [`has_one_attached`](https://api.rubyonrails.org/classes/ActiveStorage/Attached/Model.html#method-i-has_one_attached):
+
+    ```ruby
+    class Book < ApplicationRecord
+      has_one_attached :full_pdf # used to be has_attached_file :full_pdf
+    end
+
+    book = Book.first
+    book.full_pdf
+    # => #<ActiveStorage::Attached::One:0xfeedface>
+
+    paperclip_attachment = Paperclip::Attachment.new(:full_pdf, book)
+    # => #<Paperclip::Attachment:0xdecafbad>
+    ```
+
+    You can then convert from a Paperclip attachment to an Active Storage one
+    (albeit by downloading and re-uploading the original file) like so:
+
+    ```ruby
+    book.full_pdf.attach(
+      io: URI.open(paperclip_attachment.url),
+      filename: paperclip_attachment.original_filename,
+      content_type: paperclip_attachment.content_type
+    )
+    ```
+
+    My hope is that I can write a [custom Rake task](https://guides.rubyonrails.org/v4.2/command_line.html#custom-rake-tasks) that will copy all existing attachments to Active Storage before actually switching the application code over to using `has_one_attached` so that the database and S3 bucket are fully populated before the switch, e.g. something like the following:
+
+    ```ruby
+    # The real implementation still uses Paperclip so override for the purposes of this task
+    Book = Class.new(ApplicationRecord) { has_one_attached :full_pdf }
+
+    Book.find_each do |book|
+      paperclip_attachment = Paperclip::Attachment.new(:full_pdf, book)
+      next unless paperclip_attachment.exists?
+
+      book.full_pdf.attach(
+        io: URI.open(paperclip_attachment.url),
+        filename: paperclip_attachment.original_filename,
+        content_type: paperclip_attachment.content_type
+      )
+    end
+    ```
+
+*   On a related note, I was wondering how easy it would be to run your own S3-compatible storage service given that [quite a few competing services offer interoperability](https://en.wikipedia.org/wiki/Amazon_S3#S3_API_and_competing_services). This led me to [MinIO](https://min.io) which is an open source tool you can point at a location on disk and then [interact with it via the AWS CLI](https://docs.min.io/docs/minio-quickstart-guide.html).
+
+*   Despite writing weeknotes for over a year, I only just discovered that Jekyll has  "Live Reload" and "Open URL" [serve command options](https://jekyllrb.com/docs/configuration/options/#serve-command-options). No more will I manually open my browser to `localhost:4000` or repeatedly mash ⌘R:
+
+    ```console
+    $ jekyll s -lo
+    ```
