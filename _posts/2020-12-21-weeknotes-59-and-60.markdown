@@ -1,0 +1,103 @@
+---
+layout: post
+title: Weeknotes 59 and 60
+excerpt: Decamping to the north, two significant DIY projects and things learnt while continuing the migration to Active Storage.
+date: 2020-12-21 12:10:00
+---
+*   After [last week](/2020/12/06/weeknotes-58/), we decided to decamp to my parents' house for the foreseeable future.
+
+    The day after we made the decision, C came home from nursery with a cold and E caught it soon after. We waited for it to pass but, by Friday, our anxiety led to a last minute [coronavirus test](https://www.gov.uk/get-coronavirus-test) and a nervous two day wait for the result. Just as we were about to give up travelling that weekend, the text message arrived: a negative result.
+
+    Within seconds, E ordered our first (and perhaps only) [Pret](https://www.pret.co.uk/en-GB/christmas-menu) of 2020 while we loaded up the car. Complaining about the inexplicable popularity of cranberries in every festive sandwich, we drove north without stopping, listening to [Adam Buxton interview Sir Paul McCartney](https://www.adam-buxton.co.uk/podcasts/7-bfk9m-4l8kp-blcga-jwabs-blbb8-b9mjx-fj3gr-j4lyp-9jlhe-a4bhm-c67yy-szhgm-m8pcd-l376z-zjb32-wh9dr-za87b-c8l3j-byyhb-segba-hlsc6-5m648) along the way.
+
+    [I'm so glad we did](https://www.gov.uk/guidance/tier-4-stay-at-home).
+
+*   With my parents available to look after C, I spent the day I usually look after him alone constructing a climbing frame.
+
+    <p class="center"><img src="/i/slide-under-construction.jpg" width="375" height="500" alt></p>
+
+    The instructions said it would take two people four hours to complete. It took me around seven hours to screw, bolt, drill and hammer together the finished product.
+
+    <p class="center"><img src="/i/finished-slide.jpg" width="375" height="282" alt></p>
+
+    It's no [1960s cocktail cabinet](https://twitter.com/Stew/status/1340683776326856704) but it is the most complicated thing I have built.
+
+*   During C's giddy exploration of his new surroundings, he threw my parents' 23 year old telephone base station on their kitchen tiles. It immediately stopped working, rendering all of their handsets useless.
+
+    Upon inspection, we realised the station had landed on its own cable, severing two of four wires within.
+
+    After speaking with [my father-in-law](/2020/02/23/weeknotes-17/), he lent me his soldering iron and some solder sleeves and I attempted to reattach each of the four wires.
+
+    <p class="center"><img src="/i/soldering.jpg" width="375" height="282" alt></p>
+
+    I have never successfully repaired anything by soldering but this was my very first success!
+
+*   I used [Rake's `multitask`](https://www.rubydoc.info/gems/rake/12.0.0/Rake/MultiTask) for the first time:
+
+    > Same as a regular task, but the immediate prerequisites are done in parallel using Ruby threads.
+
+    ```ruby
+    desc 'Run all migrations in parallel'
+    multitask migrate: %i[migrate_issues migrate_books migrate_magazines]
+
+    desc 'Migrate issues'
+    task migrate_issues: :environment do
+      # ...
+    end
+
+    # ...
+    ```
+
+*   My adventures with [Rails' Active Storage](https://guides.rubyonrails.org/active_storage_overview.html) continue and the use of [direct routes](https://guides.rubyonrails.org/routing.html#direct-routes) stands out while reading [the source code](https://github.com/rails/rails/blob/6-1-stable/activestorage/config/routes.rb#L18-L24). This allows you to create powerful routing helpers that take arbitrary objects (rather than relying on [overriding `ActiveRecord::Base#to_param`](https://guides.rubyonrails.org/routing.html#overriding-named-route-parameters)):
+
+    ```ruby
+    get '/downloads/:signed_id/*filename' => 'downloads#show', as: :download_blob
+
+    direct :download do |object, options|
+      signed_id = object.some.custom.signed_id
+      filename = object.another.custom.filename
+
+      route_for(:download_blob, signed_id, filename, options)
+    end
+
+    # So now you can call..
+
+    download_path(object)
+    download_url(object)
+    ```
+
+*   While I've since given up on [Active Storage's public access mode](https://guides.rubyonrails.org/active_storage_overview.html#public-access) as it doesn't let you set a [`Content-Disposition`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition) with [S3](https://aws.amazon.com/s3/), trying to make it work led me to discover [`Aws::S3::Object#public_url`](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/S3/Object.html#public_url-instance_method) doesn't respect the [AWS client's `:use_accelerate_endpoint`](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/S3/Client.html#initialize-instance_method) option to enable [Amazon S3 Transfer Acceleration](https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html).
+
+    You can work around this by instead setting a custom `:endpoint` in your client configuration:
+
+    ```yaml
+    amazon:
+      service: S3
+      endpoint: "https://s3-accelerate.amazonaws.com"
+    ```
+
+*   I also disappeared down a bit of a rabbit-hole trying to debug why an [Active Storage Variant](https://guides.rubyonrails.org/active_storage_overview.html#transforming-images) in my tests wasn't being detected as [`processed`](https://api.rubyonrails.org/classes/ActiveStorage/Variant.html#method-i-processed).
+
+    After much use of [Pry](http://pry.github.io), I discovered the bug was being caused by the fact Variant keys are generated by [`ActiveSupport::MessageVerifier#generate`](https://api.rubyonrails.org/classes/ActiveSupport/MessageVerifier.html#method-i-generate) which uses [`Marshal.dump`](https://ruby-doc.org/core-2.7.2/Marshal.html#dump-method) to serialize a Variant's transformations and, while my test variant seemed identical to the expected variant, there was a very subtle difference: the filename of the test variant was encoded with ASCII, not UTF-8:
+
+    ```ruby
+    > Marshal.dump(variant1.variation.transformations)
+    "\x04\b{\b:\vformatI\"\bpng\x06:\x06ET:\x12resize_to_fit[\a0i\x01\x80:\fconvertI\"\bjpg\x06;\x06T"
+    > Marshal.dump(variant2.variation.transformations)
+    "\x04\b{\b:\vformatI\"\bpng\x06:\x06EF:\x12resize_to_fit[\a0i\x01\x80:\fconvertI\"\bjpg\x06;\x06T"
+    ```
+
+    The difference can be hard to spot: it's the `\x06ET` after `png` instead of `\x06EF`.
+
+    This stems from the [encoding of `Rails.root` being ASCII](https://github.com/rails/rails/issues/25078) (which is due to the underlying behaviour of [`Pathname`](https://ruby-doc.org/stdlib-2.7.2/libdoc/pathname/rdoc/Pathname.html)) and [`Rack::Test::UploadedFile`](https://www.rubydoc.info/github/brynary/rack-test/master/Rack/Test/UploadedFile) using that filename to determine the [`original_filename`](https://www.rubydoc.info/github/brynary/rack-test/master/Rack/Test/UploadedFile#original_filename-instance_method).
+
+    Passing an explicit `:original_filename` fixes this:
+
+    ```ruby
+    Rack::Test::UploadedFile.new(
+      Rails.root.join('spec/fixtures/image.png'),
+      original_filename: 'image.png'
+    )
+    ```
+
+    I warned you it was a rabbit-hole.
