@@ -60,16 +60,17 @@ Note this isn't an encrypted file system so anyone can read anything written to 
 Now we want to mount this filesystem on our Raspberry Pi so that we can access it like any other directory. Let's do this and ensure that the mount persists whenever the Raspberry Pi restarts by appending an entry to the `fstab`:
 
 ```console
-pi@raspberrypi:~ $ echo 'UUID=e613b4f3-7fb8-463a-a65d-42a14148ea65	/media	ext4	sync,noexec,nodev,noatime,nodiratime	0	0' | sudo tee -a /etc/fstab
+pi@raspberrypi:~ $ echo 'UUID=e613b4f3-7fb8-463a-a65d-42a14148ea65	/media	ext4	noexec,nodev,noatime,nodiratime	0	0' | sudo tee -a /etc/fstab
 ```
 
 This instructs our Raspberry Pi to mount the drive identified by the given UUID (which we got earlier when calling `blkid`) at the directory `/media` as an ext4 filesystem with a variety of flags:
 
-* `sync`: all writes to the drive should be done synchronously;
 * `noexec`: do not allow direct execution of any binaries on the mounted filesystem as it's only going to be use for backup storage;
 * `nodev`: do not interpret character or block special devices on the filesystem;
 * `noatime`: do not store access times on this filesystem;
 * `nodiratime`: do not store directory access times on this filesystem.
+
+(**Update:** I previously recommended using the `sync` flag but [Dries Oeyen pointed out this typically has a big impact on performance](https://twitter.com/DriesOeyen/status/1341408326664523779) and the [ext4 filesystem](https://www.kernel.org/doc/Documentation/filesystems/ext4.txt) doesn't support it, instead preferring the use of `commit=nrsec` to specify a number of seconds after which data and metadata will be synchronised.)
 
 The two numbers at the end of the line instruct your Raspberry Pi to ignore this filesystem when using `dump` and not to check it with `fsck` when rebooting.
 
