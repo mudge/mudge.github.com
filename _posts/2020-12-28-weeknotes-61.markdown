@@ -1,0 +1,37 @@
+---
+layout: post
+title: Weeknotes 61
+excerpt: The annual cleansing ritual, first words, festive soldering, learning Go and a lot of Christmas specials.
+date: 2020-12-28 13:33:00
+---
+*   As 2020 draws to a close, I performed the annual cleansing ritual of formatting my laptop and upgrading to [macOS Big Sur](https://www.apple.com/uk/macos/big-sur/).
+
+    Following [Tom](https://tomstu.art)'s recommendation, I bought a [Samsung T5 500GB portable SSD](https://www.samsung.com/uk/memory-storage/portable-ssd/portable-ssd-t5-500gb-blue-mu-pa500b-eu/) and used [SuperDuper!](https://www.shirt-pocket.com/SuperDuper/SuperDuperDescription.html) to take a copy of my entire hard drive. I then upgraded to Big Sur, [restarted my Mac into macOS Recovery](https://support.apple.com/en-gb/HT204904), used Disk Utility to erase my internal hard drive and reinstall macOS from scratch.
+
+    While I don't have an [automation tool to my name](https://github.com/tuzz/zz), almost everything I need to set up my computer can be found in my [dotfiles](https://github.com/mudge/dotfiles) (aside from my private SSH and GPG keys). After copying over my music and photo libraries, I was back up and running within an hour.
+
+*   We enjoyed Christmas day with the family with its equal parts of rich food and busying myself with the construction of various toys given to C (e.g. a tricycle and a repair garage with 32 pieces of track).
+
+*   While we've been staying with my parents, C has started saying words. His first was "apple" and his vocabulary has now expanded to include "ball" and "dada" which, confusingly, is his attempt at "grandad".
+
+*   C was particularly fond of a [Hey Duggee wooden puzzle](https://www.heyduggee.com/products/hey-duggee-sound-puzzle/) from my parents but managed to break it after dropping it only once.
+
+    From the outside, it seemed the circuit board attached to the inside of the puzzle had simply come loose but, as the entire unit was glued shut, I had to take a handsaw to it to investigate further.
+
+    After much sawing and clumsy prying with various screwdrivers, I managed to get inside to discover the integrated circuit that powered the device had detached as it was stuck in a blob of glue.
+
+    <p class="center"><img src="/i/ic.jpg" width="375" height="375" alt></p>
+
+    After asking [Leo](https://twitter.com/cassarani) for advice, he encouraged me to look up surface-mount technology (SMT) soldering and give it a go. [Calling upon my father-in-law's soldering iron once more](/2020/12/21/weeknotes-59-and-60/), we gave it our best shot and got it (mostly) working! Only one of the characters (sorry, [Tag](https://www.heyduggee.com/characters/)) no longer speaks when you fit their piece in the puzzle but five out of six isn't bad.
+
+*   Leo has also been teaching me [Go](https://golang.org) as I've been working on a custom HTTP [reverse proxy](https://golang.org/pkg/net/http/httputil/#ReverseProxy) to complete requests on behalf of a desktop application whose HTTP client has not been [configured to follow redirects](https://curl.se/libcurl/c/CURLOPT_FOLLOWLOCATION.html).
+
+    Despite having done the excellent [A Tour of Go](https://tour.golang.org/welcome/1), I find that new languages only really stick when I try to ship my own project.
+
+    Writing automated tests using the [httptest package](https://golang.org/pkg/net/http/httptest/) was great fun and Leo's recommendation to [watch Mitchell Hashimoto's "Advanced Testing with Go", focussing on subtests and table driven tests](https://www.youtube.com/watch?t=376&v=8hQG7QlcLBk&feature=youtu.be) was invaluable.
+
+    It was also useful to learn about the [standard Go project layout](https://github.com/golang-standards/project-layout) even though my project is so small I've stuck everything in `main.go`.
+
+*   I've been working my way through various Christmas specials: [Mortimer & Whitehouse: Gone Christmas Fishing](https://www.bbc.co.uk/iplayer/episode/m000qf09/mortimer-whitehouse-gone-fishing-gone-christmas-fishing), [Motherland: Christmas Special](https://www.bbc.co.uk/iplayer/episode/m000qryp/motherland-christmas-special), [The Great British Sewing Bee: Celebrity Christmas Special](https://www.bbc.co.uk/iplayer/episode/m000qqt4/the-great-british-sewing-bee-2020-specials-1-celebrity-christmas-special) and, of course, [The Great Christmas Bake Off 2020](https://www.channel4.com/programmes/the-great-british-bake-off-festive-specials/on-demand/70300-001).
+
+    I've still got [The Repair Shop at Christmas](https://www.bbc.co.uk/iplayer/episode/m000qqsy/the-repair-shop-at-christmas) and the [new episode of Worzel Gummidge](https://www.bbc.co.uk/iplayer/episode/m000qq50/worzel-gummidge-saucy-nancy) to go.
