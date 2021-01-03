@@ -1,0 +1,68 @@
+---
+layout: post
+title: Weeknotes 62
+excerpt: A snowman, this time last year, reconsidering exercise, dental instruments, optionally rotating eyes and colour schemes.
+date: 2021-01-03 16:55:00
+---
+*   I built a snowman.
+
+    <p class="center"><img src="/i/snowman.jpg" width="375" height="500" alt></p>
+
+*   It's been great to read [people's](https://alicebartlett.co.uk/blog/yearnotes-2020) [yearnotes](https://tomstu.art/yearnotes-0-regular-reflection).
+
+    [This time last year](/2020/01/05/weeknotes-10/) I was still on "parental leave" and anxious about finding a new client. By the beginning of March, I was ready to spend most of the year commuting over two hours a day to west London. In the end, I only spent one week doing that commute before everyone was working remotely. It meant I've been able to spend much more time with C than I might have hoped but I still can't reconcile "C the baby" with "C the little boy who loves to climb stairs".
+
+*   It's the end of my second year working for [myself](https://www.ghostcassette.com) and I've been exceptionally lucky enough to work with [some](https://spyscape.com "SPYSCAPE") [great](https://gofreerange.com "Go Free Range") [clients](https://www.raspberrypi.org "Raspberry Pi").
+
+    I have even less of an idea than usual about what the future might hold so I'm extremely grateful to have the flexibility to work from home. It's even more appealing now that I finally have a desk with a window after working in an unlit hallway for nine months.
+
+*   On top of an unusually sedentary year, Christmas and the [Accidental Tech Podcast review of Apple Fitness+](https://atp.fm/410) have pushed me further into reconsidering my exercise regime (which currently consists of nothing).
+
+    I've ordered [Ring Fit Adventure](https://ringfitadventure.nintendo.com) and a new pair of running shoes in an attempt to cajole me into some form of rigorous movement at least once a day.
+
+*   For a friend's birthday on New Year's Day, E and I took part in an online escape room over [Jitsi](https://jitsi.org).
+
+    There were four of us playing and a single "games master" (no, not [that one](https://en.wikipedia.org/wiki/GamesMaster)) who acted as a sort of human text adventure game: they described the scene and responded to our commands to look at things, use objects, etc. As we slowly solved puzzles and revealed things in the scene, they presented an updating top-down view of the room.
+
+    It was a surprising amount of fun though it was difficult to coordinate our decision what to do next. At one point, we freed a character trapped in a cupboard and my friend instructed the games master to remove all of their teeth with dental instruments.
+
+*   While working with [Create React App](https://create-react-app.dev), I noticed it uses the [`prefers-reduced-motion` CSS media feature](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion).
+
+    Some may argue the [rotating eyes on my company logo](https://www.ghostcassette.com) are vital but I thought it best to [disable them if someone has requested that non-essential motion is disabled](https://github.com/ghostcassette/ghostcassette.github.io/commit/7f92087068b02d9c425179934d0cdb0cd677b836).
+
+    ```css
+    @media (prefers-reduced-motion: no-preference) {
+        .eye {
+            animation: playing 23s linear infinite;
+        }
+    }
+    ```
+
+    This way, the eyes only rotate if you haven't explicitly asked for reduced motion, i.e. if `prefers-reduced-motion` is set to `reduce`, the [`animation` property](https://developer.mozilla.org/en-US/docs/Web/CSS/animation) isn't set at all.
+
+*   As it is a new year and I [recently formatted my laptop](/2020/12/28/weeknotes-61/), it's time for a new Terminal colour scheme! Having used [Solarized](https://ethanschoonover.com/solarized/) and [Nord](https://www.nordtheme.com) in the past, [Leo](https://twitter.com/cassarani) introduced me to [Base16](http://chriskempson.com/projects/base16/).
+
+    It took me a while to understand that I had to combine both [Base16 Shell](https://github.com/chriskempson/base16-shell) (to set my shell colours) and [Base16 Vim](https://github.com/chriskempson/base16-vim/) (to use those colours in Vim).
+
+    With both installed and configured, I could run the following in the shell and have both the Terminal and vim update:
+
+    ```console
+    $ base16_tomorrow
+    ```
+
+    However, after having [pointlessly sped up my zsh startup time](/2019/12/01/weeknotes-5/) over a year ago, I am now avoiding [Base16 Shell's `profile_helper.sh`](https://github.com/chriskempson/base16-shell/blob/master/profile_helper.sh) and instead use the following in my `.zshrc` (where `.base16_theme` is a symlink to `~/.config/base16-shell/scripts/base16-tomorrow.sh`):
+
+    ```zsh
+    source ~/.base16_theme
+    ```
+
+    And the following in my `.vimrc`:
+
+    ```vim
+    let base16colorspace=256
+    colorscheme base16-tomorrow
+    ```
+
+    If I want to choose a different theme, I need only update the `.base16_theme` symlink and the `colorscheme` in my `.vimrc`.
+
+*   Happy new year!
