@@ -1,0 +1,39 @@
+---
+layout: post
+title: Weeknotes 63
+excerpt: Arctic scenes, pointless defiance, networking problems and photo books.
+date: 2021-01-10 15:16:00
+---
+*   I haven't seen snow like this in [years](/2019/01/02/2018-yearnotes/).
+
+    <p class="center"><img src="/i/lane.jpg" width="375" height="282" alt></p>
+
+*   I'm going to try to keep this quick as I want to try out my [new running shoes](/2021/01/03/weeknotes-62/) before C wakes up. The feeling of having eaten too much at every meal is becoming far too familiar.
+
+*   C has various place mats, posters and books that all feature [cupcakes](https://en.wikipedia.org/wiki/Cupcake) for the letter C. In an act of pointless defiance, I am insisting on calling them "buns" instead.
+
+*   My parents' house is shaped like one long corridor so I bought them a [BT Whole Home Wi-Fi](https://shop.bt.com/learnmore/bt-branded-products-and-services/bt-whole-home-wi-fi/) system a few years ago. Now there are three of us working from home (not to mention my dad's binge-watching of any Netflix show that has more than three seasons), we're especially vulnerable to any problems with the internet.
+
+    The day after upgrading their router to the [hub](https://shop.bt.com/products/bt-smart-hub-2-097683-DYNK.html) BT insisted on sending them, we started to have problems. I spent that evening meticulously re-arranging the various nodes in the mesh network, trying to ensure a reading of "Excellent Connection" for each one (with mixed success).
+
+    The very next day at 8:30 am, all of our internet cut out unexpectedly.
+
+    C had pushed the router off a side table, turning the whole thing off.
+
+*   For Christmas, I put together and printed a photo album of C's 2020 using [Mimeo Photos](https://www.mimeophotos.com) as [they used to be the provider of Apple's official photo books](https://www.mimeophotos.com/blog/apple-picture-books).
+
+    I've been very happy with the result but [during my upgrade to Big Sur](/2020/12/28/weeknotes-61/), I downloaded my photo library afresh from [iCloud Photo Library](https://support.apple.com/en-gb/HT204264) after experiencing [syncing problems](https://daringfireball.net/2018/10/icloud_photo_library_start_over) with a restored backup. I clicked on my Mimeo project before all my original photos had finished downloading and it threw a ["Some Photos Are Missing" warning](http://support.mimeophotos.com/en/articles/2965789-some-photos-are-missing-warning), immediately gutting the project of all its photos.
+
+    Thankfully, I still had a [backup](https://www.shirt-pocket.com/SuperDuper/SuperDuperDescription.html) of my entire photo library including the full project and, sure enough, [loading that into Photos.app](https://support.apple.com/en-us/HT204414) worked fine but there was seemingly no way to transfer that project over to my new library.
+
+    This led me to take the following steps:
+
+    1. Disable iCloud Photos.
+    2. Drag my entire photo library to the [Bin](https://www.imore.com/apple-ditches-trash-can-name-uk-macos-catalina-update).
+    3. Restore my working (but now out-of-date) photo library from my backup.
+    4. Without opening my Mimeo project, delete the entire contents of my library.
+    5. Re-enable iCloud Photos so that my library is re-downloaded, hopefully fixing my project.
+
+    Step 4 took over three hours to complete.
+
+    It didn't work.
