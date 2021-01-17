@@ -1,0 +1,43 @@
+---
+layout: post
+title: Weeknotes 64
+excerpt: Playing old adventure games, extracting subdirectories from git repositories, programming robots, a photo book follow-up and more than five minutes ahead.
+date: 2021-01-17 11:29:00
+---
+*   After reading [Duncan Jones' script for "Full Throttle"](https://www.dropbox.com/s/ojb9zaplszjcp63/FULL%20THROTTLE%20-for%20all.pdf?dl=0), I replayed the [original 1995 LucasArts adventure game](https://en.wikipedia.org/wiki/Full_Throttle_(1995_video_game)) using [ScummVM](https://www.scummvm.org) having [copied the files from my original CD-ROMs](https://wiki.scummvm.org/index.php?title=Datafiles#Full_Throttle).
+
+    I wanted to do the same with [Broken Sword](https://en.wikipedia.org/wiki/Broken_Sword) 1 and 2 but struggled to find a computer in the house with a disc drive. I ended up using my grandad's abandoned [Asus](https://www.asus.com/uk/) laptop and [SMB](https://en.wikipedia.org/wiki/Server_Message_Block) file sharing to get the [files](https://wiki.scummvm.org/index.php?title=Datafiles#Broken_Sword:_The_Shadow_of_the_Templars) onto my Mac.
+
+*   I've been thoroughly enjoying [Brian David Gilbert's "Unraveled" series for Polygon](https://www.youtube.com/playlist?list=PLaDrN74SfdT7Ueqtwn_bXo1MuSWT0ji2w) (now [complete](https://www.polygon.com/videos/2020/12/28/22195388/pokemon-edibility-unraveled)), e.g. "[Which Dark Souls boss is the best manager?](https://youtu.be/Zb4CxTTFDfA)"
+
+*   [Kushal's tweet](https://twitter.com/KushalP/status/1346958399972499457) introduced me to the term "[doomscrolling](https://en.wikipedia.org/wiki/Doomscrolling)" and, perhaps it is the [Baader-Meinhof phenomenon](https://en.wikipedia.org/wiki/Frequency_illusion) but I find myself doing it a _lot_.
+
+*   I needed to extract a custom WordPress theme from a subdirectory in a git repository while preserving its git history. I first tried using [`git filter-branch`](https://git-scm.com/docs/git-filter-branch) but [it told me](https://patchwork.kernel.org/project/git/patch/20190904223239.571-3-newren@gmail.com/) to use [`git filter-repo`](https://github.com/newren/git-filter-repo) instead.
+
+    I was able to extract the subdirectory as well as some top-level files and rewrite some hard-coded paths all with a single command:
+
+    ```console
+    $ git filter-repo --path .stylelintrc --path .stylelintignore --path .phpcs.xml --path package.json --path package-lock.json --path gulpfile.js --path .browserslistrc --path .eslintrc --path .prettierrc --path wp-content/themes/custom-theme/ --path assets/ --path-rename wp-content/themes/custom-theme/: --path-rename assets/: --replace-text ../replacements.txt
+    ```
+
+*   We got our very first robot vacuum cleaner and watching it navigate takes me back to 2004 and [my adventures programming LEGO MINDSTORMS](https://github.com/mudge/lego_bulldozer) with [Not Quite C](http://bricxcc.sourceforge.net/nqc/).
+
+*   I finally managed to solve [my photo book and iCloud Photos syncing problems](/2021/01/10/weeknotes-63/):
+
+    1. I restored my working (but outdated) photo library from a backup.
+    2. I [logged out of iCloud](https://support.apple.com/en-gb/HT208243) altogether on my Mac.
+    3. I [logged back into iCloud](https://support.apple.com/en-gb/HT208682#macos).
+    4. I tried to enable iCloud Photos.
+    5. I encountered a [baffling error that "iCloud Photos is only available on macOS Standard, macOS Extended and APFS formatted volumes"](https://discussions.apple.com/docs/DOC-13744).
+    6. I [restarted into macOS Recovery](https://support.apple.com/en-gb/HT201314).
+    7. I ran [First Aid](https://support.apple.com/en-gb/guide/disk-utility/dskutl1040/mac) on my Big Sur volumes.
+    8. I restarted.
+    9. I successfully enabled iCloud Photos, accepting its warning that I might run out of storage and watched as it began to re-upload all ~37,000 photos and videos in my library.
+    10. Days passed.
+    11. The update completed!
+
+    I now have my latest photos _and_ my Mimeo Photos project is intact.
+
+*   I've been reading [Philip Pullman's "Northern Lights"](https://en.wikipedia.org/wiki/Northern_Lights_(novel)) (after enjoying the [BBC TV adaptation](https://www.bbc.co.uk/programmes/m000b1v2)) and this quote from Roger felt a bit close to home:
+
+    > There en't been nothing good more than about five minutes ahead. Like I can see now, this bath's nice, and there's a nice warm towel there, about five minutes away. And once I'm dry, maybe I'll think of summing nice to eat, but no further ahead than that. And when I've eaten, maybe I'll look forward to a kip in a comfortable bed. But after that, I dunno, Lyra. There's been terrible things we seen, en't there? And more a coming, more'n likely. So I think I'd rather not know what's in the future. I'll stick to the present.
