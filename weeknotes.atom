@@ -2,15 +2,16 @@
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-<title>{{ site.title | escape_once }}</title>
+<title>Weeknotes &mdash; {{ site.title | escape_once }}</title>
 <link href="{{ "/" | absolute_url }}"/>
 <link href="{{ page.url | absolute_url }}" rel="self"/>
 <updated>{{ site.time | date_to_xmlschema }}</updated>
-<id>{{ "/" | absolute_url }}</id>
+<id>{{ "/weeknotes" | absolute_url }}</id>
 <author>
   <name>Paul Mucur</name>
 </author>
 {% for post in site.posts -%}
+{%- if post.categories contains "weeknotes" -%}
 <entry>
   <title type="html">{{ post.title | xml_escape }}</title>
   <link href="{{ post.url | absolute_url }}"/>
@@ -19,5 +20,6 @@
   <summary type="html">{{ post.excerpt | xml_escape }}</summary>
   <content type="html">{{ post.content | xml_escape }}</content>
 </entry>
+{%- endif -%}
 {%- endfor %}
 </feed>

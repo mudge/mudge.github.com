@@ -33,6 +33,7 @@ html {
   line-height: 1.5rem;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .banner {
@@ -202,6 +203,34 @@ strong, b {
 
 .column:last-of-type {
   padding-left: 1.5rem;
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('f/i.eot?ul5txc');
+  src:  url('f/i.eot?ul5txc#iefix') format('embedded-opentype'),
+    url('f/i.ttf?ul5txc') format('truetype'),
+    url('f/i.woff?ul5txc') format('woff'),
+    url('f/i.svg?ul5txc#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.rss {
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.rss:before {
+  content: "\ea9c";
 }
 
 /* Syntax highlighting. */
