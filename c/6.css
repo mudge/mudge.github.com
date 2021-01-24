@@ -192,6 +192,7 @@ strong, b {
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+  margin: 0 -0.75rem;
 }
 
 .column {
@@ -199,10 +200,7 @@ strong, b {
   flex-direction: column;
   flex-basis: 100%;
   flex: 1;
-}
-
-.column:last-of-type {
-  padding-left: 1.5rem;
+  margin: 0 0.75rem;
 }
 
 @font-face {
