@@ -186,6 +186,24 @@ strong, b {
   text-align: center;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.column:last-of-type {
+  padding-left: 1.5rem;
+}
+
 /* Syntax highlighting. */
 .highlight .c { color: #998; font-style: italic; }
 .highlight .err { background-color: #e3d2d2; color: #a61717; }

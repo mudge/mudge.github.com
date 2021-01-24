@@ -17,7 +17,7 @@
     <meta name=twitter:description content="{{ site.description | escape_once }}">
     <meta name=viewport content="width=device-width, initial-scale=1">
     <!--[if lt IE 9]><script src=http://html5shiv.googlecode.com/svn/trunk/html5.js></script><![endif]-->
-    <link rel=stylesheet href=/c/3.css>
+    <link rel=stylesheet href=/c/4.css>
     <link rel=alternate type=application/atom+xml href=/index.atom>
     <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
     <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
@@ -52,12 +52,30 @@
       </p>
     </header>
     <main>
-      <dl>
-        {% for post in site.posts %}
-        <dt><a href={{ post.url }} rel=bookmark>{{ post.title }}</a></dt>
-        <dd>{{ post.excerpt }}</dd>
-        {% endfor %}
-      </dl>
+      <div class="row">
+        <div class="column">
+          <h2>Posts</h2>
+          <dl>
+            {% for post in site.posts %}
+              {% unless post.categories contains "weeknotes" %}
+              <dt><a href={{ post.url }} rel=bookmark>{{ post.title }}</a></dt>
+              <dd>{{ post.excerpt }}</dd>
+              {% endunless %}
+            {% endfor %}
+          </dl>
+        </div>
+        <div class="column">
+          <h2>Weeknotes</h2>
+          <dl>
+            {% for post in site.posts %}
+              {% if post.categories contains "weeknotes" %}
+              <dt><a href={{ post.url }} rel=bookmark>{{ post.title }}</a></dt>
+              <dd>{{ post.excerpt }}</dd>
+              {% endif %}
+            {% endfor %}
+          </dl>
+        </div>
+      </div>
     </main>
     {% include footer.html %}
   </body>
