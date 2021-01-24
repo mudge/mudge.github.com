@@ -1,0 +1,60 @@
+---
+title: Weeknotes 65
+excerpt: Separating out weeknotes, scaling a Rails application, plugging a memory leak and a little boat, no bigger than your hand.
+date: 2021-01-24 15:10:00
+---
+*   Taking inspiration from [Rowan](https://rowanmanning.com) and [Alice](https://alicebartlett.co.uk/blog/programming-note), I've separated my weeknotes (and [solitary yearnotes](/2019/01/02/2018-yearnotes/)) from my other, less frequent posts (e.g. "[Using a Raspberry Pi for Time Machine](/2019/11/12/using-a-raspberry-pi-for-time-machine/)") on the [homepage](/).
+
+    As well as the existing [combined Atom feed](/index.atom), there are now separate feeds for [posts](/posts.atom) and [weeknotes](/weeknotes.atom) if you only care to subscribe to one.
+
+*   In preparation for a [launch](https://www.raspberrypi.org/blog/raspberry-pi-silicon-pico-now-on-sale/) and an expected burst of traffic this week, I worked on automatically scaling a [Rails](https://rubyonrails.org) application hosted on [Heroku](https://www.heroku.com).
+
+    Heroku provide their [own autoscaling](https://devcenter.heroku.com/articles/scaling#autoscaling) but only for their ["performance" tier of dynos](https://devcenter.heroku.com/articles/dyno-types) which are 10 times the price of their standard ones.
+
+    Thankfully, they recommend third-party add-ons such as [Rails Autoscale](https://railsautoscale.com) if you're not using performance dynos or if your app has variable response times (as most do). I hadn't heard of Rails Autoscale before but [the demo](https://www.youtube.com/watch?v=hkZgpc3BD4E) was very compelling. Its use of [Heroku "request queueing" time](https://help.heroku.com/QB0BKTNJ/is-it-normal-for-requests-to-spend-a-long-time-in-request-queuing-as-reported-by-newrelic) rather than response time makes it especially useful when your app might have the occasional spike in response time without impacting its ability to serve requests to other clients.
+
+    [Adam McCrea's "How Many Heroku Dynos Do you Need, and Which Size—An Opinionated Guide"](https://railsautoscale.com/how-many-dynos/) is a fantastic guide and led me to look into "[in-dyno concurrency](https://railsautoscale.com/how-many-dynos/#heroku-routing-and-in-dyno-concurrency)" with [multiple Puma workers](https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#workers) rather than relying solely on [threads](https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#threads).
+
+    However, as soon as I bumped the number of workers up for my application, a slow memory leak became much more pronounced with my app peaking at 131.5% of its memory quota.
+
+*   Fortunately, I stumbled across [Frederick Cheung's "Debugging a Memory Leak in a Rails App"](https://www.spacevatican.org/2019/5/4/debugging-a-memory-leak-in-a-rails-app/) which not only described how to find memory leaks in running Rails applications using [rbtrace](https://github.com/tmm1/rbtrace) and [Sam Saffron's excellent guide](https://samsaffron.com/archive/2015/03/31/debugging-memory-leaks-in-ruby) but described a [potential memory leak in Rails' `prepend_view_path`](https://github.com/rails/rails/issues/14301).
+
+    What did I find in a [`before_action`](http://api.rubyonrails.org/classes/AbstractController/Callbacks/ClassMethods.html#method-i-before_action) in my Application Controller? Something like the following:
+
+    ```ruby
+    def prepend_subdomain_specific_templates
+      prepend_view_path(Rails.root.join('app', 'views', request.subdomain))
+    end
+    ```
+
+    As Frederick points out, prepending a `String` or [`Pathname`](https://ruby-doc.org/stdlib-2.7.2/libdoc/pathname/rdoc/Pathname.html) to the view path [causes Rails to initialize a new Action View `Resolver`](https://github.com/rails/rails/blob/6-1-stable/actionview/lib/action_view/path_set.rb#L84) for every request. This would be fine as Ruby should garbage collect the [`Resolver`](http://api.rubyonrails.org/classes/ActionView/Resolver.html)s when they are no longer used but Rails' template caching means that each `Resolver` defines methods whose names are never collected, causing a slow but steady leak. If you're calling [`prepend_view_path`](http://api.rubyonrails.org/classes/ActionView/ViewPaths.html#method-i-prepend_view_path) on a particularly heavily trafficked route, this leak will become more pronounced.
+
+    The fix in my situation was to initialize a `Resolver` per subdomain once and then re-use the same `Resolver` whenever possible, e.g.
+
+    ```ruby
+    SUBDOMAIN_SPECIFIC_TEMPLATES = {
+      'subdomain1' => ActionView::OptimizedFileSystemResolver.new('app/views/subdomain1'),
+      'subdomain2' => ActionView::OptimizedFileSystemResolver.new('app/views/subdomain2'),
+      'subdomain3' => ActionView::OptimizedFileSystemResolver.new('app/views/subdomain3')
+    }.freeze
+
+    def prepend_subdomain_specific_templates
+      prepend_view_path(SUBDOMAIN_SPECIFIC_TEMPLATES.fetch(request.subdomain))
+    end
+    ```
+
+    With the fix deployed, the resulting memory usage graph made me very happy indeed.
+
+    <p class="center"><img src="/i/leak.png" width="500" height="70" alt></p>
+
+*   I've been rightly chastised for [using the trope of interpreting children's TV shows through the eyes of a jaded adult](/2020/08/23/weeknotes-43/) before but I'm genuinely enjoying "[In the Night Garden...](https://www.bbc.co.uk/cbeebies/shows/in-the-night-garden)".
+
+    Watching C's excitement build as we watch [Igglepiggle](https://www.inthenightgarden.co.uk/about-the-show/igglepiggle) lie down in his boat, covering himself with its sail as we pan up from the rolling ocean to see the stars of the night sky bloom into flowers is a delight.
+
+    The [creators' intentions behind the series](http://www.bbc.co.uk/pressoffice/pressreleases/stories/2007/03_march/19/cbeebies_garden.shtml) is interesting too:
+
+    > "We became very aware of the anxiety surrounding the care of young children which manifested itself in all kind of directions – but the one big subject that came up again and again was bedtime. It's the classic time for tension between children who want to stay up and parents who want them to go to bed.
+    >
+    > "We wanted to explore the difference between being asleep and being awake from a child's point of view: the difference between closing your eyes and pretending to be asleep and closing your eyes and sleeping.
+    >
+    > "So this is a programme about calming things down whereas most children's TV is about gee-ing everything up!"
