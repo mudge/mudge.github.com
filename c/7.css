@@ -203,6 +203,12 @@ strong, b {
   margin: 0 0.75rem;
 }
 
+@media (max-width: 576px) {
+  .row, .column {
+    display: block;
+  }
+}
+
 @font-face {
   font-family: 'icomoon';
   src:  url('f/i.eot?ul5txc');
