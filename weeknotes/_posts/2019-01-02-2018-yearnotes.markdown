@@ -64,7 +64,7 @@ final class TravelController extends PrivateController
 }
 ```
 
-In February, I followed this up with a failed experiment to implement [a `Readable` module in Ruby](https://github.com/mudge/readable) that would allow users to create [`IO`](http://ruby-doc.org/core/IO.html) objects from arbitary sources much like [`Enumerator`](http://ruby-doc.org/core/Enumerator.html) allows users to create lazy [`Enumerable`](http://ruby-doc.org/core/Enumerable.html) objects:
+In February, I followed this up with a failed experiment to implement [a `Readable` module in Ruby](https://github.com/mudge/readable) that would allow users to create [`IO`](http://ruby-doc.org/core/IO.html) objects from arbitrary sources much like [`Enumerator`](http://ruby-doc.org/core/Enumerator.html) allows users to create lazy [`Enumerable`](http://ruby-doc.org/core/Enumerable.html) objects:
 
 ```ruby
 readable = Readable.new do |yielder|
