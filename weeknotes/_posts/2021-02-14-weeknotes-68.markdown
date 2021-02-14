@@ -1,0 +1,43 @@
+---
+title: Weeknotes 68
+excerpt: Hoarding tools, the trap of doing jobs and a new buzzword.
+date: 2021-02-14 13:35:00
+---
+*   The kitchen tap has been dripping for a week.
+
+    The replacement cartridge valves we ordered arrived quickly but the 14mm socket needed to remove the existing cartridge was delayed by a week.
+
+    Impatient and sick of the constant drip-drip-drip of the tap, my mum and E separately went in search of the missing part, returning home with various bits and pieces from local hardware shops.
+
+    We have ended up with:
+
+    * A 14mm ½ inch drive socket.
+    * A 14mm ¼ inch drive socket.
+    * A set of hexagonal things I do not recognise but now think might be Allen keys for a socket set.
+    * A whole new socket set that goes up to 14mm but has sockets too shallow to remove a cartridge valve.
+    * A ½ inch drive ratchet handle.
+
+*   The tap is now fixed.
+
+*   [Kent Beck famously said](https://twitter.com/kentbeck/status/250733358307500032?lang=en):
+
+    > for each desired change, make the change easy (warning: this may be hard), then make the easy change
+
+    I would add the corollary:
+
+    > for each desired DIY job, find the tools to make the job easy (warning: this may be hard), then do the easy job.
+
+*   While hoarding the aforementioned tools, I was also attempting to complete multiple lengthy client questionnaires from our conveyancer, [finish applying for probate](https://www.gov.uk/applying-for-probate/apply-for-probate), mend C's bedroom door (which doesn't fully close) and retrieve two table football balls from my dad's home cinema subwoofer.
+
+    While completing the probate application with my mum, I realised I had fallen into a familiar trap: trying to be useful to those around by busying myself with odd jobs (both DIY and administrative).
+
+    In reality:
+
+    * I was stressing myself out.
+    * I was absent from the people I was trying (and failing) to help.
+
+*   I've given up on the table football balls in the subwoofer.
+
+*   [Euan's latest creation](https://twitter.com/Stew/status/1358766649105649678) is absolutely wonderful.
+
+*   Having taken responsibility for some projects written using [Gatsby](https://www.gatsbyjs.com) at [work](https://www.ghostcassette.com), you will now find me using the term "[jamstack](https://jamstack.org)" in emails.
