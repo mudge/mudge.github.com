@@ -2,19 +2,20 @@
 title: Weeknotes 69
 excerpt: A lot of hours writing YAML, pancake day, channelling Elon Musk and product names that maximize embarrassment in Homebase.
 date: 2021-02-21 10:21:00
+updated: 2021-02-21 13:26:00
 ---
-*   I spent an unexpectedly long time [revamping re2's CI setup to test against Ruby versions 1.8 through to 3.0 and all six ABI versions](https://github.com/mudge/re2/pull/47) of the [underlying Google re2 library](https://github.com/google/re2).
+*   I spent a long time [rewriting re2's CI configuration to test against Ruby versions 1.8 through to 3.0 and all six ABI versions](https://github.com/mudge/re2/pull/47) of the [underlying Google re2 library](https://github.com/google/re2) using [GitHub Actions](https://github.com/features/actions).
 
-    My [previous setup](https://github.com/mudge/re2-test-action), based on using the [Brightbox Ruby packages for Ubuntu](https://www.brightbox.com/docs/ruby/ubuntu/) and the [official Rubinius binary releases](http://rubinius-binaries-rubinius-com.s3-us-west-2.amazonaws.com/index.txt) [stopped working](https://github.com/mudge/re2/runs/1927274557?check_suite_focus=true) when I ran it for the first time in months.
+    My [previous setup](https://github.com/mudge/re2-test-action), based on using the [Brightbox Ruby packages for Ubuntu](https://www.brightbox.com/docs/ruby/ubuntu/) and the [official Rubinius binary releases](http://rubinius-binaries-rubinius-com.s3-us-west-2.amazonaws.com/index.txt), [stopped working](https://github.com/mudge/re2/runs/1927274557?check_suite_focus=true) when I ran it for the first time in ten months.
 
-    Thankfully, [RSpec's `rspec-core`](https://github.com/rspec/rspec-core) [uses GitHub Actions to test against legacy Ruby versions](https://github.com/rspec/rspec-core/blob/main/.github/workflows/ci.yml) and their [custom Docker images](https://github.com/rspec/docker-ci) were the basis for [my own](https://github.com/rspec/docker-ci).
+    Thankfully, [RSpec's `rspec-core`](https://github.com/rspec/rspec-core) [also uses GitHub Actions to test against legacy Ruby versions](https://github.com/rspec/rspec-core/blob/main/.github/workflows/ci.yml) and their [custom Docker images](https://github.com/rspec/docker-ci) were the basis for [my own](https://github.com/rspec/docker-ci).
 
-    I hope that by switching to using the [official Ruby `setup-ruby` GitHub Action](https://github.com/ruby/setup-ruby), it will prevent further [bit rot](https://en.wikipedia.org/wiki/Software_rot) but I suspect the [necessary](https://github.com/mudge/re2/blob/main/.github/workflows/tests.yml#L54) [workarounds](https://github.com/mudge/re2-ci/blob/main/1.8/Dockerfile#L21) for legacy Ruby versions will only get worse over time.
+    I hope that by switching to the [official Ruby `setup-ruby` GitHub Action](https://github.com/ruby/setup-ruby), it will prevent further [bit rot](https://en.wikipedia.org/wiki/Software_rot) but I suspect the [necessary](https://github.com/mudge/re2/blob/main/.github/workflows/tests.yml#L54) [workarounds](https://github.com/mudge/re2-ci/blob/main/1.8/Dockerfile#L21) for legacy Ruby versions will only get worse over time (see [Joshua Stein's "Plaintext HTTP in a Modern World"](https://jcs.org/2021/01/06/plaintext)).
 
-    I had hoped this work would mean I could add [TruffleRuby](https://github.com/oracle/truffleruby) as a supported version of Ruby but [alas](https://github.com/oracle/truffleruby/issues/2262).
+    I hoped this work would mean I could add [TruffleRuby](https://github.com/oracle/truffleruby) as a supported version of Ruby but [alas](https://github.com/oracle/truffleruby/issues/2262).
 
-*   We celebrated [Pancake Day](https://en.wikipedia.org/wiki/Shrove_Tuesday) which also marks the anniversary of C first eating solid food. He ate his pancakes with slightly more gusto this year and we introduced the concept of savoury pancakes to my sceptical parents.
+*   We celebrated [Pancake Day](https://en.wikipedia.org/wiki/Shrove_Tuesday) which doubles as the anniversary of C first eating solid food. We introduced the concept of savoury pancakes to my sceptical parents.
 
 *   I dropped the ball from my [trackball](https://www.kensington.com/en-gb/p/products/control/trackballs/expert-mouse-wired-trackball/) onto the sheet of smoked glass covering my desk, accidentally recreating the [Tesla Cybertruck bulletproof window demo](https://youtu.be/LMWwImDX3ks).
 
-*   I enjoyed sending my mum to the hardware shop to buy a specific adhesive to fix a broken window blind: [Sticks Like Sh*t](https://trade.evo-stik.co.uk/products/grab-adhesives/sticks-sht).
+*   I enjoyed sending my mum to the hardware shop to buy a specific adhesive to fix a broken window blind: "[Sticks Like Sh*t](https://trade.evo-stik.co.uk/products/grab-adhesives/sticks-sht)".
