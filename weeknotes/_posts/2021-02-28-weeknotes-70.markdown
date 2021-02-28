@@ -1,7 +1,8 @@
 ---
 title: Weeknotes 70
-excerpt: Fixing Joy-Con drift, a surprise encounter with my favourite type of duck, parsing Data URLs and reverting Active Record migrations.
+excerpt: Fixing Joy-Con drift, a surprise encounter with my favourite type of duck, parsing Data URLs and a wardrobe malfunction.
 date: 2021-02-28 14:37:00
+updated: 2021-02-28 16:54:00
 ---
 *   After having [a drifting left Joy-Con for over a year](/2020/01/26/weeknotes-13/), I finally sent [it to Nintendo for repair](https://www.nintendo.co.uk/Support/Nintendo-Switch/Troubleshooting/Joy-Con-Control-Sticks-Are-Not-Responding-or-Respond-Incorrectly-1908347.html).
 
@@ -12,6 +13,8 @@ date: 2021-02-28 14:37:00
 *   My mum and I took C to a nearby park to feed the ducks ([oats, to avoid controversy](https://www.theguardian.com/world/2019/oct/18/feed-the-ducks-bread-sign-sparks-heated-online-debate)) and saw a raft of glorious [Mandarin ducks](https://en.wikipedia.org/wiki/Mandarin_duck).
 
     <p class="center"><img src="/i/mandarin-duck.jpg" width="375" height="375" alt></p>
+
+    Along with the [red kites](https://www.rspb.org.uk/birds-and-wildlife/wildlife-guides/bird-a-z/red-kite/) we've seen in the garden, they certainly make a change from [London's feral parakeets](https://en.wikipedia.org/wiki/Feral_parakeets_in_Great_Britain).
 
 *   I had to parse a CSV file sent as a [Data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) this week and converting a [Request for Comments](https://tools.ietf.org/html/rfc2397) into a regular expression is a great joy in life:
 
@@ -43,3 +46,7 @@ date: 2021-02-28 14:37:00
       end
     end
     ```
+
+*   An overgrown bush had begun to crowd the patio so my mum and I decided to cut it back. She disappeared into the garage and returned with a truly horrifying but [brilliantly effective single-purpose tool](/2021/02/14/weeknotes-68/): a telescopic branch cutter.
+
+*   In the footsteps of [other power couples](https://www.theverge.com/tldr/2017/5/30/15711662/netflix-house-of-cards-season-5-running-playlist), E and I went for our first run together yesterday. My legs now ache and, about 5 minutes into the run, my shorts nearly fell off.
