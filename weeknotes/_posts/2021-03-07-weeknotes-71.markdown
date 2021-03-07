@@ -1,0 +1,39 @@
+---
+title: Weeknotes 71
+excerpt: Getting busted by Nintendo, who is fantastic when gymnastics is what you need, a greenfield Rails application and being spooked by Facebook.
+date: 2021-03-07 11:55:00
+---
+*   My [Joy-Con diagnosis](/2021/02/28/weeknotes-70/) came back from Nintendo: "liquid damage main board". Turns out C dunking it in a glass of water might not have been the best for its delicate electronics.
+
+*   C surprised us one morning by saying "go go" when "[Go Jetters](https://www.bbc.co.uk/cbeebies/shows/go-jetters)" came on the TV during breakfast (after family favourite "[Hey Duggee](https://www.bbc.co.uk/cbeebies/shows/hey-duggee)" but before family least-liked "[Peter Rabbit](https://www.bbc.co.uk/cbeebies/shows/peter-rabbit)").
+
+    E and I now sing the theme song on demand.
+
+*   I've been working on a brand new [Rails](https://rubyonrails.org) application at work and it has been a long time since I had to build something customer-facing from scratch.
+
+    What test frameworks should I use? Should I still use [Cucumber](https://cucumber.io)? What front-end framework should I be using? Should I [theme Bootstrap](https://getbootstrap.com/docs/4.1/getting-started/theming/)? What [Rubocop](https://github.com/rubocop/rubocop) configuration should I use? Should I use [Standard](https://github.com/testdouble/standard)?
+
+    In the past, I've tried to reduce the amount of code I had to write (e.g. perhaps unthinkingly in the name of "[Don't repeat yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)"), extracting as much as possible so I could whip up [resourceful controllers](https://guides.rubyonrails.org/routing.html#crud-verbs-and-actions) with the fewest lines of code. Now though, I'm less concerned about optimising for that initial writing and more concerned about making the code easier to read, change and [delete](https://programmingisterrible.com/post/139222674273/how-to-write-disposable-code-in-large-systems).
+
+    The gamble I'm taking is that it might take a little longer to write at first but it'll be much easier to understand and change in future.
+
+    Perhaps I'm getting more cynical about my ability to predict the [right abstraction](https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction). As [Sandi Metz](https://sandimetz.com) said:
+
+    > Prefer duplication over the wrong abstraction.
+
+    I'm reminded of [Jay Fields' "Working Effectively with Unit Tests"](https://leanpub.com/wewut):
+
+    > [Test] code and production code is written, maintained, and reviewed in
+    > drastically different ways. Production code collaborates to provide a
+    > single running application, and it’s generally wise to avoid duplicating
+    > concepts within that application. Tests do not, or at least should not
+    > collaborate; it’s universally accepted that inter-test dependency is an
+    > anti-pattern. If we think of tests as tiny, independent universes, then
+    > code that appears in one test should not necessarily be considered
+    > inadvisable duplication if it appears in another test as well.
+
+    I wonder if it is also useful to think of separate parts of your application as "tiny, independent universes" too.
+
+*   I had to sign up for a Facebook account in order to fix a problem with Instagram embeds and, despite providing only my name and a work email address (which no one else would have in their contacts), Facebook suggested I add people I know in real life.
+
+    I was spooked until I realised [Facebook use the phone number you give for 2-factor authentication to look you up in others' contacts](https://nakedsecurity.sophos.com/2019/12/23/facebook-will-stop-mining-contacts-with-your-2fa-number/).
