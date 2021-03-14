@@ -1,0 +1,117 @@
+---
+title: Weeknotes 72
+excerpt: Very hot dough, all the toy cars, re2 1.3.0 and how do you solve a problem like WordPress?
+date: 2021-03-14 13:47:00
+---
+*   Happy Mother's Day! [Or is that Mothering Sunday?](/2020/03/22/weeknotes-21/)
+
+*   To celebrate, we made pizzas in our brand new [Ooni Karu 12 pizza oven](https://uk.ooni.com/collections/ovens/products/ooni-karu).
+
+    <p class="center"><img src="/i/pizza.jpg" width="375" height="375" alt></p>
+
+    I used [Ooni's cold-proof pizza dough](https://uk.ooni.com/blogs/recipes/cold-prove-pizza-dough?_pos=1&_sid=e98ca93aa&_ss=r) and [pizza sauce recipe](https://uk.ooni.com/blogs/recipes/classic-pizza-sauce?_pos=1&_sid=7b03e0a9b&_ss=r) for our first bake after watching [multiple](https://youtu.be/joGKYTGbVw8) [videos](https://youtu.be/YzXtNBwXZEU) reassuringly narrated with a lilting Scottish accent.
+
+    Despite the typical northern English drizzle, I'd say it was a success with even C happily working his way through an individual [margherita](https://uk.ooni.com/blogs/recipes/pizza-margarita-classic-woodfired-recipe).
+
+*   What better way to chase a variety of pizzas fired in a 500 degree Celsius oven than with a slab of [traditional Victoria sponge cake](https://www.theguardian.com/lifeandstyle/wordofmouth/2013/may/16/how-bake-perfect-victoria-sponge-cake)?
+
+*   C's enthusiasm for cars has reached a fever pitch with him insatiably demanding "**more!**" toy cars despite completely emptying my collection from when [I were a lad](https://youtu.be/VKHFZBUTA4k).
+
+*   I [released version 1.3.0 of the re2 gem](https://github.com/mudge/re2/releases/tag/v1.3.0) which makes it easier to install on [Apple Silicon Macs](https://support.apple.com/en-gb/HT211814) using [Homebrew](https://brew.sh).
+
+    As Homebrew installs re2 into `/opt/homebrew` on Apple Silicon, I [added that](https://github.com/mudge/re2/commit/d1c4ad271716046575c8750ed5fbf35d4033aa5a) to the default locations the gem searches when trying to find the [underlying re2 library](https://github.com/google/re2). Previously, you'd have to [specify this yourself at install time](https://github.com/mudge/re2/issues/50), e.g.
+
+    ```console
+    $ gem install re2 -- --with-re2-dir=/opt/homebrew
+    ```
+
+    But now the following should work instead:
+
+    ```console
+    $ gem install re2
+    ```
+
+*   I've been torn about how best to handle [WordPress](https://wordpress.org) for a client.
+
+    At [Altmetric](https://www.altmetric.com), I had always hoped to migrate our self-hosted WordPress install away to a third party such as [WP Engine](https://wpengine.co.uk), [WP VIP](https://wpvip.com) or [Pantheon](https://pantheon.io). That way we could have pushed responsibility for keeping WordPress up, running and secure to someone else but still benefited from [version control and continuous deployment across multiple environments](https://wpengine.com/support/development-workflow-best-practices/).
+
+    However, such things do not come cheap unless you're happy to let go of the continuous deployment side of things when something like [WordPress.com](https://wordpress.com) seems hard to beat.
+
+    How then to balance the risk of hosting your own WordPress (with all its security implications) with trying to make it as cheap to maintain as possible? Especially considering that WordPress is decided non-[Twelve-Factor](https://12factor.net), storing its configuration in files and relying on being able to write to disk (e.g. for both configuration and caching).
+
+    Given that one extreme is to use some sort of managed service and simply have access to the WordPress admin panel (e.g. WordPress.com), what is the other? Is it possible to make WordPress Twelve-Factor and not spend all your time fighting it in the process?
+
+    I spiked a project which used [John P. Bloch's fork of WordPress](https://github.com/johnpbloch/wordpress) (which syncs with upstream every 15 minutes) and [WordPress Packagist](https://wpackagist.org) to install WordPress, a theme and its plugins via [Composer, the dependency manager for PHP](https://getcomposer.org). There's a [whole project example of this by Andrey Savchenko](https://composer.rarst.net/recipe/site-stack/) for reference.
+
+    My `composer.json` looked like the following:
+
+    ```json
+    {
+        "repositories": [
+            {
+                "type": "composer",
+                "url": "https://wpackagist.org",
+                "only": [
+                    "wpackagist-plugin/*",
+                    "wpackagist-theme/*"
+                ]
+            }
+        ],
+        "require": {
+            "johnpbloch/wordpress": "^5.7",
+            "wpackagist-theme/twentytwentyone": "^1.2",
+            "wpackagist-plugin/akismet": "^4.1",
+            "wpackagist-plugin/w3-total-cache": "^2.1",
+            "wpackagist-plugin/amazon-s3-and-cloudfront": "^2.5"
+        },
+        "extra": {
+            "installer-paths": {
+                "public/app/plugins/{$name}/": [
+                    "type:wordpress-plugin"
+                ],
+                "public/app/themes/{$name}/": [
+                    "type:wordpress-theme"
+                ]
+            },
+            "wordpress-install-dir": "public/wp"
+        }
+    }
+    ```
+
+    This installs WordPress into `public/wp`, plugins into `public/app/plugins` and a theme into `public/app/themes`. I then have my typical [`wp-config.php`](https://wordpress.org/support/article/editing-wp-config-php/) in `public`, pulling configuration from [`$_ENV`](http://www.php.net/manual/en/reserved.variables.environment.php) and disabling all automatic updates and file editing/modification by WordPress and its plugins. We use [W3 Total Cache](https://wordpress.org/plugins/w3-total-cache/) to cache using [Redis](https://redis.io) and [WP Offload Media Lite](https://wordpress.org/plugins/amazon-s3-and-cloudfront/) to store any uploads in [Amazon S3](https://aws.amazon.com/s3/) (or an [S3-compatible alternative](https://deliciousbrains.com/s3-compatible-storage-provider-minio/)). The goal here is to make WordPress as [stateless](https://12factor.net/processes) as possible without doing anything _too_ out of the ordinary.
+
+    That's all well and good but what about the actual app servers, database and Redis? Well, what about [Heroku's PHP support](https://devcenter.heroku.com/articles/getting-started-with-php)? By adding the following dependencies to our `composer.json`, we can tell Heroku which version of PHP we want and exactly [which extensions we need for WordPress](https://make.wordpress.org/hosting/handbook/handbook/server-environment/):
+
+    ```json
+    "require": {
+        "php": "^7.3.0",
+        "ext-curl": "*",
+        "ext-dom": "*",
+        "ext-exif": "*",
+        "ext-fileinfo": "*",
+        "ext-hash": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-mysqli": "*",
+        "ext-sodium": "*",
+        "ext-openssl": "*",
+        "ext-pcre": "*",
+        "ext-imagick": "*",
+        "ext-xml": "*",
+        "ext-zip": "*"
+    }
+    ```
+
+    Our `Procfile` instructs Apache to serve our application out of `public`, respecting the [default WordPress `.htaccess`](https://wordpress.org/support/article/htaccess/#basic-wp) we have there:
+
+    ```yaml
+    web: vendor/bin/heroku-php-apache2 public/
+    ```
+
+    While Heroku don't provide their own MySQL, we can lean on [Amazon RDS for MariaDB](https://aws.amazon.com/rds/mariadb/) and [connect to it from Heroku](https://devcenter.heroku.com/articles/amazon-rds) while using [Heroku Redis](https://devcenter.heroku.com/articles/heroku-redis) for caching.
+
+    This way, we can benefit from [Heroku's pipelines](https://devcenter.heroku.com/articles/pipelines) and even [review apps](https://devcenter.heroku.com/articles/github-integration-review-apps) to spin up new WordPress environments and test changes as you would for a Rails or Node.js application.
+
+    Missing out on automatic updates is the big problem here but I wonder if leaning on something like [GitHub Dependabot](https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/) solves this as it does for other web applications, e.g. set aside time every Monday to review, test and deploy any updates to WordPress, your themes and any plugins.
+
+    I'm still not 100% decided (particularly as my client has a lot of existing content and uploads to migrate) but I'm tempted to try it.
