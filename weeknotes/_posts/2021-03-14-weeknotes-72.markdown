@@ -93,6 +93,7 @@ date: 2021-03-14 13:47:00
         "ext-json": "*",
         "ext-mbstring": "*",
         "ext-mysqli": "*",
+        "ext-redis": "*",
         "ext-sodium": "*",
         "ext-openssl": "*",
         "ext-pcre": "*",
@@ -106,6 +107,14 @@ date: 2021-03-14 13:47:00
 
     ```yaml
     web: vendor/bin/heroku-php-apache2 public/
+    ```
+
+    As Heroku terminate SSL, we have to tell WordPress requests are using HTTPS based on the [`X-Forwarded-Proto` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Proto) in `wp-config.php`, e.g.
+
+    ```php
+    if (strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false) {
+        $_SERVER['HTTPS'] = 'on';
+    }
     ```
 
     While Heroku don't provide their own MySQL, we can lean on [Amazon RDS for MariaDB](https://aws.amazon.com/rds/mariadb/) and [connect to it from Heroku](https://devcenter.heroku.com/articles/amazon-rds) while using [Heroku Redis](https://devcenter.heroku.com/articles/heroku-redis) for caching.
