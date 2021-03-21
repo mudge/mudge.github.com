@@ -29,7 +29,7 @@ q:before, q:after {
 
 html {
   box-sizing: border-box;
-  font: 16px -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
+  font: 100% -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
   line-height: 1.5rem;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
