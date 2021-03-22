@@ -2,10 +2,11 @@
 title: Weeknotes 73
 excerpt: Rabbits, livecheck, how to stop clobbering files, relative font sizing, seemingly innocuous bugs and a single AirPod.
 date: 2021-03-21 11:11:00
+updated: 2021-03-22 08:33:00
 ---
 *   For the past few weeks, we have woken to see rabbits in the garden. Sometimes a solitary one, sometimes a pair and, once, three happily munching on the lawn. Given C's familiarity with [Peter Rabbit](https://www.bbc.co.uk/cbeebies/shows/peter-rabbit), we'll lift him to the window and watch as he whispers "babu".
 
-*   I upgraded my standing desk from a two piles of books about magic tricks and movie tie-ins to a [mechanical standing desk converter](https://vivo-us.com/collections/stand-up-desk-risers/products/desk-v000v).
+*   I upgraded my standing desk from two piles of books about magic tricks and movie tie-ins to a [mechanical standing desk converter](https://vivo-us.com/collections/stand-up-desk-risers/products/desk-v000v).
 
 *   I [occasionally contribute Homebrew Casks](https://github.com/Homebrew/homebrew-cask/commits?author=mudge) and have been adding [`livecheck` stanzas](https://github.com/Homebrew/homebrew-cask/blob/master/doc/cask_language_reference/stanzas/livecheck.md). This allows you to see when there are newer versions of formulae and casks upstream, e.g.
 
