@@ -1,0 +1,38 @@
+---
+title: Weeknotes 74
+excerpt: The fate of the AirPod, Calky, an ancient robot in the consultation room, a SOAP integration and ASCII trees.
+date: 2021-03-28 12:46:00
+---
+*   After drying in the sun, [the AirPod that went through the washing machine](/2021/03/21/weeknotes-73/) is working fine.
+
+*   Count me among [the many others](https://twitter.com/search?q=https%3A%2F%2Fjvns.ca%2Fblog%2Flearn-how-things-work%2F&src=typeahead_click) recommending [Julia Evans' "Get better at programming by learning how things work"](https://jvns.ca/blog/learn-how-things-work/).
+
+*   C has developed a fondness for a large, solar-powered calculator. He calls it "Calky".
+
+*   My [notes](https://support.apple.com/en-gb/guide/notes/not9474646a9/mac) for this week's notes are blank.
+
+*   C's left eyelid became inflamed. As it didn't improve after 24 hours, I ran the gauntlet of trying to see a GP in person.
+
+    My quest started with an 8 am call to the local GP ("all appointments are gone already, you'll need to go to a pharmacy"), then to a pharmacy ("we can't prescribe anything for children under 2, you'll need to see a GP"), to the GP in person ("call at 2 pm for an emergency appointment"), to a call with [111](https://111.nhs.uk) ("see a GP within 12 hours"), a call with the GP ("a doctor will call you this afternoon") and ended with an in-person appointment at 4 pm.
+
+    The GP was lovely even when C identified a robot in the consultation room (actually an ancient, giant pair of weighing scales) and repeatedly attempted to pick them up.
+
+    He was prescribed some eye-drops (the application of which is a twice-daily adventure in itself) but is recovering well.
+
+*   I've been working on an integration with a SOAP API for the first time in years. I'm using [Savon](https://www.savonrb.com) to implement a client in Ruby to consume a list of documents organised into a hierarchy of categories and subcategories.
+
+    I need to keep the documents and their categorisation synchronised with the API and have been experimenting with [Which? Digital's "Tree Delta" gem](https://github.com/whichdigital/tree_delta). If I can represent both copies of the document hierarchy as comparable trees of nodes, I can use the gem to produce the minimum set of operations to keep them in sync.
+
+*   The [tests for Tree Delta](https://github.com/whichdigital/tree_delta/blob/master/spec/black_box/add_and_delete_nodes_spec.rb) are wonderful, using [Chris Patuzzo's "ASCII Tree" gem](https://github.com/tuzz/ascii_tree) to parse trees out of ASCII art, e.g.
+
+    ```ruby
+    AsciiTree.parse('
+            (  a  )
+            /     \
+           b       c
+          / \     / \
+         d   e   f   g
+    ')
+    ```
+
+    Having spent a lot of time trying to make testing various SOAP API calls as easy as possible without having to use a large number of XML fixtures, this dedication to making tests easy to read is an inspiration.
