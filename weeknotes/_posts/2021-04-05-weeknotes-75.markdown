@@ -28,15 +28,15 @@ date: 2021-04-05 10:47:00
 *   I finished implementing [last week's Tree Delta-based synchronisation system](/2021/03/28/weeknotes-74/) ending up with the following classes:
 
     * `FromRoot`: the root of the tree of nodes that represent the current state of the database, the key method being `FromRoot#children` which returns an array of...
-    * `FromProductNode`: a node representing a single top-level product with its parent set to the `FromRoot`, its `identity` as a `ProductIdentity`, its value as a `ProductValue` and its `children` as an array of...
-    * `FromCategoryNode`: a node representing a category which can have its `parent` set to either a `FromProductNode` or another `FromCategoryNode`, its `identity` as a `CategoryIdentity`, its value as a `CategoryValue` and its children as either other `FromCategoryNode`s or a...
-    * `FromDocumentNode`: a node representing a document and its file upload, its `parent` is a `FromCategoryNode`, its identity is a `DocumentIdentity` and its value is a `DocumentValue` with no `children`.
+    * `FromProductNode`: a node representing a single top-level product with its `parent` set to the `FromRoot`, its `identity` as a `ProductIdentity`, its `value` as a `ProductValue` and its `children` as an array of...
+    * `FromCategoryNode`: a node representing a category which can have its `parent` set to either a `FromProductNode` or another `FromCategoryNode`, its `identity` as a `CategoryIdentity`, its `value` as a `CategoryValue` and its `children` as either other `FromCategoryNode`s or a...
+    * `FromDocumentNode`: a node representing a document and its file upload, its `parent` is a `FromCategoryNode`, its `identity` is a `DocumentIdentity` and its `value` is a `DocumentValue` with no `children`.
 
-    There are also a set of corresponding `ToRoot`, `ToProductNode`, `ToCategoryNode`, etc. classes that also use `ProductIdentity`, `CategoryValue`, etc. so they can be compared by [Tree Delta](https://github.com/whichdigital/tree_delta).
+    There is also a set of corresponding `ToRoot`, `ToProductNode`, `ToCategoryNode`, etc. classes that also use `ProductIdentity`, `CategoryValue`, etc. so they can be compared by [Tree Delta](https://github.com/whichdigital/tree_delta).
 
     By returning dedicated type-specific `Value` objects (e.g. `DocumentValue`, `CategoryValue`), I'm able to define how Tree Delta compares them but also expose extra methods to the importer, e.g. so two documents can be compared without re-downloading the full uploaded file but there is a way to get the full file if needed.
 
-    The final piece of the puzzle was to implement my own `ProductOperation`, `CategoryOperation` and `DocumentOperation` classes to wrap [Tree Delta's own](https://github.com/whichdigital/tree_delta/blob/master/lib/tree_delta/operation.rb). These each implement a single public `apply` method responsible for translating an operation such as "create a node with this identity, parent and value" into a database operation in my application. This means my top-level `Importer#import` method boils down to:
+    The final piece of the puzzle was to implement my own `ProductOperation`, `CategoryOperation` and `DocumentOperation` classes to wrap [Tree Delta's own](https://github.com/whichdigital/tree_delta/blob/master/lib/tree_delta/operation.rb). These each implement a single public `apply` method responsible for translating an operation such as "create a node with this `identity`, `parent` and `value`" into a database operation in my application. This means my top-level `Importer#import` method boils down to:
 
     ```ruby
     def import
