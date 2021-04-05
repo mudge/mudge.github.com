@@ -1,0 +1,50 @@
+---
+title: Weeknotes 75
+excerpt: Wasps, requiring Ruby 3.0, buses of all sizes, the finished Tree Delta-based importer and a surprising lullaby.
+date: 2021-04-05 10:47:00
+---
+*   Last year, my dad found a large wasps' nest in the attic. To my astonishment, with the aid of a beekeeper hat and various toxic powders, he removed it.
+
+    One night this week while preparing C's room for his night-time routine, I found a large, dozy wasp clinging to a window blind and sent E in to dispatch it. Sufficiently suspicious, I sent my dad back into the attic with a torch to see if they had returned.
+
+    They haven't.
+
+*   Working on a new Rails application, I wondered what the current popular choice for handling pagination with Active Record is (only being familiar with the venerable [`will_paginate`](https://github.com/mislav/will_paginate) and [Kaminari](https://github.com/kaminari/kaminari)). [Scott](https://medium.com/@scottm) mentioned [Pagy](https://github.com/ddnexus/pagy) and I gave it a try.
+
+    Given [how I can be about compatibility in my gems](https://github.com/mudge/re2#re2-), I was surprised to see that [Pagy 4 requires Ruby 3.0](https://github.com/ddnexus/pagy/blob/master/CHANGELOG.md#changes-1). This is because [it uses Ruby 3.0's "endless method" definition syntax which was initially proposed on April Fool's Day 2020](https://bugs.ruby-lang.org/issues/16746), e.g.
+
+    ```ruby
+    def square(x) = x * x
+    ```
+
+    Perhaps next year we'll see libraries using [downward assignment](https://bugs.ruby-lang.org/issues/17768).
+
+*   We had a barbecue with E's family in their back garden on Saturday and we baked [Felicity Cloake's bakewell tart](https://www.theguardian.com/lifeandstyle/wordofmouth/2013/apr/17/how-make-perfect-bakewell-tart) for the occasion.
+
+    It has been a long time since I have seen them and C delighted in exploring a box of old toy cars that E's dad and his brothers played with when they were young. We attempted to explain the difference between cars, vans and lorries as he inspected each one.
+
+    This joy was dwarfed by the discovery that real, honest-to-goodness buses could be spotted at the junction at the end of the road. Seeing three double-deckers at once caused C to breathlessly shout "BU!" at the top of his voice.
+
+*   I finished implementing [last week's Tree Delta-based synchronisation system](/2021/03/28/weeknotes-74/) ending up with the following classes:
+
+    * `FromRoot`: the root of the tree of nodes that represent the current state of the database, the key method being `FromRoot#children` which returns an array of...
+    * `FromProductNode`: a node representing a single top-level product with its parent set to the `FromRoot`, its `identity` as a `ProductIdentity`, its value as a `ProductValue` and its `children` as an array of...
+    * `FromCategoryNode`: a node representing a category which can have its `parent` set to either a `FromProductNode` or another `FromCategoryNode`, its `identity` as a `CategoryIdentity`, its value as a `CategoryValue` and its children as either other `FromCategoryNode`s or a...
+    * `FromDocumentNode`: a node representing a document and its file upload, its `parent` is a `FromCategoryNode`, its identity is a `DocumentIdentity` and its value is a `DocumentValue` with no `children`.
+
+    There are also a set of corresponding `ToRoot`, `ToProductNode`, `ToCategoryNode`, etc. classes that also use `ProductIdentity`, `CategoryValue`, etc. so they can be compared by [Tree Delta](https://github.com/whichdigital/tree_delta).
+
+    By returning dedicated type-specific `Value` objects (e.g. `DocumentValue`, `CategoryValue`), I'm able to define how Tree Delta compares them but also expose extra methods to the importer, e.g. so two documents can be compared without re-downloading the full uploaded file but there is a way to get the full file if needed.
+
+    The final piece of the puzzle was to implement my own `ProductOperation`, `CategoryOperation` and `DocumentOperation` classes to wrap [Tree Delta's own](https://github.com/whichdigital/tree_delta/blob/master/lib/tree_delta/operation.rb). These each implement a single public `apply` method responsible for translating an operation such as "create a node with this identity, parent and value" into a database operation in my application. This means my top-level `Importer#import` method boils down to:
+
+    ```ruby
+    def import
+      TreeDelta
+        .new(from: FromRoot.new, to: ToRoot.new(client))
+        .map { |operation| Operation.from(operation) }
+        .each(&:apply)
+    end
+    ```
+
+*   Due to a sequence of events that is difficult to explain, C now asks me to sing [2 Unlimited's 1993 hit "No Limit"](https://youtu.be/qM5W7Xn7FiA) while putting him to bed.
