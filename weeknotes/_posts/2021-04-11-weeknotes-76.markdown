@@ -1,0 +1,16 @@
+---
+title: Weeknotes 76
+excerpt: Rushing, playing Worship the Sun and a very first haircut.
+date: 2021-04-11 13:34:00
+---
+*   I am rushing these notes before C wakes from his afternoon nap and we go to visit E's sister for her birthday.
+
+*   For the past five days, I've been recording myself playing [Chris Patuzzo's unfinished indie puzzle/platforming game, "Worship the Sun"](https://tuzz.tech/blog/taking-the-plunge).
+
+    I've never done anything like this before but it seems a good way to show Chris how I play the game, explaining my thinking when I get stuck or mutter under my breath when I fail to make a particularly tricky jump.
+
+    Meanwhile, [Tom](https://tomstu.art) has been doing the same and comparing our experiences has been amusing. In parts, Tom has mused over his current understanding of the game's internal logic while I desperately try to glitch my way onto a floating platform, audibly mashing the space bar as I do so.
+
+*   I've been using [OBS Studio](https://obsproject.com) to record myself playing the game. While it was initially fiddly to grant it sufficient permission to record my screen and get the resolution right, it has been a breeze to use since. I am jealous of Tom's green screen for that full "like and subscribe" YouTube influencer experience.
+
+*   After finally conceding that he was dangerously close to sporting a mullet, E gave C his very first haircut. It was an emotional experience but he is thankfully much less "business in the front, party in the back."
