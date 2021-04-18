@@ -3,7 +3,7 @@ layout: post
 title: Weeknotes 21
 excerpt: COVID-19, asynchronous working, surprise Smash Mouth fandom, flower arranging and being judged by book titles.
 ---
-*   I would typically euphemistically refer to "[current events](/2020/03/15/weeknotes-20/)" but let's be plain: [<abbrev title="Coronavirus disease 2019">COVID-19</abbrev>](https://en.wikipedia.org/wiki/Coronavirus_disease_2019), the disease caused by the [coronavirus](https://en.wikipedia.org/wiki/Coronavirus) [<abbrev title="severe acute respiratory syndrome coronavirus 2">SARS-CoV-2</abbrev>](https://en.wikipedia.org/wiki/Severe_acute_respiratory_syndrome_coronavirus_2) has [dominated our lives](https://www.gov.uk/coronavirus) this week.
+*   I would typically euphemistically refer to "[current events](/2020/03/15/weeknotes-20/)" but let's be plain: [<abbr title="Coronavirus disease 2019">COVID-19</abbr>](https://en.wikipedia.org/wiki/Coronavirus_disease_2019), the disease caused by the [coronavirus](https://en.wikipedia.org/wiki/Coronavirus) [<abbr title="severe acute respiratory syndrome coronavirus 2">SARS-CoV-2</abbr>](https://en.wikipedia.org/wiki/Severe_acute_respiratory_syndrome_coronavirus_2) has [dominated our lives](https://www.gov.uk/coronavirus) this week.
 
 *   We've been rallying together with our neighbours and are sharing a precious online supermarket order. I intend to repay their kindness in bread made from my [fortuitous flour stockpile](/2020/03/15/weeknotes-20/).
 

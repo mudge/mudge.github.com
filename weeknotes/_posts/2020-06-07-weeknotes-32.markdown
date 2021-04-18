@@ -9,7 +9,7 @@ date: 2020-06-07 14:18:00
     Our Pi-hole currently serves two purposes:
 
     1. It runs [its built-in DHCP server](https://discourse.pi-hole.net/t/how-do-i-use-pi-holes-built-in-dhcp-server-and-why-would-i-want-to/3026) so every device connecting to our network uses the Pi-hole's DNS server rather than my ISP's DNS servers (as [this isn't configurable on my router](https://community.bt.com/t5/Archive-Staging/Manual-DNS-settings-please-for-home-hub-5/td-p/1226381)).
-    2. It runs its [own <abbrev title="Faster Than Light">FTL</abbrev>DNS server to block access to domains](https://docs.pi-hole.net/ftldns/blockingmode/).
+    2. It runs its [own <abbr title="Faster Than Light">FTL</abbr>DNS server to block access to domains](https://docs.pi-hole.net/ftldns/blockingmode/).
 
     As Thom points out in his post, given only those two roles and the fact I'm already running [Unbound](https://nlnetlabs.nl/projects/unbound/about/), the required tech stack for the Pi-hole ([PHP](https://www.php.net), [Lighttpd](https://www.lighttpd.net), [Dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html), etc.) seems excessive.
 
