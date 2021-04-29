@@ -1,0 +1,20 @@
+---
+title: Weeknotes 78
+excerpt: Conveyancing, ice packs on my laptop and a norny.
+date: 2021-04-29 12:43:00
+---
+*   Belated notes this week.
+
+*   I haven't been sharing updates on [our decision to leave London](/2021/02/07/weeknotes-67/) but we are simultaneously selling our flat and buying a house closer to our family.
+
+    Bundles of paper secured with treasury tags have been handed to conveyancers, driving licences scanned while waiting, masked, in an empty waiting room. Queries sent and answered, PDFs [redacted](https://eclecticlight.co/2020/12/11/how-effective-and-safe-is-previews-redaction-tool/) and, in a particularly stressful moment this week, hot water cylinder pipework "brought up to standard" during a service.
+
+    I am cautiously pessimistic when it comes to anything relating to property. I tell myself it is so I am prepared for the worst: should everything fall through, I will feel no different. However, the slightest hiccup (or [is that hiccough](https://english.stackexchange.com/questions/91910/are-there-regional-distinctions-in-how-hiccup-hiccough-is-spelled)?) stresses me out no end so I'm not sure my strategy is working.
+
+*   While [playing Chris Patuzzo's "Worship the Sun"](/2021/04/18/weeknotes-77/), my mid-2015 MacBook Pro began to struggle with certain parts of the game. [Using `powermetrics`](https://apple.stackexchange.com/a/372928), I discovered my CPU die temperature was reaching over 80 degrees C and causing everything to slow down due to throttling.
+
+    Desperate to finish the game, I ended up placing ice packs that came with a [DIY Shoryu Ganso Ramen kit](https://www.japancentre.com/en/products/15986-diy-shoryu-kit-shoryu-ganso-ramen) on top of the keyboard and underneath the base of my laptop. I'm not sure it made as much difference as using [OBS](https://obsproject.com)'s "low CPU usage preset" when recording but it was enough to get me through.
+
+*   C began referring to something in his room as "norny". Baffled, we questioned him further to eventually discover he was talking about a wooden fire engine.
+
+    What sound does a fire engine make? "Nor nee nor nee nor nee".
