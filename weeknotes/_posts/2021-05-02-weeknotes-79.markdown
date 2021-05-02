@@ -1,0 +1,70 @@
+---
+title: Weeknotes 79
+excerpt: Watermarking PDFs, alarming conditionals and other Computation Clubs.
+date: 2021-05-02 12:36:00
+---
+*   With no more "[Worship the Sun](/2021/04/18/weeknotes-77/)" to play, I bought "[Ori and the Blind Forest](https://www.orithegame.com/blind-forest/)" for the Nintendo Switch to meet my need for platforming games that border on the cruel.
+
+*   I implemented a feature for a [Ruby on Rails](https://rubyonrails.org) web application to watermark PDFs as they are downloaded. I used [Prawn](https://prawnpdf.org) to generate a single A4 PDF with the user's name and email address printed diagonally across the page, e.g.
+
+    ```ruby
+    Prawn::Document.new(page_size: 'A4', margin: 0) do
+      font_size 36
+      fill_color '000000'
+
+      rotate 35.26, origin: [297.64, 420.945] do
+        transparent 0.1 do
+          text 'Generated for Alice Bloggs <alice@example.com>', align: :center, valign: :top
+          text 'Generated for Alice Bloggs <alice@example.com>', align: :center, valign: :center
+          text 'Generated for Alice Bloggs <alice@example.com>', align: :center, valign: :bottom
+        end
+      end
+    end
+    ```
+
+    I then [overlay](http://qpdf.sourceforge.net/files/qpdf-manual.html#ref.overlay-underlay) this onto whatever PDF document they are downloading from [Active Storage](https://guides.rubyonrails.org/active_storage_overview.html) using [QPDF](http://qpdf.sourceforge.net).
+
+    As QPDF is a command-line tool, I needed a way to shell out to it in a safe way that could be used on-demand. Thankfully, [MiniMagick does something very similar](https://github.com/minimagick/minimagick/blob/master/lib/mini_magick/shell.rb) shelling out to [ImageMagick](https://imagemagick.org/index.php)'s various commands, e.g. [`convert`](https://imagemagick.org/script/convert.php), [`mogrify`](https://imagemagick.org/script/mogrify.php), [etc.](https://imagemagick.org/script/command-line-tools.php)
+
+    Having [seen ImageMagick commands cause an application to hang forever](https://github.com/thoughtbot/paperclip/pull/324) (bonus trivia: that's my first ever pull request on GitHub) and being [subject to Heroku's 30 second timeout](https://devcenter.heroku.com/articles/request-timeout), I wanted to ensure the watermarking process had a strict time limit. Despite it being [Ruby's most dangerous API](https://www.mikeperham.com/2015/05/08/timeout-rubys-most-dangerous-api/), I took a leaf from MiniMagick's book and used [`Timeout.timeout`](https://ruby-doc.org/stdlib-3.0.1/libdoc/timeout/rdoc/Timeout.html#timeout-method) like so:
+
+    ```ruby
+    def generate_pdf(infile, overlayfile, outfile)
+      Open3.popen3(
+        'qpdf', infile.path, '--overlay', overlayfile.path, '--from=', '--repeat=1', '--', outfile.path
+      ) do |_stdin, _stdout, stderr, wait_thr|
+        break if Timeout.timeout(timeout) { wait_thr.value }.success?
+
+        raise WatermarkingError, stderr.read
+      rescue Timeout::Error
+        Process.kill('KILL', wait_thr.pid)
+        raise WatermarkingError, 'qpdf timed out'
+      end
+    end
+    ```
+
+    At the end of this process, I have a [`Tempfile`](https://ruby-doc.org/stdlib-3.0.1/libdoc/tempfile/rdoc/Tempfile.html) with the watermarked PDF which I need to send to the user. Rails' [`send_file`](http://api.rubyonrails.org/classes/ActionController/DataStreaming.html#method-i-send_file) seems a good choice as it'll handle setting the appropriate headers for the file type and avoid issues with cache headers in old versions of Internet Explorer. However, if you are trying to clean up your temporary files on every request rather than letting the Ruby Garbage Collector handle it, you can't [unlink](https://ruby-doc.org/stdlib-3.0.1/libdoc/tempfile/rdoc/Tempfile.html#unlink-method) the file in your controller. If you do, by the time your file is actually read and served, it will have been deleted and your users will end up with an empty response.
+
+    Thankfully, [Rack comes with a Tempfile Reaper middleware](https://github.com/rack/rack/blob/master/lib/rack/tempfile_reaper.rb) which allows you to clean `Tempfile`s created during a request by adding them to `request.env[Rack::RACK_TEMPFILES]`. This is [part of Rails' default middleware stack](https://guides.rubyonrails.org/rails_on_rack.html#inspecting-middleware-stack) so we can use it to remove `Tempfile`s only when they have been read.
+
+*   As [people aged 40 and over can now get the COVID-19 vaccine](https://www.nhs.uk/conditions/coronavirus-covid-19/coronavirus-vaccination/coronavirus-vaccine/), I attempted to [book my sister's first dose](https://www.nhs.uk/conditions/coronavirus-covid-19/coronavirus-vaccination/book-coronavirus-vaccination/). She hadn't yet been contacted by her GP or the NHS so I looked for the next available appointment at the nearest vaccination centre and saw that there were slots within the next few days. However, demand is obviously high and the appointments disappeared from the site before I could book one.
+
+    On subsequent visits to the same site, I was then presented with the following message:
+
+    > You were unable to go to/missed your 1st appointment to get the coronavirus vaccination.
+    >
+    > This means you need to book both of your appointments again.
+
+    As we had never made an appointment, I assume this is due to some overly broad condition in the website, e.g.
+
+    ```ruby
+    if !users_first_time_using_site && user_has_not_had_first_dose
+      display_scary_message
+    end
+    ```
+
+    Thankfully, she is now booked in for her first dose next weekend.
+
+*   I attended last night's [Boston Computation Club](https://bstn.cc) to watch [Chris Patuzzo's talk "Assembly Programming for the M1](https://bstn.cc/artifacts/chrisPatuzzo/assembly.pdf)". It was great to see Chris present his own work and to see him tease "Worship the Sun" at the end.
+
+    I learned that the club was inspired by [London Computation Club](https://london.computation.club) and they found us due to [our write-ups over the years](https://github.com/computationclub/computationclub.github.io/wiki) particularly [those regarding Benjamin C. Pierce's "Types and Programming Languages"](https://github.com/computationclub/computationclub.github.io/wiki#types-and-programming-languages).
