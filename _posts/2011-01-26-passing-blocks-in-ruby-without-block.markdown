@@ -3,7 +3,10 @@ layout: post
 title: Passing Blocks in Ruby Without <code>&amp;block</code>
 excerpt: Using yield and Proc.new to avoid unnecessary Proc object creation in Ruby.
 redirect_from: /2011/01/26/passing-blocks-in-ruby-without-block.html
+updated: 2020-07-01 08:53:00
 ---
+***Update**: The ability to call [`Proc.new`](https://ruby-doc.org/core-3.0.1/Proc.html#new-method) without a block was [removed in Ruby 3.0.0](https://bugs.ruby-lang.org/issues/10499) so the technique described below will only work on versions of Ruby prior to that.*
+
 There are two main ways to receive [blocks][Containers, Blocks, and Iterators] in a method in Ruby:
 the first is to use the [`yield`][yield] keyword like so:
 
