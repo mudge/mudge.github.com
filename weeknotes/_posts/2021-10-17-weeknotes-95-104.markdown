@@ -4,15 +4,21 @@ excerpt: Numbering, a false start to a holiday, learning CSS, moving S3 static w
 date: 2021-10-17 18:08:00
 ---
 -   It was a mistake to number my weeknotes by weeks rather than by notes.
+
 -   We are on holiday for the first time since C’s first birthday over a year ago.
 	
     We had a false start as the “eco lodge” we booked for the week was littered with mouse droppings. We’re now in our second accommodation, E has made a fire and I’m feeling more relaxed.
+
 -   C continues to bring home from nursery a variety of colds and, on one occasion, [hand, foot and mouth disease](https://www.nhs.uk/conditions/hand-foot-mouth-disease/) (not to be confused with [foot and mouth](https://www.gov.uk/guidance/foot-and-mouth-disease)).
+
 -   I haven’t [played Marvel’s Spider-Man](/2021/08/15/weeknotes-83-94/) as I enjoyed [Psychonauts 2](https://www.doublefine.com/games/psychonauts-2) instead, released five years after I became its 14,463rd backer.
+
 -   In order to bring my CSS knowledge up-to-date I’ve been working through [Josh Comeau’s “CSS for JS” course](https://css-for-js.dev/). I was hesitant at first but I’ve learnt an incredible amount in the first two modules. I realise I’ve never understood the different [box models](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model), [margin collapsing](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing) or even how [positioned layout](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning) works until now.
 
     A lot of this has influenced my work on the new [raspberrypi.com](https://www.raspberrypi.com/).
+
 -   C has two great loves: road vehicles and birds. We alternate between [Grace’s](https://www.bbc.co.uk/programmes/m0009mbx) (formerly [Catie’s](https://www.bbc.co.uk/programmes/p06m8m6y)) Amazing Machines and scrolling through the [Collins Bird Guide iOS app](https://apps.apple.com/gb/app/collins-bird-guide/id868827305).
+
 -   I had to move a subdomain to another domain for a website served by [Amazon S3’s static website hosting](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html) and [CloudFront](https://aws.amazon.com/cloudfront/). I couldn’t find examples of redirecting from one domain to another without setting up a new distribution for the new domain and a new S3 bucket to [redirect all requests from the old domain](https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-page-redirect.html#redirect-endpoint-host).
 
     I avoided the new bucket and distribution by creating a new SSL certificate for both the old and new domain using [Amazon Certificate Manager](https://aws.amazon.com/certificate-manager/) and then updating the existing CloudFront distribution to use that certificate and the new domain as an [alias](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html#CreatingCNAME).
@@ -43,5 +49,7 @@ date: 2021-10-17 18:08:00
         return request;
     };
     ```
+
 -   I second [Cabel Sasser’s recommendation to add a large Photos widget on your Home Screen](https://www.twitter.com/cabel/status/1426269188348268548) once you [tell it which people you don’t want featuring](https://www.twitter.com/cabel/status/1426270646468714496).
+
 -   DIY improvements on our house have stopped after disconnecting useless telephone and aerial cables, replacing the thermostat, fixing the fridge door with [Sugru](https://sugru.com/) and filling holes in the external walls with silicone.
