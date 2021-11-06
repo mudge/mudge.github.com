@@ -1,0 +1,18 @@
+---
+title: Weeknotes 105–107
+excerpt: A future gourmand, skipping a generation, HTTP headers and a backlog of Starmix.
+date: 2021-11-06 13:42:00
+---
+*   C often asks me "where are you [meaning "am I"] going today?" even if it is the end of the day. I'll ask him back "what did we do today?" and his answers vary in accuracy. More than once, he has regaled me of the time we saw a double rainbow on the way to the butcher to buy a cormorant.
+
+    I fear he is on the path to be the kind of gourmand who [eats an Ortolan bunting with a linen napkin draped over his head](https://en.wikipedia.org/wiki/Ortolan_bunting).
+
+*   After sitting out an [entire generation of MacBook Pro](https://support.apple.com/kb/SP749?locale=en_GB), I ordered a new [14" MacBook Pro](https://www.apple.com/uk/macbook-pro/). Given I had to put my 15" Mid-2015 MacBook Pro in the fridge after [`kernel_task` desperately took up 500% CPU](https://support.apple.com/en-gb/HT207359), I am looking forward to its arrival.
+
+*   I've [mentioned before how we play white noise](/2020/01/26/weeknotes-13/) to help C sleep but after too many mornings finding "Rain Rain" crashed, I decided to pay up for "[Dark Noise](https://darknoise.app)" instead. While I have no need for custom animations, it hasn't crashed yet in the several weeks I have been using it.
+
+*   On reflection, [our holiday](/2021/10/17/weeknotes-95-104/) was a more intense version of our daily life: spending our time wrangling a two-year old but without the familiarity of home or support of nearby family. Lesson learnt, our next holiday will involve having more people around.
+
+*   I've been looking into best practices around HTTP headers using sites such as [Mozilla Observatory](https://observatory.mozilla.org) and [Security Headers](https://securityheaders.com). I fear I cannot put off getting to grips with [`Content-Security-Policy` and its many directives](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) for much longer but I'm hoping [Mozilla's web security guidelines](https://infosec.mozilla.org/guidelines/web_security#content-security-policy) will be helpful.
+
+*   As this was our first Hallowe'en in our new house and I wasn't sure whether to expect trick-or-treaters, I bought a Haribo "party box" and a tub of "sweet shop favourites". However, out of ignorance, we neither put on an outside light nor had any decorations so you'll now find me working my way through tiny bags of Starmix every afternoon.
