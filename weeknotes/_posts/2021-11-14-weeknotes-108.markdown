@@ -1,0 +1,152 @@
+---
+title: Weeknotes 108
+excerpt: Nuzzling, replacing Enzyme, Tailwind CSS and our current TV rotation.
+date: 2021-11-14 15:35:00
+---
+-   After [writing about white noise apps last week](/2021/11/06/weeknotes-105-107/), [Scott](https://scottm.medium.com) pointed out [iOS 15 and iPadOS 15 have ambient noises built-in](https://support.apple.com/en-gb/HT212775).
+
+-   E's cousin, her husband and young daughter stayed with us from Thursday. During their stay, it has become clear that C is a serial nuzzler.
+
+-   I couldn't upgrade a legacy JavaScript application to [React v17.0](https://reactjs.org/blog/2020/10/20/react-v17.html) as its test suite was written with [Enzyme](https://enzymejs.github.io/enzyme/) (which [doesn't officially support the latest version of React](https://github.com/enzymejs/enzyme/issues/2429)). We decided to replace Enzyme with a combination of [React Test Renderer](https://reactjs.org/docs/test-renderer.html) and [React Testing Library](https://testing-library.com/react) with [jest-dom](https://testing-library.com/docs/ecosystem-jest-dom).
+
+    We ported any [snapshot tests](https://jestjs.io/docs/snapshot-testing) like the following:
+
+    ```jsx
+    it('matches its snapshot', () => {
+        const wrapper = mount(<Component />)
+
+        expect(wrapper).toMatchSnapshot()
+    })
+    ```
+
+    To use React Test Renderer instead:
+
+    ```jsx
+    import { create } from 'react-test-renderer'
+
+    it('matches its snapshot', () => {
+        const wrapper = create(<Component />)
+
+        expect(wrapper.toJSON()).toMatchSnapshot()
+    })
+    ```
+
+    Any tests that asserted the presence of specific components went from:
+
+    ```jsx
+    it('contains a child component', () => {
+        const wrapper = mount(<Component />)
+
+        expect(wrapper.find(ChildComponent)).toExist()
+    })
+    ```
+
+    To:
+
+    ```jsx
+    import { create } from 'react-test-renderer'
+
+    it('contains a child component', () => {
+        const wrapper = create(<Component />)
+
+        expect(wrapper.root.findByType(ChildComponent)).toBeTruthy()
+    })
+    ```
+
+    We rewrote tests that asserted on various attributes of [elements with ARIA roles](https://www.w3.org/TR/html-aria/#docconformance) from:
+
+    ```jsx
+    it('adds the specified class name to the image', () => {
+        const wrapper = mount(<Component className="another-class-name" />)
+
+        expect(wrapper.find('.some-img-class')).toHaveClassName('another-class-name')
+    })
+    ```
+
+    To:
+
+    ```jsx
+    import { render, screen } from '@testing-library/react'
+
+    it('adds the specified class name to the image', () => {
+        render(<Component className="another-class-name" />)
+
+        expect(screen.getByRole('img')).toHaveClass('another-class-name')
+    })
+    ```
+
+    The remaining tests all used CSS selectors to assert attributes of elements without ARIA roles so we went from:
+
+    ```jsx
+    it('adds the specified class name to the container', () => {
+        const wrapper = mount(<Component className="another-class-name" />)
+
+        expect(wrapper.find('.some-div-class')).toHaveClassName('another-class-name')
+    })
+    ```
+
+    To use [`querySelector`](http://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) [though this is not recommended](https://testing-library.com/docs/react-testing-library/api#container-1):
+
+    ```jsx
+    import { render } from '@testing-library/react'
+
+    it('adds the specified class name to the container', () => {
+        const { container } = render(<Component className="another-class-name" />)
+
+        expect(container.querySelector('.some-div-class')).toHaveClassName('another-class-name')
+    })
+    ```
+
+-   Since [improving my CSS knowledge](/2021/10/17/weeknotes-95-104/), I've been using [Tailwind CSS](https://tailwindcss.com) for all new projects that require custom design work, e.g. implementing a design from a mock-up or wireframes.
+
+    At first, I mistook it for something like [Bootstrap](https://getbootstrap.com): an entire framework of pre-written styled components that I could reuse with little thought. However, it made much more sense when I saw it as an alternate way of writing CSS. Instead of writing CSS declarations in classes, you use Tailwind's utility classes directly on your elements.
+
+    While I initially balked at all the inline classes, in reality I'm replacing code like this:
+
+    ```css
+    .bubble {
+      position: relative;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 1.5rem;
+    }
+    .arrow {
+      position: absolute;
+      top: -1rem;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .arrow img {
+      width: 1rem;
+      height: 1rem;
+    }
+    ```
+
+    ```html
+    <div class="bubble">
+      <div class="arrow"><img src="arrow.svg" width="16" height="16" alt="" /></div>
+      <p>I want to turn people into dinosaurs.</p>
+    </div>
+    ```
+
+    With this:
+
+    ```html
+    <div class="relative p-4 bg-white rounded-3xl">
+      <div class="absolute inset-x-0 -top-4 mx-auto"><img class="w-4 h-4" src="arrow.svg" width="16" height="16" alt="" /></div>
+      <p>I want to turn people into dinosaurs.</p>
+    </div>
+    ```
+
+    The corresponding CSS classes still exist but I can delegate their maintenance to Tailwind's authors.
+
+-   Our current television-watching rotation is as follows:
+
+    * [Succession: Season 3](https://www.hbo.com/succession/season-3)
+    * [The Morning Show: Season 2](https://tv.apple.com/gb/show/the-morning-show/umc.cmc.25tn3v8ku4b39tr6ccgb8nl6m)
+    * [The Great British Bake Off](https://www.channel4.com/programmes/the-great-british-bake-off)
+    * [Handmade: Britain's Best Woodworker](https://www.channel4.com/programmes/handmade-britains-best-woodworker)
+    * [Reservation Dogs](https://www.imdb.com/title/tt13623580/)
+    * [The Other Two](https://www.channel4.com/programmes/the-other-two)
