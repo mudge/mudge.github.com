@@ -1,0 +1,41 @@
+---
+title: Weeknotes 109
+excerpt: Switching to Apple Silicon, focus, securing wall plugs and needing a cuddle.
+date: 2021-11-21 14:09:00
+---
+-   I've switched to my [new laptop](https://www.apple.com/uk/macbook-pro-14-and-16/).
+
+    To upgrade, I dragged over my `.ssh`, `.gnupg`, `Work`, `Projects` and `Music` directories as well as 23 years of photos and videos from a [Time Machine](https://support.apple.com/en-us/HT201250) backup on an [external SSD](https://www.samsung.com/semiconductor/minisite/ssd/product/portable/t5/). Everything else was installed via [Homebrew](https://brew.sh) and, while I have a [`Brewfile`](https://github.com/Homebrew/homebrew-bundle), I went through [the ritual](https://konmari.com/marie-kondo-rules-of-tidying-sparks-joy/) of `brew install`ing everything individually.
+
+    I've only run into three issues so far:
+
+    1.  The [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#apple-silicon-issues) uses a non-Apple Silicon native build of [Node.js](https://nodejs.org/en/) so it requires [Rosetta 2](https://support.apple.com/en-us/HT211861) which you can install via `softwareupdate`:
+
+        ```console
+        $ softwareupdate --install-rosetta
+        ```
+
+    2.  Similarly, older versions of [Terraform](https://www.terraform.io) aren't compiled for arm64 on macOS so trying to [install them with `asdf`](https://github.com/asdf-community/asdf-hashicorp) will fail unless you explicitly tell it to install the amd64 version:
+
+        ```console
+        $ ASDF_HASHICORP_OVERWRITE_ARCH=amd64 asdf install
+        Downloading terraform version 0.11.14 from https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_darwin_amd64.zip
+        ```
+
+    3.  [Homebrew installs to `/opt/homebrew` for Apple Silicon](https://docs.brew.sh/Installation) and not `/usr/local` so any paths in `.zshrc`, `.gnupg/gpg-agent.conf`, etc. need updating.
+
+-   E recommended I listen to the ["Unfocus" episode of BBC Radio 4's The Digital Human](https://www.bbc.co.uk/programmes/m00114h7):
+
+    > We've all had experiences of our attention wandering, usually at those moments when we most need to concentrate.
+    >
+    > But, in our productivity-driven society, are we placing too much emphasis on paying attention and failing to recognise the benefits of more unstructured thought processes? After all, focus comes at a cost. With numerous demands on our attention, it's all too easy to experience burnout. Unfocus can recharge our batteries and allow us to be creative by making connections and connecting with other people.
+    >
+    > In this episode, Aleks Krotoski explores some of the different modes of attention we can switch between and asks whether, perhaps, we should be awarding our unfocus equal status to our focus.
+
+-   I put some blinds up in a bay window but drilled some of the holes too big. Thankfully, [someone tested 11 different methods for securing loose wall plugs](https://youtu.be/pxD9mLqhuSc) revealing a solution that is obvious in retrospect: use a _second_ wall plug to secure the first.
+
+-   Every Sunday, I take C to swimming lessons at the local grammar school. Each lesson culminates in a brief bit of free time where he hopes to play with one of two watering cans. However, he is currently full of cold and feverish, occasionally calling out "I need a cuddle".
+
+-   A combination of parenthood and moving out of London means we rarely get to eat out but we've been occasionally using [Dishpatch](https://www.dishpatch.co.uk) to have date nights at home. They can be quite involved but mean a change from our usual routine.
+
+    <p class="center"><img src="/i/dishpatch.jpg" width="375" height="500" alt="" /></p>
