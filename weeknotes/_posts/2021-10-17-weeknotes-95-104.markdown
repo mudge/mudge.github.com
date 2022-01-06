@@ -3,7 +3,7 @@ title: Weeknotes 95–104
 excerpt: Numbering, a false start to a holiday, learning CSS, moving S3 static websites and an end to DIY.
 date: 2021-10-17 18:08:00
 ---
--   It was a mistake to number my weeknotes by weeks rather than by notes.
+-   <p id="numbering-mistake">It was a mistake to number my weeknotes by weeks rather than by notes.</p>
 
 -   We are on holiday for the first time since C’s first birthday over a year ago.
 	

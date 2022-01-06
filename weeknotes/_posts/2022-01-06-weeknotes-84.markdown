@@ -1,0 +1,38 @@
+---
+title: "Weeknotes #84"
+excerpt: Correcting mistakes, end-of-year podcast episodes, the best loaves yet, house pride and why you should have some Steri-Strips in your first aid kit.
+date: 2022-01-06 16:12:00
+---
+*   It is a new year and it is time to correct [past mistakes](/2021/10/17/weeknotes-95-104/#numbering-mistake).
+
+*   I've been listening to a lot of end-of-year episodes of tech podcasts (particularly ones I haven't heard before): [Connected](https://www.relay.fm/connected/378), [Cortex](https://www.relay.fm/cortex/123), [Mac Power Users](https://www.relay.fm/mpu/620) and [Upgrade](https://www.relay.fm/upgrade/387). A common theme seems to be the rise of note-taking applications such as [Obsidian](https://obsidian.md) and [Craft](https://www.craft.do). My colleague is an avid [Notion](https://www.notion.so) and [Tot](https://tot.rocks) user but I rely solely on [Apple's built-in Notes app](https://apps.apple.com/us/app/notes/id1110145109).
+
+    I tend to be minimalist when it comes to software but in the spirit of trying new things (e.g. I'm currently trying [Mimestream](https://mimestream.com) as a new email client), I'm increasingly tempted.
+
+*   After [Tom](https://tomstu.art/weeknotes-97-epic-yawnfest) and Leo recommended it, I got a [Challenger Bread Pan](https://challengerbreadware.com/product/challenger-bread-pan/) for Christmas from E. I've baked four loaves in it using the [recommended instructions](https://challengerbreadware.com/cast-iron-pan-care-use/) and they have been some of my best yet.
+
+    <p class="center"><img src="/i/challenger-pan.jpg" width="375" height="281" alt></p>
+
+*   Over Christmas, we stayed at my parents' for two nights so I got to see my dad playing with C. When I was C's age, my dad worked nights at a kebab shop in Leeds city centre and he says he can't remember me or my sister from that time. I watched the two of them pretend to buy and taste various treats from a toy ice cream van.
+
+*   In a burst of house pride, I've put up new shelves and a bathroom mirror, replaced the rotten draught excluder from our front door and have just applied the first coat of "cornflower blue" paint in my office to replace the olive green from the previous owners.
+
+    I even changed my Terminal font from [JetBrains Mono](https://www.jetbrains.com/lp/mono/) to [Fira Code](https://github.com/tonsky/FiraCode) and picked a new [desktop wallpaper](https://basicappleguy.com/basicappleblog/macosbliss).
+
+*   For Christmas, [Will](http://willhigo.com) gave me "[The Last of Us: Part II](https://www.playstation.com/en-gb/games/the-last-of-us-part-ii/)" for the PlayStation 4. I had bought myself "[Chicory](https://www.nintendo.co.uk/Games/Nintendo-Switch-download-software/Chicory-A-Colorful-Tale-2090478.html)" for the Nintendo Switch but don't make any time for playing video games.
+
+    However, I have a plan: I've ordered a [Chromecast with Google TV](https://store.google.com/gb/product/chromecast_google_tv?hl=en-GB) so I can move my PlayStation 4 from downstairs (where it currently provides access to Netflix, Disney+, etc. on my 12 year old, non-smart TV) upstairs.
+
+    This potentially creates a single place where I can play harrowing video games in five minute bursts over the next few years.
+
+*   **Injury detail warning:** A few months ago, E cut her finger badly enough that the [NHS 111](https://111.nhs.uk) expert system told us to go to our nearest hospital's Accident and Emergency department. The deciding option contained the phrase "visible meat and/or gristle". Thankfully, it wasn't too severe and healed up without issue.
+
+    When preparing a birthday meal for Will, E cut herself again and this time we were prepared with [skin closures](https://www.boots.com/boots-skin-closures-8-closures-10115222), dressing pads, microporous tape and finger bandages.
+
+*   In my [rushed yearnotes](/2022/01/02/2021-yearnotes/), I said I would try to run every week.
+
+    One thing I enjoyed from listening to all those end-of-year podcast episodes was the discovery of [CGP Grey and Myke Hurley's "theme system"](https://www.themesystem.com). Instead of setting a fragile goal like "run every week" which is so easily unmet, I should have framed 2022 as "The Year of Fitness" or "The Year of Health".
+
+    At the very least, I want to be more active than the latter half of 2021 which was spent mostly in a desk chair, interrupted only by going downstairs to secretly eat crisps.
+
+*   Good news, everyone. There's a new series of [The Great Pottery Throw Down](https://www.channel4.com/programmes/the-great-pottery-throw-down).

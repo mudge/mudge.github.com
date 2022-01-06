@@ -237,6 +237,10 @@ strong, b {
   content: "\ea9c";
 }
 
+:target {
+  background-color: hsl(150.74, 73.64%, 43.14%, 24%);
+}
+
 /* Syntax highlighting. */
 .highlight .c { color: #998; font-style: italic; }
 .highlight .err { background-color: #e3d2d2; color: #a61717; }
