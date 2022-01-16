@@ -5,7 +5,7 @@ date: 2022-01-06 16:12:00
 ---
 *   It is a new year and it is time to correct [past mistakes](/2021/10/17/weeknotes-95-104/#numbering-mistake).
 
-*   I've been listening to a lot of end-of-year episodes of tech podcasts (particularly ones I haven't heard before): [Connected](https://www.relay.fm/connected/378), [Cortex](https://www.relay.fm/cortex/123), [Mac Power Users](https://www.relay.fm/mpu/620) and [Upgrade](https://www.relay.fm/upgrade/387). A common theme seems to be the rise of note-taking applications such as [Obsidian](https://obsidian.md) and [Craft](https://www.craft.do). My colleague is an avid [Notion](https://www.notion.so) and [Tot](https://tot.rocks) user but I rely solely on [Apple's built-in Notes app](https://apps.apple.com/us/app/notes/id1110145109).
+*   <p id="tech-podcasts">I’ve been listening to a lot of end-of-year episodes of tech podcasts (particularly ones I haven&#39;t heard before): <a href="https://www.relay.fm/connected/378">Connected</a>, <a href="https://www.relay.fm/cortex/123">Cortex</a>, <a href="https://www.relay.fm/mpu/620">Mac Power Users</a> and <a href="https://www.relay.fm/upgrade/387">Upgrade</a>. A common theme seems to be the rise of note-taking applications such as <a href="https://obsidian.md">Obsidian</a> and <a href="https://www.craft.do">Craft</a>. My colleague is an avid <a href="https://www.notion.so">Notion</a> and <a href="https://tot.rocks">Tot</a> user but I rely solely on <a href="https://apps.apple.com/us/app/notes/id1110145109">Apple&#39;s built-in Notes app</a>.</p>
 
     I tend to be minimalist when it comes to software but in the spirit of trying new things (e.g. I'm currently trying [Mimestream](https://mimestream.com) as a new email client), I'm increasingly tempted.
 
@@ -33,6 +33,6 @@ date: 2022-01-06 16:12:00
 
     One thing I enjoyed from listening to all those end-of-year podcast episodes was the discovery of [CGP Grey and Myke Hurley's "theme system"](https://www.themesystem.com). Instead of setting a fragile goal like "run every week" which is so easily unmet, I should have framed 2022 as "The Year of Fitness" or "The Year of Health".
 
-    At the very least, I want to be more active than the latter half of 2021 which was spent mostly in a desk chair, interrupted only by going downstairs to secretly eat crisps.
+    <p id="secretly-eating-crisps">At the very least, I want to be more active than the latter half of 2021 which was spent mostly in a desk chair, interrupted only by going downstairs to secretly eat crisps.</p>
 
 *   Good news, everyone. There's a new series of [The Great Pottery Throw Down](https://www.channel4.com/programmes/the-great-pottery-throw-down).

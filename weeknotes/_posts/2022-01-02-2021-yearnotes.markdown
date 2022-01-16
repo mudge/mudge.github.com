@@ -31,4 +31,4 @@ Following reflections on [2018](/2019/01/02/2018-yearnotes/), [2019](/2020/01/05
 
 *   I remain incapable of properly relaxing and the daily routine of having a two year old certainly hasn't helped. Working from home has been fantastic for many reasons but it adds to the [Groundhog Day](https://en.wikipedia.org/wiki/Groundhog_Day_(film)) feeling of the past year. I'm not entirely sure how to address that but I'll start by trying to see local friends with greater regularity than once every few months.
 
-*   As for my deteriorating fitness: my hamstrings currently ache from my first run in months and I will attempt to run along the [River Wharfe](https://en.wikipedia.org/wiki/River_Wharfe) every weekend.
+*   <p id="running">As for my deteriorating fitness: my hamstrings currently ache from my first run in months and I will attempt to run along the <a href="https://en.wikipedia.org/wiki/River_Wharfe">River Wharfe</a> every weekend.</p>
