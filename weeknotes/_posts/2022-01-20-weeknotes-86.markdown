@@ -1,0 +1,24 @@
+---
+title: "Weeknotes #86"
+excerpt: Archiving recipes, making family tech support less frustrating, the kindness of neighbours and migrating away from Sprockets and Webpacker.
+date: 2022-01-20 14:29:00
+---
+*   After it was recommended on several podcasts, I downloaded [Mela](https://mela.recipes) so I could save [all of Felicity Cloake's "How to cook the perfect..." recipes](https://www.theguardian.com/profile/felicity-cloake+food/series/how-to-cook-the-perfect----). However, its automatic recipe extraction didn't seem to work on The Guardian's articles despite [Tom](https://tomstu.art) trying it out for me before buying. I realised it was due to The Guardian's use of [AMP](https://amp.dev) on mobile and once I switched to the regular version of the site, I was able to successfully archive [how to make perfect porridge](https://www.theguardian.com/lifeandstyle/wordofmouth/2011/nov/10/how-to-cook-perfect-porridge) for posterity.
+
+*   I've made the mistake of doing tech support for Mac-using family members by asking them to point their phone cameras at their screen. This is inevitably frustrating and results in my repeatedly asking "I'm staring at the corner of your screen, can you please move the camera?"
+
+    I can highly recommend switching to [Messages' little known screen sharing feature](https://support.apple.com/en-gb/guide/messages/icht11883/mac) instead.
+
+*   After relying on the kindness of neighbours for years, I finally caved and bought the [cheapest HP laser printer I could find](https://www.hp.com/gb-en/shop/product.aspx?id=W2G51A&opt=B19&sel=PRN). Setting it up on our network required using [an iOS app](https://www.hpsmart.com/gb/en). Given there are apps I bought in the early days of the App Store that no longer run on modern devices, I wonder how long HP will continue to maintain an app for an ageing printer.
+
+*   At work, we finished upgrading all our [Ruby on Rails](https://rubyonrails.org) applications to [7.0.1](https://rubyonrails.org/2022/1/6/Rails-7-0-1-has-been-released) and [Ruby 3.1.0](https://www.ruby-lang.org/en/news/2021/12/25/ruby-3-1-0-released/). The biggest change was to migrate from [Sprockets](https://github.com/rails/sprockets) and [Webpacker](https://github.com/rails/webpacker) to [Propshaft](https://github.com/rails/propshaft), [CSS Bundling for Rails](https://github.com/rails/cssbundling-rails) and [JavaScript Bundling for Rails](https://github.com/rails/jsbundling-rails).
+
+    [DHH has written about Rails 7's approach to JavaScript](https://world.hey.com/dhh/modern-web-apps-without-javascript-bundling-or-transpiling-a20f2755) and the move from [webpack](https://webpack.js.org) to [esbuild](https://esbuild.github.io) has resulted in significantly faster build times. However, we were caught out by a few things in testing:
+
+    1. esbuild doesn't support [CSS Modules](https://github.com/css-modules/css-modules) out of the box but you can use [a plugin](https://www.npmjs.com/package/esbuild-css-modules-plugin) to handle them.
+    2. esbuild will bundle the full, development version of [React](https://reactjs.org) unless you specify the [minify](https://esbuild.github.io/api/#minify) option or [set `NODE_ENV` to `production`](https://github.com/evanw/esbuild/blob/a3d25dd6c2c7c75388c0e4d35dfb487d27c905b4/docs/architecture.md#constant-folding).
+    3. esbuild [targets the latest JavaScript and CSS features](https://esbuild.github.io/api/#target) by default and doesn't fully support transforming JavaScript to [ES5](https://caniuse.com/?search=es5) (which means dropping support for IE 11). However, we can target our most popular browsers by setting `target` to `edge95,chrome92,safari12,firefox78`.
+
+    Similarly, when switching from Sprockets to the [Dart Sass](https://sass-lang.com/dart-sass) CLI, we didn't realise we were no longer benefiting from [Autoprefixer Rails](https://github.com/ai/autoprefixer-rails) and so had to combine it with [PostCSS](https://github.com/postcss/postcss) in our `build:css` script (though we still have to figure out the development setup).
+
+    All of this complexity might seem painful but there's something appealing about these moving pieces being more visible.
