@@ -23,7 +23,7 @@ date: 2022-01-06 16:12:00
 
     However, I have a plan: I've ordered a [Chromecast with Google TV](https://store.google.com/gb/product/chromecast_google_tv?hl=en-GB) so I can move my PlayStation 4 from downstairs (where it currently provides access to Netflix, Disney+, etc. on my 12 year old, non-smart TV) upstairs.
 
-    This potentially creates a single place where I can play harrowing video games in five minute bursts over the next few years.
+    <p id="five-minute-bursts">This potentially creates a single place where I can play harrowing video games in five minute bursts over the next few years.</p>
 
 *   **Injury detail warning:** A few months ago, E cut her finger badly enough that the [NHS 111](https://111.nhs.uk) expert system told us to go to our nearest hospital's Accident and Emergency department. The deciding option contained the phrase "visible meat and/or gristle". Thankfully, it wasn't too severe and healed up without issue.
 

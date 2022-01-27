@@ -15,7 +15,7 @@ date: 2022-01-16 13:57:00
 
     I'll start a novel with the best of intentions but my interest will wane and I'll push another book onto the pile. The taller the stack gets, the less likely it is I'll return to books lower down. It doesn't help that it has now been years since I stopped reading, say, "Children of Ruin" so I'll probably have to restart it. Seeing the full stack in one place makes me realise I should think twice before adding anything new.
 
-*   C is a big fan of vehicles (almost entirely land-based, he has no interest in the sea) and we made the mistake of browsing YouTube for "construction vehicles for kids". We're now attempting to wean him off a [German channel featuring an adult playing with children's toys](https://www.youtube.com/channel/UCVEDZVtA5NUtjxSXHjtvkag).
+*   <p id="vehicles">C is a big fan of vehicles (almost entirely land-based, he has no interest in the sea) and we made the mistake of browsing YouTube for "construction vehicles for kids". We're now attempting to wean him off a <a href="https://www.youtube.com/channel/UCVEDZVtA5NUtjxSXHjtvkag">German channel featuring an adult playing with children's toys</a>.</p>
 
 *   E and I watched "[Sound of Metal](https://www.imdb.com/title/tt5363618/)" on Prime Video and thoroughly enjoyed it. In retrospect, it was an odd choice for breaking in our new soundbar.
 

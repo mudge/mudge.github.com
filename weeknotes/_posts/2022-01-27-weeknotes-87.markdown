@@ -1,0 +1,34 @@
+---
+title: "Weeknotes #87"
+excerpt: Types of ambulance, expecting the worst, someone else doing a better job, reverse engineering a nursery app and immense satisfaction.
+date: 2022-01-27 13:53:00
+---
+*   [C's love of vehicles](/2022/01/16/weeknotes-85/#vehicles) is now focussed on a series of videos with 8-bit graphics, a chiptune soundtrack and vehicles such as Type II Ambulance, Type III Ambulance and Bloodmobile.
+
+*   After spending nearly two decades at my parents' house without me and some encouragement from my father, I brought my electric guitar and amplifier home. I do not expect to play it but I enjoy its stickers for [Boards of Canada](https://en.wikipedia.org/wiki/Boards_of_Canada), [A Silver Mt. Zion](https://en.wikipedia.org/wiki/Thee_Silver_Mt._Zion_Memorial_Orchestra) and a genuine "Danger Electric Shock Risk" warning sign.
+
+*   I started playing "The Last of Us Part II" in [short bursts, as predicted](/2022/01/06/weeknotes-84/#five-minute-bursts). I am already hooked and think it looks fantastic despite running on my old, non-Pro PlayStation 4.
+
+    That said, while I marvel at the dappled sunlight shining through trees twisting from ruined highways, I am constantly on edge, expecting the worst.
+
+*   Last Sunday, when we woke C from his afternoon nap to go swimming, he turned over in his cot and said for the first time, "I don't want to go swimming, I want to go back to sleep."
+
+*   We have two decorators in this week painting our previously dingy, grey living room a slightly brighter colour. Having recently painted my office and now living with the slivers of olive green I failed to mask properly, it is nice to admire someone else's much better work.
+
+*   C's nursery provided us with a login for an iOS app where his keyworkers will occasionally share photos as well as what he has eaten that day, how long he slept, etc. As the app's UI doesn't fill my screen and I'm only really interested in the photos, I decided to use [mitmproxy](https://mitmproxy.org) to investigate how the app works.
+
+    From spying on the network requests made when I login and load the day's photos of C, I could see that the app talks to a JSON API hosted on [Microsoft Azure](https://azure.microsoft.com/en-gb/). Logging in sends the username and password and returns a temporary access token that can then be used to request photos for a given time range.
+
+    At first, I wrote a scrappy Ruby script to download the images to disk but then wondered if I could import them directly into [Photos for macOS](https://www.apple.com/uk/macos/photos/). I wondered if I could [script Photos with JavaScript](/2019/11/13/scripting-photos-for-macos-with-javascript/) but making HTTP requests seemed overly complicated as neither [`fetch`](http://developer.mozilla.org/en-US/docs/Web/API/Fetch) nor [`XMLHttpRequest`](http://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) are available.
+
+    [Tom](https://tomstu.art) suggested I look at [Shortcuts](https://support.apple.com/en-gb/guide/shortcuts/welcome/ios) instead and linked me to an article explaining how to [request your first API in Shortcuts](https://support.apple.com/en-gb/guide/shortcuts-mac/apd58d46713f/mac). By combining that with a tutorial on [storing simple values from the Shortcuts subreddit](https://www.reddit.com/r/shortcuts/comments/ajdq6d/data_storage_part_1_storing_simple_values/), I was able to fetch the latest photos from the API and directly import them into Photos. By saving the last fetched date in a JSON configuration file on iCloud Drive, I can repeatedly run the Shortcut without worrying about duplicate photos.
+
+    What's more, this same Shortcut works on both my Mac and my phone.
+
+*   The Shortcuts for macOS editor is quite unstable: it would often crash when trying to populate the autocomplete for a given field but the iOS version seems much better. I suspect the ideal device for authoring Shortcuts is an iPad but I painstakingly put this together on my phone's narrow screen instead.
+
+*   C won a small, plastic pull back car from a game of [Pass the Parcel](https://en.wikipedia.org/wiki/Pass_the_parcel) at nursery last year. It stopped working one night this week, making a clicking sound when you attempted to wind it up.
+
+    I took it apart, revealing a series of small cogs (one of which fell out before I could see where it was supposed to be) and a coiled spring. Inspired by [Steve Fletcher](http://www.clockworkshop.co.uk), I got a pair of tweezers from our bathroom cabinet and used a [video showing how these mechanisms work](https://youtu.be/QdvfiVebb_s) to fix it.
+
+    The sense of satisfaction was immeasurable.
