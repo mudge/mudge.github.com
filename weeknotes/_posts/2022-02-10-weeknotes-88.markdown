@@ -1,0 +1,32 @@
+---
+title: "Weeknotes #88"
+excerpt: A seemingly impossible puzzle, avoiding lost updates, fridge drains and draughts.
+date: 2022-02-10 12:21:00
+---
+*   Over Christmas, [my father-in-law](/2020/02/23/weeknotes-17/#hero) received a wooden puzzle we all failed to solve. The best attempts would always result in a single piece left over.
+
+    <p class="center"><img src="/i/puzzle.jpg" width="375" height="375" alt></p>
+
+    Determined to solve it, I thought of [Chris'](https://tuzz.tech/) programming language [Sentient](https://sentient-lang.org) but struggled to represent the puzzle and its pieces in code. Research revealed the puzzle consists of [polyominoes](https://en.m.wikipedia.org/wiki/Polyomino) and is an example of the [exact cover problem](https://en.m.wikipedia.org/wiki/Exact_cover) which is [NP-complete](https://en.m.wikipedia.org/wiki/NP-completeness).
+
+    [Donald Knuth used an algorithm called "Algorithm X"](https://en.m.wikipedia.org/wiki/Knuth%27s_Algorithm_X) to solve the exact cover problem and I found an [online polyomino solver by Chase Meadors](https://cemulate.github.io/polyomino-solver/) which let me quickly input the exact puzzle and generate a valid solution.
+
+    My use of machines to solve the problem was controversial but, as [Tom](https://tomstu.art) put it:
+
+    > It doesn't really qualify as a puzzle in that sense does it [due to the NP-completeness]? It's more like a game where you have to guess a number between one and a billion.
+
+*   I've been attempting to design an API that prevents simultaneous updates of a resource from overwriting each other (["mid-air collisions"](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag#avoiding_mid-air_collisions)).
+
+    In researching the problem and existing solutions, [Chris](http://github.com/clowder) found ["Detecting the Lost Update Problem Using Unreserved Checkout"](https://www.w3.org/1999/04/Editing/) by Henrik Nielsen and Daniel LaLiberte of the [W3C](https://www.w3.org) 23 years ago.
+
+    The [protocol interactions](https://www.w3.org/1999/04/Editing/#3) show how a combination of the [`ETag`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag), [`If-None-Match`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match) and [`If-Match`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match) HTTP headers make it possible to implement [optimistic concurrency control](https://en.wikipedia.org/wiki/Optimistic_concurrency_control) à la [Redis' `WATCH`](https://redis.io/topics/transactions#optimistic-locking-using-check-and-set) and [Consul's KV store's `cas` parameter](https://www.consul.io/api-docs/kv#cas).
+
+*   I continue to listen to the songs from [Bo Burnham's "Inside"](https://www.netflix.com/gb/title/81289483) on repeat:
+
+    > [Here's a tip for straining pasta, here's a nine year old who died.](https://youtu.be/k1BneeJTDcU)
+
+*   After finding the crisper drawer in our fridge full of water, I learnt that [fridges have drains that get blocked](https://youtu.be/JOEODVb4a8o). It also solved the mystery of the strange, flanged plastic wand left in the fridge door by the previous owners.
+
+*   I'm now on my third attempt to fix our draughty front door having bought yet another sort of door seal.
+
+    I'm gradually approaching the point where it will have been cheaper to replace the whole door rather than keep on buying the wrong type of weatherproofing.
