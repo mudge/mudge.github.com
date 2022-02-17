@@ -14,7 +14,7 @@ date: 2020-05-24 14:06:00
 
 *   I went on a related adventure to [upgrade my SSH keys from a sole 2048-bit RSA key to a 4096-bit RSA key and a Ed25519 key](https://blog.g3rt.nl/upgrade-your-ssh-keys.html).
 
-    [Leo](https://twitter.com/leocassarani) pointed out you can get the public SSH keys for any GitHub user by appending `.keys` to their profile URL, e.g. <https://github.com/mudge.keys>. You can also use `.gpg` to get their public GPG keys, e.g. <https://github.com/mudge.gpg>.
+    [Leo](https://twitter.com/cassarani) pointed out you can get the public SSH keys for any GitHub user by appending `.keys` to their profile URL, e.g. <https://github.com/mudge.keys>. You can also use `.gpg` to get their public GPG keys, e.g. <https://github.com/mudge.gpg>.
 
 *   [Shane](https://technicallyshane.com) [told me off](https://twitter.com/shamess/status/1261981790794850305) for not simply tilting my head in order to better locate [last week's infernal whining noise](/2020/05/17/weeknotes-29/).
 

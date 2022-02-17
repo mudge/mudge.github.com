@@ -13,7 +13,7 @@ excerpt: A car park disaster, animated GIFs, not rewriting legacy systems and ho
     $ ffmpeg -ss 1499.5 -t 2.5 -i oneshow.mp4 -filter_complex "[0:v] fps=12,scale=480:-1,split [a][b];[a] palettegen [p];[b][p] paletteuse" hero.gif
     ```
 
-*   Following a recommendation from [Leo](https://twitter.com/leocassarani), I listened to [an episode of "On the Metal" interviewing Kenneth Finnegan about starting his own internet exchange](https://oxide.computer/blog/on-the-metal-6-kenneth-finnegan/). Despite working on the web for 20 years, it quickly became clear I had no idea how the internet really worked.
+*   Following a recommendation from [Leo](https://twitter.com/cassarani), I listened to [an episode of "On the Metal" interviewing Kenneth Finnegan about starting his own internet exchange](https://oxide.computer/blog/on-the-metal-6-kenneth-finnegan/). Despite working on the web for 20 years, it quickly became clear I had no idea how the internet really worked.
 
 *   I enjoyed [Nicolas Carlo's "Avoid rewriting a legacy system from scratch, by strangling it"](https://understandlegacycode.com/blog/avoid-rewriting-a-legacy-system-from-scratch-by-strangling-it/) about the [Strangler Fig Application pattern](https://martinfowler.com/bliki/StranglerFigApplication.html). It reminded me of the time I failed to migrate the main database in a legacy system from [MongoDB](https://www.mongodb.com) to [PostgreSQL](https://www.postgresql.org) while trying very hard [not to rewrite it from scratch](https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/).
 

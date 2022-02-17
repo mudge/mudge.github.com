@@ -13,7 +13,7 @@ date: 2022-02-17 11:34:00
 
     Thankfully, Shortcuts provides a "Generate Hash" action which can generate a MD5, SHA1, SHA256 or SHA512 hash for a given input. I use this to first populate a dictionary with all existing photos' hashes and then check against this dictionary before importing each new photo.
 
-*   Thanks to tips mostly from [Leo](https://twitter.com/leocassarani), I've been slowly diverging from [Tartine's Country Bread recipe](https://tartinebakery.com/stories/country-bread):
+*   Thanks to tips mostly from [Leo](https://twitter.com/cassarani), I've been slowly diverging from [Tartine's Country Bread recipe](https://tartinebakery.com/stories/country-bread):
 
     <p class="center"><img src="/i/coil-fold-bread.jpg" width="375" height="500" alt></p>
 
