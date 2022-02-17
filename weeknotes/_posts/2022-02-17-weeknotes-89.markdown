@@ -1,0 +1,28 @@
+---
+title: "Weeknotes #89"
+excerpt: Improved lighting, de-duplicating photos in Shortcuts, sourdough variations, rusty Clojure and too many YouTube videos.
+date: 2022-02-17 11:34:00
+---
+*   In an effort to improve my lighting on video calls, I bought an [Elgato Key Light Air](https://www.elgato.com/en/key-light-air) and positioned it behind my monitor. The Elgato Control Center software adds an icon to the macOS menu bar, so [like Tom](https://tomstu.art/weeknotes-110-future-point), I wrote a [shortcut](https://support.apple.com/en-gb/guide/shortcuts/welcome/ios) to toggle the light by [making HTTP requests to it](https://tomstu.art/weeknotes-13-realer-problems-exist#key-light).
+
+    <p class="center"><img src="/i/key-light.jpg" width="375" height="211" alt></p>
+
+    I originally intended to run the shortcut from [LaunchBar](https://obdev.at/products/launchbar/index.html) but in practice, I've been toggling the light from a [widget](https://support.apple.com/en-gb/HT207122) on my phone as a sort of [Stream Deck](https://www.elgato.com/en/stream-deck).
+
+*   I revisited the [shortcut I wrote to scrape photos from C's nursery app](/2022/01/27/weeknotes-87/#nursery-shortcut) as it was importing duplicates due to the underlying API only respecting dates and not exact time ranges.
+
+    Thankfully, Shortcuts provides a "Generate Hash" action which can generate a MD5, SHA1, SHA256 or SHA512 hash for a given input. I use this to first populate a dictionary with all existing photos' hashes and then check against this dictionary before importing each new photo.
+
+*   Thanks to tips mostly from [Leo](https://twitter.com/leocassarani), I've been slowly diverging from [Tartine's Country Bread recipe](https://tartinebakery.com/stories/country-bread):
+
+    <p class="center"><img src="/i/coil-fold-bread.jpg" width="375" height="500" alt></p>
+
+    * I use rye flour rather than a blend of white and wholemeal both when feeding my starter and making the initial leaven.
+    * I use [coil folds](https://challengerbreadware.com/bread-techniques/coil-fold/) during bulk fermentation.
+    * I use [Simple Sourdough's preshaping and final shaping technique](https://youtu.be/rBH_NsTeNzE) for batards.
+    * I bake the dough cold from the fridge in a [Challenger bread pan](https://challengerbreadware.com/product/challenger-bread-pan/), following their [instructions for baking the perfect loaf](https://challengerbreadware.com/cast-iron-pan-care-use/) with one key difference:
+    * I [turn the oven off for 20 minutes after putting the dough in the oven](https://youtu.be/_sJ0HhqN6UM).
+
+*   For the first time in four years, I released a new version of my Clojure library [riveted](https://github.com/mudge/riveted), [adding the ability to parse XML from byte arrays directly](https://github.com/mudge/riveted/blob/main/CHANGELOG.md#020---2022-02-15). I have almost entirely forgotten how to write code in a purely functional style.
+
+*   I took yesterday off work as C caught another nasty cold. I've watched more YouTube videos for the query "vehicles for toddlers" than can possibly be healthy.
