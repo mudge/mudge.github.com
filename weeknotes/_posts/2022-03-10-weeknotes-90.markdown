@@ -1,0 +1,131 @@
+---
+title: "Weeknotes #90"
+excerpt: MIME negotiation and the Accept header in Rails APIs, detecting client disconnects and the guilty pleasure of action films.
+date: 2022-03-13 09:40:00
+---
+*   I've been working on an API written using [Ruby on Rails](https://rubyonrails.org) and was attempting to understand how Rails handles content types when sending the [HTTP `Accept` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept).
+
+    Given a controller action like so:
+
+    ```ruby
+    def show
+      @post = Post.find(params[:id])
+
+      respond_to do |format|
+        format.html
+        format.json { render json: @post }
+      end
+    end
+    ```
+
+    With a corresponding route:
+
+    ```ruby
+    resources :posts, only: :show
+    ```
+
+    Fetching `/posts/1` in your browser will try to render an HTML response by default. You can specify the request `format` by using an explicit file extension in the URL: `/posts/1.html` will return the HTML version and `/posts/1.json` will return JSON.
+
+    But what if you can't read the `format` out of the URL, e.g. if you accept dots in the post ID?
+
+    ```ruby
+    resources :posts, only: :show, id: /.+/
+    ```
+
+    Another way to request a content type is to send `Accept: text/html` or `Accept: application/json` in your request which will return the HTML and JSON versions respectively.
+
+    If you want the JSON representation to be the default and for the HTML version to only be returned if someone explicitly requests it using an `Accept: text/html` request header, you might try setting a default `format` in your route, e.g.
+
+    ```ruby
+    resources :posts, only: :show, id: /.+/, defaults: { format: :json }
+    ```
+
+    This means `/posts/1` now returns JSON by default but requesting `/posts/1` with `Accept: text/html` returns the JSON version even though we asked for HTML.
+
+    This is because Rails' notion of [a request's `format` takes precedence over anything specified in the `Accept` header](https://github.com/rails/rails/blob/a807a4f4f95798616a2a85856f77fdfc48da4832/actionpack/lib/action_dispatch/http/mime_negotiation.rb#L81-L85) (see also a [discussion between James Higgs and Simon Coffey about this issue](https://gist.github.com/higgis/3793544)). By setting a default `format` of `:json`, this will always be used instead of anything else in the request.
+
+    There is another approach: don't use a default `format` but instead rely on a little documented feature of Rails' `respond_to`: [put the default response _first_](https://github.com/rails/rails/blob/a807a4f4f95798616a2a85856f77fdfc48da4832/actionpack/lib/action_dispatch/http/mime_negotiation.rb#L76).
+
+    If we change our controller to the following:
+
+    ```ruby
+    def show
+      @post = Post.find(params[:id])
+
+      respond_to do |format|
+        format.json { render json: @post }
+        format.html
+      end
+    end
+    ```
+
+    When we now request `/posts/1` with the default `Accept: */*` header (as set by [curl](https://curl.se) and [httpie](https://httpie.io)), we'll get JSON by default instead of HTML. Specifying `Accept: text/html` will now return the HTML version as expected.
+
+    However, what if someone doesn't specify an `Accept` header at all (e.g. an HTTP client on an embedded device)? In that case, Rails will use a default content type of HTML ([unless it is an `XMLHttpRequest` in which case it will use JavaScript](https://github.com/rails/rails/blob/a807a4f4f95798616a2a85856f77fdfc48da4832/actionpack/lib/action_dispatch/http/mime_negotiation.rb#L87-L88)) which isn't what we expect.
+
+    To work around this, we can use [Rails' `request.format=` API](https://github.com/rails/rails/blob/a807a4f4f95798616a2a85856f77fdfc48da4832/actionpack/lib/action_dispatch/http/mime_negotiation.rb#L116-L130) to explicitly set our default `format` if no `Accept` header is present:
+
+    ```ruby
+    before_action :set_default_format_to_json
+
+    def show
+      @post = Post.find(params[:id])
+
+      respond_to do |format|
+        format.json { render json: @post }
+        format.html
+      end
+    end
+
+    private
+
+    def set_default_format_to_json
+      request.format = :json if request.headers["Accept"].blank?
+    end
+    ```
+
+    Now we'll serve JSON when someone requests `/posts/1` with the default `Accept: */*` header, `Accept: application/json` _and_ when there is no `Accept` header at all.
+
+*   We needed to improve detection of clients disconnecting from a streaming endpoint using [Rack's Hijack API](https://github.com/rack/rack/pull/481). As [this is a difficult problem](https://stackoverflow.com/a/17665015), I turned to [Jesse Storimer's "Working With TCP Sockets"](https://workingwithruby.com/wwtcps/intro).
+
+    When a client disconnects cleanly, their socket becomes [`eof?`](https://ruby-doc.org/core-3.1.1/IO.html#eof-3F-method) which means it becomes ready to read (e.g. with [`IO.select`](https://ruby-doc.org/core-3.1.1/IO.html#select-method) or [`IO#wait_readable`](https://ruby-doc.org/stdlib-3.1.1/libdoc/io/rdoc/IO.html#wait_readable-method)). Following [Action Cable's event loop](https://github.com/rails/rails/blob/c3d4ab00b69daf6044edd3f425ead228a540e68b/actioncable/lib/action_cable/connection/stream_event_loop.rb)'s lead, we implemented a system using [New I/O for Ruby](https://github.com/socketry/nio4r):
+
+    ```ruby
+    # Create a single selector.
+    selector = NIO::Selector.new
+
+    # Register each rack.hijack socket for reading.
+    monitor = selector.register(io, :r)
+
+    # Associate a connection helper object with the monitor
+    # to handle cleaning up after client disconnect.
+    monitor.value = connection
+
+    # Run an infinite loop in a separate thread, checking
+    # for when the rack.hijack socket becomes readable which,
+    # in our case, *must* mean the client has disconnected.
+    #
+    # As we're using the blocking form of select, in reality we
+    # use selector.wakeup to periodically interrupt the thread
+    # (e.g. when registering and deregistering sockets).
+    Thread.new do
+      loop do
+        selector.select do |monitor
+          connection = monitor.value
+          connection.close
+        end
+      end
+    end
+    ```
+
+    As this won't catch all client disconnects, we also attempt to write a keepalive message to the socket every 3 seconds and, if anything goes wrong, clean things up.
+
+*   The announcement of the [Apple Studio Display](https://www.apple.com/uk/studio-display/) and [Jason Snell's declaration of "I am not interested in having a stand on my desk"](https://twitter.com/jsnell/status/1501398193812107265) led me to order [Fully's Jarvis Monitor Arm](https://www.fully.com/jarvis-monitor-arm.html) but no new display (yet).
+
+*   After a three week hiatus due to a combination of illness and hosting guests, I pulled on my running tights and managed to run along the river this morning.
+
+*   When particularly ill, I sat on the sofa and watched several action films, embracing the likelihood they would be terrible guilty pleasures: [Wonder Woman 1984](https://www.imdb.com/title/tt7126948/), [Nobody](https://www.imdb.com/title/tt7888964/) and [The King's Man](https://www.imdb.com/title/tt6856242/). Following that bit of escapism, I watched all of [Invincible](https://www.imdb.com/title/tt6741278/) which was genuinely good (if you can stomach incredible violence).
+
+*   I baked bread for the first time in a while.
+
+    <p class="center"><img src="/i/2022-03-13-bread.jpg" width="375" height="500" alt></p>
