@@ -1,7 +1,7 @@
 ---
 title: "Weeknotes #91"
 excerpt: Testing positive.
-date: 2022-03-28 11:16:00
+date: 2022-03-28 12:16:00
 ---
 *   C and I tested positive for COVID-19 on Saturday. The previous day, after testing negative in the morning, we'd driven down to London for a friend's 40th birthday in Leytonstone. We had decided to make a weekend of it, seeing some other friends for a Mother's Day roast on Sunday.
 
