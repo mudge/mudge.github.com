@@ -1,0 +1,22 @@
+---
+title: "Weeknotes #91"
+excerpt: Testing positive.
+date: 2022-03-28 11:16:00
+---
+*   C and I tested positive for COVID-19 on Saturday. The previous day, after testing negative in the morning, we'd driven down to London for a friend's 40th birthday in Leytonstone. We had decided to make a weekend of it, seeing some other friends for a Mother's Day roast on Sunday.
+
+    I only managed to see [Tom](https://tomstu.art/weeknotes-116-remember-this) on the Friday night before the faint positive lateral flow test led us to cancel all plans and drive back up north. While we didn't suffer any unusual delays, the return journey took seven hours.
+
+*   As usual, I am recovering by repairing things with [Araldite](https://www.go-araldite.com) and watching [films of questionable quality](https://www.imdb.com/title/tt9032400/).
+
+*   In my [last weeknotes](/2022/03/13/weeknotes-90/), I linked to various bits of the [Ruby on Rails source code](https://github.com/rails/rails/). It is easy to link to a few lines of code only to have those links break as the code changes or files are rearranged. Thankfully, GitHub has [a keyboard shortcut for expanding a URL to its "canonical" form](https://docs.github.com/en/repositories/working-with-files/using-files/getting-permanent-links-to-files), e.g. converting `https://github.com/rails/rails/blob/main/README.md` to `https://github.com/rails/rails/blob/8372cf7374a1962ee0abdb9dedf7f690f280acc9/README.md`: press the "y" key.
+
+*   I was confused about the differences between [RSpec's "request specs"](https://relishapp.com/rspec/rspec-rails/v/5-0/docs/request-specs/request-spec), ["feature specs"](https://relishapp.com/rspec/rspec-rails/v/5-0/docs/feature-specs/feature-spec), ["system specs"](https://relishapp.com/rspec/rspec-rails/v/5-0/docs/system-specs/system-spec), [Rails' "system testing"](https://guides.rubyonrails.org/testing.html#system-testing) and ["integration testing"](https://guides.rubyonrails.org/testing.html#integration-testing).
+
+    To summarise:
+
+    * RSpec request specs are a wrapper around Rails' integration tests
+    * RSpec system specs are a wrapper around Rails' system tests
+    * RSpec feature specs don't correspond exactly to one of Rails' own tests but are for acceptance testing with [Capybara](https://github.com/teamcapybara/capybara)
+
+*   After completing the CSS animations module of [Josh W Comeau's "CSS for JavaScript Developers" course](https://css-for-js.dev), I updated the animation of [my company logo](https://www.ghostcassette.com) to "rewind" itself. It's a silly thing but I had a lot of fun implementing it.
