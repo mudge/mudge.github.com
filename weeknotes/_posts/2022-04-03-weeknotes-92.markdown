@@ -1,0 +1,47 @@
+---
+title: "Weeknotes #92"
+excerpt: Testing negative, a leaky gutter, failing to block YouTube videos, compressing assets with Propshaft and recording video game sounds with OBS.
+date: 2022-04-03 11:43:00
+---
+*   One week after [testing positive for COVID-19](/2022/03/28/weeknotes-91/), C and I have now tested negative for at least two days. I occasionally have a coughing fit but have otherwise recovered.
+
+*   In the middle of the night, we suddenly heard a rapid pitter-patter coming from outside our bedroom window. Venturing out, we discovered the gutter directly above was rapidly dripping rainwater onto the sill.
+
+    I've attempted to plug the leak with silicone but [various](https://youtu.be/qpCNrxaV8A0) [YouTube](https://youtu.be/kvamTRBhqLA) videos indicate that the real fix is to replace the faulty gutter union. However, given that investigating the guttering required E to hold onto my belt as I balanced on a yoga chair on a third storey balcony, it might be time to call out a professional.
+
+*   C continues to enjoy a daily dose of vehicle videos on YouTube, some of which [I don't want him to see](https://medium.com/@jamesbridle/something-is-wrong-on-the-internet-c39c471271d2). However, I can't find out how to block a video or channel from search with a regular YouTube account. Instead, this appears to be a feature exclusive to [YouTube Kids](https://www.youtubekids.com), a separate app for accessing YouTube with extra parental controls.
+
+    As I attempted to do all of this on a [Chromecast with Google TV](https://store.google.com/gb/product/chromecast_google_tv?pli=1&hl=en-GB), I first had to log out of my Google Workspace account (which silently lacks the ability to add child accounts), sign in with a "regular" Gmail account, set up a child account through something called [Google Family Link](https://families.google.com/familylink/) and finally discover that [you can't sign in to YouTube Kids on a Chromecast with Google TV](https://support.google.com/youtubekids/answer/9618031?hl=en-GB) so you can't block any content.
+
+*   I've been making steady progress through [The Last of Us Part II](https://www.playstation.com/en-gb/games/the-last-of-us-part-ii/). It really is _very_ good.
+
+*   I was caught out by [the lack of GZip and Brotli compression](https://github.com/rails/propshaft/issues/86) when switching from [Sprockets](https://github.com/rails/sprockets) to [Propshaft](https://github.com/rails/propshaft/): Sprockets will generate compressed versions of your assets (e.g. `application-decafbad.js.gz` and `application-decafbad.js.br`) which will automatically be served by [`ActionDispatch::Static`](https://github.com/rails/rails/blob/926b803297c4bc529ee46296a7cd5cc02bb21100/actionpack/lib/action_dispatch/middleware/static.rb). However, Propshaft will _not_ do this so your application will serve uncompressed versions by default if you're not compressing them with a CDN or other web server.
+
+    Thankfully, [Rack includes a `Rack::Deflater` middleware](https://github.com/rack/rack/blob/9a018c0c8fea537a8f8744000ae1dcb3e93cacb9/lib/rack/deflater.rb) which will handle GZip compression and [`Rack::Brotli` is available as a gem](https://github.com/marcotc/rack-brotli).
+
+    You can enable both by adding the following to your Rails application's `config/application.rb`:
+
+    ```ruby
+    config.middleware.insert_before ActionDispatch::Static, Rack::Deflater
+    config.middleware.insert_before ActionDispatch::Static, Rack::Brotli::Deflater
+    ```
+
+*   Continuing the inconsequential quest to tidy my desk that started by [ordering a monitor arm](/2022/03/13/weeknotes-90/), I installed a [Fully cable management tray and solution kit](https://www.fully.com/en-gb/accessories/jarvis-accessories/fully-cable-management-tray.html) to partially tame the tangle of wires and power strips dangling from the underside.
+
+*   I started playing a new build of [Chris Patuzzo](https://tuzz.tech)'s "Worship the Sun" and [once again](/2021/04/11/weeknotes-76/) recorded myself with [OBS](https://obsproject.com). The latest build now has sound but I had to jump through some hoops to capture this in my recordings as macOS doesn't support capturing system audio without third-party software:
+
+    1.  Install the [BlackHole](https://github.com/ExistentialAudio/BlackHole) virtual audio driver from Homebrew:
+
+        ```console
+        $ brew install blackhole-2ch
+        ```
+
+    2.   Add a "Multi-Output Device" in the macOS Audio MIDI Setup application, combining both "BlackHole 2ch" and my external headphones, ensuring the headphones are the "master device".
+
+    3.   Right-clicking that new "Multi-Output Device" and using it for sound output.
+
+    4.   Adding an "Audio Input Capture" to OBS and choosing the "BlackHole 2ch" device.
+
+    5.   Adding a Compressor audio filter to the "Audio Input Capture" with the [recommended sidechain compression/ducking settings](https://obsproject.com/kb/compressor-filter) so that the game audio dips in volume as I speak into my microphone.
+
+    None of this has improved my puzzle solving ability.
