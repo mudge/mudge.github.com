@@ -1,0 +1,40 @@
+---
+title: "Weeknotes #93"
+excerpt: Soldering remote control cars, emotional furniture, noodling with Tailscale, finishing The Last of Us Part II and the relationship between pasta and running.
+date: 2022-05-14 13:21:54
+---
+*   My sister bought C a surprisingly fast remote control car for Christmas which stopped working. Replacing the batteries made no difference so I took it apart and discovered a disconnected wire.
+
+    <p class="center"><img src="/i/broken-car.jpg" alt="" width="375" height="500"></p>
+
+    All of the repairs I've done on his toys so far have involved little more than [Araldite](https://www.go-araldite.com) and [tweezers](/2022/01/27/weeknotes-87/) and it had been a while since [my last successful bit of soldering](/2020/12/21/weeknotes-59-and-60/). With little to lose and [Maciek's recommendation for soldering lessons on YouTube](https://www.youtube.com/watch?v=vIT4ra6Mo0s), I managed to solder the loose wire back to its pin.
+
+    C is free to once again repeatedly crash the car loudly into the nearest wall.
+
+*   While he looked for things to turn with an Allen key, we took the bars off one side of C's cot, officially transforming it into a bed.
+
+    While we had been working up to this event for a week, reminding him daily that the change was coming, my own feelings about this seemingly insignificant bit of furniture modification took me by surprise.
+
+    He declared that he isn't quite ready for a duvet and continues to sleep in a sleeping bag instead. I can't blame him as it is even more convenient than the [Scandinavian two duvet system](https://www.scandinaviastandard.com/two-duvets-in-scandinavia/).
+
+*   I'm taking some time off work but have been characteristically struggling to unwind. I spent a few days clearing things off our shared to-do list, arranging a boiler service, putting up curtains and a mirror and indulging in some pointless "noodling" on my computer.
+
+*   After archiving yet another daily DMARC report without reading it, I read [Google's recommendation that you use a 3rd-party service to process them](https://support.google.com/a/answer/10032472?hl=en). I signed up for [Postmark's free DMARC monitoring](https://dmarc.postmarkapp.com) and am glad for the quieter inbox.
+
+*   After reading about [Tailscale's use of Litestream](https://tailscale.com/blog/database-for-2022/) and being recommended [their service](https://tailscale.com) by several people, I decided to give it a trial.
+
+    I [installed the client](https://tailscale.com/download/) on my laptop and my [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) and dug out an old USB hard drive in an enclosure to [use with Time Machine](/2019/11/12/using-a-raspberry-pi-for-time-machine/). Rather than setting up Time Machine over my local network, I instead used [Tailscale's MagicDNS](https://tailscale.com/kb/1081/magicdns/) to connect to the Samba server on my Pi at `raspberrypi.mudge.github.beta.tailscale.net`. This way, I could back up to my USB hard drive anywhere I had internet access.
+
+    Sadly, the initial backup was incredibly slow (probably due to the age of the drive and its enclosure) so I abandoned this though Tailscale worked without issue.
+
+*   I finally finished [The Last of Us Part II](https://www.playstation.com/en-gb/games/the-last-of-us-part-ii/) which I thoroughly enjoyed (even if it wasn't exactly uplifting).
+
+    <details><summary>Spoilers follow.</summary><p>At the halfway point of the game (when Abby catches up to Ellie in the theatre), I thought I knew how it was going to end: that, through Abby's eyes, we would slowly learn that Ellie had been the bad guy all along. That her mindless quest for revenge at any cost would make her irredeemable in our eyes. I hoped the game would try to change our mind about someone we had grown to love over the course of Part I so successfully that when the game returned us to that scene in the theatre in Abby's shoes, we would happily pull the trigger.</p><p>It didn't go that way but I still welcomed the chance to scrutinise Ellie's (appalling) behaviour in a type of game where that rarely happens.</p></details>
+
+*   With that done, [Will](http://willhigo.com) gave me [Control: Ultimate Edition](https://www.playstation.com/en-gb/games/control/) as an early birthday gift. The Last of Us Part II is a hard act to follow but I'm intrigued by its world which reminds me of [The Lost Room](https://www.imdb.com/title/tt0830361/?ref_=nm_flmg_act_12).
+
+*   I've taken to playing [Framed](https://framed.wtf) daily with two friends, both of whom consider themselves cinephiles. I'm definitely not a film aficionado (though I visited our [local cinema for the first time](https://www.ilkleycinema.co.uk)) but have only been truly stumped once out of 19 films so far.
+
+*   I [pre-ordered a Playdate](https://shop.play.date).
+
+*   After a long break due to illness and laziness, I managed to go for a run along the river. This helped both with my continuing project to relax and the discovery of a delightful local Italian restaurant that serves fantastic pasta dishes for lunch.

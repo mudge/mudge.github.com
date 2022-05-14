@@ -87,7 +87,7 @@ h2 {
   line-height: 3rem;
 }
 
-p, blockquote, pre, iframe, ul, ol, dl, dd, .vcard, .ipa {
+p, blockquote, pre, iframe, ul, ol, dl, dd, details, .vcard, .ipa {
   margin-bottom: 1.5rem;
 }
 
