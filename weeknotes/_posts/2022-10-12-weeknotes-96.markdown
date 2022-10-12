@@ -1,0 +1,58 @@
+---
+title: "Weeknotes #96"
+date: 2022-10-12 14:04:45
+excerpt: Fewer pills, more ducks, being wrong about database transactions, scratching someone else’s car and carpet fitting.
+---
+*   I stopped [taking Amitriptyline](/2022/08/22/weeknotes-95/) after a run of headaches and migraines and have instead decided to try two things:
+
+    1. Going for a lunchtime run around the local tarn twice a week, greeting the ducks as I complete two laps.
+    2. Using the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique) to force me to take breaks throughout the workday.
+
+*   I struggled to find a simple macOS application to help with the Pomodoro Technique but settled on [Flow](https://flowapp.info) as it gives me a timer for four 25 minute sessions separated by 5 minute breaks followed by a longer 30 minute break.
+
+*   Yesterday, I realised my understanding of database transactions was wrong.
+
+    I thought it was safe to do the following in [Rails](https://rubyonrails.org):
+
+    ```ruby
+    Key.transaction do
+      key = Key.where(name:).first_or_initialize
+      key.update!(age: 42)
+    end
+    ```
+
+    However, a concurrent transaction could write another `Key` with the same name between the [`where`](http://api.rubyonrails.org/classes/ActiveRecord/QueryMethods.html#method-i-where) and the [`update!`](http://api.rubyonrails.org/classes/ActiveRecord/Persistence.html#method-i-update-21). This would cause a conflict if `name` is unique.
+
+    Using [upsert](http://api.rubyonrails.org/classes/ActiveRecord/Persistence/ClassMethods.html#method-i-upsert) (which uses [PostgreSQL's `INSERT ... ON CONFLICT`](https://www.postgresql.org/docs/current/sql-insert.html#SQL-ON-CONFLICT)) would help but you still can't rely on any state you read in that first query.
+
+    If you're only ever expecting `UPDATE`s to cause conflicts (and never `INSERT`s), you can use [`SELECT ... FOR UPDATE`](https://www.postgresql.org/docs/current/sql-select.html#SQL-FOR-UPDATE-SHARE) via [`lock`](http://api.rubyonrails.org/classes/ActiveRecord/QueryMethods.html#method-i-lock):
+
+    ```ruby
+    Key.transaction do
+      key = Key.where(name:).lock.first_or_initialize
+      key.update!(age: 42)
+    end
+    ```
+
+    If you might have conflicts from `INSERT`s too, you can go for the strictest [transaction isolation level](https://www.postgresql.org/docs/current/transaction-iso.html) and keep retrying your transaction in case there's a conflict:
+
+    ```ruby
+    begin
+      Key.transaction(isolation: :serializable) do
+        key = Key.where(name:).first_or_initialize
+        key.update!(age: 42)
+      end
+    rescue ActiveRecord::SerializationFailure
+      retry
+    end
+    ```
+
+*   After watching [Joel Spolsky's "You Suck At Excel"](https://youtu.be/0nbkaYsR94c), I replaced my overcomplicated [`budget.rb`](/2020/05/31/weeknotes-31/) with a spreadsheet that is both easier to read and produces numbers in which I have much more confidence.
+
+*   We borrowed my dad's car to drive the family to Cornwall and suffered the narrow roads and surprisingly spiky roadside foliage. Before we returned, I ordered an [Autoglym Scratch Removal Kit](https://www.halfords.com/motoring/car-cleaning/all-car-cleaning/autoglym-complete-scratch-removal-kit-349894.html) as [recommended by Which?](https://www.which.co.uk/reviews/new-and-used-cars/article/best-car-scratch-removers-aGrzV1F66I0H) and it worked on both our recent scratches and ones I'm now sure were the work of my dad over the past eight years.
+
+*   We had carpet fitted in C——'s bedroom though the fitter asked us to take up the floor and remove any large furniture beforehand. This led to us dismantling two [IKEA PAX wardrobes](https://www.ikea.com/gb/en/cat/pax-system-19086/) and [a cot](https://www.ikea.com/gb/en/p/gonatt-cot-with-drawer-white-90467089/) before ripping up the wood floor. There was something cathartic about the totally empty room, stripped back to its stone underfloor.
+
+    The carpets were fitted in a matter of hours but reconstructing the wardrobes in place (given the low ceiling) required three adults. Planing the doors that no longer fit was a perilous experience.
+
+*   While nailing the flimsy back to the wardrobe, I unthinkingly cautioned one of the people helping me by saying "watch your fingies!"
