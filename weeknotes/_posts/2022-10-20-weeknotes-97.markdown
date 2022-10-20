@@ -1,0 +1,64 @@
+---
+title: "Weeknotes #97"
+excerpt: Not saving money on a Sonos Port, an update to re2 and telling a lie.
+date: 2022-10-20 11:07:46
+---
+*   After learning about the existence of the [Sonos Port](https://www.sonos.com/en-gb/shop/port) from [an episode of the Accidental Tech Podcast](https://atp.fm/504), I decided to give [balenaSound](https://sound.balenalabs.io) a go on my [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/).
+
+    I already ran [raspotify](https://github.com/dtcooper/raspotify) on it so I could stream music to my aging hi-fi via the Pi's 3.5mm headphone jack and some [DIN connectors](https://en.wikipedia.org/wiki/DIN_connector) but the addition of [AirPlay 2](https://www.apple.com/uk/airplay/) and Bluetooth was tempting.
+
+    <img src="/i/balena.png" class="pull-right" width="375" height="379" alt=""> Looking at [its source code](https://github.com/balenalabs/balena-sound), I could see [balenaSound relies on shairport-sync](https://github.com/balenalabs/balena-sound/blob/3ab86443ae02a9cbaf3648f1100e596246a61d0f/plugins/airplay/start.sh) to power its AirPlay features but I balked at the [build instructions](https://github.com/mikebrady/shairport-sync/blob/98d2ecb3102550aa32edf280594a741e1bea2b25/BUILD.md). [Matt](https://github.com/mattmacleod) recommended [balena](https://www.balena.io) for managing Raspberry Pi devices to me years ago but this seemed the ideal time to try it. Once you get past the confusing terminology (what exactly _is_ a fleet anyway?), being able to see the status of services and see live logs in a web UI is impressive.
+
+    Sadly, I couldn't get any of the features to work as it seemed to only ever output sound via HDMI despite [setting various environment variables](https://github.com/balenablocks/audio#environment-variables).
+
+    In the end, I re-imaged my Pi with the [latest Raspberry Pi OS Lite](https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-32-bit) with [Raspberry Pi Imager](https://www.raspberrypi.com/software/) and manually installed raspotify and shairport-sync. After [setting the audio output with `raspi-config`](https://www.raspberrypi.com/documentation/computers/configuration.html#changing-the-audio-output), everything works fine.
+
+    I would say this saved me the price of a Port but I impulse bought a [Sub](https://www.sonos.com/en-gb/shop/sub) instead.
+
+*   Two weeks after A—— was born, someone [contributed a pull request](https://github.com/mudge/re2/pull/56) against [my gem, re2](https://github.com/mudge/re2).
+
+    This week, after some back and forth, I was finally able to release the new functionality in [re2 1.5.0](https://github.com/mudge/re2/releases/tag/v1.5.0).
+
+    The main change is the addition of an `RE2::Set` API which binds to the [underlying library's class of the same name](https://github.com/google/re2/blob/b733fc4bff1796842c89ca67a6c4b11e521cde73/re2/set.h). However, this behaves differently between ABI versions of the library:
+
+    * Version 0 of `RE2::Set::Match()` does not output any error information, instead returning `false` if a match fails for any reason.
+    * Later versions of re2 [do output error information if requested](https://github.com/google/re2/commit/ee52f030e7fed3fb0cfc5f41c367a898194cf776).
+
+    The main blocker with the addition of this feature to my gem was how to handle this difference gracefully.
+
+    Things I considered:
+
+    * Could I backfill the behaviour of later re2 versions to version 0 so clients couldn't tell the difference?
+      * No, version 0 doesn't give me enough information to fully recreate the behaviour of later versions.
+    * Should [`RE2::Set#match`](https://mudge.name/re2/RE2/Set.html#match-instance_method) behave differently depending on your ABI version without warning, leaving the responsibility of knowing the expected behaviour to the user?
+      * I didn't like the idea that upgrading the ABI version of the library would suddenly cause existing code to behave differently without warning.
+    * Should we expose a method that tells users which behaviour they will see?
+      * I added a [`RE2::Set.match_raises_errors?`](https://mudge.name/re2/RE2/Set.html#match_raises_errors%3F-class_method) method that will return true if the ABI version supports it as I need to rely on it [in my tests](https://github.com/mudge/re2/blob/ac29a2231a8740676136d96fc353fe04971403f1/spec/re2/set_spec.rb#L110).
+    * Should we have two ways of calling `match`: one that does not raise exceptions (available to all ABI versions) and one that does (available only to later versions)? If someone tries to call the latter API on an ABI version that doesn't support it, raise an exception to explain it is unsupported.
+      * [This is what I ended up implementing](https://github.com/mudge/re2/commit/a2209cc02d12ae93793645a0cc7c61819f5ef4a3).
+
+    The final API works like so:
+
+    ```ruby
+    # On ABI version 0
+    set = RE2::Set.new
+    set.match("foobar")
+    # RE2::Set::UnsupportedError: current version of RE2::Set::Match() does not
+    # output error information, :exception option can only be set to false
+    set.match("foobar", exception: false)
+    # => false
+
+    # On later ABI versions
+    set = RE2::Set.new
+    set.match("foobar")
+    # RE2::Set::MatchError: #match must not be called before #compile
+    set.match("foobar", exception: false)
+    # => false
+    ```
+
+*  [Last week](/2022/10/12/weeknotes-96/), I said I am trying two things to prevent migraines. I lied as I'm also trying some other things:
+
+   1. I've reduced the amount of coffee I drink in the morning (15g instead of 18g).
+   2. I went for an eye test for the first time since January 2020 but my prescription hasn't changed.
+
+   (So far, one or more of these things seem to be working.)
