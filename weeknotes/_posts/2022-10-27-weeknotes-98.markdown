@@ -1,0 +1,39 @@
+---
+title: "Weeknotes #98"
+date: 2022-10-27 09:26:02
+excerpt: Hosting YARD documentation on GitHub Pages, pattern matching and the IKEA nesting instinct.
+---
+*   With [last week](/2022/10/20/weeknotes-97/)'s [release of my gem, re2](https://github.com/mudge/re2/releases/tag/v1.5.0), I had to update [its documentation](https://mudge.name/re2/). I use [YARD](https://yardoc.org) to generate the documentation from the [source code](https://github.com/mudge/re2) and host it using [GitHub Pages](https://pages.github.com).
+
+    After generating the latest documentation with `yard doc`, I noticed some broken links when I deployed it, specifically when trying to load the [alphabetic index](https://mudge.name/re2/_index.html). This is a [known issue with YARD and GitHub Pages](https://github.com/lsegal/yard/issues/1027) as [Jekyll](https://jekyllrb.com) will ignore any files beginning with an underscore.
+
+    [Chris](https://github.com/clowder) suggested that I stop GitHub Pages running the documentation through Jekyll altogether by [placing a `.nojekyll` file in the root of the repository](https://github.blog/2009-12-29-bypassing-jekyll-on-github-pages/) and that fixed the missing index.
+
+*   [Tom tweeted](https://twitter.com/tomstuart/status/1583421297240944640) about an [upcoming change to Ruby](https://github.com/ruby/ruby/pull/6216) that will allow you to use [`MatchData`](https://ruby-doc.org/core-3.1.2/MatchData.html) objects when [pattern matching](https://ruby-doc.org/core-3.1.2/doc/syntax/pattern_matching_rdoc.html), e.g.
+
+    ```ruby
+    if NAN_REGEXP.match(string) in { sign:, payload: }
+      Nan.new(payload: payload&.to_i(16) || 0, negated: sign == '-')
+    elsif INFINITE_REGEXP.match(string) in { sign: }
+      Infinite.new(negated: sign == '-')
+    end
+    ```
+
+    As I haven't yet tried pattern matching in recent versions of Ruby, I [implemented it for `RE2::MatchData`](https://github.com/mudge/re2/pull/58) and [released it in 1.6.0](https://github.com/mudge/re2/releases/tag/v1.6.0).
+
+    ```ruby
+    if RE2('foo(?P<suffix>...)').match('foobar') in suffix:
+      puts suffix
+    end
+    # bar
+    ```
+
+    It was quite fun to figure out exactly how [`RE2::MatchData#deconstruct`](https://mudge.name/re2/RE2/MatchData.html#deconstruct-instance_method) and [`RE2::MatchData#deconstruct_keys`](https://mudge.name/re2/RE2/MatchData.html#deconstruct_keys-instance_method) should behave but the [tests in Ruby](https://github.com/ruby/ruby/blob/5129ca3e056e1ce3189ba39fa311d4d687b97b45/test/ruby/test_regexp.rb#L611-L641) were a huge help.
+
+*   We've been slowly but steadily replacing flimsy things in our kitchen with [OXO](https://www.oxo.com) Good Grips equivalents when they break:
+
+    * [Thermometer](https://www.oxo.com/oxo-good-grips-chef-s-precision-digital-instant-read-thermometer.html)
+    * [Scales](https://www.oxo.com/categories/cooking-and-baking/mix-measure/measuring-scales/oxo-good-grips-11-lb-stainless-steel-food-scale-w-pull-out-display.html)
+    * [Salad spinner](https://www.oxo.com/salad-spinner.html)
+
+    Draw your own similarities to the [IKEA scene from "Fight Club"](https://youtu.be/exL51n3py6g).
