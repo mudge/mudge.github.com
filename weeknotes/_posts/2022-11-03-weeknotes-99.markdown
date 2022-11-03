@@ -1,0 +1,20 @@
+---
+title: "Weeknotes #99"
+date: 2022-11-03 13:41:44
+excerpt: Pulling keycaps, a refactoring wishlist and the virtue of leaving jobs.
+---
+*   After resisting the temptation to indulge in an exotic keyboard for my entire programming career, I switched to a [Kinesis Advantage360](https://kinesis-ergo.com/keyboards/advantage360/) this week.
+
+    As a frequent sufferer of repetitive strain injury, I'd been watching out for the release of the Advantage360 since reading [Martin Fowler](https://martinfowler.com/articles/kinesis-advantage2.html) and [Avdi Grimm's reviews of its predecessor](https://avdi.codes/why-you-should-spend-350-on-a-computer-keyboard/).
+
+    <p class="center"><img src="/i/kinesis.jpg" width="375" height="250" alt></p>
+
+    I like to think of myself as having simple tastes, rejecting indulgent customisation and configuration of hardware and software beyond the basics. This week, I found myself using a keycap puller to replace keys and getting giddy about the fact I can [turn my `Esc` key into `Ctrl` when holding it down](https://www.reddit.com/r/kinesisadvantage/comments/ykeapu/comment/iuvdr68/?utm_source=share&utm_medium=web2x&context=3).
+
+*   An equally exciting purchase this week was the arrival of a replacement [lower basket for our dishwasher](https://www.lamonaspares.co.uk/p/lower-basket-a1758970900).
+
+*   My recent focus on [re2](https://github.com/mudge/re2) led me to write up a [refactoring wishlist](https://github.com/mudge/re2/issues/59). Unfortunately, a combination of the clocks changing and a badly-timed childhood illness means I've made very little progress.
+
+*   I've talked about my tendency to busy myself with "jobs" and am making an effort to recognise this as less a personality quirk and more a possibly destructive form of obsession. On cue, the extractor fan in the windowless utility room where I do most of my bread-making stopped working. Rather than tackling it immediately, I forced myself to leave it until the weekend.
+
+    Several days later, without me getting involved, it started working again.
