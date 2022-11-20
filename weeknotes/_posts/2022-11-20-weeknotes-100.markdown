@@ -1,0 +1,61 @@
+---
+title: "Weeknotes #100"
+excerpt: Self-hosting Mastodon, MIME negotiation for Rails APIs take two and tooting with abandon.
+date: 2022-11-20 13:54:56
+---
+*   With the flurry of interest in [Mastodon](https://github.com/mastodon/mastodon) and [ActivityPub](https://activitypub.rocks), I was hoping to [run an instance on my own domain](https://til.simonwillison.net/mastodon/custom-domain-mastodon). However, to make things more challenging, I wanted to see if there was a way to do it without paying for any more infrastructure.
+
+    <p class="center"><img src="/i/pi400.jpg" width="425" height="425" alt="A Raspberry Pi 400 on top of a filing cabinet connected to an eero"></p>
+
+    I set up my [Raspberry Pi 400](https://www.raspberrypi.com/products/raspberry-pi-400/) as per the [installing Mastodon from source](https://docs.joinmastodon.org/admin/install/) instructions (though I needed to follow [Tom](https://tomstu.art)'s advice and `export NODE_OPTIONS=--openssl-legacy-provider` in order for the JavaScript dependencies to install on Node.js 18) and set about exposing it to the internet.
+
+    This led me to discover that my home network had a [double NAT](https://support.eero.com/hc/en-us/articles/207621056-How-do-I-set-up-my-eero-if-I-want-to-keep-my-existing-router-): my ISP's router was running one network and my [eeros](https://www.eero.com) were running another. After repeatedly breaking my entire network to try and fix it (which involved [SSHing into my router as `engineer` to get my PPPoE credentials](https://gist.github.com/chriscpritchard/db98167c0a1372ef16e131bfe9b76956)) before discovering my [eeros don't support connecting directly to the internet](https://support.eero.com/hc/en-us/articles/207852843-Does-eero-support-PPPoE-), I ended up forwarding both HTTP and HTTPS to my instance.
+
+    As I didn't want to pay for a static IP, I wrote a bash script to update a `CNAME` on `mudge.name` every five minutes with my public IP as reported by [ipify](https://api.ipify.org) using [GANDI's LiveDNS API](https://api.gandi.net/docs/livedns/).
+
+    I then followed the [instructions to use `@mudge@mudge.name` rather than `@mudge@social.mudge.name`](https://masto.host/mastodon-usernames-different-from-the-domain-used-for-installation/) by [serving a response for `https://mudge.name/.well-known/host-meta` that pointed to my instance](https://github.com/mudge/mudge.github.com/commit/46be2ab6ab2de81b6b2b6f90fcbdba3b7a51eeed). Tom pointed out this works because [Mastodon will fall back to checking `host-meta` if its WebFinger request fails with a 404](https://github.com/mastodon/mastodon/blob/v3.5.3/app/lib/webfinger.rb#L61-L62).
+
+    Once everything was working, I started to grow a little unsure of the wisdom of exposing two ports into my home network from the internet despite my attempts to lock things down with `iptables` and [Fail2ban](http://www.fail2ban.org/wiki/index.php/Main_Page).
+
+    Several days in, we had a power cut after which I could no longer SSH into my server. At that point, I decided I'd leave the hosting to [James](https://ruby.social/@james) and stick with [Ruby.social](https://ruby.social/).
+
+*   I've been working on a streaming API using [Rack Hijacking](https://github.com/rack/rack/blob/main/SPEC.rdoc#label-Hijacking). As this involves working directly with sockets, we needed a way to test this alongside our more typical Rails controllers.
+
+    We settled on using [`UNIXSocket.pair`](https://ruby-doc.org/stdlib-3.1.2/libdoc/socket/rdoc/UNIXSocket.html#pair-method) to simulate the two ends of a streaming connection: one socket for the client end and one socket for the server end. We can pass this into our request `env` as a result of calling `rack.hijack` and then read off anything that has been written by the application, e.g.
+
+    ```ruby
+    it "streams the headers to the client" do
+      client, server = UNIXSocket.pair
+
+      get "/stream", env: { "rack.hijack" => -> { server } }
+
+      headers = client.readline("\r\n\r\n")
+
+      expect(headers).to eq("HTTP/1.1 200\r\nContent-Type: text/event-stream\r\n\r\n")
+    end
+    ```
+
+*   In that same project, I had occasion to re-examine [MIME negotiation in Rails](https://github.com/rails/rails/blob/a807a4f4f95798616a2a85856f77fdfc48da4832/actionpack/lib/action_dispatch/http/mime_negotiation.rb). I [previously wrote](/2022/03/13/weeknotes-90/) about how Rails will always prefer its notion of `format` (e.g. from a URL or file extension) over the [HTTP `Accept` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept) especially if it contains a [browser-like wildcard](https://github.com/rails/rails/blob/a807a4f4f95798616a2a85856f77fdfc48da4832/actionpack/lib/action_dispatch/http/mime_negotiation.rb#L171-L173). For our API, we don't expect our clients to be browsers and would rather Rails only decide on the appropriate content type based on the `Accept` header even if it has a wildcard.
+
+    I wrote up [an example of how to do this including a controller spec showing how it works with various examples](https://gist.github.com/mudge/acde31a5319726b9fdba419ffe7f5bcb). The crux of it is the following:
+
+    ```ruby
+    class ApiController < ApplicationController
+      before_action :only_respect_accept_header
+
+      private
+
+      def only_respect_accept_header
+        request.set_header(
+          "action_dispatch.request.formats",
+          requested_mime_types.select { |type| type.symbol || type.ref == "*/*" }
+        )
+      end
+
+      def requested_mime_types
+        Mime::Type.parse(request.get_header("HTTP_ACCEPT").to_s).presence || [Mime::ALL]
+      end
+    end
+    ```
+
+*   I've been [tooting with abandon on Ruby.social](https://ruby.social/@mudge). It's far easier when people aren't mistaking you for [another mudge](https://en.wikipedia.org/wiki/Peiter_Zatko).
