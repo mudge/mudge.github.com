@@ -34,15 +34,7 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.banner {
-  background: #c02f1d;
-  text-align: center;
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  border-bottom: 2px solid #922416;
-  margin-bottom: -2px;
+  border-top: 6px solid #c02f1d;
 }
 
 nav ul {
@@ -102,10 +94,6 @@ a {
 a:visited {
   color: #9a2617;
   text-decoration-color: #c88980;
-}
-
-.banner a {
-  color: #fff;
 }
 
 blockquote {
