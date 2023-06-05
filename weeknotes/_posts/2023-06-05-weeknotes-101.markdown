@@ -1,0 +1,20 @@
+---
+title: "Weeknotes #101"
+excerpt: A trip abroad, winding up my company, hearing aids and failing to discipline.
+date: 2023-06-05 13:46:00
+---
+*   We’re in Turkey (or is that [Türkiye](https://en.m.wikipedia.org/wiki/Name_of_Turkey)?) for the first time in eight years.
+
+*   It is our first time travelling abroad with the kids but the novelty of: a) waking up at 3am and seeing Ilkley by night, b) flying on an aeroplane, and c) a cache of offline episodes of “[Thomas & Friends: Big World! Big Adventures!](https://en.m.wikipedia.org/wiki/Thomas_%26_Friends)” saw us through.
+
+*   We’re staying with my parents in a house on the Aegean coast. They normally come every year and the internet (essential for an afternoon binge-watch of “[Mighty Express](https://www.netflix.com/title/81033141))” was repeatedly flaking out. Given their wireless router had that telltale yellowed ABS plastic and all around us are reminders of the awesome destructive power of sea air, I convinced them to replace it with a new one from the local [Teknosa](https://www.teknosa.com/).
+
+*   Thankfully, their old AirTies router revealed its PPPoE connection credentials (set up by a family friend and therefore undocumented) in two ways: by inspecting the `value` of the password field in the web-based admin panel and by reading the `config.bin` file downloaded when you choose to back up the router settings. The latter is an easily read XML configuration file.
+
+*   After four years professionally programming computers (and helping others do the same) as [Ghost Cassette Ltd](https://www.ghostcassette.com/), I have taken a permanent role at [Raspberry Pi](https://www.raspberrypi.com/) and am winding up my company.
+
+*   More specifically, I’m starting a [members’ voluntary liquidation](https://www.gov.uk/liquidate-your-company/members-voluntary-liquidation). It is a little sad to formally declare I “do not want to run the business any more” as it saw me through the birth of two children and our move up t’north. On the other hand, I’m looking forward to dismantling the Rube Goldberg machine of exactly the right amount of dividends and salary I used to pay myself and being a Pay As You Earn employee again.
+
+*   My mum’s hearing is faltering to the point of failure but she refuses to wear her hearing aids (“they don’t make a difference!” she protests, convincing no-one). As communication is increasingly difficult, I’ve showed her how to use [iOS Live Listen](https://support.apple.com/en-gb/guide/iphone/iph8bf9386f5/ios) with her AirPods about which she is much more enthusiastic. I hoped she would benefit from [Conversation Boost](https://support.apple.com/en-lk/guide/airpods/dev966f5f818/web) but that is a feature only available with AirPods Pro. Rather than give her much-more-expensive hearing aids another go, she’s ordered a pair.
+
+*   Disciplining a three-and-a-half year old is unsurprisingly difficult but I hit a low point yesterday during a fight with C—— about perhaps *not* pouring bubble mixture all over his grandfather’s table when he said “maybe I should have a different daddy.”
