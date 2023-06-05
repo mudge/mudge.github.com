@@ -5,9 +5,9 @@ date: 2023-06-05 13:46:00
 ---
 *   We’re in Turkey (or is that [Türkiye](https://en.m.wikipedia.org/wiki/Name_of_Turkey)?) for the first time in eight years.
 
-*   It is our first time travelling abroad with the kids but the novelty of: a) waking up at 3am and seeing Ilkley by night, b) flying on an aeroplane, and c) a cache of offline episodes of “[Thomas & Friends: Big World! Big Adventures!](https://en.m.wikipedia.org/wiki/Thomas_%26_Friends)” saw us through.
+*   It is our first time travelling abroad with the kids but a combination of a) the novelty of waking up at 3am and seeing Ilkley by night, b) flying on an aeroplane, and c) a cache of offline episodes of “[Thomas & Friends: Big World! Big Adventures!](https://en.m.wikipedia.org/wiki/Thomas_%26_Friends)” saw us through.
 
-*   We’re staying with my parents in a house on the Aegean coast. They normally come every year and the internet (essential for an afternoon binge-watch of “[Mighty Express](https://www.netflix.com/title/81033141))” was repeatedly flaking out. Given their wireless router had that telltale yellowed ABS plastic and all around us are reminders of the awesome destructive power of sea air, I convinced them to replace it with a new one from the local [Teknosa](https://www.teknosa.com/).
+*   We’re staying with my parents in a house on the Aegean coast. They normally come every year and the internet (essential for an afternoon binge-watch of “[Mighty Express](https://www.netflix.com/title/81033141)”) was repeatedly flaking out. Given their wireless router had that telltale yellowed ABS plastic and all around us are reminders of the awesome destructive power of sea air, I convinced them to replace it with a new one from the local [Teknosa](https://www.teknosa.com/).
 
 *   Thankfully, their old AirTies router revealed its PPPoE connection credentials (set up by a family friend and therefore undocumented) in two ways: by inspecting the `value` of the password field in the web-based admin panel and by reading the `config.bin` file downloaded when you choose to back up the router settings. The latter is an easily read XML configuration file.
 
