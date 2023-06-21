@@ -1,0 +1,22 @@
+---
+title: “Weeknotes #102”
+excerpt: Another holiday, a cousin calculator, the dangers of i-SPY, the inhumanity of siblings, and avoiding thinking about computers.
+date: 2023-06-21 09:25:00
+---
+*   We’re on holiday again. C–– is currently pushing a toy construction vehicle around a grand entranceway filled with portraits of First World War generals.
+
+*   We’re staying in a house in the Scottish Borders with E––‘s extended family, a group of 19: 14 adults and five children.
+
+*   Logistics are somewhat complicated and I find myself relearning hard-won parenting lessons, e.g. there’s a reason we avoid three course evening meals with a one- and three-year old (because they are a nightmare).
+
+*   The children are cousins of some sort ([Ancestor Search Cousin Relationship Calculator](http://www.searchforancestors.com/utility/cousincalculator.html) tells me they are _second_ cousins) and similar in age (two one-year-olds and three three-year-olds) so they have been playing together. They quickly found a gnarled tree to clamber up though the nature of three-year-olds’ interpersonal skills led my first cousin to name it the “Tree of Tears”.
+
+*   As C–– grows increasingly bored with long drives, we attempted to spice up the trip to Scotland with an [i-SPY](https://collins.co.uk/collections/i-spy) book. Unfortunately, this backfired when he complained of feeling “poorly” and looked suspiciously pale. We managed to pull over in time before any breakfasts made an unwelcome second appearance but we might avoid intense reading on future car journeys.
+
+*   Coming from a small family, it is a novelty to witness bickering between siblings of all ages: some in their thirties and forties, others in their sixties and seventies. Normally kind and courteous relatives are, at times, downright horrid to one another, hands raised in a universal signal of “stop talking” and the occasional dreaded shushing when someone tries to interject. Maybe I’ll introduce [the GDS team’s full series of hand signals](https://gds.blog.gov.uk/2016/10/07/platform-as-a-service-team-takes-even-handed-approach-to-meetings/) to broker a fragile peace.
+
+*   I posted [a short thread to ruby.social about my experience starting our own mail server to send transactional mail](https://ruby.social/@mudge/110536287876333703) at work despite it seeming an extremely ill-advised thing to do in 2023.
+
+*   Otherwise, I have successfully avoided thinking too much about computers of various sizes throughout the holiday.
+
+*   The only exception was figuring out how to cobble together a baby monitor out of an iPhone and a MacBook (as our normal baby monitor doesn’t have the range in this big, old house) using a muted FaceTime call and [iOS’s auto-answer functionality](https://support.apple.com/en-gb/guide/iphone/iph29145acf1/ios#:~:text=You%20can%20automatically%20direct%20the,then%20choose%20an%20audio%20destination).
