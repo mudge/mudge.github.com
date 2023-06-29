@@ -1,5 +1,5 @@
 ---
-title: “Weeknotes #103”
+title: "Weeknotes #103"
 excerpt: Travelling to Brighton, migrating to Porkbun, and self-hosting GitHub Actions runners.
 date: 2023-06-29 10:38:00
 ---
