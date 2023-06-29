@@ -1,0 +1,22 @@
+---
+title: “Weeknotes #103”
+excerpt: Travelling to Brighton, migrating to Porkbun, and self-hosting GitHub Actions runners.
+date: 2023-06-29 10:38:00
+---
+*   I’m writing these notes from a train on Platform 6 in Leeds station, the second of four trains that will take me to Brighton for tomorrow’s [Brighton Ruby](https://brightonruby.com/) conference.
+
+*   To be even more specific, as with my past two weeknotes, I’m using [iA Writer](https://ia.net/writer) and [Working Copy](https://workingcopy.app) to publish these on the move.
+
+*   The liquidation of [my company](https://www.ghostcassette.com/) is steadily progressing with all debts settled and a shareholders’ meeting scheduled for next week. In reality, that will involve me and a solicitor on a Teams call but perhaps I’ll wear a cravat.
+
+*   After over a decade of being a [Gandi](https://www.gandi.net/en-GB) customer, the [recent announcement they will be doubling their prices](https://chaos.social/@jonty/110542930325547466) following their [acquisition](https://domainnamewire.com/2023/03/02/total-web-solutions-acquires-domain-registrar-gandi-forming-new-entity/) finally pushed me to switch my domains to [Porkbun](https://porkbun.com/).
+
+    If you’re considering the same, I recommend their [guide to transferring domains with little to DNS downtime](https://kb.porkbun.com/article/89-how-to-transfer-a-domain-to-porkbun-with-no-downtime).
+    
+    The only difficulty I had during the transfer is that Porkbun don’t offer a way to import an existing zone file so you have to manually enter each record using their web interface. This is no great hardship however, giving me an excuse to audit everything and the move seems to have gone smoothly.
+    
+*   We’ve been using [GitHub Actions](https://docs.github.com/en/actions) more and more at work and I was concerned we would burn through our monthly credit limit. Thankfully, GitHub make it easy to [self-host runners](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/adding-self-hosted-runners) and [restrict access to selected repositories](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/managing-access-to-self-hosted-runners-using-groups) using runner groups. We’ve now shifted the majority of our scheduled jobs to our own private runners.
+
+    I’d recommend trying to match the [resources and operating systems of GitHub’s own runners](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources) otherwise you might run into issues with actions that rely on prebuilt software such as [setup-ruby](https://github.com/ruby/setup-ruby#supported-platforms). We went for a clean install of [Ubuntu 22.04](https://releases.ubuntu.com/jammy/), installing only `curl` and `build-essential` before setting up the action runner and it is working well so far.
+    
+*   I’m looking forward to seeing some old faces from [London Computation Club](https://london.computation.club/) as I haven’t seen most of them for several years now. “Remember the time we [played with wooden trains](https://github.com/computationclub/computationclub.github.io/wiki/The-Shunting-Yard-Algorithm)?”
