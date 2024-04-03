@@ -11,10 +11,10 @@ excerpt: The Lake District, highly polished balls of mud, The Good Life, and ave
 
 *   I continue to work on re2, having released [2.10.0](https://github.com/mudge/re2/releases/tag/v2.10.0) two days ago and relentlessly trying to polish it like some sort of [dorodango](https://en.wikipedia.org/wiki/Dorodango).
 
-    My latest adventure has been trying to minimise the code required to statically link the gem's vendored dependencies, a [tale most recently told in a MiniPortile2 issue](https://github.com/flavorjones/mini_portile/issues/138).
+    My latest adventure has been trying to minimise the code required to statically link the gem's vendored dependencies, a [tale most recently told in a MiniPortile2 issue](https://github.com/flavorjones/mini_portile/issues/138#issuecomment-2034453909).
 
 *   Of course, the running joke here (beloved by [Tom](https://tomstu.art/)) is that Ruby already has [regular expression support](https://docs.ruby-lang.org/en/3.3/Regexp.html) but I enjoy my niche of regular expressions that are designed to be [totally immune to denial of service (ReDoS) attacks](https://github.com/mudge/re2?tab=readme-ov-file#why-re2).
 
-*   Next week, we're getting solar panels fitted to our house which feels a bit like a subplot from [The Good Life](https://en.m.wikipedia.org/wiki/The_Good_Life_(1975_TV_series)) but I am looking forward to some artisanal, homegrown electricity.
+*   Next week, we're getting solar panels fitted to our house which feels a bit like a subplot from [The Good Life](https://en.wikipedia.org/wiki/The_Good_Life_(1975_TV_series)) but I am looking forward to some artisanal, homegrown electricity.
 
 *   An essential tip for anyone travelling to the Lakes with a fan of Lego: [Tebay Services](https://www.tebayservices.com/) no longer sells any in their gift shop (much to some of our party's surprise and displeasure) but the mysteriously-named [Rheged](https://rheged.com/) about 15 minutes further north _does_ have a good selection and, in our case, minimised emotional distress for all concerned.
