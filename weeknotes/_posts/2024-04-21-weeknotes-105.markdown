@@ -1,0 +1,34 @@
+---
+title: "Weeknotes #105"
+excerpt: Between two birthdays, repairing plastic, 113 individual checks, and overenthusiastic bots.
+date: 2024-04-21 13:07:50
+---
+*   I am writing these notes between a five year old's birthday party and a 67 year old's birthday dinner. It remains to be seen which one is the more chaotic.
+
+*   Our [aforementioned](/2024/04/03/weeknotes-104/) break in the Lake District was great.
+
+    It takes me at least two full days to unwind so a four-day break has a good rhythm to it. Unlike E——, I didn't quite get to the point of braving the _al fresco_ tin bath but I did manage to stare gormlessly at the fells surrounding Ullswater.
+
+*   Despite never being successful, I continue to try to repair broken plastic toys. I've tried [super glue](https://www.loctiteproducts.com/en/products/fix/super-glue.html) (cyanoacrylate), [poly cement](https://uk.humbrol.com/products/poly-cement-medium-tube-ae4021), [UHU all purpose adhesive](https://www.uhu.com/en-en/products/uhu-all-purpose-adhesive-folding-box-35-ml-gb), [2-component epoxy](https://www.go-araldite.com/en/aralditer-ultra-strong-2x15ml) and even [Butanone/methyl ethyl ketone (MEK)](https://en.wikipedia.org/wiki/Butanone) as that is [supposedly used by LEGO "Certified Master Builders"](https://bricks.stackexchange.com/questions/1037/what-glue-should-i-use-for-permanent-lego-construction). None of those repairs have lasted very long but, in an unintended display of bloodymindedness, I haven't totally given up yet.
+
+    After watching a [video of someone cutting and polishing a morganite stone into a 294 caret gem](https://youtu.be/Qe9tnIB2Yro?feature=shared), the sheer amount of epoxy they use to secure the stone to its "dop" has made me wonder if I should simply use *way more glue*. I'm currently waiting for attempt number five on a toy car to cure so stay tuned.
+
+*   Speaking of polish, my [tinkering](/2024/04/03/weeknotes-104/) on [re2](https://github.com/mudge/re2) continues, this time trying to parallelise the 113 individual checks run on every pull request as much as possible while also ensuring we cover:
+
+    1. The six supported versions of [Ruby](https://www.ruby-lang.org/en/)
+    2. The eight supported ABI versions of [RE2](https://github.com/google/re2)
+    3. Users using a system version of RE2
+    4. Users using the vendored version of RE2
+    5. Users of one of the nine platforms with native, precompiled gems
+    6. Users on macOS
+    7. Users on Windows
+    8. Users on Linux
+    9. Users on FreeBSD
+
+    I'd still like to clean up the Rake tasks and potentially set up a CI job to test the precompiled gem on Windows x86 but that [may involve](https://ruby.social/@flavorjones/112304895826840605) [using a second CI service](https://www.appveyor.com).
+
+*   In the past few months, we've seen an uptick in bad behaviour from ["verified" bots](https://radar.cloudflare.com/traffic/verified-bots): specifically, a bot from Bytedance hitting our website 18 times a second and, last week, a [bot from Google](https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers#googleother) hitting us over _50 times a second_. I've had to introduce rate limiting rules specifically for verified bots and I can't help but suspect unbridled enthusiasm training [large language models](https://en.wikipedia.org/wiki/Large_language_model) is involved somehow.
+
+*   This morning, our entire family enjoyed sitting with [Boots Head Lice Shampoo](https://www.boots.com/boots-pharmaceuticals-head-lice-solution-10160719) in our hair for 30 minutes before a thorough comb with [the Mumsnet-approved "Nitty Gritty"](https://www.nittygritty.co.uk).
+
+    In case you weren't already aware: parenting is a series of body horror experiences.
