@@ -1,0 +1,22 @@
+---
+title: "Weeknotes #106"
+excerpt: Dietary advice, Ray Mears, and Rakefiles.
+date: 2024-05-04 12:32:15
+---
+*   Taking four triptans in three weeks has driven me to try some [dietary advice for migraine from University Hospitals Sussex](https://www.uhsussex.nhs.uk/resources/dietary-advice-for-migraine-2/). This has revealed my diet mostly consists of cheese and chocolate.
+
+    Truthfully, food is unlikely to be a trigger for me (it seems to be entirely to do with sleep and stress) but I wear glasses to correct a mild astigmatism and take cod liver oil tablets so why not try it? Especially as it is easier to avoid Bovril than it is to relax by exactly the right amount.
+
+*   In an ideal world, I'd like to be some sort of [Ray Mears](https://en.wikipedia.org/wiki/Ray_Mears)-type: thriving only on my wits, fashioning apparatus to produce clean drinking water and adequate shelter using only twigs and moss. The reality is that I now own a cheap water flosser which I need to use regularly to avoid [pericoronitis](https://www.nhs.uk/conditions/wisdom-tooth-removal/#:~:text=pericoronitis). Add that to the small pharmacy I carry in my coat pocket in case of migraine and the weekly squirts of [betamethasone](https://www.nhs.uk/medicines/betamethasone-skin/) and it's not looking great for me in any post-apocalyptic war gaming.
+
+*   Another week (or two), another round of fettling [re2](https://github.com/mudge/re2): this time focussed on the [`Rakefile`](https://github.com/mudge/re2/blob/v2.11.0/Rakefile) and [CI configuration](https://github.com/mudge/re2/blob/v2.11.0/.github/workflows/tests.yml).
+
+    Since [2.0](https://github.com/mudge/re2/releases/tag/v2.0.0) was first released nearly eight months ago, I've been slowly trying to make perfect sense of all the plumbing to achieve the precompiled, native gems (as almost all of the work was done by [Stan Hu](https://github.com/stanhu)) and these [latest changes](https://github.com/mudge/re2/compare/v2.10.0...v2.11.0) come out of diving into how [rake-compiler](https://github.com/rake-compiler/rake-compiler), [rake-compiler-dock](https://github.com/rake-compiler/rake-compiler-dock) and [`Gem::PackageTask`](https://docs.ruby-lang.org/en/3.3/Gem/PackageTask.html) combine:
+
+    * rake-compiler is responsible not only for native compilation but also cross-compilation via its `native:arm64-darwin`, `native:aarch64-linux`, etc. Rake tasks.
+    * rake-compiler-dock makes compiling for other platforms possible by providing ready-to-use Docker images for each one.
+    * `Gem::PackageTask` lets us package up an individual platform-specific gem, e.g. with `rake pkg/re2-2.11.0-aarch64-linux.gem`, as well as the uncompiled C Ruby gem with `rake gem`.
+
+    I was pleased to find use for [Rake File tasks](https://ruby.github.io/rake/doc/rakefile_rdoc.html#label-File+Tasks) to specify how to fetch the gem's vendored library dependencies ([RE2](https://github.com/google/re2) and [Abseil](https://github.com/abseil/abseil-cpp/)) as the `Gem::PackageTask` will implicitly depend on [every file declared in the gem specification](https://guides.rubygems.org/specification-reference/#files).
+
+*   <abbr title="Today I Learned">TIL</abbr> you can specify an anchor in a URL of the form `#:~:text=Some text here` and it'll [automatically scroll to that text fragment](https://caniuse.com/url-scroll-to-text-fragment) in supported browsers.
