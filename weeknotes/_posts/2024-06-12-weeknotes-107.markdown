@@ -1,0 +1,43 @@
+---
+title: "Weeknotes #107"
+excerpt: "The big city, the world of Home Assistant, and slow CI builds."
+date: 2024-06-12 10:17:00
+---
+*   I'm taking the day off work to go into the [big city](https://en.wikipedia.org/wiki/Leeds) and do some restorative record shopping.
+
+*   After a month's delay, we finally had our solar panels, inverter, [solar diverter](https://www.marlec.co.uk/product/solar-iboost/) and battery installed. I had hoped to avoid getting too involved in its operation but it only took a week or so before I was sucked into the world of [Home Assistant](https://www.home-assistant.io/) and [battery prediction software](https://springfall2008.github.io/batpred/) (thanks to [Shane](https://haikushane.com/) for the recommendation).
+
+    I can't really make use of any of it until we get smart meters and are given an export MPAN but it's fun to noodle and it gave me the flimsiest excuse to buy yet another [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/).
+
+*   A side-effect of playing with Home Assistant was seeing that it automatically discovered my [Sonos](https://www.sonos.com/en-us/home) system (which may or may not now feature some [surrounds](https://www.sonos.com/en-gb/shop/era-100)).
+
+    This was only interesting because [the redesigned Sonos app is much maligned](https://www.theverge.com/2024/5/8/24151704/sonos-new-app-bad-reviews-missing-features) and removed my ability to play music from my record player via its [Icecast](https://icecast.org/) URL (the [official instructions](https://help.tunein.com/en/support/solutions/articles/151000172377-what-is-a-custom-url-and-how-can-i-add-it-to-sonos-) don't work and involve signing up for an account for a third-party app).
+
+    Thankfully, [Home Assistant's `media_player.play_media` service](https://www.home-assistant.io/integrations/media_player/#service-media_playerplay_media) allows you to directly tell Sonos to play a specific URL, restoring my ability to listen to the warm, analogue sound of vinyl as it passes through a USB sound card and is encoded as a 320kbps MP3. I've hooked this up to a [button](https://www.home-assistant.io/dashboards/button/) like so:
+
+    ```yaml
+    type: button
+    name: Play turntable
+    show_state: false
+    tap_action:
+      action: call-service
+      service: media_player.play_media
+      target:
+        entity_id: media_player.living_room
+      data:
+        media_content_type: music
+        media_content_id: "http://raspberrypi400.local:8000/turntable.mp3"
+    ```
+
+*   I've started using [Kamal](https://kamal-deploy.org/) to run a [Rails](https://rubyonrails.org/) application that has outgrown [Heroku](https://www.heroku.com/).
+
+    I posted [a thread on `ruby.social`](https://ruby.social/@mudge/112512055758427469) about my experiences with it but, in short, once I got my head around [Traefik](https://ruby.social/@mudge/112512055758427469), its concepts of [entrypoints](https://doc.traefik.io/traefik/routing/entrypoints/), [routers](https://doc.traefik.io/traefik/routing/routers/) and [services](https://doc.traefik.io/traefik/routing/services/), and how they are configured through command line arguments and Docker labels, it has been a successful switch. I highly recommend reading [its source code](https://github.com/basecamp/kamal) to better understand how it orchestrates Docker and Traefik.
+    
+    It was always going to be difficult to compete with Heroku's "Developer Experience" with its monitoring, ease of deployment, access to recent logs, etc. but through a combination of a continuous delivery pipeline running Kamal, [HAProxy's stats page](https://www.haproxy.com/blog/exploring-the-haproxy-stats-page), and detailed server monitoring from our hosts, we haven't lost too much.
+
+    Plus it has been quite fun to use tools like [PGTune](https://pgtune.leopard.in.ua/) again after a long time relying on a Platform as a Service to manage this instead.
+
+*   It wouldn't be proper weeknotes if I didn't mention yet more fettling with my Ruby gem, [re2](https://github.com/mudge/re2).
+
+    This time, I noticed my ([admittedly rather complex](https://github.com/mudge/re2/blob/020fc8097113196f1a1e28b4badffd4577763707/.github/workflows/tests.yml)) CI build go from ~15 minutes to almost an hour after upgrading the bundled RE2 to [2024-06-01](https://github.com/google/re2/releases/tag/2024-06-01). This turned out to be due to older versions of [`pkg-config`](https://www.freedesktop.org/wiki/Software/pkg-config/) performing poorly when doing dependency resolution but a prompt update to [rake-compiler-dock](https://github.com/rake-compiler/rake-compiler-dock/releases/tag/v1.5.1) fixed it.
+
