@@ -1,0 +1,26 @@
+---
+title: "Weeknotes #108"
+excerpt: "The one name policy, hinge bits, thermal cut-outs, setting sand, and an unexploded bomb."
+date: 2024-06-28 13:21:53
+---
+*   Back in February, shortly after booking international flights for the end of July, I went to renew my British passport which was set to expire in May.
+
+    Being a British citizen from birth, it wasn't the first time I've done this but it _was_ the first time I was asked to send any _other_ passports I have held, even expired ones. As soon I saw this request, I knew trouble was coming my way.
+
+    You see, the [UK passport office require that customers have one name across both their passport application and any foreign documents](https://www.gov.uk/government/publications/names-aligning-names-on-foreign-documents/names-aligning-names-on-foreign-documents-accessible). Despite the fact I have only ever been known by one name in the UK (evidenced by multiple birth certificates, various identity documents, my marriage certificate, etc.), I have an extra first name on a foreign passport (my paternal grandfather's as per family tradition) which meant I would not be issued a new British passport until this was corrected.
+
+    It took four months, multiple trips to the consulate in Manchester, a power of attorney, the approval of a judge in a civil court in İstanbul, and a new identity card but I am now the owner of a blue (or is that black?) passport.
+
+*   I had two consecutive Saturdays filled with DIY jobs: the first, fitting some new kitchen cupboard doors that had been sat in their cardboard boxes for weeks. They had been pre-drilled to accommodate the existing hinges but one wasn't deep enough so I am now the proud owner of a [hinge drill bit](https://www.screwfix.com/c/tools/drill-bits/cat12140001?drillbittype=hinge).
+
+    The second Saturday involved a job I had been putting off for over a year: replacing the mixture of mud and sand that fills the gaps in our patio driveway with a fresh bag of [Sika setting sand](https://gbr.sika.com/dms/getdocument.get/5942bdca-b955-4a9f-8548-2c1a8682c165/sika_setting_sand.pdf). I didn't fully think through excavating the old material with a pressure washer and quickly found myself completely covered in dirt from head to toe.
+
+    An unexpected upside of that was that I had to wash my shoes and therefore re-lace them. I'm always happy to have an excuse to visit [my favourite website](https://www.fieggen.com/shoelace/lacing.htm).
+
+*   I [mentioned our new solar diverter last time](/2024/06/12/weeknotes-107/#:~:text=solar%20diverter) but was sceptical it was doing anything. My suspicions turned out to be correct because the thermal cut-out on our immersion heater had tripped (presumably because it had overheated at some point in the past and the thermostat was set at maximum) so it was never heating up.
+
+    Once I reset the cut-out and turned the thermostat down (the dial having only opaque numbers from one to five rather than a meaningful temperature), it started working and I've been living a life (mostly) free of gas-heated hot water. However, the days of pure sunshine in Yorkshire seem to be ending so it might have given me a false sense of energy self-sufficiency.
+
+*   As a result of these hot water tank shenanigans, we had ours serviced yesterday. I mentioned to the heating engineer that I'd seen water dripping in the tundish and that it felt wet earlier in the week. After a bit of back and forth, he tested the water pressure from our outside tap and discovered---to his mild horror---it was over 6 bars and not within the normal range of 2-4 bars or even under the maximum of 5.5 bars that plumbing fixtures are made to accommodate.
+
+    The good news is the dripping meant the pressure relief valve we had installed after moving in did its job but also that there was a period of time prior to that when our hot water tank could have [taken our roof off](https://youtu.be/61uDmQF5I2E?si=5XWO22mXjPo2DeTx).
