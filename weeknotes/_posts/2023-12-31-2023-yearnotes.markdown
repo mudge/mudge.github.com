@@ -1,0 +1,70 @@
+---
+title: "2023 Yearnotes"
+excerpt: Disorganised thoughts on the past year.
+date: 2023-12-31 13:37:00
+---
+*I originally posted [these notes on ruby.social](https://ruby.social/@mudge/111675537567147796).*
+
+*   Let’s be honest, I only managed three weeknotes this year (all of them in June) so there is little chance of yearnotes so please enjoy some disorganised yeartoots as and when I can post them instead.
+
+*   **Work-wise:** I had the fun of implementing timezone support for an event website and trying to Do It Right. Predictably this was hard but [I ended up with something that has been working well since](https://ruby.social/@mudge/109859014960600002).
+
+    I also tried to head off some spear phishing attacks by improving the mail security of a domain, learning [the DNS limits of TXT records and SPF along the way](https://ruby.social/@mudge/109868827499163110).
+
+*   Regular DDoS attacks became the new normal so I got a crash course in Cloudflare’s Web Application Firewall. That coupled with [a certain product announcement](https://www.raspberrypi.com/5/) led me to appreciate the scaling strategy of “don’t serve your own traffic but, if you really have to, make it all static content”.
+
+*   In a surprise twist, I ended up voluntarily liquidating my limited company ([fare thee well](https://www.ghostcassette.com/)) and accepted a permanent role at a fruit-themed computer manufacturer instead (not that one).
+
+    I’m enjoying PAYE life again and not having to juggle two legally distinct sets of finances.
+
+*   Outside of paid work, [@stanhu](https://ruby.social/@stanhu) raised a PR in July to do something I’d failed to realise previously: a version of my re2 gem that vendored its own dependencies on Google’s RE2 library (and its sole dependency of Abseil). It was a struggle to find time to really engage with it but eventually it resulted in re2 2.0, complete with precompiled, native gems. What’s more, it reinvigorated my interest in the project, leading to fixing memory leaks, API inconsistencies and a docs overhaul.
+
+*   This wouldn’t have been possible without @stanhu’s original work and help from the Ruby community _right here on ruby.social_ including [@flavorjones](https://ruby.social/@flavorjones), [@peterzhu2118](https://ruby.social/@peterzhu2118) and [@byroot](https://ruby.social/@byroot) as well as coverage in Ruby Weekly.
+
+    Learning the gem is used in GitLab and Shopify certainly helped justifying spending time on something I started 11 years ago.
+
+*   (Happy new year!) **Life-wise:** our youngest started nursery and our eldest started school so I’ve adapted to a new routine of the “school run” and trying to get my head around phonics.
+
+    For 6 days a week, I’m mostly sedentary but on Fridays I’ve been trying to walk up and down the hill between us and school which may explain the sudden uptick in midnight muscle cramps. I’m trying to even things out by running every Monday lunch time but the miserable weather makes it easy to skip.
+
+*   My initial enthusiasm for [Michael Mosley’s “Just One Thing”](https://www.bbc.co.uk/programmes/p09by3yy) has faded to, well, one thing: lifting weights a few times a week. I could try a bit harder on that front. Or maybe bring back eating dark chocolate and drinking red wine instead.
+
+    Migraines have been more frequent and while triptans work, they leave me like Bilbo, “like butter scraped over too much bread”. I should try some more things (Omega 3? Exercise? Learning how to actually relax?) to combat them.
+
+*   As for media: the highlight of the year was a month of MUBI and enjoying films like “The Worst Person In the World”, “Aftersun”, “Shiva Baby” and “Decision to Leave” which was welcome relief to mindlessly consuming Marvel dross on Disney+. We should pick that back up but I’m hesitant to subscribe to Yet Another Streaming Service.
+
+    **Gaming-wise:** I played and finished God of War: Ragnarök (except for the “true” post-endgame final boss) or, as [@tom](https://ruby.social/@tom) and I call it, Dad of War.
+
+*   Cocoon was excellent and I made some progress in Tears of the Kingdom but I’m outfaced by the sheer scale of the thing not to mention RSI putting paid to playing anything on the Switch for a while.
+
+    Despite receiving my Playdate after over a year’s wait, I’ll confess I have barely used it (but I’m still happy to support This Sort of Thing).
+
+    This was also the year of our eldest starting to play games, especially Untitled Goose Game and Mario Kart. Still unclear if this was a mistake.
+
+*   **Book-wise:** I finished a run of Adrian Tchaikovsky’s work, specifically “Elder Race”, “Eyes of the Void”, and “Children of Memory” as well as Asimov’s Foundation series (excluding the two prequels). Re the latter: I’ve not seen the TV show but the series didn’t make a big impression on me.
+
+    I seem to mostly read unchallenging science fiction these days though I did make time for Kazuo Ishiguru’s “The Buried Giant” and [“Make Something Wonderful”](https://stevejobsarchive.com/book)
+
+*   We had building work done over the summer to get some more daylight into a north-facing room where we spend most of our time with the kids (designed by [friends at MIMSTUDIOS](http://mimstudios.com/)). We’ve instantly taken this improvement for granted.
+
+    We have another renovation planned but it’s much less significant: turning a “Jack & Jill” bathroom into a more standard house bathroom by moving doors around.
+
+    The real achievement here is finding a builder we trust.
+
+*   Despite the aforementioned “Just One Thing”, I really only listened to two podcasts: [Accidental Tech Podcast](https://atp.fm/) and [The Flop House](https://www.flophousepodcast.com/).
+
+    I still feel old and confused using YouTube but I dared subscribe to two channels: [ARAMSE](https://youtube.com/@aramse?si=qIYqo-LoODyWfWV7) for humorous coffee paraphernalia reviews and [my mechanics](https://youtube.com/@mymechanics?si=EmlHARZK1dyRPNGc). I’ve since gone off endless coffee chat but I will never tire of methodical restoration.
+
+*   **Music-wise:** my Spotify Wrapped revealed it has been a year of absently letting Spotify play music in the background, e.g. I was surprised as the next person to discover I’m in the top 0.5% of Paramore listeners. My other top artists were all old favourites: Radiohead, Neutral Milk Hotel and Arcade Fire.
+
+    My recent adventures [connecting a turntable to a Sonos setup with a Raspberry Pi 400](https://ruby.social/@mudge/111569288744614937) is partly to encourage a bit more deliberate consumption of whole albums.
+
+*   Coffee highlight of the year comes from a local roaster: [Rwanda Bumbogo from Casa Espresso in Shipley, Bradford](https://casaespresso.co.uk/product/rwanda-bumbogo/). We’re currently working our way through a 1kg bag, one Chemex at a time.
+
+    I continue to be an infrequent customer of [Marriage](https://flour.co.uk)’s 16kg sacks of bread flour and donated a bit of my sourdough starter to two other people this year, continuing to spread the gospel of Colin (the Culture).
+
+*   (This is getting a bit like painting the Golden Gate Bridge, isn’t it?)
+
+    In an effort to reduce doomscrolling, I embraced the old school notion of regular email digests: [The Guardian First Edition](https://www.theguardian.com/world/series/first-edition), [Ruby Weekly](https://rubyweekly.com/), [The Verge Installer](https://www.theverge.com/installer-newsletter). It hasn’t really stopped my regular checking of [Lobsters](https://lobste.rs/) and [Hacker News](https://news.ycombinator.com/) though.
+
+    A late and welcome addition was [Rubyland](http://rubyland.news/) and I continue to enjoy a bit of an RSS renaissance with [NetNewsWire](https://netnewswire.com/).
