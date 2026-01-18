@@ -52,7 +52,7 @@
     </header>
     <main>
       <div class="row">
-        <div class="column">
+        <section aria-label="Posts" class="column">
           <h2>Posts <a href="/posts.atom" rel="alternate" type="application/atom+xml" class="rss">&nbsp;</a></h2>
           <dl>
             {% for post in site.posts %}
@@ -62,8 +62,8 @@
               {% endunless %}
             {% endfor %}
           </dl>
-        </div>
-        <div class="column">
+        </section>
+        <section aria-label="Weeknotes" class="column">
           <h2>Weeknotes <a href="/weeknotes.atom" rel="alternate" type="application/atom+xml" class="rss">&nbsp;</a></h2>
           <dl>
             {% for post in site.posts %}
@@ -73,7 +73,7 @@
               {% endif %}
             {% endfor %}
           </dl>
-        </div>
+        </section>
       </div>
     </main>
     {% include footer.html %}

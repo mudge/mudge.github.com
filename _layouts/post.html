@@ -39,12 +39,14 @@
     <link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
   </head>
   <body>
-    <nav>
-      <ul>
-        <li><a href=/ rel=home>&larr; Back to the homepage</a></li>
-      </ul>
-    </nav>
-    <article class=hentry>
+    <header>
+      <nav>
+        <ul>
+          <li><a href=/ rel=home>&larr; Back to the homepage</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class=hentry>
       <header>
         <h1 class=entry-title>
           <a href={{ page.url }} rel=bookmark>{{ page.title }}</a>
@@ -57,7 +59,7 @@
         </div>
       </header>
       <div class=entry-content>{{ content }}</div>
-    </article>
+    </main>
     {% include footer.html %}
     <script src=/j/3.js></script>
   </body>
