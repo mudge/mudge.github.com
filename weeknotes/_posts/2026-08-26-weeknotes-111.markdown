@@ -1,0 +1,43 @@
+---
+title: "Weeknotes #111"
+date: 2026-08-26 12:29:00
+excerpt: Sitting, a proposal, feline cover songs, two decades of car technology, and line graphs.
+---
+
+*   In "[Sound of Metal](https://www.themoviedb.org/movie/502033-sound-of-metal)", Riz Ahmed's character Ruben is [tasked with sitting quietly by himself](https://youtu.be/L8Wqw02_cp0?si=qZW_N1GdmAFlDNgZ). If he can't do that, he's told to continuously write until he can.
+
+    And so, weeknotes on holiday.
+
+*   We're on the Isle of Arran for a week, a place we haven't been since we got engaged at the top of its highest peak, Goat Fell, nine years ago.
+
+    I was so focussed on the engagement ring box hidden in the lining of my waterproof jacket and making [a shoelace knot-related](https://www.fieggen.com/shoelace/secureknot.htm) joke when dropping on one knee, I neglected to prepare any sort of romantic speech.
+
+*   E—— took the kids to a "farm experience" and I walked to Blackwaterfoot beach for a cup of black coffee from a vending machine and a morning roll.
+
+    I started out for Drumadoon Point but turned back after passing a ["wild sauna" in the back of a Green Goddess](https://www.wildsauna.scot/) and chatted to a couple visiting from Canada instead.
+ 
+*   It has been a turbulent year at work due to The Tech Industry Topic That Shall Not Be Named. From being dismissive and unconcerned when repeatedly asked about it last year, it felt like everything suddenly shifted in February. I was gripped by dread that my job was going the way of the lift attendant. Cue reading a lot of think pieces about [Jevons paradox](https://en.wikipedia.org/wiki/Jevons_paradox) and panicked financial planning.
+
+    Things have somewhat settled (though not calmed) since the start of the year.
+
+*   Our current, pressing parenting challenge is figuring out how to dissuade our youngest from demanding songs by the American pop rock band Imagine Dragons or cat-based cover versions of their songs by [Bongo Cat](https://youtube.com/@bongocat?si=CQAVIyQ0jOgNLOxW). So far, we have not been successful.
+
+*   Despite [retrofitting my twenty year old Volkswagen Golf Mk5 for Apple CarPlay](https://ruby.social/@mudge/115383314931048952) less than a year ago, it only took a few boring morning commutes from Yorkshire to Cambridge to convince me to take advantage of work's EV salary sacrifice scheme.
+
+    Leaping two decades of car technology in one go has been something of a shock.
+
+*   Trying to get everything set up between the car, [our new home charger](https://ohme-ev.com/product/ohme-home-pro/), [electricity tariff](https://octopus.energy/smart/intelligent-octopus-go/), and Home Assistant running [battery prediction software](https://github.com/springfall2008/batpred) was a mixed bag. We couldn't sign in to the car (required before we could set up the charger which we needed to do before we could switch tariff) until E—— drove it to a nearby supermarket car park and it automatically applied a software update.
+
+*   For this trip, I prepared myself with [Zapmap](https://www.zapmap.com/), an [Octopus Electroverse](https://electroverse.com/) card, and a month's Premium subscription to [A Better Routeplanner](https://abetterrouteplanner.com/home). 
+    
+    Despite being warned about charging infrastructure on the west coast of Scotland, it has been totally fine. Almost every place we've stopped at has had at least a "destination" charger though the fear of idle fees (fines for overstaying after your car has completed a charge) has been distracting.
+    
+    Switching from infrequent, expensive refuelling at petrol stations to spending pounds on electricity in every car park (a "top-up mentality") makes me feel unfathomably old.
+    
+*   This trip will end with two significant occasions: C——'s birthday and A—— starting school. The latter has an outsized impact on me because I've spent every Friday looking after her for years now. I'm not intending to go back up to five working days but I also don't want to fall into the trap of spending my extra day doing _jobs_.
+
+*   Shocking no one more than [myself](https://mudge.name/2025/05/19/weeknotes-110/#:~:text=I%20suppose%20I%20could%20always%20exercise%20more%20frequently%20and%20cut%20back%20on%20eating%20crisps%20in%20the%20dark%20but%20where%E2%80%99s%20the%20fun%20in%20that?), I have lost 10 kg and have been doing a climbing/circuit training class twice a week for almost a year.
+
+    The weight loss is a more recent thing (since around April this year), brought about by a lingering sense of poor fitness and bad diet that started around Christmas and lasted through a truly dreadful January and February. A combination of gutting my diet and [cheap "body composition" scales](https://www.mi.com/uk/product/xiaomi-body-composition-scale-s400/) recommended by Leo finally gave me line graphs moving in the right direction.
+    
+    Of course, those good habits have gone to ruin while on holiday and I look forward to the cold judgement of Apple Health.
