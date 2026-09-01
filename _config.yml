@@ -31,7 +31,7 @@ exclude:
   - jest.config.js
   - node_modules
   - package.json
-  - yarn.lock
+  - package-lock.json
 defaults:
   -
     scope:
